@@ -5,7 +5,7 @@ var dbConst = require('../constants/db.json');
 
 export class DBConfig {
     static init():void {
-      const URL = (process.env.NODE_ENV === 'production') ? process.env.MONGOHQ_URL
+      const URL = (process.env.NODE_ENV === 'production') ? process.env.MONGOLAB_URI
                                                           : dbConst.localhost;
 
       mongoose.connect(URL);
