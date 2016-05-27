@@ -29,11 +29,11 @@ export class TodoCmp implements OnInit {
       this.gamma = event.gamma;
 
 
-      if(event.beta < -30 && this.changedTrack == false){
+      if(event.beta < -20 && this.changedTrack == false){
         this.nextTrack();
         this.changedTrack = true;
       }
-      if(event.beta > 0){
+      if(event.beta > 30){
         this.changedTrack = false;
       }
 

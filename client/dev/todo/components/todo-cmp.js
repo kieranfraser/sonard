@@ -21,11 +21,11 @@ var TodoCmp = (function () {
             this.alpha = event.alpha;
             this.beta = event.beta;
             this.gamma = event.gamma;
-            if (event.beta < -30 && this.changedTrack == false) {
+            if (event.beta < -20 && this.changedTrack == false) {
                 this.nextTrack();
                 this.changedTrack = true;
             }
-            if (event.beta > 0) {
+            if (event.beta > 30) {
                 this.changedTrack = false;
             }
         }.bind(this), true);
