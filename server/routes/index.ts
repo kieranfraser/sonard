@@ -7,12 +7,19 @@ import {StaticDispatcher} from '../commons/static/index';
 export class Routes {
    static init(app: express.Application, router: express.Router) {
      TodoRoutes.init(router);
-     
-     router
-       .route('*')
-       .get(StaticDispatcher.sendIndex);
-     
 
-     app.use('/', router);
+     var routerInit:express.Router = router;
+     routerInit
+       .route('/')
+       .get(StaticDispatcher.sendIndex);
+
+     var routerDeezer:express.Router = router;
+     routerDeezer
+       .route('/deezerChannel')
+       .get(StaticDispatcher.deezerChannel);
+
+
+     app.use('/', routerInit);
+     app.use('/deezerChannel', routerDeezer);
    }
 }

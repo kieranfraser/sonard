@@ -12,4 +12,13 @@ export class StaticDispatcher {
       fs.createReadStream(_root + '/client/dev/index.html')
         .pipe(res);
     }
+
+    static deezerChannel(req: express.Request, res: express.Response):void {
+      let _root = process.cwd();
+      console.log("deezerChannel");
+      res.type('.html');
+
+      fs.createReadStream(_root + '/client/dev/deezerChannel.html')
+        .pipe(res);
+    }
 }

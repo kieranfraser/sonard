@@ -6,10 +6,16 @@ var Routes = (function () {
     }
     Routes.init = function (app, router) {
         todo_routes_1.TodoRoutes.init(router);
-        router
-            .route('*')
+        var routerInit = router;
+        routerInit
+            .route('/')
             .get(index_1.StaticDispatcher.sendIndex);
-        app.use('/', router);
+        var routerDeezer = router;
+        routerDeezer
+            .route('/deezerChannel')
+            .get(index_1.StaticDispatcher.deezerChannel);
+        app.use('/', routerInit);
+        app.use('/deezerChannel', routerDeezer);
     };
     return Routes;
 }());

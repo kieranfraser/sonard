@@ -15,6 +15,14 @@
             [disabled]="!todoForm.valid">+</button>
   </form>
 
+  <div id="dz-root"></div>
+
+  <button (click)="login()">Login</button>
+
+  <button (click)="status()">Status</button>
+
+  <button (click)="myName()">My Name</button>
+
   <div class="todo-list">
     <div *ngFor="let todo of todos;" class="todo-item" (click)="remove(todo._id);">
       <p>{{todo.todoMessage}}</p>

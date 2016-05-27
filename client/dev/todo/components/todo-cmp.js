@@ -24,6 +24,11 @@ var TodoCmp = (function () {
         });
     }
     TodoCmp.prototype.ngOnInit = function () {
+        console.log('in init');
+        DZ.init({
+            appId: '180442',
+            channelUrl: 'http://localhost:3000/deezerChannel'
+        });
         this._getAll();
     };
     TodoCmp.prototype._getAll = function () {
@@ -52,6 +57,37 @@ var TodoCmp = (function () {
                 if (t._id === id)
                     return _this.todos.splice(i, 1);
             });
+        });
+    };
+    TodoCmp.prototype.login = function () {
+        console.log('in login');
+        DZ.login(function (response) {
+            if (response.authResponse) {
+                console.log('Welcome!  Fetching your information.... ');
+                DZ.api('/user/me', function (response) {
+                    console.log('Good to see you, ' + response.name + '.');
+                });
+            }
+            else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        }, { perms: 'basic_access,email' });
+    };
+    TodoCmp.prototype.status = function () {
+        DZ.getLoginStatus(function (response) {
+            console.log('status');
+            if (response.authResponse) {
+                console.log('logged in');
+            }
+            else {
+                // no user session available, someone you dont know
+                console.log('not logged in');
+            }
+        });
+    };
+    TodoCmp.prototype.myName = function () {
+        DZ.api('/user/me', function (response) {
+            console.log("My name", response.name);
         });
     };
     TodoCmp = __decorate([

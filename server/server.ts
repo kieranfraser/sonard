@@ -13,12 +13,15 @@ import * as http from 'http';
 import {RoutesConfig} from './config/routes.conf';
 import {DBConfig} from './config/db.conf';
 import {Routes} from './routes/index';
+import {StaticDispatcher} from './commons/static/index';
 
 const app = express();
 
 RoutesConfig.init(app);
 DBConfig.init();
 Routes.init(app, express.Router());
+
+//app.use('/deezerChannel', routerDeezer);
 
 http.createServer(app)
     .listen(PORT, () => {

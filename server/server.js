@@ -13,6 +13,7 @@ var app = express();
 routes_conf_1.RoutesConfig.init(app);
 db_conf_1.DBConfig.init();
 index_1.Routes.init(app, express.Router());
+//app.use('/deezerChannel', routerDeezer);
 http.createServer(app)
     .listen(PORT, function () {
     console.log("up and running @: " + os.hostname() + " on port: " + PORT);

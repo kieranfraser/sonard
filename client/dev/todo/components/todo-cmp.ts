@@ -20,6 +20,8 @@ type Todo = {
   _id: string;
 }
 
+declare var DZ: any;
+
 @Component({
   selector: 'todo-cmp',
   templateUrl: 'todo/templates/todo.html',
@@ -38,6 +40,12 @@ export class TodoCmp implements OnInit {
   }
 
   ngOnInit() {
+    console.log('in init');
+    DZ.init({
+      appId  : '180442',
+      channelUrl : 'http://localhost:3000/deezerChannel'
+    });
+
     this._getAll();
   }
 
@@ -67,5 +75,38 @@ export class TodoCmp implements OnInit {
             return this.todos.splice(i, 1);
         });
       })
+  }
+
+  login(){
+    console.log('in login');
+    DZ.login(function(response) {
+      if (response.authResponse) {
+        console.log('Welcome!  Fetching your information.... ');
+        DZ.api('/user/me', function(response) {
+          console.log('Good to see you, ' + response.name + '.');
+        });
+      } else {
+        console.log('User cancelled login or did not fully authorize.');
+      }
+    }, {perms: 'basic_access,email'});
+  }
+
+  status(){
+    DZ.getLoginStatus(function(response) {
+      console.log('status');
+      if (response.authResponse) {
+        console.log('logged in');
+        // logged in and connected user, someone you know
+      } else {
+        // no user session available, someone you dont know
+        console.log('not logged in');
+      }
+    });
+  }
+
+  myName(){
+    DZ.api('/user/me', function(response){
+      console.log("My name", response.name);
+    });
   }
 }
