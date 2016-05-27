@@ -8,18 +8,12 @@
 
   <div id="dz-root"></div>
 
-  <button (click)="login()">Login</button>
+  <button *ngIf="!loggedIn" (click)="login()"> Login </button>
 
-  <button (click)="status()">Status</button>
-
-  <button (click)="myName()">My Name</button>
+  <button (click)="playMusic()"> Start </button>
 
   <button (click)="nextTrack()"> Next </button>
 
-  <button (click)="playMusic()"> Play </button>
+  <button *ngIf="loggedIn" (click)="logout()"> Logout </button>
 
-  <button (click)="logout()"> Logout </button>
-  beta = {{beta}}; gamma = {{gamma}}; alpha = {{alpha}}
-
-  {{changed}}
 </div>
