@@ -29,6 +29,16 @@ var TodoCmp = (function () {
                 this.changedTrack = false;
             }
         }.bind(this), true);
+        DZ.getLoginStatus(function (response) {
+            if (response.authResponse) {
+                console.log("logged in");
+                this.loggedIn = true;
+            }
+            else {
+                console.log("not logged in");
+                this.loggedIn = false;
+            }
+        });
     }
     TodoCmp.prototype.ngOnInit = function () {
         console.log('in init');
@@ -41,16 +51,6 @@ var TodoCmp = (function () {
                 height: 300,
                 format: 'square',
                 onload: function () { }
-            }
-        });
-        DZ.getLoginStatus(function (response) {
-            if (response.authResponse) {
-                console.log("logged in");
-                this.loggedIn = true;
-            }
-            else {
-                console.log("not logged in");
-                this.loggedIn = false;
             }
         });
     };
