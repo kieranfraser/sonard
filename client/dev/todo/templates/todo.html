@@ -8,9 +8,9 @@
 
   <div id="dz-root"></div>
 
-  <button *ngIf="loggedIn == false" (click)="login()"> Login </button>
+  <button (click)="login()"> Login </button>
 
-  <button *ngIf="loggedIn == true" (click)="logout()"> Logout </button>
+  <button (click)="logout()"> Logout </button>
 
   <button (click)="playMusic()"> Start </button>
 
