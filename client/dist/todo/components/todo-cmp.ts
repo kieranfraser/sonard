@@ -43,8 +43,16 @@ export class TodoCmp implements OnInit {
     console.log('in init');
     DZ.init({
       appId  : '180442',
-      channelUrl : 'http://sonard.herokuapp.com/'
+      channelUrl : 'http://sonard.herokuapp.com/',
+      player: {
+        container: 'player',
+        width : 800,
+        height : 300,
+        onload : function(){}
+      }
     });
+
+    DZ.player.playPlaylist(1127068191);
 
     this._getAll();
   }
@@ -88,7 +96,7 @@ export class TodoCmp implements OnInit {
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
-    }, {perms: 'basic_access,email'});
+    }, {perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access'});
   }
 
   status(){
@@ -108,5 +116,9 @@ export class TodoCmp implements OnInit {
     DZ.api('/user/me', function(response){
       console.log("My name", response.name);
     });
+  }
+
+  nextTrack(){
+    DZ.player.next();
   }
 }

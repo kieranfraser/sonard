@@ -13,6 +13,8 @@
 
     <button type="submit"
             [disabled]="!todoForm.valid">+</button>
+
+    <div id="player"></div>
   </form>
 
   <div id="dz-root"></div>
@@ -22,6 +24,8 @@
   <button (click)="status()">Status</button>
 
   <button (click)="myName()">My Name</button>
+
+  <button (click)="nextTrack()"> Next </button>
 
   <div class="todo-list">
     <div *ngFor="let todo of todos;" class="todo-item" (click)="remove(todo._id);">

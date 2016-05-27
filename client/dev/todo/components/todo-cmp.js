@@ -27,8 +27,15 @@ var TodoCmp = (function () {
         console.log('in init');
         DZ.init({
             appId: '180442',
-            channelUrl: 'http://sonard.herokuapp.com/'
+            channelUrl: 'http://sonard.herokuapp.com/',
+            player: {
+                container: 'player',
+                width: 800,
+                height: 300,
+                onload: function () { }
+            }
         });
+        DZ.player.playPlaylist(1127068191);
         this._getAll();
     };
     TodoCmp.prototype._getAll = function () {
@@ -71,7 +78,7 @@ var TodoCmp = (function () {
             else {
                 console.log('User cancelled login or did not fully authorize.');
             }
-        }, { perms: 'basic_access,email' });
+        }, { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
     };
     TodoCmp.prototype.status = function () {
         DZ.getLoginStatus(function (response) {
@@ -89,6 +96,9 @@ var TodoCmp = (function () {
         DZ.api('/user/me', function (response) {
             console.log("My name", response.name);
         });
+    };
+    TodoCmp.prototype.nextTrack = function () {
+        DZ.player.next();
     };
     TodoCmp = __decorate([
         core_1.Component({
