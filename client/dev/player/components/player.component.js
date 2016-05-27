@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var TodoCmp = (function () {
-    function TodoCmp() {
+var PlayerComponent = (function () {
+    function PlayerComponent() {
         this.title = "Deezer Challenge";
         this.loggedIn = false;
         this.changedTrack = false;
@@ -31,7 +31,7 @@ var TodoCmp = (function () {
             }
         }.bind(this), true);
     }
-    TodoCmp.prototype.ngOnInit = function () {
+    PlayerComponent.prototype.ngOnInit = function () {
         console.log('in init');
         DZ.init({
             appId: '180442',
@@ -55,7 +55,7 @@ var TodoCmp = (function () {
             }
         });
     };
-    TodoCmp.prototype.login = function () {
+    PlayerComponent.prototype.login = function () {
         console.log('in login');
         DZ.login(function (response) {
             if (response.authResponse) {
@@ -70,7 +70,7 @@ var TodoCmp = (function () {
             }
         }.bind(this), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
     };
-    TodoCmp.prototype.status = function () {
+    PlayerComponent.prototype.status = function () {
         DZ.getLoginStatus(function (response) {
             console.log('status');
             if (response.authResponse) {
@@ -82,7 +82,7 @@ var TodoCmp = (function () {
             }
         });
     };
-    TodoCmp.prototype.myName = function () {
+    PlayerComponent.prototype.myName = function () {
         DZ.api('/user/me', function (response) {
             console.log("My name", response.name);
         });
@@ -94,25 +94,25 @@ var TodoCmp = (function () {
             console.log('Longitude: ' + position.coords.longitude);
         }
     };
-    TodoCmp.prototype.nextTrack = function () {
+    PlayerComponent.prototype.nextTrack = function () {
         DZ.player.next();
         this.loggedIn = true;
     };
-    TodoCmp.prototype.playMusic = function () {
+    PlayerComponent.prototype.playMusic = function () {
         DZ.player.playPlaylist(1483340617);
     };
-    TodoCmp.prototype.logout = function () {
+    PlayerComponent.prototype.logout = function () {
         DZ.logout();
         this.loggedIn = false;
     };
-    TodoCmp = __decorate([
+    PlayerComponent = __decorate([
         core_1.Component({
-            selector: 'todo-cmp',
-            templateUrl: 'todo/templates/todo.html',
-            styleUrls: ['todo/styles/todo.css']
+            selector: 'player-cmp',
+            templateUrl: 'player/templates/todo.html',
+            styleUrls: ['player/styles/todo.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], TodoCmp);
-    return TodoCmp;
+    ], PlayerComponent);
+    return PlayerComponent;
 }());
-exports.TodoCmp = TodoCmp;
+exports.PlayerComponent = PlayerComponent;

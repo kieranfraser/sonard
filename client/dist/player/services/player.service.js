@@ -1,0 +1,1 @@
+"use strict";require("rxjs/add/operator/map");var PlayerService=function(){function r(){}return r}();exports.PlayerService=PlayerService;

@@ -3,11 +3,11 @@ import {Component, OnInit} from '@angular/core';
 declare var DZ: any;
 
 @Component({
-  selector: 'todo-cmp',
-  templateUrl: 'todo/templates/todo.html',
-  styleUrls: ['todo/styles/todo.css']
+  selector: 'player-cmp',
+  templateUrl: 'player/templates/todo.html',
+  styleUrls: ['player/styles/todo.css']
 })
-export class TodoCmp implements OnInit {
+export class PlayerComponent implements OnInit {
 
   title: string = "Deezer Challenge";
 
@@ -101,7 +101,7 @@ export class TodoCmp implements OnInit {
       console.log("My name", response.name);
     });
 
-    
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success);
     }

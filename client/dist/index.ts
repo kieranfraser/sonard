@@ -2,6 +2,6 @@ import {bootstrap} from '@angular/platform-browser-dynamic';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {provide} from '@angular/core';
 
-import {TodoCmp} from './todo/components/todo-cmp';
+import {PlayerComponent} from './player/components/player.component';
 
-bootstrap(TodoCmp, [HTTP_PROVIDERS, provide(Window, {useValue: window})]);
+bootstrap(PlayerComponent, [HTTP_PROVIDERS, provide(Window, {useValue: window})]);
