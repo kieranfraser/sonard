@@ -11,6 +11,10 @@ export class TodoCmp implements OnInit {
 
   title: string = "Deezer Challenge";
 
+  xDifference = 0; // front to back motion
+  yDifference = 0; // left to right motion
+  zDifference = 0;
+
   constructor() {}
 
   ngOnInit() {
@@ -26,10 +30,22 @@ export class TodoCmp implements OnInit {
         onload: function () {}
       }
     });
+
+    window.addEventListener("deviceorientation", function(event) {
+      // process event.alpha, event.beta and event.gamma
+      console.log(event.alpha);
+      console.log(event.beta);
+      console.log(event.gamma);
+
+      if(event.alpha < -10){
+        this.nextTrack();
+      }
+    }, true);
   }
 
   login(){
     console.log('in login');
+
     DZ.login(function(response) {
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
@@ -59,6 +75,16 @@ export class TodoCmp implements OnInit {
     DZ.api('/user/me', function(response){
       console.log("My name", response.name);
     });
+
+    // Check support
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success);
+    }
+
+    function success(position) {
+      console.log('Latitude: ' + position.coords.latitude);
+      console.log('Longitude: ' + position.coords.longitude);
+    }
   }
 
   nextTrack(){
@@ -72,4 +98,11 @@ export class TodoCmp implements OnInit {
   logout(){
     DZ.logout();
   }
+
+
+}
+
+// declare the specific property on our own
+interface Window {
+  DeviceOrientationEvent?: any;
 }

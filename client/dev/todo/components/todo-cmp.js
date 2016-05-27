@@ -12,6 +12,9 @@ var core_1 = require('@angular/core');
 var TodoCmp = (function () {
     function TodoCmp() {
         this.title = "Deezer Challenge";
+        this.xDifference = 0; // front to back motion
+        this.yDifference = 0; // left to right motion
+        this.zDifference = 0;
     }
     TodoCmp.prototype.ngOnInit = function () {
         console.log('in init');
@@ -26,6 +29,15 @@ var TodoCmp = (function () {
                 onload: function () { }
             }
         });
+        window.addEventListener("deviceorientation", function (event) {
+            // process event.alpha, event.beta and event.gamma
+            console.log(event.alpha);
+            console.log(event.beta);
+            console.log(event.gamma);
+            if (event.alpha < -10) {
+                this.nextTrack();
+            }
+        }, true);
     };
     TodoCmp.prototype.login = function () {
         console.log('in login');
@@ -57,6 +69,14 @@ var TodoCmp = (function () {
         DZ.api('/user/me', function (response) {
             console.log("My name", response.name);
         });
+        // Check support
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success);
+        }
+        function success(position) {
+            console.log('Latitude: ' + position.coords.latitude);
+            console.log('Longitude: ' + position.coords.longitude);
+        }
     };
     TodoCmp.prototype.nextTrack = function () {
         DZ.player.next();
