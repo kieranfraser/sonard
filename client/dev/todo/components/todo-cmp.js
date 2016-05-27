@@ -34,7 +34,7 @@ var TodoCmp = (function () {
             console.log(event.alpha);
             console.log(event.beta);
             console.log(event.gamma);
-            if (event.alpha < -10) {
+            if (event.beta < -10) {
                 this.nextTrack();
             }
         }, true);
