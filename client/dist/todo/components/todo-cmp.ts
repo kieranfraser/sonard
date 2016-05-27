@@ -55,6 +55,14 @@ export class TodoCmp implements OnInit {
         onload: function () {}
       }
     });
+
+    DZ.getLoginStatus(function(response) {
+      if (response.authResponse) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    });
   }
 
   login(){
