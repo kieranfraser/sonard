@@ -40,16 +40,6 @@ export class TodoCmp implements OnInit {
       }
 
     }.bind(this), true);
-
-    DZ.getLoginStatus(function(response) {
-      if (response.authResponse) {
-        console.log("logged in");
-        this.loggedIn = true;
-      } else {
-        console.log("not logged in");
-        this.loggedIn = false;
-      }
-    });
   }
 
   ngOnInit() {
@@ -63,6 +53,16 @@ export class TodoCmp implements OnInit {
         height : 300,
         format : 'square',
         onload: function () {}
+      }
+    });
+
+    DZ.getLoginStatus(function(response) {
+      if (response.authResponse) {
+        console.log("logged in");
+        this.loggedIn = true;
+      } else {
+        console.log("not logged in");
+        this.loggedIn = false;
       }
     });
   }
