@@ -46,9 +46,11 @@ var TodoCmp = (function () {
         });
         DZ.getLoginStatus(function (response) {
             if (response.authResponse) {
+                console.log("logged in");
                 this.loggedIn = true;
             }
             else {
+                console.log("not logged in");
                 this.loggedIn = false;
             }
         });
