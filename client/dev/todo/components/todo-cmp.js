@@ -12,9 +12,23 @@ var core_1 = require('@angular/core');
 var TodoCmp = (function () {
     function TodoCmp() {
         this.title = "Deezer Challenge";
-        this.xDifference = 0; // front to back motion
-        this.yDifference = 0; // left to right motion
-        this.zDifference = 0;
+        this.changedTrack = false;
+        window.addEventListener("deviceorientation", function (event) {
+            // process event.alpha, event.beta and event.gamma
+            console.log(event.alpha);
+            console.log(event.beta);
+            console.log(event.gamma);
+            this.alpha = event.alpha;
+            this.beta = event.beta;
+            this.gamma = event.gamma;
+            if (event.beta < -30 && this.changedTrack == false) {
+                this.nextTrack();
+                this.changedTrack = true;
+            }
+            if (event.beta > 0) {
+                this.changedTrack = false;
+            }
+        }.bind(this), true);
     }
     TodoCmp.prototype.ngOnInit = function () {
         console.log('in init');
@@ -29,15 +43,6 @@ var TodoCmp = (function () {
                 onload: function () { }
             }
         });
-        window.addEventListener("deviceorientation", function (event) {
-            // process event.alpha, event.beta and event.gamma
-            console.log(event.alpha);
-            console.log(event.beta);
-            console.log(event.gamma);
-            if (event.beta < -10) {
-                this.nextTrack();
-            }
-        }, true);
     };
     TodoCmp.prototype.login = function () {
         console.log('in login');
