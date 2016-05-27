@@ -66,7 +66,7 @@ var TodoCmp = (function () {
             else {
                 console.log('User cancelled login or did not fully authorize.');
             }
-        }, { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
+        }.bind(this), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
     };
     TodoCmp.prototype.status = function () {
         DZ.getLoginStatus(function (response) {
