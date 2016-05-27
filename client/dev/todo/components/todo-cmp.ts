@@ -101,7 +101,7 @@ export class TodoCmp implements OnInit {
       console.log("My name", response.name);
     });
 
-    // Check support
+    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success);
     }

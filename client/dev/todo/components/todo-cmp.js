@@ -86,7 +86,6 @@ var TodoCmp = (function () {
         DZ.api('/user/me', function (response) {
             console.log("My name", response.name);
         });
-        // Check support
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success);
         }
