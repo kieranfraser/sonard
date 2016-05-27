@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var TodoCmp = (function () {
     function TodoCmp() {
         this.title = "Deezer Challenge";
-        this.loggedIn = false;
         this.changedTrack = false;
         window.addEventListener("deviceorientation", function (event) {
             // process event.alpha, event.beta and event.gamma
