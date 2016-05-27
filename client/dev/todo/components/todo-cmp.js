@@ -87,12 +87,14 @@ var TodoCmp = (function () {
     };
     TodoCmp.prototype.nextTrack = function () {
         DZ.player.next();
+        this.loggedIn = true;
     };
     TodoCmp.prototype.playMusic = function () {
         DZ.player.playPlaylist(1483340617);
     };
     TodoCmp.prototype.logout = function () {
         DZ.logout();
+        this.loggedIn = false;
     };
     TodoCmp = __decorate([
         core_1.Component({

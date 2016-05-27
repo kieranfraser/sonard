@@ -104,6 +104,7 @@ export class TodoCmp implements OnInit {
 
   nextTrack(){
     DZ.player.next();
+    this.loggedIn = true;
   }
 
   playMusic(){
@@ -112,6 +113,7 @@ export class TodoCmp implements OnInit {
 
   logout(){
     DZ.logout();
+    this.loggedIn = false;
   }
 
 }
