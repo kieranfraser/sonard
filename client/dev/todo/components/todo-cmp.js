@@ -52,9 +52,7 @@ var TodoCmp = (function () {
                 console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (response) {
                     console.log('Good to see you, ' + response.name + '.');
-                    if (response.name != 'undefined') {
-                        this.loggedIn = true;
-                    }
+                    this.loggedIn = true;
                 });
             }
             else {
