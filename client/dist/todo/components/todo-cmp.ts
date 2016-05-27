@@ -43,7 +43,7 @@ export class TodoCmp implements OnInit {
     console.log('in init');
     DZ.init({
       appId  : '180442',
-      channelUrl : 'http://localhost:3000/deezerChannel'
+      channelUrl : 'http://sonard.herokuapp.com/'
     });
 
     this._getAll();
