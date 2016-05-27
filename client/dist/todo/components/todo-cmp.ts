@@ -15,7 +15,7 @@ export class TodoCmp implements OnInit {
   beta: any;
   gamma: any;
 
-  loggedIn: boolean;
+  loggedIn: boolean = false;
 
   changedTrack: boolean = false;
 
