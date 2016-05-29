@@ -1,15 +1,20 @@
 import {Component, OnInit} from '@angular/core';
+import {PlayerService} from "../services/player.service";
 
 declare var DZ: any;
 
 @Component({
   selector: 'player-cmp',
   templateUrl: 'player/templates/todo.html',
-  styleUrls: ['player/styles/todo.css']
+  styleUrls: ['player/styles/todo.css'],
+  providers: [PlayerService]
 })
 export class PlayerComponent implements OnInit {
 
   title: string = "Deezer Challenge";
+
+  input:string = 'nothing';
+  aresponse:string = 'nothing';
 
   alpha: any;
   beta: any;
@@ -19,7 +24,7 @@ export class PlayerComponent implements OnInit {
 
   changedTrack: boolean = false;
 
-  constructor() {
+  constructor(private _playerService: PlayerService) {
     window.addEventListener("deviceorientation", function(event) {
       // process event.alpha, event.beta and event.gamma
       console.log(event.alpha);
@@ -74,7 +79,7 @@ export class PlayerComponent implements OnInit {
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
         DZ.api('/user/me', function(response) {
-          console.log('Good to see you, ' + response.name + '.');
+          console.log('Good to see you, ' + response.name + '. ID: ' + response.id);
           this.loggedIn = true;
         });
       } else {
@@ -124,6 +129,10 @@ export class PlayerComponent implements OnInit {
   logout(){
     DZ.logout();
     this.loggedIn = false;
+  }
+
+  createUser(input:string){
+    this._playerService.createNewUser(input);
   }
 
 }

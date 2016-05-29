@@ -9,31 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var PlayerService = (function () {
-    //ToDo: These keys need to be moved to server side
-    function PlayerService() {
-        var config = {
-            apiKey: "AIzaSyA1E0hp_78RcMgHWj7Vpbg6AkHzT2hZfto",
-            authDomain: "sonar-11442.firebaseapp.com",
-            databaseURL: "https://sonar-11442.firebaseio.com",
-            storageBucket: "sonar-11442.appspot.com",
-        };
-        firebase.initializeApp(config);
+require('rxjs/Rx');
+var FirebaseService = (function () {
+    function FirebaseService() {
     }
-    /**
-     * Create a new user (on first log-in with deezer account
-     * @param value
-     */
-    PlayerService.prototype.createNewUser = function (value) {
-        firebase.database().ref('users/' + "deezerid1").set({
-            username: value,
-            history: "something"
-        });
-    };
-    PlayerService = __decorate([
+    FirebaseService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], PlayerService);
-    return PlayerService;
+    ], FirebaseService);
+    return FirebaseService;
 }());
-exports.PlayerService = PlayerService;
+exports.FirebaseService = FirebaseService;

@@ -9,9 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var player_service_1 = require("../services/player.service");
 var PlayerComponent = (function () {
-    function PlayerComponent() {
+    function PlayerComponent(_playerService) {
+        this._playerService = _playerService;
         this.title = "Deezer Challenge";
+        this.input = 'nothing';
+        this.aresponse = 'nothing';
         this.loggedIn = false;
         this.changedTrack = false;
         window.addEventListener("deviceorientation", function (event) {
@@ -61,7 +65,7 @@ var PlayerComponent = (function () {
             if (response.authResponse) {
                 console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (response) {
-                    console.log('Good to see you, ' + response.name + '.');
+                    console.log('Good to see you, ' + response.name + '. ID: ' + response.id);
                     this.loggedIn = true;
                 });
             }
@@ -105,13 +109,17 @@ var PlayerComponent = (function () {
         DZ.logout();
         this.loggedIn = false;
     };
+    PlayerComponent.prototype.createUser = function (input) {
+        this._playerService.createNewUser(input);
+    };
     PlayerComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',
             templateUrl: 'player/templates/todo.html',
-            styleUrls: ['player/styles/todo.css']
+            styleUrls: ['player/styles/todo.css'],
+            providers: [player_service_1.PlayerService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [player_service_1.PlayerService])
     ], PlayerComponent);
     return PlayerComponent;
 }());

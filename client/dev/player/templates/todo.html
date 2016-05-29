@@ -16,4 +16,14 @@
 
   <button (click)="nextTrack()"> Next </button>
 
+  <button (click)="addToTeam()"> Add to a Team </button>
+
+  <input [(ngModel)]="input">
+  {{input}}
+
+  <button (click)="saveValue(input)">Save Value</button>
+  {{aresponse}}
+
+  <button (click)="createUser(input)">create user</button>
+
 </div>
