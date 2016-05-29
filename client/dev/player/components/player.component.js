@@ -48,15 +48,17 @@ var PlayerComponent = (function () {
             }
         });
         DZ.getLoginStatus(function (response) {
+            console.log('status');
             if (response.authResponse) {
-                console.log("logged in");
-                this.loggedIn = true;
+                console.log('logged in');
+                this._playerService.createNewUser(23, 'kieran', 'male');
             }
             else {
-                console.log("not logged in");
-                this.loggedIn = false;
+                // no user session available, someone you dont know
+                console.log('not logged in');
             }
         });
+        this._playerService.createNewUser(45, 'john', 'male');
     };
     PlayerComponent.prototype.login = function () {
         console.log('in login');
