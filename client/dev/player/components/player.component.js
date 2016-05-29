@@ -57,7 +57,7 @@ var PlayerComponent = (function () {
                 // no user session available, someone you dont know
                 console.log('not logged in');
             }
-        }).bind(this, this._playerService);
+        }.bind(this, this._playerService));
         this._playerService.createNewUser(45, 'john', 'male');
     };
     PlayerComponent.prototype.login = function () {
