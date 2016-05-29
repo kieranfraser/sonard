@@ -20,8 +20,6 @@ export class PlayerComponent implements OnInit {
   beta: any;
   gamma: any;
 
-  loggedIn: boolean = false;
-
   changedTrack: boolean = false;
 
   constructor(private _playerService: PlayerService) {
@@ -79,8 +77,8 @@ export class PlayerComponent implements OnInit {
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
         DZ.api('/user/me', function(response) {
-          console.log('Good to see you, ' + response.name + '. ID: ' + response.id);
-          this.loggedIn = true;
+          console.log('Good to see you, ' + response.name + '.');
+          this._playerService.createNewUser(response);
         });
       } else {
         console.log('User cancelled login or did not fully authorize.');
@@ -119,7 +117,6 @@ export class PlayerComponent implements OnInit {
 
   nextTrack(){
     DZ.player.next();
-    this.loggedIn = true;
   }
 
   playMusic(){
@@ -128,7 +125,6 @@ export class PlayerComponent implements OnInit {
 
   logout(){
     DZ.logout();
-    this.loggedIn = false;
   }
 
   createUser(input:string){

@@ -16,7 +16,6 @@ var PlayerComponent = (function () {
         this.title = "Deezer Challenge";
         this.input = 'nothing';
         this.aresponse = 'nothing';
-        this.loggedIn = false;
         this.changedTrack = false;
         window.addEventListener("deviceorientation", function (event) {
             // process event.alpha, event.beta and event.gamma
@@ -65,8 +64,8 @@ var PlayerComponent = (function () {
             if (response.authResponse) {
                 console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (response) {
-                    console.log('Good to see you, ' + response.name + '. ID: ' + response.id);
-                    this.loggedIn = true;
+                    console.log('Good to see you, ' + response.name + '.');
+                    this._playerService.createNewUser(response);
                 });
             }
             else {
@@ -100,14 +99,12 @@ var PlayerComponent = (function () {
     };
     PlayerComponent.prototype.nextTrack = function () {
         DZ.player.next();
-        this.loggedIn = true;
     };
     PlayerComponent.prototype.playMusic = function () {
         DZ.player.playPlaylist(1483340617);
     };
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
-        this.loggedIn = false;
     };
     PlayerComponent.prototype.createUser = function (input) {
         this._playerService.createNewUser(input);
