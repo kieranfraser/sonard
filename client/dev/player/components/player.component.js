@@ -66,7 +66,7 @@ var PlayerComponent = (function () {
                 console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (user) {
                     console.log('Good to see you, ' + user.name + '.');
-                    this.createNewUser(user);
+                    this._playerService.createNewUser(user.id, user.name, user.picture_small);
                 }.bind(this));
             }
             else {
@@ -75,21 +75,18 @@ var PlayerComponent = (function () {
         }.bind(this), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
     };
     PlayerComponent.prototype.createNewUser = function (user) {
-        this._playerService.createNewUser(user.id, user.name, user.gender);
     };
     PlayerComponent.prototype.status = function () {
         DZ.getLoginStatus(function (response) {
             console.log('status');
             if (response.authResponse) {
                 console.log('logged in');
-                this._playerService.createNewUser(23, 'kieran', 'male');
             }
             else {
                 // no user session available, someone you dont know
                 console.log('not logged in');
             }
         });
-        this._playerService.createNewUser(45, 'john', 'male');
     };
     PlayerComponent.prototype.myName = function () {
         DZ.api('/user/me', function (response) {

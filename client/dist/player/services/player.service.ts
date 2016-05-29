@@ -19,10 +19,10 @@ export class PlayerService {
    * Create a new user (on first log-in with deezer account
    * @param value
    */
-  public createNewUser(id, name, gender){
+  public createNewUser(id, name, picture_small){
     firebase.database().ref('users/' + id).set({
       username: name,
-      gender: gender
+      gender: picture_small
     });
 
   }
