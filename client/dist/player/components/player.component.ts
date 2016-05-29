@@ -12,6 +12,7 @@ declare var DZ: any;
 export class PlayerComponent implements OnInit {
 
   title: string = "Deezer Challenge";
+  playerService: any;
 
   input:string = 'nothing';
   aresponse:string = 'nothing';
@@ -23,6 +24,9 @@ export class PlayerComponent implements OnInit {
   changedTrack: boolean = false;
 
   constructor(private _playerService: PlayerService) {
+
+    this.playerService = _playerService;
+
     window.addEventListener("deviceorientation", function(event) {
       // process event.alpha, event.beta and event.gamma
       console.log(event.alpha);
@@ -78,7 +82,7 @@ export class PlayerComponent implements OnInit {
         console.log('Welcome!  Fetching your information.... ');
         DZ.api('/user/me', function(response) {
           console.log('Good to see you, ' + response.name + '.');
-          this._playerService.createNewUser(response);
+          this.playerService.createNewUser(response);
         });
       } else {
         console.log('User cancelled login or did not fully authorize.');
@@ -125,10 +129,6 @@ export class PlayerComponent implements OnInit {
 
   logout(){
     DZ.logout();
-  }
-
-  createUser(input:string){
-    this._playerService.createNewUser(input);
   }
 
 }

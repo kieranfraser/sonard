@@ -17,6 +17,7 @@ var PlayerComponent = (function () {
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
+        this.playerService = _playerService;
         window.addEventListener("deviceorientation", function (event) {
             // process event.alpha, event.beta and event.gamma
             console.log(event.alpha);
@@ -65,7 +66,7 @@ var PlayerComponent = (function () {
                 console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (response) {
                     console.log('Good to see you, ' + response.name + '.');
-                    this._playerService.createNewUser(response);
+                    this.playerService.createNewUser(response);
                 });
             }
             else {
@@ -105,9 +106,6 @@ var PlayerComponent = (function () {
     };
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
-    };
-    PlayerComponent.prototype.createUser = function (input) {
-        this._playerService.createNewUser(input);
     };
     PlayerComponent = __decorate([
         core_1.Component({
