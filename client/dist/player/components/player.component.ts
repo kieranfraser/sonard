@@ -82,7 +82,7 @@ export class PlayerComponent implements OnInit {
         console.log('Welcome!  Fetching your information.... ');
         DZ.api('/user/me', function(response) {
           console.log('Good to see you, ' + response.name + '.');
-          this.playerService.createNewUser(response);
+          this.playerService.createNewUser(response.id, response.name, response.gender);
         });
       } else {
         console.log('User cancelled login or did not fully authorize.');

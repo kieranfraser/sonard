@@ -24,13 +24,10 @@ var PlayerService = (function () {
      * Create a new user (on first log-in with deezer account
      * @param value
      */
-    PlayerService.prototype.createNewUser = function (user) {
-        console.log(user.name);
-        console.log(user.id);
-        console.log(user.gender);
-        firebase.database().ref('users/' + user.id).set({
-            username: user.name,
-            gender: user.gender
+    PlayerService.prototype.createNewUser = function (id, name, gender) {
+        firebase.database().ref('users/' + id).set({
+            username: name,
+            gender: gender
         });
     };
     PlayerService = __decorate([
