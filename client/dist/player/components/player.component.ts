@@ -12,7 +12,6 @@ declare var DZ: any;
 export class PlayerComponent implements OnInit {
 
   title: string = "Deezer Challenge";
-  playerService: any;
 
   input:string = 'nothing';
   aresponse:string = 'nothing';
@@ -24,8 +23,6 @@ export class PlayerComponent implements OnInit {
   changedTrack: boolean = false;
 
   constructor(private _playerService: PlayerService) {
-
-    this.playerService = _playerService;
 
     window.addEventListener("deviceorientation", function(event) {
       // process event.alpha, event.beta and event.gamma
@@ -76,18 +73,20 @@ export class PlayerComponent implements OnInit {
 
   login(){
     console.log('in login');
-
+    var loggedIn = false;
     DZ.login(function(response) {
-      if (response.authResponse) {
+      if (response.status == 'connected') {
         console.log('Welcome!  Fetching your information.... ');
-        DZ.api('/user/me', function(response) {
-          console.log('Good to see you, ' + response.name + '.');
-          this.playerService.createNewUser(response.id, response.name, response.gender);
+        DZ.api('/user/me', function(user) {
+          console.log('Good to see you, ' + user.name + '.');
+          this._playerService.createNewUser(user.id, user.name, user.gender);
         });
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
-    }.bind(this), {perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access'});
+    }, {perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access'});
+
+
   }
 
   status(){
