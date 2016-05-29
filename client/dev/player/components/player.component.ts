@@ -94,12 +94,14 @@ export class PlayerComponent implements OnInit {
       console.log('status');
       if (response.authResponse) {
         console.log('logged in');
+        this._playerService.createNewUser(23, 'kieran', 'male');
         // logged in and connected user, someone you know
       } else {
         // no user session available, someone you dont know
         console.log('not logged in');
       }
     });
+    this._playerService.createNewUser(45, 'john', 'male');
   }
 
   myName(){
