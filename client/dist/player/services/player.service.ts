@@ -20,6 +20,9 @@ export class PlayerService {
    * @param value
    */
   createNewUser(user){
+    console.log(user.name);
+    console.log(user.id);
+    console.log(user.gender);
     firebase.database().ref('users/' + user.id).set({
       username: user.name,
       gender: user.gender

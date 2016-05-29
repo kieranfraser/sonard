@@ -25,6 +25,9 @@ var PlayerService = (function () {
      * @param value
      */
     PlayerService.prototype.createNewUser = function (user) {
+        console.log(user.name);
+        console.log(user.id);
+        console.log(user.gender);
         firebase.database().ref('users/' + user.id).set({
             username: user.name,
             gender: user.gender
