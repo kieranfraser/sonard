@@ -51,14 +51,12 @@ var PlayerComponent = (function () {
             console.log('status');
             if (response.authResponse) {
                 console.log('logged in');
-                this._playerService.createNewUser(23, 'kieran', 'male');
             }
             else {
                 // no user session available, someone you dont know
                 console.log('not logged in');
             }
-        }.bind(this._playerService));
-        this._playerService.createNewUser(45, 'john', 'male');
+        }.bind(this));
     };
     PlayerComponent.prototype.login = function () {
         console.log('in login');
@@ -68,13 +66,16 @@ var PlayerComponent = (function () {
                 console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (user) {
                     console.log('Good to see you, ' + user.name + '.');
-                    this._playerService.createNewUser(user.id, user.name, user.gender);
+                    this.createNewUser(user);
                 });
             }
             else {
                 console.log('User cancelled login or did not fully authorize.');
             }
-        }.bind(this._playerService), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
+        }.bind(this), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
+    };
+    PlayerComponent.prototype.createNewUser = function (user) {
+        this._playerService.createNewUser(user.id, user.name, user.gender);
     };
     PlayerComponent.prototype.status = function () {
         DZ.getLoginStatus(function (response) {
