@@ -67,7 +67,7 @@ var PlayerComponent = (function () {
                 DZ.api('/user/me', function (user) {
                     console.log('Good to see you, ' + user.name + '.');
                     this.createNewUser(user);
-                });
+                }.bind(this));
             }
             else {
                 console.log('User cancelled login or did not fully authorize.');
