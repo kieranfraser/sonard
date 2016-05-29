@@ -22,7 +22,7 @@ export class PlayerService {
   createNewUser(user){
     firebase.database().ref('users/' + user.id).set({
       username: user.name,
-      picture_small: user.picture_small
+      gender: user.gender
     });
 
   }
