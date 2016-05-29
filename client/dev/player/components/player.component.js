@@ -35,7 +35,6 @@ var PlayerComponent = (function () {
         }.bind(this), true);
     }
     PlayerComponent.prototype.ngOnInit = function () {
-        var _this = this;
         console.log('in init');
         DZ.init({
             appId: '180442',
@@ -48,19 +47,17 @@ var PlayerComponent = (function () {
                 onload: function () { }
             }
         });
-        /*DZ.getLoginStatus(function(response) {
-          console.log('status');
-          if (response.authResponse) {
-            console.log('logged in');
-            this._playerService.createNewUser(23, 'kieran', 'male');
-            // logged in and connected user, someone you know
-          } else {
-            // no user session available, someone you dont know
-            console.log('not logged in');
-          }
-        });*/
-        var user;
-        DZ.getLoginStatus().subscribe(function (data) { return user; }, function (err) { return console.log(err); }, function () { return _this._playerService.createNewUser(user.id, user.name, user.gender); });
+        DZ.getLoginStatus(function (response) {
+            console.log('status');
+            if (response.authResponse) {
+                console.log('logged in');
+                this._playerService.createNewUser(23, 'kieran', 'male');
+            }
+            else {
+                // no user session available, someone you dont know
+                console.log('not logged in');
+            }
+        }).bind(this, this._playerService);
         this._playerService.createNewUser(45, 'john', 'male');
     };
     PlayerComponent.prototype.login = function () {
