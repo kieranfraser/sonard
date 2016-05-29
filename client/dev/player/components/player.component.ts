@@ -70,7 +70,7 @@ export class PlayerComponent implements OnInit {
         // no user session available, someone you dont know
         console.log('not logged in');
       }
-    }.bind(this, this._playerService));
+    }.bind(this._playerService));
     this._playerService.createNewUser(45, 'john', 'male');
   }
 
@@ -87,7 +87,7 @@ export class PlayerComponent implements OnInit {
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
-    }.bind(this, this._playerService), {perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access'});
+    }.bind(this._playerService), {perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access'});
 
 
   }

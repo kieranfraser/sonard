@@ -57,7 +57,7 @@ var PlayerComponent = (function () {
                 // no user session available, someone you dont know
                 console.log('not logged in');
             }
-        }.bind(this, this._playerService));
+        }.bind(this._playerService));
         this._playerService.createNewUser(45, 'john', 'male');
     };
     PlayerComponent.prototype.login = function () {
@@ -74,7 +74,7 @@ var PlayerComponent = (function () {
             else {
                 console.log('User cancelled login or did not fully authorize.');
             }
-        }.bind(this, this._playerService), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
+        }.bind(this._playerService), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
     };
     PlayerComponent.prototype.status = function () {
         DZ.getLoginStatus(function (response) {
