@@ -27,7 +27,7 @@ var PlayerService = (function () {
     PlayerService.prototype.createNewUser = function (id, name, picture_small) {
         firebase.database().ref('users/' + id).set({
             username: name,
-            gender: picture_small
+            picture: picture_small
         });
     };
     PlayerService = __decorate([
