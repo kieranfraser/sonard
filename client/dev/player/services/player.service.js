@@ -30,9 +30,19 @@ var PlayerService = (function () {
             picture: picture_small
         });
     };
+    /**
+     * Check to see if the user is in our user-base already
+     * (and hence already assigned a team)
+     * @param id
+       */
     PlayerService.prototype.checkReturningUser = function (id) {
         firebase.database().ref('users/' + id).on('value', function (snapshot) {
-            return snapshot.val();
+            if (snapshot.val() === undefined) {
+                return false;
+            }
+            else {
+                return true;
+            }
         });
     };
     PlayerService = __decorate([

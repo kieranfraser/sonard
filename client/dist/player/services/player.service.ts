@@ -1,5 +1,6 @@
-declare var firebase: any;
 import {Injectable} from "@angular/core";
+
+declare var firebase: any;
 
 @Injectable()
 export class PlayerService {
@@ -26,9 +27,19 @@ export class PlayerService {
     });
   }
 
+  /**
+   * Check to see if the user is in our user-base already
+   * (and hence already assigned a team)
+   * @param id
+     */
   public checkReturningUser(id){
     firebase.database().ref('users/' + id).on('value', function(snapshot) {
-      return snapshot.val();
+      if(snapshot.val() === undefined){
+        return false;
+      }
+      else{
+        return true;
+      }
     });
   }
 

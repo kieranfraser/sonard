@@ -142,8 +142,19 @@ export class PlayerComponent implements OnInit {
   initUser(user){
 
     // Check if this user is in the database
-    console.log("result:")
+    console.log("result:");
     console.log(this._playerService.checkReturningUser(user.id));
+
+    var returningUser = this._playerService.checkReturningUser(user.id);
+
+    // If returning user navigate to the home screen...
+    if(returningUser){
+      
+    }
+    else { // If new user, add to our user-base and allocate to a team.
+      this._playerService.createNewUser(user.id, user.name, user.picture_small);
+    }
+
 
   }
 

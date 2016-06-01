@@ -119,6 +119,13 @@ var PlayerComponent = (function () {
         // Check if this user is in the database
         console.log("result:");
         console.log(this._playerService.checkReturningUser(user.id));
+        var returningUser = this._playerService.checkReturningUser(user.id);
+        // If returning user navigate to the home screen...
+        if (returningUser) {
+        }
+        else {
+            this._playerService.createNewUser(user.id, user.name, user.picture_small);
+        }
     };
     PlayerComponent = __decorate([
         core_1.Component({
