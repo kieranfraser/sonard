@@ -30,6 +30,11 @@ var PlayerService = (function () {
             picture: picture_small
         });
     };
+    PlayerService.prototype.checkReturningUser = function (id) {
+        firebase.database().ref('users/' + id).on('value', function (snapshot) {
+            return snapshot.val();
+        });
+    };
     PlayerService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

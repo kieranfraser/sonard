@@ -24,6 +24,12 @@ export class PlayerService {
       username: name,
       picture: picture_small
     });
-
   }
+
+  public checkReturningUser(id){
+    firebase.database().ref('users/' + id).on('value', function(snapshot) {
+      return snapshot.val();
+    });
+  }
+
 }

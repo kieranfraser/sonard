@@ -80,7 +80,8 @@ export class PlayerComponent implements OnInit {
         console.log('Welcome!  Fetching your information.... ');
         DZ.api('/user/me', function(user) {
           console.log('Good to see you, ' + user.name + '.');
-          this._playerService.createNewUser(user.id, user.name, user.picture_small);
+          //this._playerService.createNewUser(user.id, user.name, user.picture_small);
+          this.initUser(user);
         }.bind(this));
       } else {
         console.log('User cancelled login or did not fully authorize.');
@@ -131,6 +132,19 @@ export class PlayerComponent implements OnInit {
 
   logout(){
     DZ.logout();
+  }
+
+  /**
+   * Check if this is a new user and if so then add them to our
+   * userbase and allocate them to a team (first come first served)
+   * @param user
+     */
+  initUser(user){
+
+    // Check if this user is in the database
+    console.log("result:")
+    console.log(this._playerService.checkReturningUser(user));
+
   }
 
 }

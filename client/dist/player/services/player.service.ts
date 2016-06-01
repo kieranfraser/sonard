@@ -22,8 +22,14 @@ export class PlayerService {
   public createNewUser(id, name, picture_small){
     firebase.database().ref('users/' + id).set({
       username: name,
-      gender: picture_small
+      picture: picture_small
     });
-
   }
+
+  public checkReturningUser(id){
+    firebase.database().ref('users/' + id).on('value', function(snapshot) {
+      return snapshot.val();
+    });
+  }
+
 }

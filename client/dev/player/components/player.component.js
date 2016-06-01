@@ -66,7 +66,8 @@ var PlayerComponent = (function () {
                 console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (user) {
                     console.log('Good to see you, ' + user.name + '.');
-                    this._playerService.createNewUser(user.id, user.name, user.picture_small);
+                    //this._playerService.createNewUser(user.id, user.name, user.picture_small);
+                    this.initUser(user);
                 }.bind(this));
             }
             else {
@@ -108,6 +109,16 @@ var PlayerComponent = (function () {
     };
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
+    };
+    /**
+     * Check if this is a new user and if so then add them to our
+     * userbase and allocate them to a team (first come first served)
+     * @param user
+       */
+    PlayerComponent.prototype.initUser = function (user) {
+        // Check if this user is in the database
+        console.log("result:");
+        console.log(this._playerService.checkReturningUser(user));
     };
     PlayerComponent = __decorate([
         core_1.Component({
