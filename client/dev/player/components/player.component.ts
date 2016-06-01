@@ -143,7 +143,7 @@ export class PlayerComponent implements OnInit {
 
     // Check if this user is in the database
     console.log("result:")
-    console.log(this._playerService.checkReturningUser(user));
+    console.log(this._playerService.checkReturningUser(user.id));
 
   }
 
