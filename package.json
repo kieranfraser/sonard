@@ -78,14 +78,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rlods/deezer-sic.git"
+    "url": "https://github.com/kieranfraser/sonard.git"
   },
   "author": "kieranfraser",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rlods/deezer-sic/issues"
+    "url": "https://github.com/kieranfraser/sonard/issues"
   },
-  "homepage": "https://github.com/rlods/deezer-sic",
+  "homepage": "https://github.com/kieranfraser/sonard",
   "engines": {
     "node": "stable"
   }
