@@ -78,14 +78,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kieranfraser/sonard.git"
+    "url": "https://github.com/kieranfraser/sonardeezer.git"
   },
   "author": "kieranfraser",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kieranfraser/sonard/issues"
+    "url": "https://github.com/kieranfraser/sonardeezer/issues"
   },
-  "homepage": "https://github.com/kieranfraser/sonard",
+  "homepage": "https://github.com/kieranfraser/sonardeezer",
   "engines": {
     "node": "stable"
   }
