@@ -143,6 +143,7 @@ var PlayerComponent = (function () {
                 console.log(snapshot.val());
                 console.log((JSON.parse(JSON.stringify(snapshot.val())).members));
                 var teams = JSON.parse(JSON.stringify(snapshot.val()));
+                console.log(teams);
                 for (var _i = 0, teams_1 = teams; _i < teams_1.length; _i++) {
                     var team = teams_1[_i];
                     console.log((JSON.parse(JSON.stringify(team)).members));
