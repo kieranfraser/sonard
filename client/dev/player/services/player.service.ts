@@ -28,21 +28,6 @@ export class PlayerService {
   }
 
   /**
-   * Check to see if the user is in our user-base already
-   * (and hence already assigned a team)
-   * @param id
-     */
-  public checkReturningUser(id){
-
-  }
-
-  /**
-   * Return all teams
-   */
-  public getAllTeams(){
-  }
-
-  /**
    * Get the firebase database
    * @returns {any}
      */
@@ -77,5 +62,4 @@ export class PlayerService {
 
     this.createNewUser(user.id, user.name, teamKey);
   }
-
 }

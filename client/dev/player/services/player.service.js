@@ -31,18 +31,6 @@ var PlayerService = (function () {
         });
     };
     /**
-     * Check to see if the user is in our user-base already
-     * (and hence already assigned a team)
-     * @param id
-       */
-    PlayerService.prototype.checkReturningUser = function (id) {
-    };
-    /**
-     * Return all teams
-     */
-    PlayerService.prototype.getAllTeams = function () {
-    };
-    /**
      * Get the firebase database
      * @returns {any}
        */

@@ -20,58 +20,24 @@ var PlayerComponent = (function () {
         this.router = router;
         this.title = "Deezer Challenge";
         this.numberUsersPerTeam = 3;
-        this.input = 'nothing';
-        this.aresponse = 'nothing';
-        this.changedTrack = false;
-        window.addEventListener("deviceorientation", function (event) {
-            // process event.alpha, event.beta and event.gamma
-            console.log(event.alpha);
-            console.log(event.beta);
-            console.log(event.gamma);
-            this.alpha = event.alpha;
-            this.beta = event.beta;
-            this.gamma = event.gamma;
-            if (event.beta < -20 && this.changedTrack == false) {
-                this.nextTrack();
-                this.changedTrack = true;
-            }
-            if (event.beta > 30) {
-                this.changedTrack = false;
-            }
-        }.bind(this), true);
     }
     PlayerComponent.prototype.ngOnInit = function () {
-        this.router.navigate(['/']);
         firebase = this._playerService.getFirebaseDB();
-        DZ.init({
-            appId: '180442',
-            channelUrl: 'http://sonard.herokuapp.com/',
-            player: {
-                container: 'player',
-                width: 300,
-                height: 300,
-                format: 'square',
-                onload: function () { }
-            }
-        });
+        this.router.navigate(['/']);
         DZ.getLoginStatus(function (response) {
             console.log('status');
             if (response.authResponse) {
-                console.log('logged in');
-            }
-            else {
-                // no user session available, someone you dont know
-                console.log('not logged in');
             }
         }.bind(this));
     };
+    /**
+     * Login to the app
+     */
     PlayerComponent.prototype.login = function () {
         var loggedIn = false;
         DZ.login(function (response) {
             if (response.status == 'connected') {
-                console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (user) {
-                    console.log('Good to see you, ' + user.name + '.');
                     //this._playerService.createNewUser(user.id, user.name);
                     this.initUser(user);
                 }.bind(this));
@@ -81,9 +47,11 @@ var PlayerComponent = (function () {
             }
         }.bind(this), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
     };
+    /**
+     * Get the login status of the current user
+     */
     PlayerComponent.prototype.status = function () {
         DZ.getLoginStatus(function (response) {
-            console.log('status');
             if (response.authResponse) {
                 console.log('logged in');
             }
@@ -97,25 +65,12 @@ var PlayerComponent = (function () {
         DZ.api('/user/me', function (response) {
             console.log("My name", response.name);
         });
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(success);
-        }
-        function success(position) {
-            console.log('Latitude: ' + position.coords.latitude);
-            console.log('Longitude: ' + position.coords.longitude);
-        }
-    };
-    PlayerComponent.prototype.nextTrack = function () {
-        DZ.player.next();
-    };
-    PlayerComponent.prototype.playMusic = function () {
-        DZ.player.playPlaylist(1483340617);
     };
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
     };
     /**
-     *
+     * Initialize the user within the app (whether returning or new user).
      * @param user
        */
     PlayerComponent.prototype.initUser = function (user) {
@@ -162,6 +117,9 @@ var PlayerComponent = (function () {
                 }
             }
         }.bind(this));
+    };
+    PlayerComponent.prototype.dash = function () {
+        this.router.navigate(['/dashboard']);
     };
     PlayerComponent = __decorate([
         core_1.Component({

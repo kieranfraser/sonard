@@ -11,8 +11,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var DashboardComponent = (function () {
     function DashboardComponent() {
+        this.input = 'nothing';
+        this.aresponse = 'nothing';
+        this.changedTrack = false;
+        window.addEventListener("deviceorientation", function (event) {
+            // process event.alpha, event.beta and event.gamma
+            console.log(event.alpha);
+            console.log(event.beta);
+            console.log(event.gamma);
+            this.alpha = event.alpha;
+            this.beta = event.beta;
+            this.gamma = event.gamma;
+            if (event.beta < -20 && this.changedTrack == false) {
+                this.nextTrack();
+                this.changedTrack = true;
+            }
+            if (event.beta > 30) {
+                this.changedTrack = false;
+            }
+        }.bind(this), true);
     }
-    DashboardComponent.prototype.ngOnInit = function () { };
+    DashboardComponent.prototype.ngOnInit = function () {
+        DZ.init({
+            appId: '180442',
+            channelUrl: 'http://sonard.herokuapp.com/',
+            player: {
+                container: 'player',
+                width: 300,
+                height: 300,
+                format: 'square',
+                onload: function () { }
+            }
+        });
+    };
+    DashboardComponent.prototype.nextTrack = function () {
+        DZ.player.next();
+    };
+    DashboardComponent.prototype.playMusic = function () {
+        DZ.player.playPlaylist(1483340617);
+    };
+    DashboardComponent.prototype.geolocation = function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success);
+        }
+        function success(position) {
+            console.log('Latitude: ' + position.coords.latitude);
+            console.log('Longitude: ' + position.coords.longitude);
+        }
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',
