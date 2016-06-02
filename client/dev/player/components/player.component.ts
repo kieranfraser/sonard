@@ -177,12 +177,15 @@ export class PlayerComponent implements OnInit {
             console.log((JSON.parse(JSON.stringify(teams[team])).members));
             var members = (JSON.parse(JSON.stringify(teams[team])).members);
             var numberMembers = Object.keys(members).length;
+
             console.log(numberMembers);
+
             if(numberMembers < 3){
               console.log('less than 3');
               this._playerService.addUserToExistingTeam(user, team);
               break;
             }
+
             else if(numberTeams === 1){
               console.log('last team');
               this._playerService.createNewTeamAndAddUser(user);
@@ -190,6 +193,8 @@ export class PlayerComponent implements OnInit {
           }
           numberTeams = numberTeams - 1;
         }
+        // go home;
+        console.log('finished');
       }
     }.bind(this));
   }

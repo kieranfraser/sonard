@@ -159,6 +159,8 @@ var PlayerComponent = (function () {
                     }
                     numberTeams = numberTeams - 1;
                 }
+                // go home;
+                console.log('finished');
             }
         }.bind(this));
     };
