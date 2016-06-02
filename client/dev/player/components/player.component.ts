@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PlayerService} from "../services/player.service";
 
+
 declare var DZ: any;
 
 @Component({
@@ -160,7 +161,11 @@ export class PlayerComponent implements OnInit {
      */
   allocateToTeam(id){
 
-    var allTeams = this._playerService.getAllTeams();
+    var allTeams;
+    this._playerService.getAllTeams().subscribe(
+      data => allTeams = JSON.parse(JSON.stringify(data)),
+      error => alert(error)
+    );
 
 
     console.log('result: ');

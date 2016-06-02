@@ -50,13 +50,15 @@ var PlayerService = (function () {
      * Return all teams
      */
     PlayerService.prototype.getAllTeams = function () {
-        var result;
-        firebase.database().ref('teams').on('value', function (snapshot) {
-            result = snapshot.val();
-            console.log('result: ');
-            console.log(result);
-            return result;
-        });
+        var result = 'init';
+        while (result === 'init') {
+            firebase.database().ref('teams').on('value', function (snapshot) {
+                result = snapshot.val();
+                console.log('result: ');
+                console.log(result);
+            });
+        }
+        return result;
     };
     /**
      * Create a new team and add the team to the user
