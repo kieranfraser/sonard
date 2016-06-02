@@ -42,7 +42,7 @@ export class PlayerComponent implements OnInit {
       player: {
         container: 'player',
         width : 800,
-        height : 300,
+        height : 100,
         format : 'square',
         onload: function () {}
       }

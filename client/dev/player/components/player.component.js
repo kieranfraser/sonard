@@ -30,7 +30,7 @@ var PlayerComponent = (function () {
             player: {
                 container: 'player',
                 width: 800,
-                height: 300,
+                height: 100,
                 format: 'square',
                 onload: function () { }
             }
