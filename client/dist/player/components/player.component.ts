@@ -161,13 +161,7 @@ export class PlayerComponent implements OnInit {
      */
   allocateToTeam(id){
 
-    var allTeams;
-    this._playerService.getAllTeams().subscribe(
-      data => allTeams = JSON.parse(JSON.stringify(data)),
-      error => alert(error)
-    );
-
-
+    var allTeams = this._playerService.getAllTeams();
     console.log('result: ');
     console.log(allTeams);
 

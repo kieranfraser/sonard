@@ -131,8 +131,7 @@ var PlayerComponent = (function () {
      * @returns {*}
        */
     PlayerComponent.prototype.allocateToTeam = function (id) {
-        var allTeams;
-        this._playerService.getAllTeams().subscribe(function (data) { return allTeams = JSON.parse(JSON.stringify(data)); }, function (error) { return alert(error); });
+        var allTeams = this._playerService.getAllTeams();
         console.log('result: ');
         console.log(allTeams);
         if (typeof allTeams === "undefined") {

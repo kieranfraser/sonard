@@ -51,14 +51,15 @@ var PlayerService = (function () {
      */
     PlayerService.prototype.getAllTeams = function () {
         var result = 'init';
-        while (result === 'init') {
-            firebase.database().ref('teams').on('value', function (snapshot) {
-                result = snapshot.val();
-                console.log('result: ');
-                console.log(result);
-            });
-        }
-        return result;
+        firebase.database().ref('teams').on('value', function (snapshot) {
+            result = snapshot.val();
+            console.log('result: ');
+            console.log(result);
+            return result;
+        });
+    };
+    PlayerService.prototype.getFirebaseDB = function () {
+        return firebase;
     };
     /**
      * Create a new team and add the team to the user

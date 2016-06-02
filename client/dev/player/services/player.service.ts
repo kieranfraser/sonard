@@ -49,14 +49,16 @@ export class PlayerService {
    */
   public getAllTeams(){
     var result = 'init';
-    while(result === 'init'){
-      firebase.database().ref('teams').on('value', function(snapshot) {
-        result = snapshot.val();
-        console.log('result: ');
-        console.log(result);
-      });
-    }
-    return result;
+    firebase.database().ref('teams').on('value', function(snapshot) {
+      result = snapshot.val();
+      console.log('result: ');
+      console.log(result);
+      return result;
+    });
+  }
+
+  public getFirebaseDB(){
+    return firebase;
   }
 
   /**
