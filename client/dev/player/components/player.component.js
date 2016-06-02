@@ -143,8 +143,9 @@ var PlayerComponent = (function () {
                 console.log(teams);
                 for (var team in teams) {
                     if (teams.hasOwnProperty(team)) {
-                        console.log(JSON.parse(JSON.stringify(team)));
-                        console.log((JSON.parse(JSON.stringify(team))).members);
+                        console.log(team);
+                        console.log(JSON.parse(JSON.stringify(teams[team])));
+                        console.log((JSON.parse(JSON.stringify(teams[team]))).members);
                     }
                 }
             }
