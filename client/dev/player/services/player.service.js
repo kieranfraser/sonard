@@ -39,9 +39,11 @@ var PlayerService = (function () {
     PlayerService.prototype.checkReturningUser = function (id) {
         firebase.database().ref('users/' + id).on('value', function (snapshot) {
             if (snapshot.val() === undefined) {
+                console.log('new user');
                 return false;
             }
             else {
+                console.log('returning user');
                 return true;
             }
         });
@@ -50,14 +52,11 @@ var PlayerService = (function () {
      * Return all teams
      */
     PlayerService.prototype.getAllTeams = function () {
-        var result = 'init';
-        firebase.database().ref('teams').on('value', function (snapshot) {
-            result = snapshot.val();
-            console.log('result: ');
-            console.log(result);
-            return result;
-        });
     };
+    /**
+     * Get the firebase database
+     * @returns {any}
+       */
     PlayerService.prototype.getFirebaseDB = function () {
         return firebase;
     };

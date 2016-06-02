@@ -131,17 +131,19 @@ var PlayerComponent = (function () {
      * @returns {*}
        */
     PlayerComponent.prototype.allocateToTeam = function (id) {
-        var allTeams = this._playerService.getAllTeams();
-        console.log('result: ');
-        console.log(allTeams);
-        if (typeof allTeams === "undefined") {
-            console.log('all teams undefined');
-            return this._playerService.createNewTeam(id);
-        }
-        else {
-            // find a partial team
-            console.log('there are teams');
-        }
+        var firebase = this._playerService.getFirebaseDB;
+        firebase.database().ref('teams').on('value', function (snapshot) {
+            console.log('result: ');
+            console.log(snapshot.val());
+            if (typeof snapshot.val() === "undefined") {
+                console.log('all teams undefined');
+                return this._playerService.createNewTeam(id);
+            }
+            else {
+                // find a partial team
+                console.log('there are teams');
+            }
+        });
     };
     PlayerComponent = __decorate([
         core_1.Component({

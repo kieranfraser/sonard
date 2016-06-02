@@ -36,9 +36,11 @@ export class PlayerService {
   public checkReturningUser(id){
     firebase.database().ref('users/' + id).on('value', function(snapshot) {
       if(snapshot.val() === undefined){
+        console.log('new user');
         return false;
       }
       else{
+        console.log('returning user');
         return true;
       }
     });
@@ -48,15 +50,12 @@ export class PlayerService {
    * Return all teams
    */
   public getAllTeams(){
-    var result = 'init';
-    firebase.database().ref('teams').on('value', function(snapshot) {
-      result = snapshot.val();
-      console.log('result: ');
-      console.log(result);
-      return result;
-    });
   }
 
+  /**
+   * Get the firebase database
+   * @returns {any}
+     */
   public getFirebaseDB(){
     return firebase;
   }

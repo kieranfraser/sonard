@@ -161,18 +161,24 @@ export class PlayerComponent implements OnInit {
      */
   allocateToTeam(id){
 
-    var allTeams = this._playerService.getAllTeams();
-    console.log('result: ');
-    console.log(allTeams);
+    var firebase: any = this._playerService.getFirebaseDB;
 
-    if(typeof allTeams === "undefined"){
-      console.log('all teams undefined');
-      return this._playerService.createNewTeam(id);
-    }
-    else{
-      // find a partial team
-      console.log('there are teams');
-    }
+
+    firebase.database().ref('teams').on('value', function(snapshot) {
+
+      console.log('result: ');
+      console.log(snapshot.val());
+      
+      if(typeof snapshot.val() === "undefined"){
+        console.log('all teams undefined');
+        return this._playerService.createNewTeam(id);
+      }
+      else{
+        // find a partial team
+        console.log('there are teams');
+      }
+
+    });
   }
 
 }
