@@ -51,6 +51,8 @@ var PlayerService = (function () {
      */
     PlayerService.prototype.getAllTeams = function () {
         firebase.database().ref('teams').on('value', function (snapshot) {
+            console.log('result: ');
+            console.log(snapshot.val());
             return snapshot.val();
         });
     };
