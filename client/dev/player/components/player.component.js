@@ -131,7 +131,7 @@ var PlayerComponent = (function () {
      * @returns {*}
        */
     PlayerComponent.prototype.allocateToTeam = function (id) {
-        var firebase = this._playerService.getFirebaseDB;
+        firebase = this._playerService.getFirebaseDB;
         firebase.database().ref('teams').on('value', function (snapshot) {
             console.log('result: ');
             console.log(snapshot.val());

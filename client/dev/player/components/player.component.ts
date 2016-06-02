@@ -3,6 +3,7 @@ import {PlayerService} from "../services/player.service";
 
 
 declare var DZ: any;
+declare var firebase: any;
 
 @Component({
   selector: 'player-cmp',
@@ -161,14 +162,14 @@ export class PlayerComponent implements OnInit {
      */
   allocateToTeam(id){
 
-    var firebase: any = this._playerService.getFirebaseDB;
+   firebase = this._playerService.getFirebaseDB;
 
 
     firebase.database().ref('teams').on('value', function(snapshot) {
 
       console.log('result: ');
       console.log(snapshot.val());
-      
+
       if(typeof snapshot.val() === "undefined"){
         console.log('all teams undefined');
         return this._playerService.createNewTeam(id);
