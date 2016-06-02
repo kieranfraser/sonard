@@ -152,7 +152,7 @@ export class PlayerComponent implements OnInit {
         console.log('returning user');
         this.checkTeams(user);
       }
-    });
+    }.bind(this));
   }
 
   /**

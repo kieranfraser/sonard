@@ -123,7 +123,7 @@ var PlayerComponent = (function () {
                 console.log('returning user');
                 this.checkTeams(user);
             }
-        });
+        }.bind(this));
     };
     /**
      * Allocate a user to a team (only on first login)
