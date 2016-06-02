@@ -162,7 +162,7 @@ export class PlayerComponent implements OnInit {
 
     var allTeams = this._playerService.getAllTeams();
 
-    if(allTeams === undefined){
+    if(typeof allTeams === 'undefined'){
       console.log('all teams undefined');
       return this._playerService.createNewTeam(id);
     }
