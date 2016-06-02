@@ -174,6 +174,12 @@ export class PlayerComponent implements OnInit {
         console.log('there are teams');
         console.log(snapshot.val());
         console.log((JSON.parse(JSON.stringify(snapshot.val())).members));
+
+        var teams = JSON.parse(JSON.stringify(snapshot.val()));
+
+        for(var team of teams){
+          console.log((JSON.parse(JSON.stringify(team)).members));
+        }
       }
 
     }.bind(this));
