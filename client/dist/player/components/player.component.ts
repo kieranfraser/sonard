@@ -176,9 +176,9 @@ export class PlayerComponent implements OnInit {
 
         for (var team in teams) {
           if (teams.hasOwnProperty(team)) {
-            console.log(team);
             console.log(JSON.parse(JSON.stringify(teams[team])));
-            console.log((JSON.parse(JSON.stringify(teams[team]))).members);
+            console.log((JSON.parse(JSON.stringify(teams[team])).members));
+            var members = (JSON.parse(JSON.stringify(teams[team])).members);
           }
         }
       }
