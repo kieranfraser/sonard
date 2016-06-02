@@ -91,10 +91,6 @@ export class PlayerComponent implements OnInit {
     }.bind(this), {perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access'});
   }
 
-  createNewUser(user){
-
-  }
-
   status(){
     DZ.getLoginStatus(function(response) {
       console.log('status');
@@ -181,12 +177,14 @@ export class PlayerComponent implements OnInit {
             console.log((JSON.parse(JSON.stringify(teams[team])).members));
             var members = (JSON.parse(JSON.stringify(teams[team])).members);
             var numberMembers = Object.keys(members).length;
-
+            console.log(numberMembers);
             if(numberMembers < 3){
+              console.log('less than 3');
               this._playerService.addUserToExistingTeam(user, team);
               break;
             }
-            if(numberTeams === 1){
+            else if(numberTeams === 1){
+              console.log('last team');
               this._playerService.createNewTeamAndAddUser(user);
             }
           }
@@ -195,5 +193,4 @@ export class PlayerComponent implements OnInit {
       }
     }.bind(this));
   }
-
 }
