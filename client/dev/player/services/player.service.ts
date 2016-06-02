@@ -55,13 +55,20 @@ export class PlayerService {
   /**
    * Create a new team and add the team to the user
    * @param id - of the user
-     */
+   */
   public createNewTeam(id){
 
-    var newTeamKey = firebase.database().ref('teams/').push().key;
+    var teamRef = firebase.database().ref('teams');
+
+    var newTeam = teamRef.push({
+      teamName: "create a team name",
+      teamMembers: []
+    });
+    var newTeamKey = newTeam.key();
 
     return firebase.database().ref('/users/'+id).update({
       team: newTeamKey
     });
   }
+
 }
