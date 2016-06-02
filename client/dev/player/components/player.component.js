@@ -133,10 +133,12 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.allocateToTeam = function (id) {
         var allTeams = this._playerService.getAllTeams();
         if (allTeams === undefined) {
+            console.log('all teams undefined');
             return this._playerService.createNewTeam(id);
         }
         else {
             // find a partial team
+            console.log('there are teams');
             console.log(allTeams);
         }
     };
