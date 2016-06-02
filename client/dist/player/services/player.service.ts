@@ -34,16 +34,7 @@ export class PlayerService {
    * @param id
      */
   public checkReturningUser(id){
-    firebase.database().ref('users/' + id).on('value', function(snapshot) {
-      if(snapshot.val() === undefined){
-        console.log('new user');
-        return false;
-      }
-      else{
-        console.log('returning user');
-        return true;
-      }
-    });
+
   }
 
   /**
@@ -64,7 +55,7 @@ export class PlayerService {
    * Create a new team and add the team to the user
    * @param id - of the user
    */
-  public createNewTeam(id){
+  public createNewTeamAndAddUser(user){
 
     var teamRef = firebase.database().ref('teams');
 
@@ -72,11 +63,11 @@ export class PlayerService {
       teamName: "create a team name"
     }).key;
 
-    firebase.database().ref('teams/'+newTeamKey+'/members/'+id).set({
+    firebase.database().ref('teams/'+newTeamKey+'/members/'+user.id).set({
       member: true
     });
 
-    return newTeamKey;
+    this.createNewUser(user.id, user.name, user.picture_small, newTeamKey);
   }
 
 }

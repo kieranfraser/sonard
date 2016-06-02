@@ -37,16 +37,6 @@ var PlayerService = (function () {
      * @param id
        */
     PlayerService.prototype.checkReturningUser = function (id) {
-        firebase.database().ref('users/' + id).on('value', function (snapshot) {
-            if (snapshot.val() === undefined) {
-                console.log('new user');
-                return false;
-            }
-            else {
-                console.log('returning user');
-                return true;
-            }
-        });
     };
     /**
      * Return all teams
@@ -64,15 +54,15 @@ var PlayerService = (function () {
      * Create a new team and add the team to the user
      * @param id - of the user
      */
-    PlayerService.prototype.createNewTeam = function (id) {
+    PlayerService.prototype.createNewTeamAndAddUser = function (user) {
         var teamRef = firebase.database().ref('teams');
         var newTeamKey = teamRef.push({
             teamName: "create a team name"
         }).key;
-        firebase.database().ref('teams/' + newTeamKey + '/members/' + id).set({
+        firebase.database().ref('teams/' + newTeamKey + '/members/' + user.id).set({
             member: true
         });
-        return newTeamKey;
+        this.createNewUser(user.id, user.name, user.picture_small, newTeamKey);
     };
     PlayerService = __decorate([
         core_1.Injectable(), 

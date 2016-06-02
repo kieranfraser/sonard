@@ -35,7 +35,7 @@ var PlayerComponent = (function () {
         }.bind(this), true);
     }
     PlayerComponent.prototype.ngOnInit = function () {
-        console.log('in init');
+        firebase = this._playerService.getFirebaseDB();
         DZ.init({
             appId: '180442',
             channelUrl: 'http://sonard.herokuapp.com/',
@@ -111,39 +111,37 @@ var PlayerComponent = (function () {
         DZ.logout();
     };
     /**
-     * Check if this is a new user and if so then add them to our
-     * userbase and allocate them to a team (first come first served)
+     *
      * @param user
        */
     PlayerComponent.prototype.initUser = function (user) {
-        var returningUser = this._playerService.checkReturningUser(user.id);
-        // If returning user navigate to the home screen...
-        if (returningUser) {
-            console.log('returning user');
-        }
-        else {
-            console.log('new user');
-            this.allocateToTeam(user.id);
-        }
+        firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
+            if (snapshot.val() === undefined) {
+                console.log('new user');
+            }
+            else {
+                console.log('returning user');
+                this.checkTeams(user);
+            }
+        });
     };
     /**
      * Allocate a user to a team (only on first login)
      * @param id
      * @returns {*}
        */
-    PlayerComponent.prototype.allocateToTeam = function (id) {
-        firebase = this._playerService.getFirebaseDB();
+    PlayerComponent.prototype.checkTeams = function (user) {
         firebase.database().ref('teams').on('value', function (snapshot) {
-            console.log('result: ');
-            console.log(snapshot.val());
             if (typeof snapshot.val() === "undefined") {
                 console.log('all teams undefined');
+                this._playerService.createNewTeamAndAddUser(user);
             }
             else {
                 // find a partial team
                 console.log('there are teams');
+                console.log(snapshot.val());
             }
-        });
+        }.bind(this));
     };
     PlayerComponent = __decorate([
         core_1.Component({
