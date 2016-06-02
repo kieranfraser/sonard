@@ -47,9 +47,14 @@ export class PlayerComponent implements OnInit {
       }
     });
 
-    DZ.Event.subscribe('current_track', function(track){
+    DZ.Event.subscribe('current_track', function(currentTrack){
       console.log("current_track");
-      console.log(track);
+      console.log(currentTrack);
+
+      DZ.api('/track/' + currentTrack.track.id, function(detail){
+        console.log(detail);
+        console.log("BPM: " + detail.bpm);
+      });
     });
 
     DZ.getLoginStatus(function(response) {
