@@ -24,6 +24,10 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.ngOnInit = function () {
         firebase = this._playerService.getFirebaseDB();
         this.router.navigate(['/']);
+        DZ.init({
+            appId: '180442',
+            channelUrl: 'http://sonard.herokuapp.com/'
+        });
         DZ.getLoginStatus(function (response) {
             console.log('status');
             if (response.authResponse) {
