@@ -62,9 +62,12 @@ export class PlayerService {
     var teamRef = firebase.database().ref('teams');
 
     var newTeamKey = teamRef.push({
-      teamName: "create a team name",
-      teamMembers: []
+      teamName: "create a team name"
     }).key;
+
+    firebase.database().ref('teams/' + newTeamKey).set({
+      member: true
+    });
 
     return newTeamKey;
   }
