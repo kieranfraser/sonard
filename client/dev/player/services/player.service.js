@@ -58,7 +58,7 @@ var PlayerService = (function () {
      * @param id - of the user
        */
     PlayerService.prototype.createNewTeam = function (id) {
-        var newTeamKey = firebase.database().ref().child('teams').push().key;
+        var newTeamKey = firebase.database().ref('teams').push().key;
         return firebase.database().ref('/users/' + id).update({
             team: newTeamKey
         });
