@@ -30,7 +30,7 @@ var PlayerComponent = (function () {
             player: {
                 container: 'player',
                 width: 300,
-                height: 100,
+                height: 80,
                 onload: function () { }
             }
         });
