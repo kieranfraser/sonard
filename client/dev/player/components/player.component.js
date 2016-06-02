@@ -26,7 +26,14 @@ var PlayerComponent = (function () {
         this.router.navigate(['/']);
         DZ.init({
             appId: '180442',
-            channelUrl: 'http://sonard.herokuapp.com/'
+            channelUrl: 'http://sonard.herokuapp.com/',
+            player: {
+                container: 'player',
+                width: 300,
+                height: 300,
+                format: 'square',
+                onload: function () { }
+            }
         });
         DZ.getLoginStatus(function (response) {
             console.log('status');

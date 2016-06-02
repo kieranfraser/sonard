@@ -32,17 +32,6 @@ var DashboardComponent = (function () {
         }.bind(this), true);
     }
     DashboardComponent.prototype.ngOnInit = function () {
-        DZ.init({
-            appId: '180442',
-            channelUrl: 'http://sonard.herokuapp.com/',
-            player: {
-                container: 'player',
-                width: 300,
-                height: 300,
-                format: 'square',
-                onload: function () { }
-            }
-        });
     };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();

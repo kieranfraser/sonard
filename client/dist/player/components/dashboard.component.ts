@@ -45,17 +45,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    DZ.init({
-      appId: '180442',
-      channelUrl: 'http://sonard.herokuapp.com/',
-      player: {
-        container: 'player',
-        width : 300,
-        height : 300,
-        format : 'square',
-        onload: function () {}
-      }
-    });
+
   }
 
   nextTrack(){
