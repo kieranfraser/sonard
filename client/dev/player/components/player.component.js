@@ -141,6 +141,7 @@ var PlayerComponent = (function () {
                 // find a partial team
                 console.log('there are teams');
                 console.log(snapshot.val());
+                console.log((JSON.parse(JSON.stringify(snapshot.val())).members));
             }
         }.bind(this));
     };
