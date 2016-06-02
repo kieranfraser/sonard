@@ -39,7 +39,7 @@ export class PlayerComponent implements OnInit {
     DZ.getLoginStatus(function(response) {
       console.log('status');
       if (response.authResponse) {
-        // go to home page
+        this.router.navigate(['/dashboard']);
       }
     }.bind(this));
   }
@@ -60,22 +60,6 @@ export class PlayerComponent implements OnInit {
       }
     }.bind(this), {perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access'});
   }
-
-  /**
-   * Get the login status of the current user
-   */
-  status(){
-    DZ.getLoginStatus(function(response) {
-      if (response.authResponse) {
-        console.log('logged in');
-        // logged in and connected user, someone you know
-      } else {
-        // no user session available, someone you dont know
-        console.log('not logged in');
-      }
-    });
-  }
-
   myName(){
     DZ.api('/user/me', function(response){
       console.log("My name", response.name);
@@ -84,6 +68,7 @@ export class PlayerComponent implements OnInit {
 
   logout(){
     DZ.logout();
+    this.router.navigate(['/']);
   }
 
   /**
@@ -97,8 +82,7 @@ export class PlayerComponent implements OnInit {
         this.checkTeams(user);
       }
       else{
-        // go to home screen
-
+        this.router.navigate(['/dashboard']);
       }
     }.bind(this));
   }
@@ -141,14 +125,8 @@ export class PlayerComponent implements OnInit {
           }
           numberTeams = numberTeams - 1;
         }
-        //go home
+        this.router.navigate(['/dashboard']);
       }
     }.bind(this));
-  }
-
-
-
-  dash(){
-    this.router.navigate(['/dashboard']);
   }
 }

@@ -27,6 +27,7 @@ var PlayerComponent = (function () {
         DZ.getLoginStatus(function (response) {
             console.log('status');
             if (response.authResponse) {
+                this.router.navigate(['/dashboard']);
             }
         }.bind(this));
     };
@@ -47,20 +48,6 @@ var PlayerComponent = (function () {
             }
         }.bind(this), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
     };
-    /**
-     * Get the login status of the current user
-     */
-    PlayerComponent.prototype.status = function () {
-        DZ.getLoginStatus(function (response) {
-            if (response.authResponse) {
-                console.log('logged in');
-            }
-            else {
-                // no user session available, someone you dont know
-                console.log('not logged in');
-            }
-        });
-    };
     PlayerComponent.prototype.myName = function () {
         DZ.api('/user/me', function (response) {
             console.log("My name", response.name);
@@ -68,6 +55,7 @@ var PlayerComponent = (function () {
     };
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
+        this.router.navigate(['/']);
     };
     /**
      * Initialize the user within the app (whether returning or new user).
@@ -79,6 +67,7 @@ var PlayerComponent = (function () {
                 this.checkTeams(user);
             }
             else {
+                this.router.navigate(['/dashboard']);
             }
         }.bind(this));
     };
@@ -115,11 +104,9 @@ var PlayerComponent = (function () {
                     }
                     numberTeams = numberTeams - 1;
                 }
+                this.router.navigate(['/dashboard']);
             }
         }.bind(this));
-    };
-    PlayerComponent.prototype.dash = function () {
-        this.router.navigate(['/dashboard']);
     };
     PlayerComponent = __decorate([
         core_1.Component({
