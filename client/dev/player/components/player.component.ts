@@ -158,7 +158,7 @@ export class PlayerComponent implements OnInit {
      */
   checkTeams(user){
 
-    firebase.database().ref('teams').on('value', function(snapshot) {
+    firebase.database().ref('teams').once('value').then(function(snapshot) {
 
       if(typeof snapshot.val() === "undefined"){
         console.log('all teams undefined');
