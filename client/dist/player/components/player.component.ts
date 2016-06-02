@@ -150,6 +150,7 @@ export class PlayerComponent implements OnInit {
       }
       else{
         console.log('returning user');
+        console.log(snapshot.val());
         // go to home screen
       }
     }.bind(this));

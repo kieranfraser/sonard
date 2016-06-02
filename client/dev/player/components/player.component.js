@@ -122,6 +122,7 @@ var PlayerComponent = (function () {
             }
             else {
                 console.log('returning user');
+                console.log(snapshot.val());
             }
         }.bind(this));
     };
