@@ -128,8 +128,6 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.allocateToTeam = function (id) {
         var allTeams = this._playerService.getAllTeams();
         if (allTeams === undefined) {
-            console.log('must create new team');
-            // create team
             return this._playerService.createNewTeam(id);
         }
         else {

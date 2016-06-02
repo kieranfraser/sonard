@@ -157,9 +157,7 @@ export class PlayerComponent implements OnInit {
 
     var allTeams = this._playerService.getAllTeams();
 
-    if(allTeams === undefined){ // no teams created yet!
-      console.log('must create new team');
-      // create team
+    if(allTeams === undefined){
       return this._playerService.createNewTeam(id);
     }
     else{
