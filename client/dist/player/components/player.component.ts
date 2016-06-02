@@ -144,13 +144,13 @@ export class PlayerComponent implements OnInit {
   initUser(user){
 
     firebase.database().ref('users/' + user.id).on('value', function(snapshot) {
-      if(snapshot.val() === undefined){
+      if(typeof snapshot.val() === "undefined"){
         console.log('new user');
-        // load home screen
+        this.checkTeams(user);
       }
       else{
         console.log('returning user');
-        this.checkTeams(user);
+        // go to home screen
       }
     }.bind(this));
   }

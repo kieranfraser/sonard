@@ -116,12 +116,12 @@ var PlayerComponent = (function () {
        */
     PlayerComponent.prototype.initUser = function (user) {
         firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
-            if (snapshot.val() === undefined) {
+            if (typeof snapshot.val() === "undefined") {
                 console.log('new user');
+                this.checkTeams(user);
             }
             else {
                 console.log('returning user');
-                this.checkTeams(user);
             }
         }.bind(this));
     };
