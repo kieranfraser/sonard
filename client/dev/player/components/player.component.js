@@ -139,14 +139,12 @@ var PlayerComponent = (function () {
             else {
                 // find a partial team
                 console.log('there are teams');
-                console.log(snapshot.val());
-                console.log((JSON.parse(JSON.stringify(snapshot.val())).members));
                 var teams = JSON.parse(JSON.stringify(snapshot.val()));
                 console.log(teams);
                 for (var team in teams) {
                     if (teams.hasOwnProperty(team)) {
                         console.log(JSON.parse(JSON.stringify(team)));
-                        console.log((JSON.parse(JSON.stringify(team)).members));
+                        console.log((JSON.parse(JSON.stringify(team))).members);
                     }
                 }
             }
