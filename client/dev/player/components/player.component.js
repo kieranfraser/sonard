@@ -122,7 +122,7 @@ var PlayerComponent = (function () {
         }
         else {
             var allocatedTeam = this.allocateToTeam(user.id);
-            this._playerService.createNewUser(user.id, user.name, user.picture_small); // updated with user allocated team
+            this._playerService.createNewUser(user.id, user.name, user.picture_small, allocatedTeam); // updated with user allocated team
         }
     };
     PlayerComponent.prototype.allocateToTeam = function (id) {
@@ -130,7 +130,7 @@ var PlayerComponent = (function () {
         if (allTeams === undefined) {
             console.log('must create new team');
             // create team
-            console.log(this._playerService.createNewTeam(id));
+            return this._playerService.createNewTeam(id);
         }
         else {
         }

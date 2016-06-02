@@ -149,7 +149,7 @@ export class PlayerComponent implements OnInit {
     }
     else { // If new user, add to our user-base and allocate to a team.
       var allocatedTeam = this.allocateToTeam(user.id);
-      this._playerService.createNewUser(user.id, user.name, user.picture_small); // updated with user allocated team
+      this._playerService.createNewUser(user.id, user.name, user.picture_small, allocatedTeam); // updated with user allocated team
     }
   }
 
@@ -160,7 +160,7 @@ export class PlayerComponent implements OnInit {
     if(allTeams === undefined){ // no teams created yet!
       console.log('must create new team');
       // create team
-      console.log(this._playerService.createNewTeam(id));
+      return this._playerService.createNewTeam(id);
     }
     else{
       // find team partially empty

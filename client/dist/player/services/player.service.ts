@@ -20,10 +20,11 @@ export class PlayerService {
    * Create a new user (on first log-in with deezer account
    * @param value
    */
-  public createNewUser(id, name, picture_small){
+  public createNewUser(id, name, picture_small, allocatedTeam){
     firebase.database().ref('users/' + id).set({
       username: name,
-      picture: picture_small
+      picture: picture_small,
+      team: allocatedTeam
     });
   }
 
@@ -65,9 +66,7 @@ export class PlayerService {
       teamMembers: []
     }).key;
 
-    return firebase.database().ref('/users/'+id).update({
-      team: newTeamKey
-    });
+    return newTeamKey;
   }
 
 }

@@ -24,10 +24,11 @@ var PlayerService = (function () {
      * Create a new user (on first log-in with deezer account
      * @param value
      */
-    PlayerService.prototype.createNewUser = function (id, name, picture_small) {
+    PlayerService.prototype.createNewUser = function (id, name, picture_small, allocatedTeam) {
         firebase.database().ref('users/' + id).set({
             username: name,
-            picture: picture_small
+            picture: picture_small,
+            team: allocatedTeam
         });
     };
     /**
@@ -63,9 +64,7 @@ var PlayerService = (function () {
             teamName: "create a team name",
             teamMembers: []
         }).key;
-        return firebase.database().ref('/users/' + id).update({
-            team: newTeamKey
-        });
+        return newTeamKey;
     };
     PlayerService = __decorate([
         core_1.Injectable(), 
