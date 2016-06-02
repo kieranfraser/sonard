@@ -60,11 +60,10 @@ export class PlayerService {
 
     var teamRef = firebase.database().ref('teams');
 
-    var newTeam = teamRef.push({
+    var newTeamKey = teamRef.push({
       teamName: "create a team name",
       teamMembers: []
-    });
-    var newTeamKey = newTeam.key();
+    }).key;
 
     return firebase.database().ref('/users/'+id).update({
       team: newTeamKey
