@@ -34,6 +34,10 @@ var PlayerComponent = (function () {
                 onload: function () { }
             }
         });
+        DZ.Event.subscribe('current_track', function (track) {
+            console.log("current_track");
+            console.log(track);
+        });
         DZ.getLoginStatus(function (response) {
             console.log('status');
             if (response.authResponse) {
