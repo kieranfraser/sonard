@@ -146,6 +146,7 @@ var PlayerComponent = (function () {
                 console.log(teams);
                 for (var _i = 0, teams_1 = teams; _i < teams_1.length; _i++) {
                     var team = teams_1[_i];
+                    console.log(JSON.parse(JSON.stringify(team)));
                     console.log((JSON.parse(JSON.stringify(team)).members));
                 }
             }
