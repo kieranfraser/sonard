@@ -43,4 +43,26 @@ export class PlayerService {
     });
   }
 
+  /**
+   * Return all teams
+   */
+  public getAllTeams(){
+    firebase.database().ref('teams').on('value', function(snapshot) {
+      return snapshot.val();
+    });
+  }
+
+  /**
+   * Create a new team and add the team to the user
+   * @param id - of the user
+     */
+  public createNewTeam(id){
+
+    var newTeamKey = firebase.database().ref().child('teams').push().key;
+
+    return firebase.database().ref('/users/'+id).update({
+      team: newTeamKey
+    });
+  }
+
 }

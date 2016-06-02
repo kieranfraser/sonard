@@ -45,6 +45,24 @@ var PlayerService = (function () {
             }
         });
     };
+    /**
+     * Return all teams
+     */
+    PlayerService.prototype.getAllTeams = function () {
+        firebase.database().ref('teams').on('value', function (snapshot) {
+            return snapshot.val();
+        });
+    };
+    /**
+     * Create a new team and add the team to the user
+     * @param id - of the user
+       */
+    PlayerService.prototype.createNewTeam = function (id) {
+        var newTeamKey = firebase.database().ref().child('teams').push().key;
+        return firebase.database().ref('/users/' + id).update({
+            team: newTeamKey
+        });
+    };
     PlayerService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

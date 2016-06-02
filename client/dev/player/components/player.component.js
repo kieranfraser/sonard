@@ -116,15 +116,22 @@ var PlayerComponent = (function () {
      * @param user
        */
     PlayerComponent.prototype.initUser = function (user) {
-        // Check if this user is in the database
-        console.log("result:");
-        console.log(this._playerService.checkReturningUser(user.id));
         var returningUser = this._playerService.checkReturningUser(user.id);
         // If returning user navigate to the home screen...
         if (returningUser) {
         }
         else {
-            this._playerService.createNewUser(user.id, user.name, user.picture_small);
+            var allocatedTeam = this.allocateToTeam(user.id);
+            this._playerService.createNewUser(user.id, user.name, user.picture_small); // updated with user allocated team
+        }
+    };
+    PlayerComponent.prototype.allocateToTeam = function (id) {
+        var allTeams = this._playerService.getAllTeams();
+        if (allTeams === undefined) {
+            // create team
+            console.log(this._playerService.createNewTeam(id));
+        }
+        else {
         }
     };
     PlayerComponent = __decorate([
