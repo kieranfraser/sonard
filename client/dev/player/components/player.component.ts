@@ -147,11 +147,11 @@ export class PlayerComponent implements OnInit {
 
     // If returning user navigate to the home screen...
     if(returningUser){
-
+      console.log('returning user');
     }
     else { // If new user, add to our user-base and allocate to a team.
-      var allocatedTeam = this.allocateToTeam(user.id);
-      this._playerService.createNewUser(user.id, user.name, user.picture_small, allocatedTeam); // updated with user allocated team
+      console.log('new user');
+      this.allocateToTeam(user.id);
     }
   }
 
@@ -162,8 +162,7 @@ export class PlayerComponent implements OnInit {
      */
   allocateToTeam(id){
 
-   firebase = this._playerService.getFirebaseDB;
-
+    firebase = this._playerService.getFirebaseDB();
 
     firebase.database().ref('teams').on('value', function(snapshot) {
 
@@ -172,7 +171,6 @@ export class PlayerComponent implements OnInit {
 
       if(typeof snapshot.val() === "undefined"){
         console.log('all teams undefined');
-        return this._playerService.createNewTeam(id);
       }
       else{
         // find a partial team

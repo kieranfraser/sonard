@@ -119,10 +119,11 @@ var PlayerComponent = (function () {
         var returningUser = this._playerService.checkReturningUser(user.id);
         // If returning user navigate to the home screen...
         if (returningUser) {
+            console.log('returning user');
         }
         else {
-            var allocatedTeam = this.allocateToTeam(user.id);
-            this._playerService.createNewUser(user.id, user.name, user.picture_small, allocatedTeam); // updated with user allocated team
+            console.log('new user');
+            this.allocateToTeam(user.id);
         }
     };
     /**
@@ -131,13 +132,12 @@ var PlayerComponent = (function () {
      * @returns {*}
        */
     PlayerComponent.prototype.allocateToTeam = function (id) {
-        firebase = this._playerService.getFirebaseDB;
+        firebase = this._playerService.getFirebaseDB();
         firebase.database().ref('teams').on('value', function (snapshot) {
             console.log('result: ');
             console.log(snapshot.val());
             if (typeof snapshot.val() === "undefined") {
                 console.log('all teams undefined');
-                return this._playerService.createNewTeam(id);
             }
             else {
                 // find a partial team
