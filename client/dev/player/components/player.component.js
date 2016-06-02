@@ -65,7 +65,7 @@ var PlayerComponent = (function () {
                 console.log('Welcome!  Fetching your information.... ');
                 DZ.api('/user/me', function (user) {
                     console.log('Good to see you, ' + user.name + '.');
-                    //this._playerService.createNewUser(user.id, user.name, user.picture_small);
+                    //this._playerService.createNewUser(user.id, user.name);
                     this.initUser(user);
                 }.bind(this));
             }

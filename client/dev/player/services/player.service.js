@@ -24,10 +24,9 @@ var PlayerService = (function () {
      * Create a new user (on first log-in with deezer account
      * @param value
      */
-    PlayerService.prototype.createNewUser = function (id, name, picture_small, allocatedTeam) {
+    PlayerService.prototype.createNewUser = function (id, name, allocatedTeam) {
         firebase.database().ref('users/' + id).set({
             username: name,
-            picture: picture_small,
             team: allocatedTeam
         });
     };
@@ -62,13 +61,13 @@ var PlayerService = (function () {
         firebase.database().ref('teams/' + newTeamKey + '/members/' + user.id).set({
             member: true
         });
-        this.createNewUser(user.id, user.name, user.picture_small, newTeamKey);
+        this.createNewUser(user.id, user.name, newTeamKey);
     };
     PlayerService.prototype.addUserToExistingTeam = function (user, teamKey) {
         firebase.database().ref('teams/' + teamKey + '/members/' + user.id).set({
             member: true
         });
-        this.createNewUser(user.id, user.name, user.picture_small, teamKey);
+        this.createNewUser(user.id, user.name, teamKey);
     };
     PlayerService = __decorate([
         core_1.Injectable(), 
