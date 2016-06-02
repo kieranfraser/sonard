@@ -29,7 +29,7 @@ var PlayerComponent = (function () {
             channelUrl: 'http://sonard.herokuapp.com/',
             player: {
                 container: 'player',
-                width: 300,
+                width: 800,
                 height: 300,
                 format: 'square',
                 onload: function () { }
