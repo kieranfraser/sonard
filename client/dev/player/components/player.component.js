@@ -131,9 +131,10 @@ var PlayerComponent = (function () {
      * @returns {*}
        */
     PlayerComponent.prototype.allocateToTeam = function (id) {
+        var allTeams = this._playerService.getAllTeams();
         console.log('result: ');
-        console.log(this._playerService.getAllTeams());
-        if (typeof this._playerService.getAllTeams() === "undefined") {
+        console.log(allTeams);
+        if (typeof allTeams === "undefined") {
             console.log('all teams undefined');
             return this._playerService.createNewTeam(id);
         }

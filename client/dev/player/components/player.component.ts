@@ -160,13 +160,13 @@ export class PlayerComponent implements OnInit {
      */
   allocateToTeam(id){
 
-
+    var allTeams = this._playerService.getAllTeams();
 
 
     console.log('result: ');
-    console.log(this._playerService.getAllTeams());
+    console.log(allTeams);
 
-    if(typeof this._playerService.getAllTeams() === "undefined"){
+    if(typeof allTeams === "undefined"){
       console.log('all teams undefined');
       return this._playerService.createNewTeam(id);
     }

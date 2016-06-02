@@ -48,8 +48,12 @@ export class PlayerService {
    * Return all teams
    */
   public getAllTeams(){
+    var result: JSON;
     firebase.database().ref('teams').on('value', function(snapshot) {
-      return snapshot.val();
+      result = snapshot.val();
+      console.log('result: ');
+      console.log(result);
+      return result;
     });
   }
 
