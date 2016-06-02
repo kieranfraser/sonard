@@ -41,9 +41,8 @@ export class PlayerComponent implements OnInit {
       channelUrl: 'http://sonard.herokuapp.com/',
       player: {
         container: 'player',
-        width : 800,
-        height : 100,
-        format : 'square',
+        width : 650,
+        height : 300,
         onload: function () {}
       }
     });
