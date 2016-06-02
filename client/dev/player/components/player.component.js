@@ -131,17 +131,15 @@ var PlayerComponent = (function () {
      * @returns {*}
        */
     PlayerComponent.prototype.allocateToTeam = function (id) {
-        var allTeams = this._playerService.getAllTeams();
         console.log('result: ');
-        console.log(allTeams);
-        if (typeof allTeams === "undefined") {
+        console.log(this._playerService.getAllTeams());
+        if (typeof this._playerService.getAllTeams() === "undefined") {
             console.log('all teams undefined');
             return this._playerService.createNewTeam(id);
         }
         else {
             // find a partial team
             console.log('there are teams');
-            console.log(allTeams);
         }
     };
     PlayerComponent = __decorate([
