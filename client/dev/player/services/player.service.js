@@ -64,6 +64,12 @@ var PlayerService = (function () {
         });
         this.createNewUser(user.id, user.name, user.picture_small, newTeamKey);
     };
+    PlayerService.prototype.addUserToExistingTeam = function (user, teamKey) {
+        firebase.database().ref('teams/' + teamKey + '/members/' + user.id).set({
+            member: true
+        });
+        this.createNewUser(user.id, user.name, user.picture_small, teamKey);
+    };
     PlayerService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

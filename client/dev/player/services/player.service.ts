@@ -70,4 +70,13 @@ export class PlayerService {
     this.createNewUser(user.id, user.name, user.picture_small, newTeamKey);
   }
 
+  public addUserToExistingTeam(user, teamKey){
+
+    firebase.database().ref('teams/'+teamKey+'/members/'+user.id).set({
+      member: true
+    });
+
+    this.createNewUser(user.id, user.name, user.picture_small, teamKey);
+  }
+
 }

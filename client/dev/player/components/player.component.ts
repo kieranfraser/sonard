@@ -173,14 +173,24 @@ export class PlayerComponent implements OnInit {
         console.log('there are teams');
         var teams = JSON.parse(JSON.stringify(snapshot.val()));
         console.log(teams);
+        var numberTeams = Object.keys(teams).length;
 
         for (var team in teams) {
           if (teams.hasOwnProperty(team)) {
             console.log(JSON.parse(JSON.stringify(teams[team])));
             console.log((JSON.parse(JSON.stringify(teams[team])).members));
             var members = (JSON.parse(JSON.stringify(teams[team])).members);
-            console.log(Object.keys(members).length);
+            var numberMembers = Object.keys(members).length;
+
+            if(numberMembers < 6){
+              this._playerService.addUserToExistingTeam(user, team);
+              break;
+            }
+            if(numberTeams === 1){
+              this._playerService.createNewTeamAndAddUser(user);
+            }
           }
+          numberTeams = numberTeams - 1;
         }
       }
     }.bind(this));
