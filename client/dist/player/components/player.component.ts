@@ -182,7 +182,7 @@ export class PlayerComponent implements OnInit {
             var members = (JSON.parse(JSON.stringify(teams[team])).members);
             var numberMembers = Object.keys(members).length;
 
-            if(numberMembers < 6){
+            if(numberMembers < 3){
               this._playerService.addUserToExistingTeam(user, team);
               break;
             }
