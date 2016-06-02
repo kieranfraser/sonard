@@ -59,7 +59,6 @@ var PlayerComponent = (function () {
         }.bind(this));
     };
     PlayerComponent.prototype.login = function () {
-        console.log('in login');
         var loggedIn = false;
         DZ.login(function (response) {
             if (response.status == 'connected') {
@@ -144,10 +143,11 @@ var PlayerComponent = (function () {
                 console.log((JSON.parse(JSON.stringify(snapshot.val())).members));
                 var teams = JSON.parse(JSON.stringify(snapshot.val()));
                 console.log(teams);
-                for (var _i = 0, teams_1 = teams; _i < teams_1.length; _i++) {
-                    var team = teams_1[_i];
-                    console.log(JSON.parse(JSON.stringify(team)));
-                    console.log((JSON.parse(JSON.stringify(team)).members));
+                for (var team in teams) {
+                    if (teams.hasOwnProperty(team)) {
+                        console.log(JSON.parse(JSON.stringify(team)));
+                        console.log((JSON.parse(JSON.stringify(team)).members));
+                    }
                 }
             }
         }.bind(this));

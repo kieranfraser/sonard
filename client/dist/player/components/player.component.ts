@@ -76,7 +76,6 @@ export class PlayerComponent implements OnInit {
   }
 
   login(){
-    console.log('in login');
     var loggedIn = false;
     DZ.login(function(response) {
       if (response.status == 'connected') {
@@ -178,12 +177,13 @@ export class PlayerComponent implements OnInit {
         var teams = JSON.parse(JSON.stringify(snapshot.val()));
         console.log(teams);
 
-        for(var team of teams){
-          console.log(JSON.parse(JSON.stringify(team)));
-          console.log((JSON.parse(JSON.stringify(team)).members));
+        for (var team in teams) {
+          if (teams.hasOwnProperty(team)) {
+            console.log(JSON.parse(JSON.stringify(team)));
+            console.log((JSON.parse(JSON.stringify(team)).members));
+          }
         }
       }
-
     }.bind(this));
   }
 
