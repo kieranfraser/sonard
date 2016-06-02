@@ -153,6 +153,11 @@ export class PlayerComponent implements OnInit {
     }
   }
 
+  /**
+   * Allocate a user to a team (only on first login)
+   * @param id
+   * @returns {*}
+     */
   allocateToTeam(id){
 
     var allTeams = this._playerService.getAllTeams();
@@ -161,7 +166,8 @@ export class PlayerComponent implements OnInit {
       return this._playerService.createNewTeam(id);
     }
     else{
-      // find team partially empty
+      // find a partial team
+      console.log(allTeams);
     }
   }
 

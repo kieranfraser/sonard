@@ -125,12 +125,19 @@ var PlayerComponent = (function () {
             this._playerService.createNewUser(user.id, user.name, user.picture_small, allocatedTeam); // updated with user allocated team
         }
     };
+    /**
+     * Allocate a user to a team (only on first login)
+     * @param id
+     * @returns {*}
+       */
     PlayerComponent.prototype.allocateToTeam = function (id) {
         var allTeams = this._playerService.getAllTeams();
         if (allTeams === undefined) {
             return this._playerService.createNewTeam(id);
         }
         else {
+            // find a partial team
+            console.log(allTeams);
         }
     };
     PlayerComponent = __decorate([
