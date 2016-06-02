@@ -116,7 +116,7 @@ var PlayerComponent = (function () {
        */
     PlayerComponent.prototype.initUser = function (user) {
         firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
-            if (typeof snapshot.val() === "undefined") {
+            if (typeof snapshot.val() === "undefined" || snapshot.val() === null) {
                 console.log('new user');
                 this.checkTeams(user);
             }
@@ -133,7 +133,7 @@ var PlayerComponent = (function () {
        */
     PlayerComponent.prototype.checkTeams = function (user) {
         firebase.database().ref('teams').on('value', function (snapshot) {
-            if (typeof snapshot.val() === "undefined" || snapshot.val() === null) {
+            if (typeof snapshot.val() === "undefined") {
                 console.log('all teams undefined');
                 this._playerService.createNewTeamAndAddUser(user);
             }
