@@ -13,7 +13,7 @@ declare var firebase: any;
 
 export class DashboardComponent implements OnInit {
 
-  firebase: any;
+  //firebase: any;
   input:string = 'nothing';
   aresponse:string = 'nothing';
 
@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     var teamKey;
-    this.firebase = this._playerService.getFirebaseDB();
+    //this.firebase = this._playerService.getFirebaseDB();
 
 
 

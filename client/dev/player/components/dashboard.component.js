@@ -13,6 +13,7 @@ var player_service_1 = require("../services/player.service");
 var DashboardComponent = (function () {
     function DashboardComponent(_playerService) {
         this._playerService = _playerService;
+        //firebase: any;
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
@@ -34,7 +35,7 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var teamKey;
-        this.firebase = this._playerService.getFirebaseDB();
+        //this.firebase = this._playerService.getFirebaseDB();
         //localStorage.setItem('team', JSON.stringify(teamKey));
     };
     DashboardComponent.prototype.nextTrack = function () {
