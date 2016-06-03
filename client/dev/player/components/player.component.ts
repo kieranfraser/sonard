@@ -156,5 +156,7 @@ export class PlayerComponent implements OnInit {
   setTeamKey(response){
     console.log("response");
     console.log(response);
+    console.log(response.team);
+
   }
 }

@@ -131,6 +131,7 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.setTeamKey = function (response) {
         console.log("response");
         console.log(response);
+        console.log(response.team);
     };
     PlayerComponent = __decorate([
         core_1.Component({
