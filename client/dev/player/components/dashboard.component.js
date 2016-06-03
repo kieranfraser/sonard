@@ -51,7 +51,8 @@ var DashboardComponent = (function () {
         core_1.Component({
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
-            styleUrls: ['player/styles/todo.css']
+            styleUrls: ['player/styles/todo.css', 'player/styles/style.css', 'player/styles/style-responsive.css',
+                'player/styles/table-responsive.css']
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardComponent);
