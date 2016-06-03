@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'player-cmp',
-  templateUrl: 'player/templates/dash.html',
+  templateUrl: 'player/templates/landing.html',
   styleUrls: ['player/styles/todo.css']
 })
 

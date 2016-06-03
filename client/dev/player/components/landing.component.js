@@ -16,7 +16,7 @@ var LandingComponent = (function () {
     LandingComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',
-            templateUrl: 'player/templates/dash.html',
+            templateUrl: 'player/templates/landing.html',
             styleUrls: ['player/styles/todo.css']
         }), 
         __metadata('design:paramtypes', [])
