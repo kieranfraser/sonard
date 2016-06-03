@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
   changedTrack: boolean = false;
 
-  constructor(private _playerService: PlayerService) {
+  constructor() {
     window.addEventListener("deviceorientation", function(event) {
 
       console.log(event.alpha);

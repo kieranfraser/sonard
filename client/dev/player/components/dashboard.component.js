@@ -11,8 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var player_service_1 = require("../services/player.service");
 var DashboardComponent = (function () {
-    function DashboardComponent(_playerService) {
-        this._playerService = _playerService;
+    function DashboardComponent() {
         //firebase: any;
         this.input = 'nothing';
         this.aresponse = 'nothing';
@@ -98,7 +97,7 @@ var DashboardComponent = (function () {
             styleUrls: ['player/styles/todo.css'],
             providers: [player_service_1.PlayerService]
         }), 
-        __metadata('design:paramtypes', [player_service_1.PlayerService])
+        __metadata('design:paramtypes', [])
     ], DashboardComponent);
     return DashboardComponent;
 }());

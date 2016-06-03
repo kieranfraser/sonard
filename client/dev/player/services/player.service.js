@@ -19,6 +19,7 @@ var PlayerService = (function () {
             storageBucket: "sonar-11442.appspot.com",
         };
         firebase.initializeApp(config);
+        localStorage.setItem('firebase', JSON.stringify(firebase));
     }
     /**
      * Create a new user (on first log-in with deezer account

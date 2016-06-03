@@ -14,6 +14,7 @@ export class PlayerService {
       storageBucket: "sonar-11442.appspot.com",
     };
     firebase.initializeApp(config);
+    localStorage.setItem('firebase', JSON.stringify(firebase));
   }
 
   /**
