@@ -31,8 +31,7 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
     }
-    DashboardComponent.prototype.ngOnInit = function () {
-    };
+    DashboardComponent.prototype.ngOnInit = function () { };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();
     };

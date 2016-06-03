@@ -43,10 +43,7 @@ export class DashboardComponent implements OnInit {
     }.bind(this), true);
   }
 
-  ngOnInit() {
-
-
-  }
+  ngOnInit() {}
 
   nextTrack(){
     DZ.player.next();
