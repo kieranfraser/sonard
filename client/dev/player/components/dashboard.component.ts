@@ -1,19 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {PlayerService} from "../services/player.service";
 
 declare var DZ: any;
-declare var firebase: any;
 
 @Component({
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
-  styleUrls: ['player/styles/todo.css'],
-  providers: [PlayerService]
+  styleUrls: ['player/styles/todo.css']
 })
 
 export class DashboardComponent implements OnInit {
 
-  //firebase: any;
   input:string = 'nothing';
   aresponse:string = 'nothing';
 
@@ -49,7 +45,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     var teamKey;
-    //this.firebase = this._playerService.getFirebaseDB();
+
 
 
 

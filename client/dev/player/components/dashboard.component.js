@@ -9,10 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var player_service_1 = require("../services/player.service");
 var DashboardComponent = (function () {
     function DashboardComponent() {
-        //firebase: any;
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
@@ -34,7 +32,6 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var teamKey;
-        //this.firebase = this._playerService.getFirebaseDB();
         //localStorage.setItem('team', JSON.stringify(teamKey));
     };
     DashboardComponent.prototype.nextTrack = function () {
@@ -94,8 +91,7 @@ var DashboardComponent = (function () {
         core_1.Component({
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
-            styleUrls: ['player/styles/todo.css'],
-            providers: [player_service_1.PlayerService]
+            styleUrls: ['player/styles/todo.css']
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardComponent);
