@@ -6,8 +6,7 @@ declare var firebase: any;
 @Component({
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
-  styleUrls: ['player/styles/todo.css', 'player/styles/style.css', 'player/styles/style-responsive.css',
-    'player/styles/table-responsive.css']
+  styleUrls: ['player/styles/todo.css']
 })
 
 export class DashboardComponent implements OnInit {
