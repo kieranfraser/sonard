@@ -85,6 +85,8 @@ var PlayerComponent = (function () {
                 this.checkTeams(user);
             }
             else {
+                localStorage.setItem('user', JSON.stringify(user));
+                this.setTeamKey(snapshot.val());
                 this.router.navigate(['/dashboard']);
             }
         }.bind(this));
@@ -125,6 +127,10 @@ var PlayerComponent = (function () {
                 this.router.navigate(['/dashboard']);
             }
         }.bind(this));
+    };
+    PlayerComponent.prototype.setTeamKey = function (response) {
+        console.log("response");
+        console.log(response);
     };
     PlayerComponent = __decorate([
         core_1.Component({

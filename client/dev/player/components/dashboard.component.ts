@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {PlayerService} from "../services/player.service";
 
 declare var DZ: any;
 declare var firebase: any;
@@ -6,11 +7,13 @@ declare var firebase: any;
 @Component({
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
-  styleUrls: ['player/styles/todo.css']
+  styleUrls: ['player/styles/todo.css'],
+  providers: [PlayerService]
 })
 
 export class DashboardComponent implements OnInit {
 
+  firebase: any;
   input:string = 'nothing';
   aresponse:string = 'nothing';
 
@@ -20,9 +23,9 @@ export class DashboardComponent implements OnInit {
 
   changedTrack: boolean = false;
 
-  constructor() {
+  constructor(private _playerService: PlayerService) {
     window.addEventListener("deviceorientation", function(event) {
-      // process event.alpha, event.beta and event.gamma
+
       console.log(event.alpha);
       console.log(event.beta);
       console.log(event.gamma);
@@ -43,7 +46,15 @@ export class DashboardComponent implements OnInit {
     }.bind(this), true);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    var teamKey;
+    this.firebase = this._playerService.getFirebaseDB();
+
+
+
+    //localStorage.setItem('team', JSON.stringify(teamKey));
+  }
 
   nextTrack(){
     DZ.player.next();
@@ -62,6 +73,48 @@ export class DashboardComponent implements OnInit {
       console.log('Latitude: ' + position.coords.latitude);
       console.log('Longitude: ' + position.coords.longitude);
     }
+  }
+
+  getTeamList(){
+
+    /*firebase.database().ref('teams').on('value', function(snapshot) {
+
+      if(typeof snapshot.val() === "undefined"){
+        this._playerService.createNewTeamAndAddUser(user);
+      }
+      else{
+        var teams = JSON.parse(JSON.stringify(snapshot.val()));
+        console.log(teams);
+        var numberTeams = Object.keys(teams).length;
+
+        for (var team in teams) {
+          if (teams.hasOwnProperty(team)) {
+            //console.log(JSON.parse(JSON.stringify(teams[team])));
+            //console.log((JSON.parse(JSON.stringify(teams[team])).members));
+            var members = (JSON.parse(JSON.stringify(teams[team])).members);
+            var numberMembers = Object.keys(members).length;
+
+            console.log(numberMembers);
+
+            if(numberMembers < this.numberUsersPerTeam){
+              console.log('less than 3');
+              this._playerService.addUserToExistingTeam(user, team);
+              break;
+            }
+            else if(numberTeams === 1){
+              console.log('last team');
+              this._playerService.createNewTeamAndAddUser(user);
+            }
+          }
+          numberTeams = numberTeams - 1;
+        }
+        this.router.navigate(['/dashboard']);
+      }
+    }.bind(this));*/
+  }
+
+  getUserTeamKey(){
+
   }
 
 }

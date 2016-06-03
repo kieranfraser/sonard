@@ -50,7 +50,6 @@ export class PlayerService {
     firebase.database().ref('teams/'+newTeamKey+'/members/'+user.id).set({
       member: true
     });
-
     this.createNewUser(user.id, user.name, newTeamKey);
   }
 

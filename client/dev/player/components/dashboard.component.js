@@ -9,13 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var player_service_1 = require("../services/player.service");
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(_playerService) {
+        this._playerService = _playerService;
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
         window.addEventListener("deviceorientation", function (event) {
-            // process event.alpha, event.beta and event.gamma
             console.log(event.alpha);
             console.log(event.beta);
             console.log(event.gamma);
@@ -31,7 +32,11 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
     }
-    DashboardComponent.prototype.ngOnInit = function () { };
+    DashboardComponent.prototype.ngOnInit = function () {
+        var teamKey;
+        this.firebase = this._playerService.getFirebaseDB();
+        //localStorage.setItem('team', JSON.stringify(teamKey));
+    };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();
     };
@@ -47,13 +52,52 @@ var DashboardComponent = (function () {
             console.log('Longitude: ' + position.coords.longitude);
         }
     };
+    DashboardComponent.prototype.getTeamList = function () {
+        /*firebase.database().ref('teams').on('value', function(snapshot) {
+    
+          if(typeof snapshot.val() === "undefined"){
+            this._playerService.createNewTeamAndAddUser(user);
+          }
+          else{
+            var teams = JSON.parse(JSON.stringify(snapshot.val()));
+            console.log(teams);
+            var numberTeams = Object.keys(teams).length;
+    
+            for (var team in teams) {
+              if (teams.hasOwnProperty(team)) {
+                //console.log(JSON.parse(JSON.stringify(teams[team])));
+                //console.log((JSON.parse(JSON.stringify(teams[team])).members));
+                var members = (JSON.parse(JSON.stringify(teams[team])).members);
+                var numberMembers = Object.keys(members).length;
+    
+                console.log(numberMembers);
+    
+                if(numberMembers < this.numberUsersPerTeam){
+                  console.log('less than 3');
+                  this._playerService.addUserToExistingTeam(user, team);
+                  break;
+                }
+                else if(numberTeams === 1){
+                  console.log('last team');
+                  this._playerService.createNewTeamAndAddUser(user);
+                }
+              }
+              numberTeams = numberTeams - 1;
+            }
+            this.router.navigate(['/dashboard']);
+          }
+        }.bind(this));*/
+    };
+    DashboardComponent.prototype.getUserTeamKey = function () {
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
-            styleUrls: ['player/styles/todo.css']
+            styleUrls: ['player/styles/todo.css'],
+            providers: [player_service_1.PlayerService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [player_service_1.PlayerService])
     ], DashboardComponent);
     return DashboardComponent;
 }());

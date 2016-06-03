@@ -103,6 +103,8 @@ export class PlayerComponent implements OnInit {
         this.checkTeams(user);
       }
       else{
+        localStorage.setItem('user', JSON.stringify(user));
+        this.setTeamKey(snapshot.val());
         this.router.navigate(['/dashboard']);
       }
     }.bind(this));
@@ -149,5 +151,10 @@ export class PlayerComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }
     }.bind(this));
+  }
+
+  setTeamKey(response){
+    console.log("response");
+    console.log(response);
   }
 }
