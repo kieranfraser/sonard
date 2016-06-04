@@ -26,8 +26,6 @@ export class PlayerService {
       username: name,
       team: allocatedTeam
     });
-
-    localStorage.setItem('team', allocatedTeam);
   }
 
   /**

@@ -43,9 +43,9 @@ var PlayerComponent = (function () {
             });
         });
         DZ.getLoginStatus(function (response) {
-            console.log('status');
             if (response.authResponse) {
-                this.login();
+                console.log('already logged in');
+                this.router.navigate(['/dashboard']);
             }
         }.bind(this));
     };
@@ -57,7 +57,6 @@ var PlayerComponent = (function () {
         DZ.login(function (response) {
             if (response.status == 'connected') {
                 DZ.api('/user/me', function (user) {
-                    //this._playerService.createNewUser(user.id, user.name);
                     this.initUser(user);
                 }.bind(this));
             }
@@ -88,9 +87,6 @@ var PlayerComponent = (function () {
             }
             else {
                 localStorage.setItem('user', JSON.stringify(user));
-                console.log(snapshot.val().team);
-                console.log(snapshot.val());
-                localStorage.setItem('team', snapshot.val().team);
                 this.router.navigate(['/dashboard']);
             }
         }.bind(this));

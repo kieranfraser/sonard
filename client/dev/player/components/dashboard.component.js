@@ -31,13 +31,7 @@ var DashboardComponent = (function () {
         }.bind(this), true);
         console.log('nginit dashboard');
         this.firebase = localStorage.getItem('firebase');
-        var teamKey;
-        console.log(localStorage.getItem('team'));
-        console.log(localStorage.getItem('user'));
-        this.getUserTeamKey();
-        console.log(localStorage.getItem('team'));
-        console.log(localStorage.getItem('user'));
-        //localStorage.setItem('team', JSON.stringify(teamKey));
+        this.initTeams();
     }
     DashboardComponent.prototype.ngOnInit = function () {
     };
@@ -92,13 +86,16 @@ var DashboardComponent = (function () {
           }
         }.bind(this));*/
     };
-    DashboardComponent.prototype.getUserTeamKey = function () {
+    DashboardComponent.prototype.initTeams = function () {
         var user = localStorage.getItem('user');
-        console.log('user');
+        console.log(user);
         this.firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
             console.log(snapshot.val().team);
             console.log(snapshot.val());
             localStorage.setItem('team', snapshot.val().team);
+            console.log('finally');
+            console.log(localStorage.getItem('team'));
+            console.log(localStorage.getItem('user'));
         }.bind(this));
     };
     DashboardComponent = __decorate([
