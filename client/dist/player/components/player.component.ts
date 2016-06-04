@@ -89,6 +89,8 @@ export class PlayerComponent implements OnInit {
 
   logout(){
     DZ.logout();
+    localStorage.removeItem('user');
+    localStorage.removeItem('team');
     this.router.navigate(['/']);
   }
 
@@ -104,7 +106,7 @@ export class PlayerComponent implements OnInit {
       }
       else{
         localStorage.setItem('user', JSON.stringify(user));
-        this.setTeamKey(snapshot.val());
+        localStorage.setItem('team', snapshot.val());
         this.router.navigate(['/dashboard']);
       }
     }.bind(this));
@@ -151,12 +153,5 @@ export class PlayerComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }
     }.bind(this));
-  }
-
-  setTeamKey(response){
-    console.log("response");
-    console.log(response);
-    console.log(response.team);
-
   }
 }

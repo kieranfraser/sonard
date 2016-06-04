@@ -73,6 +73,8 @@ var PlayerComponent = (function () {
     };
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
+        localStorage.removeItem('user');
+        localStorage.removeItem('team');
         this.router.navigate(['/']);
     };
     /**
@@ -86,7 +88,7 @@ var PlayerComponent = (function () {
             }
             else {
                 localStorage.setItem('user', JSON.stringify(user));
-                this.setTeamKey(snapshot.val());
+                localStorage.setItem('team', snapshot.val());
                 this.router.navigate(['/dashboard']);
             }
         }.bind(this));
@@ -127,11 +129,6 @@ var PlayerComponent = (function () {
                 this.router.navigate(['/dashboard']);
             }
         }.bind(this));
-    };
-    PlayerComponent.prototype.setTeamKey = function (response) {
-        console.log("response");
-        console.log(response);
-        console.log(response.team);
     };
     PlayerComponent = __decorate([
         core_1.Component({

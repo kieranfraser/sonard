@@ -30,6 +30,7 @@ var PlayerService = (function () {
             username: name,
             team: allocatedTeam
         });
+        localStorage.setItem('team', allocatedTeam);
     };
     /**
      * Get the firebase database
