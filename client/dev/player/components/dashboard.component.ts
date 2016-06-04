@@ -92,6 +92,7 @@ export class DashboardComponent implements OnInit {
 
   getTeamList(){
     console.log('get team list');
+    var userList = [];
     this._parent.getFirebase().database().ref('teams/'+localStorage.getItem('team')).on('value', function(snapshot) {
 
       var members = JSON.parse(JSON.stringify(snapshot.val().members));
@@ -102,12 +103,18 @@ export class DashboardComponent implements OnInit {
 
       for (var member in members) {
         if (members.hasOwnProperty(member)) {
-           //console.log(JSON.parse(JSON.stringify(teams[team])));
-           //console.log((JSON.parse(JSON.stringify(teams[team])).members));
            console.log(member);
-           console.log(members[member]);
+           userList.push(member);
         }
       }
+      this.populateTeamList(userList);
     }.bind(this));
+  }
+
+  populateTeamList(userList){
+    console.log('userList');
+    for(var user in userList){
+      console.log(user);
+    }
   }
 }

@@ -68,6 +68,7 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.getTeamList = function () {
         console.log('get team list');
+        var userList = [];
         this._parent.getFirebase().database().ref('teams/' + localStorage.getItem('team')).on('value', function (snapshot) {
             var members = JSON.parse(JSON.stringify(snapshot.val().members));
             var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
@@ -75,13 +76,18 @@ var DashboardComponent = (function () {
             console.log(members);
             for (var member in members) {
                 if (members.hasOwnProperty(member)) {
-                    //console.log(JSON.parse(JSON.stringify(teams[team])));
-                    //console.log((JSON.parse(JSON.stringify(teams[team])).members));
                     console.log(member);
-                    console.log(members[member]);
+                    userList.push(member);
                 }
             }
+            this.populateTeamList(userList);
         }.bind(this));
+    };
+    DashboardComponent.prototype.populateTeamList = function (userList) {
+        console.log('userList');
+        for (var user in userList) {
+            console.log(user);
+        }
     };
     DashboardComponent = __decorate([
         core_1.Component({
