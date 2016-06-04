@@ -32,6 +32,8 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var teamKey;
+        console.log(localStorage.getItem('team'));
+        console.log(localStorage.getItem('user'));
         //localStorage.setItem('team', JSON.stringify(teamKey));
     };
     DashboardComponent.prototype.nextTrack = function () {

@@ -46,6 +46,8 @@ export class DashboardComponent implements OnInit {
 
     var teamKey;
 
+    console.log(localStorage.getItem('team'));
+    console.log(localStorage.getItem('user'));
 
 
 
