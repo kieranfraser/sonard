@@ -31,6 +31,7 @@ var DashboardComponent = (function () {
         }.bind(this), true);
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        console.log('nginit dashboard');
         this.firebase = localStorage.getItem('firebase');
         var teamKey;
         console.log(localStorage.getItem('team'));

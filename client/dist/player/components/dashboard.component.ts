@@ -46,6 +46,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log('nginit dashboard');
     this.firebase = localStorage.getItem('firebase');
     var teamKey;
 
