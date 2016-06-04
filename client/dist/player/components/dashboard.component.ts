@@ -9,7 +9,7 @@ declare var firebase: any;
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
   styleUrls: ['player/styles/todo.css'],
-  directives: [PlayerComponent, CORE_DIRECTIVES]
+  directives: [CORE_DIRECTIVES]
 })
 
 export class DashboardComponent implements OnInit {

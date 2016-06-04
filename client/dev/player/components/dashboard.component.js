@@ -108,7 +108,7 @@ var DashboardComponent = (function () {
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
             styleUrls: ['player/styles/todo.css'],
-            directives: [player_component_1.PlayerComponent, common_1.CORE_DIRECTIVES]
+            directives: [common_1.CORE_DIRECTIVES]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
         __metadata('design:paramtypes', [player_component_1.PlayerComponent])

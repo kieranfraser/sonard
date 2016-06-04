@@ -136,7 +136,7 @@ var PlayerComponent = (function () {
             selector: 'player-cmp',
             templateUrl: 'player/templates/todo.html',
             styleUrls: ['player/styles/todo.css'],
-            providers: [player_service_1.PlayerService],
+            providers: [player_service_1.PlayerService, dashboard_component_1.DashboardComponent],
             directives: [router_1.ROUTER_DIRECTIVES]
         }),
         router_1.Routes([

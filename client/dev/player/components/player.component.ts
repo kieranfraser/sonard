@@ -12,7 +12,7 @@ declare var firebase: any;
   selector: 'player-cmp',
   templateUrl: 'player/templates/todo.html',
   styleUrls: ['player/styles/todo.css'],
-  providers: [PlayerService],
+  providers: [PlayerService, DashboardComponent],
   directives: [ROUTER_DIRECTIVES]
 })
 
