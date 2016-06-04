@@ -93,8 +93,8 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.initTeams = function () {
         var user = localStorage.getItem('user');
-        console.log(user);
-        this._parent.getFirebase().database().ref('users/' + user.id).on('value', function (snapshot) {
+        console.log(JSON.parse(user).id);
+        this._parent.getFirebase().database().ref('users/' + JSON.parse(user).id).on('value', function (snapshot) {
             console.log(snapshot.val());
             localStorage.setItem('team', snapshot.val().team);
             console.log('finally');
