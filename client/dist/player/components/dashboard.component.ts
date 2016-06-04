@@ -23,6 +23,8 @@ export class DashboardComponent implements OnInit {
 
   changedTrack: boolean = false;
 
+  teamList: String[];
+
   constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent) {
     window.addEventListener("deviceorientation", function(event) {
 
@@ -111,9 +113,17 @@ export class DashboardComponent implements OnInit {
   }
 
   populateTeamList(userList){
+    this.teamList = [];
     console.log('userList');
-    for(var user of userList){
+    for(var user of userList) {
       console.log(user);
+
+      firebase.database().ref('users/' + user).on('value', function (snapshot) {
+        console.log(snapshot.val());
+        console.log(snapshot.val().username);
+        this.teamList.push(snapshot.val().username);
+
+      }.bind(this));
     }
   }
 }
