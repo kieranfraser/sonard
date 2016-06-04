@@ -45,7 +45,7 @@ var PlayerComponent = (function () {
         DZ.getLoginStatus(function (response) {
             console.log('status');
             if (response.authResponse) {
-                this.router.navigate(['/dashboard']);
+                this.login();
             }
         }.bind(this));
     };
@@ -88,7 +88,9 @@ var PlayerComponent = (function () {
             }
             else {
                 localStorage.setItem('user', JSON.stringify(user));
-                localStorage.setItem('team', snapshot.val());
+                console.log(snapshot.val().team);
+                console.log(snapshot.val());
+                localStorage.setItem('team', snapshot.val().team);
                 this.router.navigate(['/dashboard']);
             }
         }.bind(this));

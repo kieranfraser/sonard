@@ -60,7 +60,7 @@ export class PlayerComponent implements OnInit {
     DZ.getLoginStatus(function(response) {
       console.log('status');
       if (response.authResponse) {
-        this.router.navigate(['/dashboard']);
+        this.login();
       }
     }.bind(this));
   }
@@ -106,7 +106,9 @@ export class PlayerComponent implements OnInit {
       }
       else{
         localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('team', snapshot.val());
+        console.log(snapshot.val().team);
+        console.log(snapshot.val());
+        localStorage.setItem('team', snapshot.val().team);
         this.router.navigate(['/dashboard']);
       }
     }.bind(this));
