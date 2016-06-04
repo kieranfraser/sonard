@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 declare var DZ: any;
+declare var firebase: any;
 
 @Component({
   selector: 'player-cmp',
@@ -16,8 +17,6 @@ export class DashboardComponent implements OnInit {
   alpha: any;
   beta: any;
   gamma: any;
-
-  firebase: any;
 
   changedTrack: boolean = false;
 
@@ -45,7 +44,7 @@ export class DashboardComponent implements OnInit {
 
     console.log('nginit dashboard');
 
-    this.firebase = localStorage.getItem('firebase');
+    firebase = localStorage.getItem('firebase');
 
     this.initTeams();
   }
@@ -116,7 +115,7 @@ export class DashboardComponent implements OnInit {
     var user = localStorage.getItem('user');
     console.log(user);
 
-    this.firebase.database().ref('users/' + user.id).on('value', function(snapshot) {
+    firebase.database().ref('users/' + user.id).on('value', function(snapshot) {
 
       console.log(snapshot.val().team);
       console.log(snapshot.val());
@@ -128,5 +127,4 @@ export class DashboardComponent implements OnInit {
 
     }.bind(this));
   }
-
 }

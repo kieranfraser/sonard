@@ -30,7 +30,7 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
         console.log('nginit dashboard');
-        this.firebase = localStorage.getItem('firebase');
+        firebase = localStorage.getItem('firebase');
         this.initTeams();
     }
     DashboardComponent.prototype.ngOnInit = function () {
@@ -89,7 +89,7 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.initTeams = function () {
         var user = localStorage.getItem('user');
         console.log(user);
-        this.firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
+        firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
             console.log(snapshot.val().team);
             console.log(snapshot.val());
             localStorage.setItem('team', snapshot.val().team);
