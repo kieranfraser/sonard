@@ -47,9 +47,6 @@ export class DashboardComponent implements OnInit {
 
     console.log('nginit dashboard');
 
-    firebase = localStorage.getItem('firebase');
-    firebase.
-
     this.initTeams();
   }
 
