@@ -152,4 +152,8 @@ export class PlayerComponent implements OnInit {
       }
     }.bind(this));
   }
+
+  getFirebase(){
+    return firebase;
+  }
 }

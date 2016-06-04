@@ -8,9 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var player_component_1 = require("./player.component");
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(_parent) {
+        this._parent = _parent;
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
@@ -31,8 +37,8 @@ var DashboardComponent = (function () {
         }.bind(this), true);
         console.log('nginit dashboard');
         firebase = localStorage.getItem('firebase');
-        console.log(firebase);
-        this.initTeams();
+        firebase.
+            this.initTeams();
     }
     DashboardComponent.prototype.ngOnInit = function () {
     };
@@ -90,7 +96,7 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.initTeams = function () {
         var user = localStorage.getItem('user');
         console.log(user);
-        firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
+        this._parent.getFirebase().database().ref('users/' + user.id).on('value', function (snapshot) {
             console.log(snapshot.val().team);
             console.log(snapshot.val());
             localStorage.setItem('team', snapshot.val().team);
@@ -103,9 +109,11 @@ var DashboardComponent = (function () {
         core_1.Component({
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
-            styleUrls: ['player/styles/todo.css']
-        }), 
-        __metadata('design:paramtypes', [])
+            styleUrls: ['player/styles/todo.css'],
+            directives: [player_component_1.PlayerComponent, common_1.CORE_DIRECTIVES]
+        }),
+        __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
+        __metadata('design:paramtypes', [player_component_1.PlayerComponent])
     ], DashboardComponent);
     return DashboardComponent;
 }());

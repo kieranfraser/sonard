@@ -128,6 +128,9 @@ var PlayerComponent = (function () {
             }
         }.bind(this));
     };
+    PlayerComponent.prototype.getFirebase = function () {
+        return firebase;
+    };
     PlayerComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',

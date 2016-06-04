@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject, forwardRef} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common'
+import {PlayerComponent} from "./player.component";
 
 declare var DZ: any;
 declare var firebase: any;
@@ -6,7 +8,8 @@ declare var firebase: any;
 @Component({
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
-  styleUrls: ['player/styles/todo.css']
+  styleUrls: ['player/styles/todo.css'],
+  directives: [PlayerComponent, CORE_DIRECTIVES]
 })
 
 export class DashboardComponent implements OnInit {
@@ -20,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
   changedTrack: boolean = false;
 
-  constructor() {
+  constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent) {
     window.addEventListener("deviceorientation", function(event) {
 
       console.log(event.alpha);
@@ -45,7 +48,7 @@ export class DashboardComponent implements OnInit {
     console.log('nginit dashboard');
 
     firebase = localStorage.getItem('firebase');
-    console.log(firebase);
+    firebase.
 
     this.initTeams();
   }
@@ -116,7 +119,7 @@ export class DashboardComponent implements OnInit {
     var user = localStorage.getItem('user');
     console.log(user);
 
-    firebase.database().ref('users/' + user.id).on('value', function(snapshot) {
+    this._parent.getFirebase().database().ref('users/' + user.id).on('value', function(snapshot) {
 
       console.log(snapshot.val().team);
       console.log(snapshot.val());
