@@ -82,15 +82,15 @@ var DashboardComponent = (function () {
             this.populateTeamList(userList);
         }.bind(this));
     };
+    /**
+     * Populate the team list with usernames
+     * @param userList
+       */
     DashboardComponent.prototype.populateTeamList = function (userList) {
         this.teamList = [];
-        console.log('userList');
         for (var _i = 0, userList_1 = userList; _i < userList_1.length; _i++) {
             var user = userList_1[_i];
-            console.log(user);
             firebase.database().ref('users/' + user).on('value', function (snapshot) {
-                console.log(snapshot.val());
-                console.log(snapshot.val().username);
                 this.teamList.push(snapshot.val().username);
             }.bind(this));
         }
