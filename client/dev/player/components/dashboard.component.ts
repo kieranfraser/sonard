@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
   beta: any;
   gamma: any;
 
+  firebase: any;
+
   changedTrack: boolean = false;
 
   constructor() {
@@ -44,12 +46,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+    this.firebase = localStorage.getItem('firebase');
     var teamKey;
 
     console.log(localStorage.getItem('team'));
     console.log(localStorage.getItem('user'));
 
+    this.getUserTeamKey();
 
+
+    console.log(localStorage.getItem('team'));
+    console.log(localStorage.getItem('user'));
 
     //localStorage.setItem('team', JSON.stringify(teamKey));
   }
@@ -112,7 +119,16 @@ export class DashboardComponent implements OnInit {
   }
 
   getUserTeamKey(){
+    var user = localStorage.getItem('user');
+    console.log('user');
 
+    this.firebase.database().ref('users/' + user.id).on('value', function(snapshot) {
+
+        console.log(snapshot.val().team);
+        console.log(snapshot.val());
+        localStorage.setItem('team', snapshot.val().team);
+
+    }.bind(this));
   }
 
 }
