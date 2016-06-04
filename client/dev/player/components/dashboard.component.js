@@ -73,7 +73,6 @@ var DashboardComponent = (function () {
             var members = JSON.parse(JSON.stringify(snapshot.val().members));
             var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
             console.log(teamName);
-            console.log(members);
             for (var member in members) {
                 if (members.hasOwnProperty(member)) {
                     console.log(member);
@@ -85,7 +84,8 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.populateTeamList = function (userList) {
         console.log('userList');
-        for (var user in userList) {
+        for (var _i = 0, userList_1 = userList; _i < userList_1.length; _i++) {
+            var user = userList_1[_i];
             console.log(user);
         }
     };

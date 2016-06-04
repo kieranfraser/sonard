@@ -99,7 +99,6 @@ export class DashboardComponent implements OnInit {
       var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
 
       console.log(teamName);
-      console.log(members);
 
       for (var member in members) {
         if (members.hasOwnProperty(member)) {
@@ -113,7 +112,7 @@ export class DashboardComponent implements OnInit {
 
   populateTeamList(userList){
     console.log('userList');
-    for(var user in userList){
+    for(var user of userList){
       console.log(user);
     }
   }
