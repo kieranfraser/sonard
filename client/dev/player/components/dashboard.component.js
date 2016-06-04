@@ -36,9 +36,9 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
         console.log('nginit dashboard');
-        this.initTeams();
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        this.initTeams();
     };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();
