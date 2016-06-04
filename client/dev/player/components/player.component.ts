@@ -26,10 +26,16 @@ export class PlayerComponent implements OnInit {
 
   title: string = "Deezer Challenge";
 
+  // This is the number of players allowed per team.
   numberUsersPerTeam : number = 3;
 
   constructor(private _playerService: PlayerService, private router: Router) {}
 
+  /**
+   * To begin, load the landing page
+   * initialize the deezer api
+   * check if the user is already logged in with deezer
+   */
   ngOnInit() {
 
     firebase = this._playerService.getFirebaseDB();
@@ -80,12 +86,12 @@ export class PlayerComponent implements OnInit {
       }
     }.bind(this), {perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access'});
   }
-  myName(){
-    DZ.api('/user/me', function(response){
-      console.log("My name", response.name);
-    });
-  }
 
+  /**
+   * Logout of the application
+   * clear local storage
+   * navigate back to the landing page
+   */
   logout(){
     DZ.logout();
     localStorage.removeItem('user');
@@ -111,7 +117,7 @@ export class PlayerComponent implements OnInit {
   }
 
   /**
-   * Allocate a user to a team (only on first login)
+   * Allocate a user to a team (only on their initial login)
    * @param id
    * @returns {*}
      */
@@ -153,6 +159,10 @@ export class PlayerComponent implements OnInit {
     }.bind(this));
   }
 
+  /**
+   * Return the firebase instance
+   * @returns {any}
+     */
   getFirebase(){
     return firebase;
   }

@@ -19,8 +19,14 @@ var PlayerComponent = (function () {
         this._playerService = _playerService;
         this.router = router;
         this.title = "Deezer Challenge";
+        // This is the number of players allowed per team.
         this.numberUsersPerTeam = 3;
     }
+    /**
+     * To begin, load the landing page
+     * initialize the deezer api
+     * check if the user is already logged in with deezer
+     */
     PlayerComponent.prototype.ngOnInit = function () {
         firebase = this._playerService.getFirebaseDB();
         this.router.navigate(['/']);
@@ -65,11 +71,11 @@ var PlayerComponent = (function () {
             }
         }.bind(this), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
     };
-    PlayerComponent.prototype.myName = function () {
-        DZ.api('/user/me', function (response) {
-            console.log("My name", response.name);
-        });
-    };
+    /**
+     * Logout of the application
+     * clear local storage
+     * navigate back to the landing page
+     */
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
         localStorage.removeItem('user');
@@ -92,7 +98,7 @@ var PlayerComponent = (function () {
         }.bind(this));
     };
     /**
-     * Allocate a user to a team (only on first login)
+     * Allocate a user to a team (only on their initial login)
      * @param id
      * @returns {*}
        */
@@ -128,6 +134,10 @@ var PlayerComponent = (function () {
             }
         }.bind(this));
     };
+    /**
+     * Return the firebase instance
+     * @returns {any}
+       */
     PlayerComponent.prototype.getFirebase = function () {
         return firebase;
     };

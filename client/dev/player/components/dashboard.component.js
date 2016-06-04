@@ -55,51 +55,32 @@ var DashboardComponent = (function () {
             console.log('Longitude: ' + position.coords.longitude);
         }
     };
-    DashboardComponent.prototype.getTeamList = function () {
-        /*firebase.database().ref('teams').on('value', function(snapshot) {
-    
-          if(typeof snapshot.val() === "undefined"){
-            this._playerService.createNewTeamAndAddUser(user);
-          }
-          else{
-            var teams = JSON.parse(JSON.stringify(snapshot.val()));
-            console.log(teams);
-            var numberTeams = Object.keys(teams).length;
-    
-            for (var team in teams) {
-              if (teams.hasOwnProperty(team)) {
-                //console.log(JSON.parse(JSON.stringify(teams[team])));
-                //console.log((JSON.parse(JSON.stringify(teams[team])).members));
-                var members = (JSON.parse(JSON.stringify(teams[team])).members);
-                var numberMembers = Object.keys(members).length;
-    
-                console.log(numberMembers);
-    
-                if(numberMembers < this.numberUsersPerTeam){
-                  console.log('less than 3');
-                  this._playerService.addUserToExistingTeam(user, team);
-                  break;
-                }
-                else if(numberTeams === 1){
-                  console.log('last team');
-                  this._playerService.createNewTeamAndAddUser(user);
-                }
-              }
-              numberTeams = numberTeams - 1;
-            }
-            this.router.navigate(['/dashboard']);
-          }
-        }.bind(this));*/
-    };
+    /**
+     * Load the users team list
+     */
     DashboardComponent.prototype.initTeams = function () {
         var user = localStorage.getItem('user');
         console.log(JSON.parse(user).id);
         this._parent.getFirebase().database().ref('users/' + JSON.parse(user).id).on('value', function (snapshot) {
-            console.log(snapshot.val());
             localStorage.setItem('team', snapshot.val().team);
-            console.log('finally');
-            console.log(localStorage.getItem('team'));
-            console.log(localStorage.getItem('user'));
+            this.getTeamList();
+        }.bind(this));
+    };
+    DashboardComponent.prototype.getTeamList = function () {
+        console.log('get team list');
+        this._parent.getFirebase().database().ref('teams/' + localStorage.getItem('team')).on('value', function (snapshot) {
+            var members = JSON.parse(JSON.stringify(snapshot.val().members));
+            var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
+            console.log(teamName);
+            console.log(members);
+            for (var member in members) {
+                if (members.hasOwnProperty(member)) {
+                    //console.log(JSON.parse(JSON.stringify(teams[team])));
+                    //console.log((JSON.parse(JSON.stringify(teams[team])).members));
+                    console.log(member);
+                    console.log(members[member]);
+                }
+            }
         }.bind(this));
     };
     DashboardComponent = __decorate([
