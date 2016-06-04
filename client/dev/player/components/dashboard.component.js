@@ -29,8 +29,6 @@ var DashboardComponent = (function () {
                 this.changedTrack = false;
             }
         }.bind(this), true);
-    }
-    DashboardComponent.prototype.ngOnInit = function () {
         console.log('nginit dashboard');
         this.firebase = localStorage.getItem('firebase');
         var teamKey;
@@ -40,6 +38,8 @@ var DashboardComponent = (function () {
         console.log(localStorage.getItem('team'));
         console.log(localStorage.getItem('user'));
         //localStorage.setItem('team', JSON.stringify(teamKey));
+    }
+    DashboardComponent.prototype.ngOnInit = function () {
     };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();

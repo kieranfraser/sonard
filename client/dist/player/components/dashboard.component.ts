@@ -42,9 +42,6 @@ export class DashboardComponent implements OnInit {
       }
 
     }.bind(this), true);
-  }
-
-  ngOnInit() {
 
     console.log('nginit dashboard');
     this.firebase = localStorage.getItem('firebase');
@@ -60,6 +57,11 @@ export class DashboardComponent implements OnInit {
     console.log(localStorage.getItem('user'));
 
     //localStorage.setItem('team', JSON.stringify(teamKey));
+  }
+
+  ngOnInit() {
+
+
   }
 
   nextTrack(){
