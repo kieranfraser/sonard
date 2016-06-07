@@ -88,7 +88,7 @@ var PlayerComponent = (function () {
      * @param user
        */
     PlayerComponent.prototype.initUser = function (user) {
-        firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
+        firebase.database().ref('users/' + user.id).once('value').then(function (snapshot) {
             if (typeof snapshot.val() === "undefined" || snapshot.val() === null) {
                 this.checkTeams(user, false);
             }
