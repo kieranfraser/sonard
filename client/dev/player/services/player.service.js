@@ -54,6 +54,13 @@ var PlayerService = (function () {
      */
     PlayerService.prototype.createNewTeamAndAddUser = function (user, returning) {
         var teamRef = firebase.database().ref('teams');
+        firebase.database().ref('teams').once('value').then(function (snapshot) {
+            if (typeof snapshot.val() === "undefined" || typeof snapshot.val() === null) {
+                console.log('no teams');
+            }
+            else {
+            }
+        });
         var newTeamKey = teamRef.push({
             teamName: "create a team name"
         }).key;
