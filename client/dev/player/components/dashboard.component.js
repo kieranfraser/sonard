@@ -36,11 +36,11 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
         console.log('constructor dashboard');
-        //this.initTeams();
+        this.initTeams();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
-        this.initTeams();
+        //this.initTeams();
     };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();

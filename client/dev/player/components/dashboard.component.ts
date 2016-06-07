@@ -48,12 +48,12 @@ export class DashboardComponent implements OnInit {
     }.bind(this), true);
 
     console.log('constructor dashboard');
-    //this.initTeams();
+    this.initTeams();
   }
 
   ngOnInit() {
     console.log('actual init');
-    this.initTeams();
+    //this.initTeams();
   }
 
   nextTrack(){
