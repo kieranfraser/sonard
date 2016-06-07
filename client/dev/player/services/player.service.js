@@ -40,7 +40,7 @@ var PlayerService = (function () {
         firebase.database().ref('users/' + user.id).update({
             currentTeam: allocatedTeam
         });
-        firebase.database().ref('users/' + user.id + '/team').push({
+        firebase.database().ref('users/' + user.id + '/teams').push({
             teams: allocatedTeam
         }).key;
     };
