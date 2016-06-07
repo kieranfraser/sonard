@@ -108,8 +108,6 @@ export class PlayerComponent implements OnInit {
   initUser(user){
 
     firebase.database().ref('users/' + user.id).on('value', function(snapshot) {
-      console.log('inituser');
-      console.log(snapshot.val());
       if(typeof snapshot.val() === "undefined" || snapshot.val() === null){
         this.checkTeams(user, false);
       }
@@ -129,9 +127,8 @@ export class PlayerComponent implements OnInit {
   checkTeams(user, returning){
 
     firebase.database().ref('teams').once('value').then(function(snapshot) {
-      console.log('checkteams');
-      console.log(snapshot.val());
-      if(typeof snapshot.val() === "undefined"){
+
+      if(typeof snapshot.val() === "undefined" || typeof snapshot.val() === null){
         this._playerService.createNewTeamAndAddUser(user, returning);
       }
       else{
