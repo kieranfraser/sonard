@@ -192,7 +192,7 @@ export class PlayerComponent implements OnInit {
     var user = localStorage.getItem('user');
     console.log(JSON.parse(user).id);
 
-    firebase().database().ref('users/' + JSON.parse(user).id).on('value', function(snapshot) {
+    firebase.database().ref('users/' + JSON.parse(user).id).on('value', function(snapshot) {
       console.log('firebase');
       localStorage.setItem('team', snapshot.val().currentTeam);
       this.getTeamList();
@@ -204,7 +204,7 @@ export class PlayerComponent implements OnInit {
   getTeamList(){
     console.log('get team list');
     var userList = [];
-    firebase().database().ref('teams/'+localStorage.getItem('team')).on('value', function(snapshot) {
+    firebase.database().ref('teams/'+localStorage.getItem('team')).on('value', function(snapshot) {
 
       var members = JSON.parse(JSON.stringify(snapshot.val().members));
       var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
