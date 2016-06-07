@@ -118,8 +118,6 @@ var PlayerComponent = (function () {
                     if (teams.hasOwnProperty(team)) {
                         //console.log(JSON.parse(JSON.stringify(teams[team])));
                         //console.log((JSON.parse(JSON.stringify(teams[team])).members));
-                        console.log('member*****');
-                        console.log(teams[team]);
                         var members = (JSON.parse(JSON.stringify(teams[team])).members);
                         var numberMembers = Object.keys(members).length;
                         console.log(numberMembers);

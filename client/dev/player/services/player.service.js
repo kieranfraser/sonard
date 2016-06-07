@@ -27,8 +27,7 @@ var PlayerService = (function () {
      */
     PlayerService.prototype.createNewUser = function (user, allocatedTeam) {
         firebase.database().ref('users/' + user.id).set({
-            username: user.name,
-            currentTeam: allocatedTeam
+            username: user.name
         });
         this.updateExistingUser(user, allocatedTeam);
     };
@@ -38,6 +37,9 @@ var PlayerService = (function () {
      * @param allocatedTeam
        */
     PlayerService.prototype.updateExistingUser = function (user, allocatedTeam) {
+        firebase.database().ref('users/' + user.id).update({
+            currentTeam: allocatedTeam
+        });
         firebase.database().ref('users/' + user.id + '/team').push({
             teams: allocatedTeam
         }).key;
