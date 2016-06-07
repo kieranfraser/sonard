@@ -35,10 +35,11 @@ var DashboardComponent = (function () {
                 this.changedTrack = false;
             }
         }.bind(this), true);
-        console.log('nginit dashboard');
-        this.initTeams();
+        console.log('constructor dashboard');
+        //this.initTeams();
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        console.log('actual init');
         this.initTeams();
     };
     DashboardComponent.prototype.nextTrack = function () {
