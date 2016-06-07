@@ -48,6 +48,7 @@ export class DashboardComponent implements OnInit {
     }.bind(this), true);
 
     console.log('nginit dashboard');
+    this.initTeams();
   }
 
   ngOnInit() {
