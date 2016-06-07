@@ -159,7 +159,7 @@ export class PlayerComponent implements OnInit {
           }
         }
       }
-      this.initTeams();
+      this.router.navigate(['/dashboard']);
     }.bind(this));
   }
 

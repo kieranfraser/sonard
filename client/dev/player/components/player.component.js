@@ -134,7 +134,7 @@ var PlayerComponent = (function () {
                     }
                 }
             }
-            this.initTeams();
+            this.router.navigate(['/dashboard']);
         }.bind(this));
     };
     /**
