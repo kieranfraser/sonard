@@ -106,6 +106,7 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.checkTeams = function (user, returning) {
         firebase.database().ref('teams').once('value').then(function (snapshot) {
             if (typeof snapshot.val() === "undefined" || typeof snapshot.val() === null) {
+                console.log('if of checkTeams');
                 this._playerService.createNewTeamAndAddUser(user, returning);
             }
             else {
