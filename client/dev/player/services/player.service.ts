@@ -38,9 +38,9 @@ export class PlayerService {
       currentTeam: allocatedTeam
     });
 
-    firebase.database().ref('users/' + user.id+'/teams').push({
-      teams: allocatedTeam
-    }).key;
+    firebase.database().ref('users/' + user.id+'/teams/'+allocatedTeam).set({
+      member: true
+    });
   }
 
   /**
