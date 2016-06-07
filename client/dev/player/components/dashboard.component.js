@@ -91,12 +91,18 @@ var DashboardComponent = (function () {
        */
     DashboardComponent.prototype.populateTeamList = function (userList) {
         this.teamList = [];
+        var count = 0;
         for (var _i = 0, userList_1 = userList; _i < userList_1.length; _i++) {
             var user = userList_1[_i];
-            firebase.database().ref('users/' + user).on('value', function (snapshot) {
-                this.teamList.push(snapshot.val().username);
-                this.ref.detectChanges();
-            }.bind(this));
+            if (userList.hasOwnProperty(user)) {
+                firebase.database().ref('users/' + user).on('value', function (snapshot) {
+                    this.teamList.push(snapshot.val().username);
+                    if (count === Object.keys(userList).length) {
+                        this.ref.detectChanges();
+                    }
+                    count++;
+                }.bind(this));
+            }
         }
     };
     DashboardComponent = __decorate([
