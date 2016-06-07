@@ -188,11 +188,12 @@ export class PlayerComponent implements OnInit {
    * Load the users team list
    */
   initTeams(){
+    console.log('initTeams');
     var user = localStorage.getItem('user');
     console.log(JSON.parse(user).id);
 
     firebase().database().ref('users/' + JSON.parse(user).id).on('value', function(snapshot) {
-
+      console.log('firebase');
       localStorage.setItem('team', snapshot.val().currentTeam);
       this.getTeamList();
 
