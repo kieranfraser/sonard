@@ -15,8 +15,9 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var player_component_1 = require("./player.component");
 var DashboardComponent = (function () {
-    function DashboardComponent(_parent) {
+    function DashboardComponent(_parent, ref) {
         this._parent = _parent;
+        this.ref = ref;
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
@@ -94,6 +95,7 @@ var DashboardComponent = (function () {
             var user = userList_1[_i];
             firebase.database().ref('users/' + user).on('value', function (snapshot) {
                 this.teamList.push(snapshot.val().username);
+                this.ref.detectChanges();
             }.bind(this));
         }
     };
@@ -105,7 +107,7 @@ var DashboardComponent = (function () {
             directives: [common_1.CORE_DIRECTIVES]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
-        __metadata('design:paramtypes', [player_component_1.PlayerComponent])
+        __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ChangeDetectorRef])
     ], DashboardComponent);
     return DashboardComponent;
 }());

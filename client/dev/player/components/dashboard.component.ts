@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject, forwardRef, Input} from '@angular/core';
+import {Component, OnInit, Inject, forwardRef, ChangeDetectorRef} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
 
@@ -25,7 +25,8 @@ export class DashboardComponent implements OnInit {
 
   teamList: String[];
 
-  constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent) {
+  constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent,
+              private ref: ChangeDetectorRef) {
     window.addEventListener("deviceorientation", function(event) {
 
       console.log(event.alpha);
@@ -120,6 +121,7 @@ export class DashboardComponent implements OnInit {
     for(var user of userList) {
       firebase.database().ref('users/' + user).on('value', function (snapshot) {
         this.teamList.push(snapshot.val().username);
+        this.ref.detectChanges();
       }.bind(this));
     }
   }
