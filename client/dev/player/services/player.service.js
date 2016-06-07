@@ -25,11 +25,11 @@ var PlayerService = (function () {
      * Create a new user (on first log-in with deezer account
      * @param value
      */
-    PlayerService.prototype.createNewUser = function (id, name, allocatedTeam) {
-        firebase.database().ref('users/' + id).set({
-            username: name,
-            team: allocatedTeam
+    PlayerService.prototype.createNewUser = function (user, allocatedTeam) {
+        firebase.database().ref('users/' + user.id).set({
+            username: user.name
         });
+        this.updateExistingUser(user, allocatedTeam);
     };
     /**
      * Update the list of teams the user has participated in.
@@ -37,7 +37,7 @@ var PlayerService = (function () {
      * @param allocatedTeam
        */
     PlayerService.prototype.updateExistingUser = function (user, allocatedTeam) {
-        firebase.database().ref('users/' + user.id + '/teams').push({
+        firebase.database().ref('users/' + user.id + '/team').push({
             team: allocatedTeam
         }).key;
     };
@@ -54,13 +54,6 @@ var PlayerService = (function () {
      */
     PlayerService.prototype.createNewTeamAndAddUser = function (user, returning) {
         var teamRef = firebase.database().ref('teams');
-        firebase.database().ref('teams').once('value').then(function (snapshot) {
-            if (typeof snapshot.val() === "undefined" || typeof snapshot.val() === null) {
-                console.log('no teams');
-            }
-            else {
-            }
-        });
         var newTeamKey = teamRef.push({
             teamName: "create a team name"
         }).key;
@@ -73,7 +66,8 @@ var PlayerService = (function () {
             this.updateExistingUser(user, newTeamKey);
         }
         else {
-            this.createNewUser(user.id, user.name, newTeamKey);
+            console.log('new');
+            this.createNewUser(user, newTeamKey);
         }
     };
     PlayerService.prototype.addUserToExistingTeam = function (user, teamKey, returning) {
@@ -84,7 +78,7 @@ var PlayerService = (function () {
             this.updateExistingUser(user, teamKey);
         }
         else {
-            this.createNewUser(user.id, user.name, teamKey);
+            this.createNewUser(user, teamKey);
         }
     };
     PlayerService = __decorate([

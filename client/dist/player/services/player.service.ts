@@ -21,11 +21,11 @@ export class PlayerService {
    * Create a new user (on first log-in with deezer account
    * @param value
    */
-  public createNewUser(id, name, allocatedTeam){
-    firebase.database().ref('users/' + id).set({
-      username: name,
-      team: allocatedTeam
+  public createNewUser(user, allocatedTeam){
+    firebase.database().ref('users/' + user.id).set({
+      username: user.name
     });
+    this.updateExistingUser(user, allocatedTeam);
   }
 
   /**
@@ -34,7 +34,7 @@ export class PlayerService {
    * @param allocatedTeam
      */
   public updateExistingUser(user, allocatedTeam){
-    firebase.database().ref('users/' + user.id+'/teams').push({
+    firebase.database().ref('users/' + user.id+'/team').push({
       team: allocatedTeam
     }).key;
   }
@@ -55,14 +55,6 @@ export class PlayerService {
 
     var teamRef = firebase.database().ref('teams');
 
-    firebase.database().ref('teams').once('value').then(function(snapshot) {
-      if(typeof snapshot.val() === "undefined" || typeof snapshot.val() === null){
-        console.log('no teams');
-      }
-      else{
-      }
-    });
-
     var newTeamKey = teamRef.push({
       teamName: "create a team name"
     }).key;
@@ -77,7 +69,8 @@ export class PlayerService {
       this.updateExistingUser(user, newTeamKey);
     }
     else{
-      this.createNewUser(user.id, user.name, newTeamKey);
+      console.log('new');
+      this.createNewUser(user, newTeamKey);
     }
   }
 
@@ -90,7 +83,7 @@ export class PlayerService {
       this.updateExistingUser(user, teamKey);
     }
     else{
-      this.createNewUser(user.id, user.name, teamKey);
+      this.createNewUser(user, teamKey);
     }
   }
 }

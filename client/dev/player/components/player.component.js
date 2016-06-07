@@ -132,8 +132,8 @@ var PlayerComponent = (function () {
                             console.log('last team');
                             this._playerService.createNewTeamAndAddUser(user, returning);
                         }
+                        numberTeams = numberTeams - 1;
                     }
-                    numberTeams = numberTeams - 1;
                 }
                 this.router.navigate(['/dashboard']);
             }
