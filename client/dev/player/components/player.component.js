@@ -81,6 +81,7 @@ var PlayerComponent = (function () {
         localStorage.removeItem('user');
         localStorage.removeItem('team');
         this.router.navigate(['/']);
+        //remove the user from "active teams" list.
     };
     /**
      * Initialize the user within the app (whether returning or new user).
@@ -89,11 +90,11 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.initUser = function (user) {
         firebase.database().ref('users/' + user.id).on('value', function (snapshot) {
             if (typeof snapshot.val() === "undefined" || snapshot.val() === null) {
-                this.checkTeams(user);
+                this.checkTeams(user, false);
             }
             else {
                 localStorage.setItem('user', JSON.stringify(user));
-                this.router.navigate(['/dashboard']);
+                this.checkTeams(user, true);
             }
         }.bind(this));
     };
@@ -102,10 +103,10 @@ var PlayerComponent = (function () {
      * @param id
      * @returns {*}
        */
-    PlayerComponent.prototype.checkTeams = function (user) {
+    PlayerComponent.prototype.checkTeams = function (user, returning) {
         firebase.database().ref('teams').once('value').then(function (snapshot) {
             if (typeof snapshot.val() === "undefined") {
-                this._playerService.createNewTeamAndAddUser(user);
+                this._playerService.createNewTeamAndAddUser(user, returning);
             }
             else {
                 var teams = JSON.parse(JSON.stringify(snapshot.val()));
@@ -115,17 +116,19 @@ var PlayerComponent = (function () {
                     if (teams.hasOwnProperty(team)) {
                         //console.log(JSON.parse(JSON.stringify(teams[team])));
                         //console.log((JSON.parse(JSON.stringify(teams[team])).members));
+                        console.log('member*****');
+                        console.log(teams[team]);
                         var members = (JSON.parse(JSON.stringify(teams[team])).members);
                         var numberMembers = Object.keys(members).length;
                         console.log(numberMembers);
                         if (numberMembers < this.numberUsersPerTeam) {
                             console.log('less than 3');
-                            this._playerService.addUserToExistingTeam(user, team);
+                            this._playerService.addUserToExistingTeam(user, team, returning);
                             break;
                         }
                         else if (numberTeams === 1) {
                             console.log('last team');
-                            this._playerService.createNewTeamAndAddUser(user);
+                            this._playerService.createNewTeamAndAddUser(user, returning);
                         }
                     }
                     numberTeams = numberTeams - 1;
@@ -140,6 +143,16 @@ var PlayerComponent = (function () {
        */
     PlayerComponent.prototype.getFirebase = function () {
         return firebase;
+    };
+    PlayerComponent.prototype.home = function () {
+        DZ.getLoginStatus(function (response) {
+            if (response.authResponse) {
+                this.router.navigate(['/dashboard']);
+            }
+            else {
+                this.router.navigate(['/']);
+            }
+        }.bind(this));
     };
     PlayerComponent = __decorate([
         core_1.Component({

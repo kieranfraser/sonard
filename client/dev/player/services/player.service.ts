@@ -29,6 +29,17 @@ export class PlayerService {
   }
 
   /**
+   * Update the list of teams the user has participated in.
+   * @param user
+   * @param allocatedTeam
+     */
+  public updateExistingUser(user, allocatedTeam){
+    firebase.database().ref('users/' + user.id+'/teams').push({
+      team: allocatedTeam
+    }).key;
+  }
+
+  /**
    * Get the firebase database
    * @returns {any}
      */
@@ -40,7 +51,7 @@ export class PlayerService {
    * Create a new team and add the team to the user
    * @param id - of the user
    */
-  public createNewTeamAndAddUser(user){
+  public createNewTeamAndAddUser(user, returning){
 
     var teamRef = firebase.database().ref('teams');
 
@@ -51,15 +62,24 @@ export class PlayerService {
     firebase.database().ref('teams/'+newTeamKey+'/members/'+user.id).set({
       member: true
     });
-    this.createNewUser(user.id, user.name, newTeamKey);
+    if(returning){
+      this.updateExistingUser(user, newTeamKey);
+    }
+    else{
+      this.createNewUser(user.id, user.name, newTeamKey);
+    }
   }
 
-  public addUserToExistingTeam(user, teamKey){
+  public addUserToExistingTeam(user, teamKey, returning){
 
     firebase.database().ref('teams/'+teamKey+'/members/'+user.id).set({
       member: true
     });
-
-    this.createNewUser(user.id, user.name, teamKey);
+    if(returning){
+      this.updateExistingUser(user, teamKey);
+    }
+    else{
+      this.createNewUser(user.id, user.name, teamKey);
+    }
   }
 }

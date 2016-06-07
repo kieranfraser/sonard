@@ -32,6 +32,16 @@ var PlayerService = (function () {
         });
     };
     /**
+     * Update the list of teams the user has participated in.
+     * @param user
+     * @param allocatedTeam
+       */
+    PlayerService.prototype.updateExistingUser = function (user, allocatedTeam) {
+        firebase.database().ref('users/' + user.id + '/teams').push({
+            team: allocatedTeam
+        }).key;
+    };
+    /**
      * Get the firebase database
      * @returns {any}
        */
@@ -42,7 +52,7 @@ var PlayerService = (function () {
      * Create a new team and add the team to the user
      * @param id - of the user
      */
-    PlayerService.prototype.createNewTeamAndAddUser = function (user) {
+    PlayerService.prototype.createNewTeamAndAddUser = function (user, returning) {
         var teamRef = firebase.database().ref('teams');
         var newTeamKey = teamRef.push({
             teamName: "create a team name"
@@ -50,13 +60,23 @@ var PlayerService = (function () {
         firebase.database().ref('teams/' + newTeamKey + '/members/' + user.id).set({
             member: true
         });
-        this.createNewUser(user.id, user.name, newTeamKey);
+        if (returning) {
+            this.updateExistingUser(user, newTeamKey);
+        }
+        else {
+            this.createNewUser(user.id, user.name, newTeamKey);
+        }
     };
-    PlayerService.prototype.addUserToExistingTeam = function (user, teamKey) {
+    PlayerService.prototype.addUserToExistingTeam = function (user, teamKey, returning) {
         firebase.database().ref('teams/' + teamKey + '/members/' + user.id).set({
             member: true
         });
-        this.createNewUser(user.id, user.name, teamKey);
+        if (returning) {
+            this.updateExistingUser(user, teamKey);
+        }
+        else {
+            this.createNewUser(user.id, user.name, teamKey);
+        }
     };
     PlayerService = __decorate([
         core_1.Injectable(), 

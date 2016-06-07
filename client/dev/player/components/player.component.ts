@@ -97,6 +97,8 @@ export class PlayerComponent implements OnInit {
     localStorage.removeItem('user');
     localStorage.removeItem('team');
     this.router.navigate(['/']);
+
+    //remove the user from "active teams" list.
   }
 
   /**
@@ -107,11 +109,12 @@ export class PlayerComponent implements OnInit {
 
     firebase.database().ref('users/' + user.id).on('value', function(snapshot) {
       if(typeof snapshot.val() === "undefined" || snapshot.val() === null){
-        this.checkTeams(user);
+        this.checkTeams(user, false);
       }
       else{
         localStorage.setItem('user', JSON.stringify(user));
-        this.router.navigate(['/dashboard']);
+        this.checkTeams(user, true);
+        //this.router.navigate(['/dashboard']);
       }
     }.bind(this));
   }
@@ -121,12 +124,12 @@ export class PlayerComponent implements OnInit {
    * @param id
    * @returns {*}
      */
-  checkTeams(user){
+  checkTeams(user, returning){
 
     firebase.database().ref('teams').once('value').then(function(snapshot) {
 
       if(typeof snapshot.val() === "undefined"){
-        this._playerService.createNewTeamAndAddUser(user);
+        this._playerService.createNewTeamAndAddUser(user, returning);
       }
       else{
         var teams = JSON.parse(JSON.stringify(snapshot.val()));
@@ -137,6 +140,8 @@ export class PlayerComponent implements OnInit {
           if (teams.hasOwnProperty(team)) {
             //console.log(JSON.parse(JSON.stringify(teams[team])));
             //console.log((JSON.parse(JSON.stringify(teams[team])).members));
+            console.log('member*****');
+            console.log(teams[team]);
             var members = (JSON.parse(JSON.stringify(teams[team])).members);
             var numberMembers = Object.keys(members).length;
 
@@ -144,12 +149,12 @@ export class PlayerComponent implements OnInit {
 
             if(numberMembers < this.numberUsersPerTeam){
               console.log('less than 3');
-              this._playerService.addUserToExistingTeam(user, team);
+              this._playerService.addUserToExistingTeam(user, team, returning);
               break;
             }
             else if(numberTeams === 1){
               console.log('last team');
-              this._playerService.createNewTeamAndAddUser(user);
+              this._playerService.createNewTeamAndAddUser(user, returning);
             }
           }
           numberTeams = numberTeams - 1;
@@ -165,5 +170,16 @@ export class PlayerComponent implements OnInit {
      */
   getFirebase(){
     return firebase;
+  }
+
+  home(){
+    DZ.getLoginStatus(function(response) {
+      if (response.authResponse) {
+        this.router.navigate(['/dashboard']);
+      }
+      else{
+        this.router.navigate(['/']);
+      }
+    }.bind(this));
   }
 }
