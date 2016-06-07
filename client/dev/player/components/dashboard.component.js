@@ -99,7 +99,7 @@ var DashboardComponent = (function () {
                 console.log(Object.keys(userList).length);
                 console.log(count);
                 if (count === Object.keys(userList).length) {
-                    this.ref.detectChanges();
+                    this.ref.tick();
                 }
                 count++;
             }.bind(this));
@@ -113,7 +113,7 @@ var DashboardComponent = (function () {
             directives: [common_1.CORE_DIRECTIVES]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
-        __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ChangeDetectorRef])
+        __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ApplicationRef])
     ], DashboardComponent);
     return DashboardComponent;
 }());

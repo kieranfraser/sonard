@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject, forwardRef, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, Inject, forwardRef, ApplicationRef} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
 
@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   teamList: String[];
 
   constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent,
-              private ref: ChangeDetectorRef) {
+              private ref: ApplicationRef) {
     window.addEventListener("deviceorientation", function(event) {
 
       console.log(event.alpha);
@@ -125,7 +125,7 @@ export class DashboardComponent implements OnInit {
           console.log(Object.keys(userList).length);
           console.log(count);
           if(count === Object.keys(userList).length){
-            this.ref.detectChanges();
+            this.ref.tick();
           }
           count++;
         }.bind(this));
