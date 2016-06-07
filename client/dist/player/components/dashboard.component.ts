@@ -118,12 +118,13 @@ export class DashboardComponent implements OnInit {
      */
   populateTeamList(userList){
     this.teamList = [];
-    var count = 0;
+    var count = 1;
     for(var user of userList) {
       if (userList.hasOwnProperty(user)) {
         firebase.database().ref('users/' + user).on('value', function (snapshot) {
           this.teamList.push(snapshot.val().username);
-
+          console.log(Object.keys(userList).length);
+          console.log(count);
           if(count === Object.keys(userList).length){
             this.ref.detectChanges();
           }
