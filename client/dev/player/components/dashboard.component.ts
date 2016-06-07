@@ -120,7 +120,6 @@ export class DashboardComponent implements OnInit {
     this.teamList = [];
     var count = 1;
     for(var user of userList) {
-      if (userList.hasOwnProperty(user)) {
         firebase.database().ref('users/' + user).on('value', function (snapshot) {
           this.teamList.push(snapshot.val().username);
           console.log(Object.keys(userList).length);
@@ -130,7 +129,6 @@ export class DashboardComponent implements OnInit {
           }
           count++;
         }.bind(this));
-      }
     }
   }
 }
