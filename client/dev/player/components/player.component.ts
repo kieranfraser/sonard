@@ -26,8 +26,6 @@ export class PlayerComponent implements OnInit {
 
   title: string = "Deezer Challenge";
 
-  teamList: String[];
-
   // This is the number of players allowed per team.
   numberUsersPerTeam : number = 3;
 
@@ -182,56 +180,5 @@ export class PlayerComponent implements OnInit {
         this.router.navigate(['/']);
       }
     }.bind(this));
-  }
-
-  /**
-   * Load the users team list
-   */
-  initTeams(){
-    console.log('initTeams');
-    var user = localStorage.getItem('user');
-    console.log(JSON.parse(user).id);
-
-    firebase.database().ref('users/' + JSON.parse(user).id).on('value', function(snapshot) {
-      console.log('firebase');
-      localStorage.setItem('team', snapshot.val().currentTeam);
-      this.getTeamList();
-
-
-    }.bind(this));
-  }
-
-  getTeamList(){
-    console.log('get team list');
-    var userList = [];
-    firebase.database().ref('teams/'+localStorage.getItem('team')).on('value', function(snapshot) {
-
-      var members = JSON.parse(JSON.stringify(snapshot.val().members));
-      var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
-
-      console.log(teamName);
-
-      for (var member in members) {
-        if (members.hasOwnProperty(member)) {
-          console.log(member);
-          userList.push(member);
-        }
-      }
-      this.populateTeamList(userList);
-    }.bind(this));
-  }
-
-  /**
-   * Populate the team list with usernames
-   * @param userList
-   */
-  populateTeamList(userList){
-    this.teamList = [];
-    for(var user of userList) {
-      firebase.database().ref('users/' + user).on('value', function (snapshot) {
-        this.teamList.push(snapshot.val().username);
-      }.bind(this));
-    }
-    this.router.navigate(['/dashboard']);
   }
 }

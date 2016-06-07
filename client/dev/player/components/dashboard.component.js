@@ -36,10 +36,11 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
         console.log('constructor dashboard');
+        this.initTeams();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
-        //this.initTeams();
+        this.initTeams();
     };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();
@@ -56,10 +57,46 @@ var DashboardComponent = (function () {
             console.log('Longitude: ' + position.coords.longitude);
         }
     };
-    __decorate([
-        core_1.Input('teamList'), 
-        __metadata('design:type', Array)
-    ], DashboardComponent.prototype, "teamList", void 0);
+    /**
+     * Load the users team list
+     */
+    DashboardComponent.prototype.initTeams = function () {
+        var user = localStorage.getItem('user');
+        console.log(JSON.parse(user).id);
+        this._parent.getFirebase().database().ref('users/' + JSON.parse(user).id).on('value', function (snapshot) {
+            localStorage.setItem('team', snapshot.val().currentTeam);
+            this.getTeamList();
+        }.bind(this));
+    };
+    DashboardComponent.prototype.getTeamList = function () {
+        console.log('get team list');
+        var userList = [];
+        this._parent.getFirebase().database().ref('teams/' + localStorage.getItem('team')).on('value', function (snapshot) {
+            var members = JSON.parse(JSON.stringify(snapshot.val().members));
+            var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
+            console.log(teamName);
+            for (var member in members) {
+                if (members.hasOwnProperty(member)) {
+                    console.log(member);
+                    userList.push(member);
+                }
+            }
+            this.populateTeamList(userList);
+        }.bind(this));
+    };
+    /**
+     * Populate the team list with usernames
+     * @param userList
+       */
+    DashboardComponent.prototype.populateTeamList = function (userList) {
+        this.teamList = [];
+        for (var _i = 0, userList_1 = userList; _i < userList_1.length; _i++) {
+            var user = userList_1[_i];
+            firebase.database().ref('users/' + user).on('value', function (snapshot) {
+                this.teamList.push(snapshot.val().username);
+            }.bind(this));
+        }
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',

@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
   changedTrack: boolean = false;
 
-  @Input('teamList') teamList: String[];
+  teamList: String[];
 
   constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent) {
     window.addEventListener("deviceorientation", function(event) {
@@ -48,11 +48,12 @@ export class DashboardComponent implements OnInit {
     }.bind(this), true);
 
     console.log('constructor dashboard');
+    this.initTeams();
   }
 
   ngOnInit() {
     console.log('actual init');
-    //this.initTeams();
+    this.initTeams();
   }
 
   nextTrack(){
@@ -71,6 +72,55 @@ export class DashboardComponent implements OnInit {
     function success(position) {
       console.log('Latitude: ' + position.coords.latitude);
       console.log('Longitude: ' + position.coords.longitude);
+    }
+  }
+
+  /**
+   * Load the users team list
+   */
+  initTeams(){
+    var user = localStorage.getItem('user');
+    console.log(JSON.parse(user).id);
+
+    this._parent.getFirebase().database().ref('users/' + JSON.parse(user).id).on('value', function(snapshot) {
+
+      localStorage.setItem('team', snapshot.val().currentTeam);
+      this.getTeamList();
+
+
+    }.bind(this));
+  }
+
+  getTeamList(){
+    console.log('get team list');
+    var userList = [];
+    this._parent.getFirebase().database().ref('teams/'+localStorage.getItem('team')).on('value', function(snapshot) {
+
+      var members = JSON.parse(JSON.stringify(snapshot.val().members));
+      var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
+
+      console.log(teamName);
+
+      for (var member in members) {
+        if (members.hasOwnProperty(member)) {
+           console.log(member);
+           userList.push(member);
+        }
+      }
+      this.populateTeamList(userList);
+    }.bind(this));
+  }
+
+  /**
+   * Populate the team list with usernames
+   * @param userList
+     */
+  populateTeamList(userList){
+    this.teamList = [];
+    for(var user of userList) {
+      firebase.database().ref('users/' + user).on('value', function (snapshot) {
+        this.teamList.push(snapshot.val().username);
+      }.bind(this));
     }
   }
 }

@@ -154,49 +154,6 @@ var PlayerComponent = (function () {
             }
         }.bind(this));
     };
-    /**
-     * Load the users team list
-     */
-    PlayerComponent.prototype.initTeams = function () {
-        console.log('initTeams');
-        var user = localStorage.getItem('user');
-        console.log(JSON.parse(user).id);
-        firebase.database().ref('users/' + JSON.parse(user).id).on('value', function (snapshot) {
-            console.log('firebase');
-            localStorage.setItem('team', snapshot.val().currentTeam);
-            this.getTeamList();
-        }.bind(this));
-    };
-    PlayerComponent.prototype.getTeamList = function () {
-        console.log('get team list');
-        var userList = [];
-        firebase.database().ref('teams/' + localStorage.getItem('team')).on('value', function (snapshot) {
-            var members = JSON.parse(JSON.stringify(snapshot.val().members));
-            var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
-            console.log(teamName);
-            for (var member in members) {
-                if (members.hasOwnProperty(member)) {
-                    console.log(member);
-                    userList.push(member);
-                }
-            }
-            this.populateTeamList(userList);
-        }.bind(this));
-    };
-    /**
-     * Populate the team list with usernames
-     * @param userList
-     */
-    PlayerComponent.prototype.populateTeamList = function (userList) {
-        this.teamList = [];
-        for (var _i = 0, userList_1 = userList; _i < userList_1.length; _i++) {
-            var user = userList_1[_i];
-            firebase.database().ref('users/' + user).on('value', function (snapshot) {
-                this.teamList.push(snapshot.val().username);
-            }.bind(this));
-        }
-        this.router.navigate(['/dashboard']);
-    };
     PlayerComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',
