@@ -135,8 +135,8 @@ var PlayerComponent = (function () {
                         numberTeams = numberTeams - 1;
                     }
                 }
-                this.router.navigate(['/dashboard']);
             }
+            this.router.navigate(['/dashboard']);
         }.bind(this));
     };
     /**

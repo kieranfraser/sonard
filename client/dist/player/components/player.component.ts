@@ -160,8 +160,8 @@ export class PlayerComponent implements OnInit {
             numberTeams = numberTeams - 1;
           }
         }
-        this.router.navigate(['/dashboard']);
       }
+      this.router.navigate(['/dashboard']);
     }.bind(this));
   }
 

@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit {
 
     this._parent.getFirebase().database().ref('users/' + JSON.parse(user).id).on('value', function(snapshot) {
 
-      localStorage.setItem('team', snapshot.val().team);
+      localStorage.setItem('team', snapshot.val().currentTeam);
       this.getTeamList();
 
 

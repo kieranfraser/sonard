@@ -23,7 +23,8 @@ export class PlayerService {
    */
   public createNewUser(user, allocatedTeam){
     firebase.database().ref('users/' + user.id).set({
-      username: user.name
+      username: user.name,
+      currentTeam: allocatedTeam
     });
     this.updateExistingUser(user, allocatedTeam);
   }
@@ -35,7 +36,7 @@ export class PlayerService {
      */
   public updateExistingUser(user, allocatedTeam){
     firebase.database().ref('users/' + user.id+'/team').push({
-      team: allocatedTeam
+      teams: allocatedTeam
     }).key;
   }
 
