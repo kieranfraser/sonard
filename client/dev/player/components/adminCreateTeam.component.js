@@ -9,10 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Team_1 = require("../../../dist/player/models/Team");
 var AdminCreateTeam = (function () {
     function AdminCreateTeam() {
+        this.teamModel = new Team_1.Team("", "", "", []);
+        this.submitted = false;
+        this.firebase = localStorage.getItem('firebase');
     }
     AdminCreateTeam.prototype.ngOnInit = function () { };
+    AdminCreateTeam.prototype.onSubmit = function () {
+        this.submitted = true;
+        var teamRef = this.firebase.database().ref('teams');
+        var newTeamKey = teamRef.push({
+            teamName: this.teamModel.name,
+            genres: this.teamModel.genres
+        }).key;
+    };
     AdminCreateTeam = __decorate([
         core_1.Component({
             selector: 'create-team',

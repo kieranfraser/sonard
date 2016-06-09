@@ -5,7 +5,7 @@ export class Team {
   constructor(
     public id: string,
     public name: string,
-    public genres: string[],
+    public genres: string,
     public members: string[]
   ) {}
 }

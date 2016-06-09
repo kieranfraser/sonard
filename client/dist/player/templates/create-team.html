@@ -1,1 +1,1 @@
-<h1>Create a team</h1>
+<form class="form-basic" (ngSubmit)="onSubmit()" style="padding-top: 0;padding-bottom: 3%"><div class="form-row"><label><span>Team Name</span> <input type="text" name="name" [(ngModel)]="teamModel.name" required></label></div><div class="form-row"><label><span>Genres</span> <input type="text" name="genres" [(ngModel)]="teamModel.genres" required></label></div><div class="form-row" style="text-align: center"><button class="btn btn-default" type="submit">Submit Form</button></div></form>

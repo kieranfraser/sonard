@@ -122,7 +122,7 @@ var DashboardComponent = (function () {
             for (var team in snapshot.val()) {
                 var id = team;
                 var teamObject = snapshot.val()[team];
-                this.allTeams.push(new Team_1.Team(team, teamObject.teamName, ["Rock"], []));
+                this.allTeams.push(new Team_1.Team(team, teamObject.teamName, "Rock", []));
             }
             this.ref.detectChanges();
         }.bind(this));
