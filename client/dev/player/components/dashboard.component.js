@@ -21,6 +21,7 @@ var DashboardComponent = (function () {
         this.aresponse = 'nothing';
         this.changedTrack = false;
         this.me = "";
+        this.admin = false;
         window.addEventListener("deviceorientation", function (event) {
             console.log(event.alpha);
             console.log(event.beta);
@@ -43,6 +44,10 @@ var DashboardComponent = (function () {
         console.log('actual init');
         //this.initTeams();
         this.me = JSON.parse(localStorage.getItem('user')).name;
+        if (JSON.parse(localStorage.getItem('user')).name === 'Kieran.Fraser') {
+            console.log('entered admin mode');
+            this.admin = true;
+        }
     };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();

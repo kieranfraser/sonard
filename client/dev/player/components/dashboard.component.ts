@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   teamList: String[];
 
   me: String = "";
+  admin: boolean = false;
 
   constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent) {
     window.addEventListener("deviceorientation", function(event) {
@@ -57,6 +58,12 @@ export class DashboardComponent implements OnInit {
     console.log('actual init');
     //this.initTeams();
     this.me = JSON.parse(localStorage.getItem('user')).name;
+
+    if(JSON.parse(localStorage.getItem('user')).name === 'Kieran.Fraser'){
+      console.log('entered admin mode');
+      this.admin = true;
+    }
+
   }
 
   nextTrack(){
