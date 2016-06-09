@@ -47,6 +47,7 @@ var DashboardComponent = (function () {
         if (JSON.parse(localStorage.getItem('user')).name === 'Kieran.Fraser') {
             console.log('entered admin mode');
             this.admin = true;
+            this.getTeams();
         }
     };
     DashboardComponent.prototype.nextTrack = function () {
@@ -109,6 +110,16 @@ var DashboardComponent = (function () {
                 count++;
             }.bind(this));
         }
+    };
+    DashboardComponent.prototype.createTeam = function () {
+    };
+    DashboardComponent.prototype.getTeams = function () {
+        this._parent.getFirebase().database().ref('teams').on('value', function (snapshot) {
+            console.log(snapshot.val());
+            for (var team in snapshot.val()) {
+                console.log(team);
+            }
+        }.bind(this));
     };
     DashboardComponent = __decorate([
         core_1.Component({

@@ -1,6 +1,7 @@
 import {Component, OnInit, Inject, forwardRef, ApplicationRef} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
+import {Team} from "../models/Team";
 
 declare var DZ: any;
 declare var firebase: any;
@@ -24,6 +25,8 @@ export class DashboardComponent implements OnInit {
   changedTrack: boolean = false;
 
   teamList: String[];
+
+  allTeams: Team[];
 
   me: String = "";
   admin: boolean = false;
@@ -62,6 +65,7 @@ export class DashboardComponent implements OnInit {
     if(JSON.parse(localStorage.getItem('user')).name === 'Kieran.Fraser'){
       console.log('entered admin mode');
       this.admin = true;
+      this.getTeams();
     }
 
   }
@@ -140,4 +144,20 @@ export class DashboardComponent implements OnInit {
         }.bind(this));
     }
   }
+
+  createTeam(){
+
+  }
+
+  getTeams(){
+    this._parent.getFirebase().database().ref('teams').on('value', function(snapshot) {
+
+
+      console.log(snapshot.val());
+      for (var team in snapshot.val()) {
+        console.log(team);
+      }
+    }.bind(this));
+  }
+
 }

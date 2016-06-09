@@ -1,0 +1,1 @@
+"use strict";var Member=function(){function e(e,r,t){this.id=e,this.name=r,this.currentTeam=t}return e}();exports.Member=Member;
