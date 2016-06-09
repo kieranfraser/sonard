@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var player_component_1 = require("./player.component");
+var Team_1 = require("../models/Team");
 var DashboardComponent = (function () {
     function DashboardComponent(_parent) {
         this._parent = _parent;
@@ -114,11 +115,13 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.createTeam = function () {
     };
     DashboardComponent.prototype.getTeams = function () {
+        this.allTeams = [];
         this._parent.getFirebase().database().ref('teams').on('value', function (snapshot) {
             console.log(snapshot.val());
             for (var team in snapshot.val()) {
-                console.log(team);
-                console.log(snapshot.val()[team]);
+                var id = team;
+                var teamObject = snapshot.val()[team];
+                this.allTeams.push(new Team_1.Team(team, teamObject.teamName, ["Rock"], []));
             }
         }.bind(this));
     };

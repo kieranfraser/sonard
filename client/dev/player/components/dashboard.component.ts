@@ -150,14 +150,18 @@ export class DashboardComponent implements OnInit {
   }
 
   getTeams(){
+    this.allTeams = [];
     this._parent.getFirebase().database().ref('teams').on('value', function(snapshot) {
 
 
       console.log(snapshot.val());
       for (var team in snapshot.val()) {
-        console.log(team);
-        console.log(snapshot.val()[team])
+        var id = team;
+        var teamObject = snapshot.val()[team];
+        this.allTeams.push(new Team(team, teamObject.teamName, ["Rock"], []));
       }
+
+
     }.bind(this));
   }
 

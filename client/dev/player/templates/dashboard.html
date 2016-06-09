@@ -25,9 +25,10 @@
       <div *ngIf="admin === true" class="row">
         <!-- Admin Mode -->
         <h3>Admin Mode</h3>
-        <div >
-          first team.. second team.. third team..
-
+        <div *ngFor="#team of allTeams">
+          <div>{{team.id}}</div>
+          <div>{{team.name}}</div>
+          <div>{{team.genres}}</div>
         </div>
       </div>
 
