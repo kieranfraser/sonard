@@ -118,6 +118,7 @@ var DashboardComponent = (function () {
             console.log(snapshot.val());
             for (var team in snapshot.val()) {
                 console.log(team);
+                console.log(snapshot.val()[team]);
             }
         }.bind(this));
     };
