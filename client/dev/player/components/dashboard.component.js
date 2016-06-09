@@ -15,7 +15,7 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var player_component_1 = require("./player.component");
 var Team_1 = require("../models/Team");
-var about_component_1 = require("./about.component");
+var adminCreateTeam_component_1 = require("./adminCreateTeam.component");
 var DashboardComponent = (function () {
     function DashboardComponent(_parent, ref) {
         this._parent = _parent;
@@ -117,9 +117,8 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.createTeam = function () {
     };
     DashboardComponent.prototype.getTeams = function () {
-        this.allTeams = [];
         this._parent.getFirebase().database().ref('teams').on('value', function (snapshot) {
-            console.log(snapshot.val());
+            this.allTeams = [];
             for (var team in snapshot.val()) {
                 var id = team;
                 var teamObject = snapshot.val()[team];
@@ -133,7 +132,7 @@ var DashboardComponent = (function () {
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
             styleUrls: ['player/styles/todo.css'],
-            directives: [common_1.CORE_DIRECTIVES, about_component_1.AboutComponent]
+            directives: [common_1.CORE_DIRECTIVES, adminCreateTeam_component_1.AdminCreateTeam]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
         __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ChangeDetectorRef])

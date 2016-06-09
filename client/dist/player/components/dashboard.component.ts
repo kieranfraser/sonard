@@ -2,7 +2,7 @@ import {Component, OnInit, Inject, forwardRef, ChangeDetectorRef} from '@angular
 import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
 import {Team} from "../models/Team";
-import {AboutComponent} from "./about.component";
+import {AdminCreateTeam} from "./adminCreateTeam.component";
 
 declare var DZ: any;
 declare var firebase: any;
@@ -11,7 +11,7 @@ declare var firebase: any;
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
   styleUrls: ['player/styles/todo.css'],
-  directives: [CORE_DIRECTIVES, AboutComponent]
+  directives: [CORE_DIRECTIVES, AdminCreateTeam]
 })
 
 export class DashboardComponent implements OnInit {
@@ -152,11 +152,9 @@ export class DashboardComponent implements OnInit {
   }
 
   getTeams(){
-    this.allTeams = [];
     this._parent.getFirebase().database().ref('teams').on('value', function(snapshot) {
 
-
-      console.log(snapshot.val());
+      this.allTeams = [];
       for (var team in snapshot.val()) {
         var id = team;
         var teamObject = snapshot.val()[team];
