@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject, forwardRef, ApplicationRef} from '@angular/core';
+import {Component, OnInit, Inject, forwardRef, ChangeDetectorRef} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
 import {Team} from "../models/Team";
@@ -31,7 +31,8 @@ export class DashboardComponent implements OnInit {
   me: String = "";
   admin: boolean = false;
 
-  constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent) {
+  constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent,
+              private ref: ChangeDetectorRef) {
     window.addEventListener("deviceorientation", function(event) {
 
       console.log(event.alpha);
@@ -161,7 +162,7 @@ export class DashboardComponent implements OnInit {
         this.allTeams.push(new Team(team, teamObject.teamName, ["Rock"], []));
       }
 
-
+      this.ref.detectChanges();
     }.bind(this));
   }
 

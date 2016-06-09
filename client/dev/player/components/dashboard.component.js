@@ -16,8 +16,9 @@ var common_1 = require('@angular/common');
 var player_component_1 = require("./player.component");
 var Team_1 = require("../models/Team");
 var DashboardComponent = (function () {
-    function DashboardComponent(_parent) {
+    function DashboardComponent(_parent, ref) {
         this._parent = _parent;
+        this.ref = ref;
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
@@ -123,6 +124,7 @@ var DashboardComponent = (function () {
                 var teamObject = snapshot.val()[team];
                 this.allTeams.push(new Team_1.Team(team, teamObject.teamName, ["Rock"], []));
             }
+            this.ref.detectChanges();
         }.bind(this));
     };
     DashboardComponent = __decorate([
@@ -133,7 +135,7 @@ var DashboardComponent = (function () {
             directives: [common_1.CORE_DIRECTIVES]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
-        __metadata('design:paramtypes', [player_component_1.PlayerComponent])
+        __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ChangeDetectorRef])
     ], DashboardComponent);
     return DashboardComponent;
 }());
