@@ -32,6 +32,15 @@ var PlayerService = (function () {
         this.updateExistingUser(user, allocatedTeam);
     };
     /**
+     * Add a user to our user-database
+     * @param user
+       */
+    PlayerService.prototype.addUser = function (user) {
+        firebase.database().ref('users/' + user.id).set({
+            username: user.name
+        });
+    };
+    /**
      * Update the list of teams the user has participated in.
      * @param user
      * @param allocatedTeam

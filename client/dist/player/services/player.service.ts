@@ -29,6 +29,16 @@ export class PlayerService {
   }
 
   /**
+   * Add a user to our user-database
+   * @param user
+     */
+  public addUser(user){
+    firebase.database().ref('users/' + user.id).set({
+      username: user.name
+    });
+  }
+
+  /**
    * Update the list of teams the user has participated in.
    * @param user
    * @param allocatedTeam

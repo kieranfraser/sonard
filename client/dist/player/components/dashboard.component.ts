@@ -25,8 +25,9 @@ export class DashboardComponent implements OnInit {
 
   teamList: String[];
 
-  constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent,
-              private ref: ApplicationRef) {
+  me: String = "";
+
+  constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent) {
     window.addEventListener("deviceorientation", function(event) {
 
       console.log(event.alpha);
@@ -49,12 +50,13 @@ export class DashboardComponent implements OnInit {
     }.bind(this), true);
 
     console.log('constructor dashboard');
-    this.initTeams();
+    //this.initTeams();
   }
 
   ngOnInit() {
     console.log('actual init');
-    this.initTeams();
+    //this.initTeams();
+    this.me = JSON.parse(localStorage.getItem('user')).name;
   }
 
   nextTrack(){
@@ -125,7 +127,7 @@ export class DashboardComponent implements OnInit {
           console.log(Object.keys(userList).length);
           console.log(count);
           if(count === Object.keys(userList).length){
-            this.ref.tick();
+            //this.ref.tick();
           }
           count++;
         }.bind(this));

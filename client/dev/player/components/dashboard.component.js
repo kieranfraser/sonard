@@ -15,12 +15,12 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var player_component_1 = require("./player.component");
 var DashboardComponent = (function () {
-    function DashboardComponent(_parent, ref) {
+    function DashboardComponent(_parent) {
         this._parent = _parent;
-        this.ref = ref;
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
+        this.me = "";
         window.addEventListener("deviceorientation", function (event) {
             console.log(event.alpha);
             console.log(event.beta);
@@ -37,11 +37,12 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
         console.log('constructor dashboard');
-        this.initTeams();
+        //this.initTeams();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
-        this.initTeams();
+        //this.initTeams();
+        this.me = JSON.parse(localStorage.getItem('user')).name;
     };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();
@@ -99,7 +100,6 @@ var DashboardComponent = (function () {
                 console.log(Object.keys(userList).length);
                 console.log(count);
                 if (count === Object.keys(userList).length) {
-                    this.ref.tick();
                 }
                 count++;
             }.bind(this));
@@ -113,7 +113,7 @@ var DashboardComponent = (function () {
             directives: [common_1.CORE_DIRECTIVES]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
-        __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ApplicationRef])
+        __metadata('design:paramtypes', [player_component_1.PlayerComponent])
     ], DashboardComponent);
     return DashboardComponent;
 }());
