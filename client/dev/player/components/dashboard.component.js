@@ -53,6 +53,9 @@ var DashboardComponent = (function () {
             this.getTeams();
         }
     };
+    DashboardComponent.prototype.getFirebase = function () {
+        return this._parent.getFirebase();
+    };
     DashboardComponent.prototype.nextTrack = function () {
         DZ.player.next();
     };

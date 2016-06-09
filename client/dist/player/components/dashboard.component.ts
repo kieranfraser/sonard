@@ -72,6 +72,10 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  getFirebase(){
+    return this._parent.getFirebase();
+  }
+
   nextTrack(){
     DZ.player.next();
   }
