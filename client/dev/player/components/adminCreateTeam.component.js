@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var Team_1 = require("../../../dist/player/models/Team");
+var Team_1 = require("../models/Team");
 var AdminCreateTeam = (function () {
     function AdminCreateTeam() {
         this.teamModel = new Team_1.Team("", "", "", []);

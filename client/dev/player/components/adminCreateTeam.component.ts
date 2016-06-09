@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Team} from "../../../dist/player/models/Team";
+import {Team} from "../models/Team";
 
 @Component({
   selector: 'create-team',
