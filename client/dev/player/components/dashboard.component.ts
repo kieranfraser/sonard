@@ -2,6 +2,7 @@ import {Component, OnInit, Inject, forwardRef, ChangeDetectorRef} from '@angular
 import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
 import {Team} from "../models/Team";
+import {AboutComponent} from "./about.component";
 
 declare var DZ: any;
 declare var firebase: any;
@@ -10,7 +11,7 @@ declare var firebase: any;
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
   styleUrls: ['player/styles/todo.css'],
-  directives: [CORE_DIRECTIVES]
+  directives: [CORE_DIRECTIVES, AboutComponent]
 })
 
 export class DashboardComponent implements OnInit {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'player-cmp',
+  selector: 'about-cmp',
   templateUrl: 'player/templates/about.html',
   styleUrls: ['player/styles/todo.css']
 })

@@ -15,7 +15,7 @@ var AboutComponent = (function () {
     AboutComponent.prototype.ngOnInit = function () { };
     AboutComponent = __decorate([
         core_1.Component({
-            selector: 'player-cmp',
+            selector: 'about-cmp',
             templateUrl: 'player/templates/about.html',
             styleUrls: ['player/styles/todo.css']
         }), 

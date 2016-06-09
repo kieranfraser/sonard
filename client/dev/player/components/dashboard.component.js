@@ -15,6 +15,7 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var player_component_1 = require("./player.component");
 var Team_1 = require("../models/Team");
+var about_component_1 = require("./about.component");
 var DashboardComponent = (function () {
     function DashboardComponent(_parent, ref) {
         this._parent = _parent;
@@ -132,7 +133,7 @@ var DashboardComponent = (function () {
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
             styleUrls: ['player/styles/todo.css'],
-            directives: [common_1.CORE_DIRECTIVES]
+            directives: [common_1.CORE_DIRECTIVES, about_component_1.AboutComponent]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
         __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ChangeDetectorRef])
