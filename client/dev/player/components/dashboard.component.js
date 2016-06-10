@@ -49,13 +49,15 @@ var DashboardComponent = (function () {
         var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
         console.log(teamId);
         if (typeof teamId != "undefined" && teamId != null) {
-            this.teamAssigned = true;
+            //this.teamAssigned = true;
             var teamMembers = [];
             this._parent.getFirebase().database().ref('teams/' + teamId).on('value', function (snapshot) {
                 console.log(snapshot.val());
                 for (var member in snapshot.val().members) {
-                    teamMembers.push(member);
-                    console.log(member);
+                    if (snapshot.val().members.hasOwnProperty(member)) {
+                        teamMembers.push(member);
+                        console.log(member);
+                    }
                 }
                 var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, []);
                 localStorage.setItem('team', JSON.stringify(assignedTeam));
