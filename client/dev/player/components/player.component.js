@@ -52,6 +52,7 @@ var PlayerComponent = (function () {
             if (response.authResponse) {
                 console.log('already logged in');
                 console.log(response.authResponse.userID);
+                console.log(response);
                 firebase.database().ref('users/' + response.authResponse.userID).once('value').then(function (snapshot) {
                     console.log('user:');
                     console.log(snapshot.val().teamAssigned);
