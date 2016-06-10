@@ -94,11 +94,12 @@ export class PlayerComponent implements OnInit {
    */
   logout(){
     DZ.logout();
+    var userId = JSON.parse(localStorage.getItem('user')).id;
+    var teamId = JSON.parse(localStorage.getItem('team')).id;
+    firebase.database().ref('teams/'+teamId+'/members/'+userId).remove();
     localStorage.removeItem('user');
     localStorage.removeItem('team');
     this.router.navigate(['/']);
-
-    //remove the user from "active teams" list.
   }
 
   /**
