@@ -1,0 +1,49 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+
+.chosen-choices {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 5px;
+  width: 100%;
+  height: auto !important;
+  height: 1%; }
+.chosen-choices li {
+  float: left;
+  list-style: none; }
+.chosen-choices li.search-choice span {
+  word-wrap: break-word; }
+
+.chosen-choices {
+  position: relative;
+  margin: 3px 5px 3px 0;
+  padding: 3px 20px 3px 5px;
+  max-width: 100%;
+  line-height: 13px;
+  cursor: default; }
+
+li.search-choice {
+  margin-bottom: 4%;
+  margin-right: 1%;
+  max-width: 100%; }
+
+.tag {
+  padding: .3em .4em .4em; }
+.tag a {
+  color: #bbb;
+  cursor: pointer;
+  opacity: 0.6;
+  margin: 0 0 0 .3em; }
+.tag a:hover {
+  opacity: 1.0; }
+.tag a .glyphicon-white {
+  color: #fff;
+  margin-bottom: 2px; }
+.tag .remove {
+  vertical-align: middle;
+  top: 0; }
+
+.label-info {
+  background-color: #1E8EE4; }

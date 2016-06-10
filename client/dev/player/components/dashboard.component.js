@@ -130,11 +130,14 @@ var DashboardComponent = (function () {
             this.ref.detectChanges();
         }.bind(this));
     };
+    DashboardComponent.prototype.removeTeam = function (team) {
+        console.log('remove team');
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
-            styleUrls: ['player/styles/todo.css'],
+            styleUrls: ['player/styles/dashboard.css'],
             directives: [common_1.CORE_DIRECTIVES, adminCreateTeam_component_1.AdminCreateTeam]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 

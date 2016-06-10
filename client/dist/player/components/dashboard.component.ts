@@ -10,7 +10,7 @@ declare var firebase: any;
 @Component({
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
-  styleUrls: ['player/styles/todo.css'],
+  styleUrls: ['player/styles/dashboard.css'],
   directives: [CORE_DIRECTIVES, AdminCreateTeam]
 })
 
@@ -167,6 +167,10 @@ export class DashboardComponent implements OnInit {
 
       this.ref.detectChanges();
     }.bind(this));
+  }
+
+  removeTeam(team){
+    console.log('remove team');
   }
 
 }
