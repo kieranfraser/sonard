@@ -64,11 +64,12 @@ export class DashboardComponent implements OnInit {
     console.log('actual init');
     //this.initTeams();
     var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
-
+    console.log(teamId);
     if(typeof teamId != "undefined" && teamId != null){
       this.teamAssigned = true;
       var teamMembers = [];
       this._parent.getFirebase().database().ref('teams/'+teamId).on('value', function(snapshot) {
+        console.log(snapshot.val());
         for(var member in snapshot.val().members){
           teamMembers.push(member);
           console.log(member);
