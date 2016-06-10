@@ -47,10 +47,10 @@ var DashboardComponent = (function () {
         console.log('actual init');
         //this.initTeams();
         this.me = JSON.parse(localStorage.getItem('user')).name;
+        this.getTeams();
         if (JSON.parse(localStorage.getItem('user')).name === 'Kieran.Fraser') {
             console.log('entered admin mode');
             this.admin = true;
-            this.getTeams();
         }
     };
     DashboardComponent.prototype.getFirebase = function () {
@@ -117,21 +117,18 @@ var DashboardComponent = (function () {
             }.bind(this));
         }
     };
-    DashboardComponent.prototype.createTeam = function () {
-    };
     DashboardComponent.prototype.getTeams = function () {
         this._parent.getFirebase().database().ref('teams').on('value', function (snapshot) {
             this.allTeams = [];
             for (var team in snapshot.val()) {
                 var id = team;
                 var teamObject = snapshot.val()[team];
-                this.allTeams.push(new Team_1.Team(team, teamObject.teamName, "Rock", []));
+                this.allTeams.push(new Team_1.Team(team, teamObject.teamName, teamObject.genres, []));
             }
             this.ref.detectChanges();
         }.bind(this));
     };
     DashboardComponent.prototype.removeTeam = function (team) {
-        console.log('remove team');
         this._parent.getFirebase().database().ref('teams/' + team.id).remove();
     };
     DashboardComponent = __decorate([
