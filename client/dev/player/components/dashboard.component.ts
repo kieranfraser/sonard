@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit {
     }
 
     this.getTeams();
-
+    console.log(localStorage.getItem('userD').name);
     if(localStorage.getItem('userD').name === 'Kieran.Fraser'){
       console.log('entered admin mode');
       this.admin = true;
