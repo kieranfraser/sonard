@@ -5,16 +5,16 @@
         <button class='btn btn-primary' (click)="nextTrack()"> Next </button>
         ...tilting the your device forward also changes the song.
       </div>
-      <div class="row-fluid">
+      <div class="row-fluid" *ngIf="teamAssigned === false">
           <!-- USERS ONLINE SECTION -->
           <h3>Choose a team:</h3>
 
           <div class="row-fluid">
             <div class="col-xs-6 col-sm-4 col-md-3" *ngFor="#team of allTeams">
-              <div class="panel panel-default">
+              <div class="panel panel-default" (click)="selectedTeam(team)">
                 <div class="panel-body bk-primary text-light">
                   <div class="stat-panel text-center">
-                    <div class="stat-panel-number h1 ">{{team.name}}</div>
+                    <div class="stat-panel-number h3">{{team.name}}</div>
                     <div class="stat-panel-title text-uppercase">{{team.genres}}</div>
                   </div>
                 </div>
@@ -38,9 +38,10 @@
 
           <!--</div>-->
       </div>
-      <div *ngIf="admin === true" class="row">
+
+      <div *ngIf="admin === true" class="row-fluid">
         <!-- Admin Mode -->
-        <h3>Admin Mode</h3>
+        <h3>Admin:</h3>
         <div>
           <ul class="chosen-choices">
             <li class="search-choice" *ngFor="#team of allTeams">

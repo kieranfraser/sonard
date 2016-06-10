@@ -23,6 +23,7 @@ var DashboardComponent = (function () {
         this.input = 'nothing';
         this.aresponse = 'nothing';
         this.changedTrack = false;
+        this.teamAssigned = false;
         this.me = "";
         this.admin = false;
         window.addEventListener("deviceorientation", function (event) {
@@ -130,6 +131,14 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.removeTeam = function (team) {
         this._parent.getFirebase().database().ref('teams/' + team.id).remove();
+    };
+    DashboardComponent.prototype.selectedTeam = function (team) {
+        var userId = JSON.parse(localStorage.getItem('user')).id;
+        this._parent.getFirebase().database().ref('teams/' + team.id + '/members/' + userId).set({
+            member: true
+        });
+        localStorage.setItem('team', team);
+        this.teamAssigned = true;
     };
     DashboardComponent = __decorate([
         core_1.Component({

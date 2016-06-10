@@ -29,6 +29,8 @@ export class DashboardComponent implements OnInit {
 
   allTeams: Team[];
 
+  teamAssigned: boolean = false;
+
   me: String = "";
   admin: boolean = false;
 
@@ -168,6 +170,15 @@ export class DashboardComponent implements OnInit {
 
   removeTeam(team){
     this._parent.getFirebase().database().ref('teams/'+team.id).remove();
+  }
+
+  selectedTeam(team){
+    var userId = JSON.parse(localStorage.getItem('user')).id;
+    this._parent.getFirebase().database().ref('teams/'+team.id+'/members/'+userId).set({
+      member: true
+    });
+    localStorage.setItem('team', team);
+    this.teamAssigned = true;
   }
 
 }
