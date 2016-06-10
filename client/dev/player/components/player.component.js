@@ -51,7 +51,13 @@ var PlayerComponent = (function () {
         DZ.getLoginStatus(function (response) {
             if (response.authResponse) {
                 console.log('already logged in');
-                this.router.navigate(['/dashboard']);
+                firebase.database().ref('users/' + response.authResponse.userID).once('value').then(function (snapshot) {
+                    localStorage.setItem('userF', JSON.stringify(snapshot.val()));
+                    DZ.api('/user/me', function (user) {
+                        localStorage.setItem('userD', user);
+                        this.router.navigate(['/dashboard']);
+                    }.bind(this));
+                }.bind(this));
             }
         }.bind(this));
     };
@@ -78,10 +84,10 @@ var PlayerComponent = (function () {
      */
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
-        var userId = JSON.parse(localStorage.getItem('user')).id;
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
         var teamId = JSON.parse(localStorage.getItem('team')).id;
         firebase.database().ref('teams/' + teamId + '/members/' + userId).remove();
-        localStorage.removeItem('user');
+        localStorage.removeItem('userD');
         localStorage.removeItem('team');
         this.router.navigate(['/']);
     };
@@ -91,11 +97,12 @@ var PlayerComponent = (function () {
        */
     PlayerComponent.prototype.initUser = function (user) {
         firebase.database().ref('users/' + user.id).once('value').then(function (snapshot) {
-            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('userD', JSON.stringify(user));
             if (typeof snapshot.val() === "undefined" || snapshot.val() === null) {
                 this.addUser(user);
             }
             else {
+                localStorage.setItem('userF', JSON.stringify(snapshot.val()));
             }
         }.bind(this));
     };

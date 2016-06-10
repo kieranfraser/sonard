@@ -46,7 +46,7 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
         //this.initTeams();
-        var teamId = JSON.parse(localStorage.getItem('user')).teamAssigned;
+        var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
         if (typeof teamId != "undefined" && teamId != null) {
             this.teamAssigned = true;
             var teamMembers = [];
@@ -60,7 +60,7 @@ var DashboardComponent = (function () {
             });
         }
         this.getTeams();
-        if (JSON.parse(localStorage.getItem('user')).name === 'Kieran.Fraser') {
+        if (JSON.parse(localStorage.getItem('userD')).name === 'Kieran.Fraser') {
             console.log('entered admin mode');
             this.admin = true;
         }
@@ -87,7 +87,7 @@ var DashboardComponent = (function () {
      * Load the users team list
      */
     DashboardComponent.prototype.initTeams = function () {
-        var user = localStorage.getItem('user');
+        var user = localStorage.getItem('userD');
         console.log(JSON.parse(user).id);
         this._parent.getFirebase().database().ref('users/' + JSON.parse(user).id).on('value', function (snapshot) {
             localStorage.setItem('team', snapshot.val().currentTeam);
@@ -151,7 +151,7 @@ var DashboardComponent = (function () {
      * @param team
        */
     DashboardComponent.prototype.selectedTeam = function (team) {
-        var userId = JSON.parse(localStorage.getItem('user')).id;
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
         this._parent.getFirebase().database().ref('teams/' + team.id + '/members/' + userId).set({
             member: true
         });
