@@ -55,7 +55,7 @@ var DashboardComponent = (function () {
                     teamMembers.push(member);
                     console.log(member);
                 }
-                var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
+                var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, []);
                 localStorage.setItem('team', JSON.stringify(assignedTeam));
             });
         }

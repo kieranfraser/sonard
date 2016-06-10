@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit {
           teamMembers.push(member);
           console.log(member);
         }
-        var assignedTeam = new Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
+        var assignedTeam = new Team(teamId, snapshot.val().name, snapshot.val().genres, []);
         localStorage.setItem('team', JSON.stringify(assignedTeam));
       });
     }
