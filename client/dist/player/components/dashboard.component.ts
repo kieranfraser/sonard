@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
     var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
     console.log(teamId);
     if(typeof teamId != "undefined" && teamId != null){
-      //this.teamAssigned = true;
+      this.teamAssigned = true;
       var teamMembers = [];
       this._parent.getFirebase().database().ref('teams/'+teamId).on('value', function(snapshot) {
         console.log(snapshot.val());
@@ -83,7 +83,7 @@ export class DashboardComponent implements OnInit {
 
     this.getTeams();
 
-    if(JSON.parse(localStorage.getItem('userD')).name === 'Kieran.Fraser'){
+    if(localStorage.getItem('userD').name === 'Kieran.Fraser'){
       console.log('entered admin mode');
       this.admin = true;
     }
