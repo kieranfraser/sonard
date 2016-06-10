@@ -67,7 +67,7 @@ var DashboardComponent = (function () {
         }
         this.getTeams();
         console.log('user name');
-        console.log(localStorage.getItem('userD').name);
+        console.log(JSON.parse(localStorage.getItem('userD')).name);
         if (localStorage.getItem('userD').name === 'Kieran.Fraser') {
             console.log('entered admin mode');
             this.admin = true;

@@ -71,7 +71,7 @@ export class PlayerComponent implements OnInit {
           console.log(snapshot.val().teamAssigned);
           localStorage.setItem('userF', JSON.stringify(snapshot.val()));
           DZ.api('/user/me', function(user) {
-            localStorage.setItem('userD', user);
+            localStorage.setItem('userD', JSON.stringify(user));
             this.router.navigate(['/dashboard']);
           }.bind(this));
         }.bind(this));
