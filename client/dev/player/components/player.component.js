@@ -51,6 +51,7 @@ var PlayerComponent = (function () {
         DZ.getLoginStatus(function (response) {
             if (response.authResponse) {
                 console.log('already logged in');
+                console.log(response.authResponse.userID);
                 firebase.database().ref('users/' + response.authResponse.userID).once('value').then(function (snapshot) {
                     console.log('user:');
                     console.log(snapshot.val().teamAssigned);
