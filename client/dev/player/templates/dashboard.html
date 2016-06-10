@@ -30,16 +30,17 @@
           <div>{{team.name}}</div>
           <div>{{team.genres}}</div>
         </div>
-
-        <ul class="chosen-choices">
-          <li class="search-choice" *ngFor="#team of allTeams">
-            <span class="tag label label-info">
-              <span>{{team.name}}</span>
-              <span>{{team.genres}}</span>
-              <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" (click)="removeTeam(team)"></i></a>
-            </span>
-          </li>
-        </ul>
+        <div>
+          <ul class="chosen-choices">
+            <li class="search-choice" *ngFor="#team of allTeams">
+              <span class="tag label label-info">
+                <span>{{team.name}}</span>
+                <span>{{team.genres}}</span>
+                <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" (click)="removeTeam(team)"></i></a>
+              </span>
+            </li>
+          </ul>
+        </div>
 
       </div>
 
