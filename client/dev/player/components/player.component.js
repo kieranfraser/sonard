@@ -52,6 +52,8 @@ var PlayerComponent = (function () {
             if (response.authResponse) {
                 console.log('already logged in');
                 firebase.database().ref('users/' + response.authResponse.userID).once('value').then(function (snapshot) {
+                    console.log('user:');
+                    console.log(snapshot.val().teamAssigned);
                     localStorage.setItem('userF', JSON.stringify(snapshot.val()));
                     DZ.api('/user/me', function (user) {
                         localStorage.setItem('userD', user);
