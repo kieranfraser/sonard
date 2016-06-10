@@ -24,7 +24,6 @@ var DashboardComponent = (function () {
         this.aresponse = 'nothing';
         this.changedTrack = false;
         this.teamAssigned = false;
-        this.me = "";
         this.admin = false;
         window.addEventListener("deviceorientation", function (event) {
             console.log(event.alpha);
@@ -47,7 +46,19 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
         //this.initTeams();
-        this.me = JSON.parse(localStorage.getItem('user')).name;
+        var teamId = JSON.parse(localStorage.getItem('user')).teamAssigned;
+        if (typeof teamId != "undefined" && teamId != null) {
+            this.teamAssigned = true;
+            var teamMembers = [];
+            this._parent.getFirebase().database().ref('teams/' + teamId).on('value', function (snapshot) {
+                for (var member in snapshot.val().members) {
+                    teamMembers.push(member);
+                    console.log(member);
+                }
+                var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
+                localStorage.setItem('team', JSON.stringify(assignedTeam));
+            });
+        }
         this.getTeams();
         if (JSON.parse(localStorage.getItem('user')).name === 'Kieran.Fraser') {
             console.log('entered admin mode');
@@ -132,13 +143,20 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.removeTeam = function (team) {
         this._parent.getFirebase().database().ref('teams/' + team.id).remove();
     };
+    /**
+     * When a user selects a team:
+     *  save the user as a member of the active team list
+     *  update the user in our db as having a team assigned
+     *
+     * @param team
+       */
     DashboardComponent.prototype.selectedTeam = function (team) {
         var userId = JSON.parse(localStorage.getItem('user')).id;
         this._parent.getFirebase().database().ref('teams/' + team.id + '/members/' + userId).set({
             member: true
         });
         this._parent.getFirebase().database().ref('users/' + userId).update({
-            teamAssigned: team
+            teamAssigned: team.id
         });
         localStorage.setItem('team', team);
         this.teamAssigned = true;

@@ -111,13 +111,9 @@ export class PlayerComponent implements OnInit {
     firebase.database().ref('users/' + user.id).once('value').then(function(snapshot) {
       localStorage.setItem('user', JSON.stringify(user));
       if(typeof snapshot.val() === "undefined" || snapshot.val() === null){
-        // add user to our database
-       // this.checkTeams(user, false);
         this.addUser(user);
       }
       else{
-        //this.checkTeams(user, true);
-        //this.router.navigate(['/dashboard']);
       }
     }.bind(this));
   }

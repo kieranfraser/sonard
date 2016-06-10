@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
 
   teamAssigned: boolean = false;
 
-  me: String = "";
   admin: boolean = false;
 
   constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent,
@@ -64,7 +63,20 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     console.log('actual init');
     //this.initTeams();
-    this.me = JSON.parse(localStorage.getItem('user')).name;
+    var teamId = JSON.parse(localStorage.getItem('user')).teamAssigned;
+
+    if(typeof teamId != "undefined" && teamId != null){
+      this.teamAssigned = true;
+      var teamMembers = [];
+      this._parent.getFirebase().database().ref('teams/'+teamId).on('value', function(snapshot) {
+        for(var member in snapshot.val().members){
+          teamMembers.push(member);
+          console.log(member);
+        }
+        var assignedTeam = new Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
+        localStorage.setItem('team', JSON.stringify(assignedTeam));
+      });
+    }
 
     this.getTeams();
 
@@ -172,13 +184,20 @@ export class DashboardComponent implements OnInit {
     this._parent.getFirebase().database().ref('teams/'+team.id).remove();
   }
 
+  /**
+   * When a user selects a team:
+   *  save the user as a member of the active team list
+   *  update the user in our db as having a team assigned
+   *
+   * @param team
+     */
   selectedTeam(team){
     var userId = JSON.parse(localStorage.getItem('user')).id;
     this._parent.getFirebase().database().ref('teams/'+team.id+'/members/'+userId).set({
       member: true
     });
     this._parent.getFirebase().database().ref('users/'+userId).update({
-      teamAssigned: team
+      teamAssigned: team.id
     });
     localStorage.setItem('team', team);
     this.teamAssigned = true;
