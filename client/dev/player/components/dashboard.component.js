@@ -137,6 +137,9 @@ var DashboardComponent = (function () {
         this._parent.getFirebase().database().ref('teams/' + team.id + '/members/' + userId).set({
             member: true
         });
+        this._parent.getFirebase().database().ref('users/' + userId).update({
+            teamAssigned: team
+        });
         localStorage.setItem('team', team);
         this.teamAssigned = true;
     };
