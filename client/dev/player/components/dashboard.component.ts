@@ -171,6 +171,7 @@ export class DashboardComponent implements OnInit {
 
   removeTeam(team){
     console.log('remove team');
+    this._parent.getFirebase().database().ref('teams/'+team.id).remove();
   }
 
 }

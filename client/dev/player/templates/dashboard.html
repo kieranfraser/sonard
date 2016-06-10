@@ -26,7 +26,7 @@
         <!-- Admin Mode -->
         <h3>Admin Mode</h3>
         <div>
-          <ul *ngIf="allTeams && allTeams.length > 0" class="chosen-choices">
+          <ul class="chosen-choices">
             <li class="search-choice" *ngFor="#team of allTeams">
               <span class="tag label label-info">
                 <span>{{team.name}}</span>
@@ -35,10 +35,6 @@
               </span>
             </li>
           </ul>
-
-          <div *ngIf="allTeams.length === 0">
-            Loading teams...
-          </div>
         </div>
 
       </div>

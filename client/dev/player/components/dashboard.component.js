@@ -132,6 +132,7 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.removeTeam = function (team) {
         console.log('remove team');
+        this._parent.getFirebase().database().ref('teams/' + team.id).remove();
     };
     DashboardComponent = __decorate([
         core_1.Component({
