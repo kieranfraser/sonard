@@ -84,15 +84,12 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
         var userId = JSON.parse(localStorage.getItem('userD')).id;
-        if (typeof localStorage.getItem('team') != "undefined" && localStorage.getItem('team') != null) {
+        if (typeof localStorage.getItem('teamId') != "undefined" && localStorage.getItem('teamId') != null) {
             console.log('saved team:');
-            console.log(localStorage.getItem('team'));
-            console.log(JSON.parse(localStorage.getItem('team')));
-            console.log(localStorage.getItem('team'));
-            console.log(JSON.parse(localStorage.getItem('team')));
-            var teamId = JSON.parse(localStorage.getItem('team')).id;
+            console.log(localStorage.getItem('teamId'));
+            var teamId = localStorage.getItem('teamId');
             firebase.database().ref('teams/' + teamId + '/members/' + userId).remove();
-            localStorage.removeItem('team');
+            localStorage.removeItem('teamId');
         }
         firebase.database().ref('users/' + userId + '/teamAssigned').remove();
         localStorage.removeItem('userD');

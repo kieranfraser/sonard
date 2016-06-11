@@ -42,7 +42,7 @@ var DashboardComponent = (function () {
         }.bind(this), true);
         console.log('constructor dashboard');
         //this.initTeams();
-        //this.ngOnInit();
+        this.ngOnInit();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
@@ -58,7 +58,7 @@ var DashboardComponent = (function () {
                     }
                 }
                 var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
-                localStorage.setItem('team', JSON.stringify(assignedTeam));
+                localStorage.setItem('teamId', teamId);
             });
         }
         this.getTeams();
@@ -170,10 +170,9 @@ var DashboardComponent = (function () {
             teamAssigned: team.id
         });
         var assignedTeam = new Team_1.Team(team.id, team.name, team.genres, team.members);
-        localStorage.setItem('team', JSON.stringify(assignedTeam));
+        localStorage.setItem('teamId', team.id);
         console.log('saved team:');
-        console.log(localStorage.getItem('team'));
-        console.log(JSON.parse(localStorage.getItem('team')));
+        console.log(localStorage.getItem('teamId'));
         this.teamAssigned = true;
         this.teamList = [];
         for (var _i = 0, _a = team.members; _i < _a.length; _i++) {

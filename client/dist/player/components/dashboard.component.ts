@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     console.log('constructor dashboard');
     //this.initTeams();
-    //this.ngOnInit();
+    this.ngOnInit();
   }
 
   ngOnInit() {
@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           }
         }
         var assignedTeam = new Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
-        localStorage.setItem('team', JSON.stringify(assignedTeam));
+        localStorage.setItem('teamId', teamId);
       });
     }
 
@@ -216,11 +216,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
 
     var assignedTeam = new Team(team.id, team.name, team.genres, team.members);
-    localStorage.setItem('team', JSON.stringify(assignedTeam));
+    localStorage.setItem('teamId', team.id);
     console.log('saved team:');
-    console.log(localStorage.getItem('team'));
-
-    console.log(JSON.parse(localStorage.getItem('team')));
+    console.log(localStorage.getItem('teamId'));
 
     this.teamAssigned = true;
 
