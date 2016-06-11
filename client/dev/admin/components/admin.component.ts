@@ -14,14 +14,17 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   leaderboardList = [];
 
-  @Input('allTeams') allTeams: Team[];
+  @Input() allTeams: Team[];
 
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
               private ref: ChangeDetectorRef) {
     //this.allTeams = _parent.allTeams;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('nginit');
+    console.log(this.allTeams);
+  }
 
   ngOnDestroy(){
     this.ref.detach();

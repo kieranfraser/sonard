@@ -21,7 +21,10 @@ var AdminComponent = (function () {
         this.leaderboardList = [];
         //this.allTeams = _parent.allTeams;
     }
-    AdminComponent.prototype.ngOnInit = function () { };
+    AdminComponent.prototype.ngOnInit = function () {
+        console.log('nginit');
+        console.log(this.allTeams);
+    };
     AdminComponent.prototype.ngOnDestroy = function () {
         this.ref.detach();
     };
@@ -32,7 +35,7 @@ var AdminComponent = (function () {
         return this._parent.getFirebase();
     };
     __decorate([
-        core_1.Input('allTeams'), 
+        core_1.Input(), 
         __metadata('design:type', Array)
     ], AdminComponent.prototype, "allTeams", void 0);
     AdminComponent = __decorate([
