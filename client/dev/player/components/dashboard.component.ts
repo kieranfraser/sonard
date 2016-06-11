@@ -69,14 +69,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     if(typeof teamId != "undefined" && teamId != null){
       this.teamAssigned = true;
-      var teamMembers = [];
+      this.teamList = [];
       this._parent.getFirebase().database().ref('teams/'+teamId).on('value', function(snapshot) {
         for(var member in snapshot.val().members){
           if (snapshot.val().members.hasOwnProperty(member)) {
-            teamMembers.push(snapshot.val().members[member].name);
+            this.teamList.push(snapshot.val().members[member].name);
           }
         }
-        var assignedTeam = new Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
+        var assignedTeam = new Team(teamId, snapshot.val().name, snapshot.val().genres, this.teamList);
         localStorage.setItem('teamId', teamId);
       });
     }
@@ -111,22 +111,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log('Latitude: ' + position.coords.latitude);
       console.log('Longitude: ' + position.coords.longitude);
     }
-  }
-
-  /**
-   * Load the users team list
-   */
-  initTeams(){
-    var user = localStorage.getItem('userD');
-    console.log(JSON.parse(user).id);
-
-    this._parent.getFirebase().database().ref('users/' + JSON.parse(user).id).on('value', function(snapshot) {
-
-      localStorage.setItem('team', snapshot.val().currentTeam);
-      this.getTeamList();
-
-
-    }.bind(this));
   }
 
   getTeams(){

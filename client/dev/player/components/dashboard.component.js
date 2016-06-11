@@ -50,14 +50,14 @@ var DashboardComponent = (function () {
         var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
         if (typeof teamId != "undefined" && teamId != null) {
             this.teamAssigned = true;
-            var teamMembers = [];
+            this.teamList = [];
             this._parent.getFirebase().database().ref('teams/' + teamId).on('value', function (snapshot) {
                 for (var member in snapshot.val().members) {
                     if (snapshot.val().members.hasOwnProperty(member)) {
-                        teamMembers.push(snapshot.val().members[member].name);
+                        this.teamList.push(snapshot.val().members[member].name);
                     }
                 }
-                var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
+                var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, this.teamList);
                 localStorage.setItem('teamId', teamId);
             });
         }
@@ -84,17 +84,6 @@ var DashboardComponent = (function () {
             console.log('Latitude: ' + position.coords.latitude);
             console.log('Longitude: ' + position.coords.longitude);
         }
-    };
-    /**
-     * Load the users team list
-     */
-    DashboardComponent.prototype.initTeams = function () {
-        var user = localStorage.getItem('userD');
-        console.log(JSON.parse(user).id);
-        this._parent.getFirebase().database().ref('users/' + JSON.parse(user).id).on('value', function (snapshot) {
-            localStorage.setItem('team', snapshot.val().currentTeam);
-            this.getTeamList();
-        }.bind(this));
     };
     DashboardComponent.prototype.getTeams = function () {
         this._parent.getFirebase().database().ref('teams').on('value', function (snapshot) {
@@ -136,17 +125,12 @@ var DashboardComponent = (function () {
         });
         var assignedTeam = new Team_1.Team(team.id, team.name, team.genres, team.members);
         localStorage.setItem('teamId', team.id);
-        console.log('saved team:');
-        console.log(localStorage.getItem('teamId'));
-        console.log(team);
         this.teamList = [];
-        console.log(team.members);
         for (var _i = 0, _a = team.members; _i < _a.length; _i++) {
             var member = _a[_i];
             console.log(member);
             this.teamList.push(member);
         }
-        console.log(this.teamList);
         this.teamAssigned = true;
     };
     DashboardComponent = __decorate([
