@@ -110,6 +110,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     DZ.player.playPlaylist(1483340617);
   }
 
+  play(){
+    DZ.player.play();
+  }
+
   currentTrack(){
     this._parent.getFirebase().database().ref('currentTrack').on('value', function(snapshot) {
       DZ.player.addToQueue(snapshot.val().id);

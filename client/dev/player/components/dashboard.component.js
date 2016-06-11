@@ -81,6 +81,9 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.playMusic = function () {
         DZ.player.playPlaylist(1483340617);
     };
+    DashboardComponent.prototype.play = function () {
+        DZ.player.play();
+    };
     DashboardComponent.prototype.currentTrack = function () {
         this._parent.getFirebase().database().ref('currentTrack').on('value', function (snapshot) {
             DZ.player.addToQueue(snapshot.val().id);
