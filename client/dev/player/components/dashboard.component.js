@@ -165,7 +165,9 @@ var DashboardComponent = (function () {
             teamAssigned: team.id
         });
         localStorage.setItem('team', JSON.stringify(team));
+        console.log('saved team:');
         console.log(localStorage.getItem('team'));
+        console.log(JSON.parse(localStorage.getItem('team')));
         this.teamAssigned = true;
         this.teamList = [];
         for (var _i = 0, _a = team.members; _i < _a.length; _i++) {

@@ -209,7 +209,11 @@ export class DashboardComponent implements OnInit {
       teamAssigned: team.id
     });
     localStorage.setItem('team', JSON.stringify(team));
+    console.log('saved team:');
     console.log(localStorage.getItem('team'));
+
+    console.log(JSON.parse(localStorage.getItem('team')));
+    
     this.teamAssigned = true;
 
     this.teamList = [];
