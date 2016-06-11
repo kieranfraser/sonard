@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     console.log('constructor dashboard');
     //this.initTeams();
-    this.ngOnInit();
+    //this.ngOnInit();
   }
 
   ngOnInit() {
