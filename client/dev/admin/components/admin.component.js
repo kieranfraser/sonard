@@ -19,11 +19,14 @@ var AdminComponent = (function () {
         this._parent = _parent;
         this.ref = ref;
         this.leaderboardList = [];
+        this.allSongs = [];
         //this.allTeams = _parent.allTeams;
     }
     AdminComponent.prototype.ngOnInit = function () {
-        console.log('nginit');
-        console.log(this.allTeams);
+        DZ.api('/playlist/1483340617/tracks', function (response) {
+            console.log("Name of user id 5", response);
+            this.allSongs = response;
+        });
     };
     AdminComponent.prototype.ngOnDestroy = function () {
         this.ref.detach();
@@ -33,6 +36,8 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.getFirebase = function () {
         return this._parent.getFirebase();
+    };
+    AdminComponent.prototype.setSong = function (track) {
     };
     __decorate([
         core_1.Input(), 

@@ -3,6 +3,8 @@ import {DashboardComponent} from "../../player/components/dashboard.component";
 import {Team} from "../../common/models/Team";
 import {AdminCreateTeam} from "./adminCreateTeam.component";
 
+declare var DZ: any;
+
 @Component({
   selector: 'admin-cmp',
   templateUrl: 'admin/templates/admin-component.html',
@@ -15,6 +17,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   leaderboardList = [];
 
   @Input() allTeams: Team[];
+  allSongs = [];
 
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
               private ref: ChangeDetectorRef) {
@@ -22,8 +25,10 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('nginit');
-    console.log(this.allTeams);
+      DZ.api('/playlist/1483340617/tracks', function(response){
+        console.log("Name of user id 5", response);
+        this.allSongs = response;
+      });
   }
 
   ngOnDestroy(){
@@ -36,6 +41,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   getFirebase(){
     return this._parent.getFirebase();
+  }
+
+  setSong(track){
+
   }
 
 }
