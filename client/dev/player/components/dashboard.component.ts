@@ -2,9 +2,9 @@ import {Component, OnInit, Inject, forwardRef, ChangeDetectorRef, OnDestroy} fro
 import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
 import {Team} from "../../common/models/Team";
-import {AdminCreateTeam} from "./../../admin/components/adminCreateTeam.component.ts";
 import {LeaderBoardComponent} from "../../leaderboard/components/leaderboard.component";
 import {AdminComponent} from "../../admin/components/admin.component";
+import {AdminCreateTeam} from "../../admin/components/adminCreateTeam.component";
 
 declare var DZ: any;
 declare var firebase: any;
