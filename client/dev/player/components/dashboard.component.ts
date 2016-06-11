@@ -116,10 +116,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   currentTrack(){
     this._parent.getFirebase().database().ref('currentTrack').on('value', function(snapshot) {
-      DZ.player.playTracks(snapshot.val().id);
+      DZ.player.addToQueue(snapshot.val().id);
       localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
       console.log('track added', snapshot.val().title);
-    });
+    }.bind(this));
   }
 
   geolocation(){
