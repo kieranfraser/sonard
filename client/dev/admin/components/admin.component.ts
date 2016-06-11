@@ -1,4 +1,4 @@
-import {Component, OnInit, forwardRef, Inject, ChangeDetectorRef, OnDestroy} from '@angular/core';
+import {Component, OnInit, forwardRef, Inject, ChangeDetectorRef, OnDestroy, Input} from '@angular/core';
 import {DashboardComponent} from "../../player/components/dashboard.component";
 import {Team} from "../../common/models/Team";
 import {AdminCreateTeam} from "./adminCreateTeam.component";
@@ -14,11 +14,11 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   leaderboardList = [];
 
-  allTeams: Team[];
+  @Input('all-teams') allTeams: Team[];
 
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
               private ref: ChangeDetectorRef) {
-    this.allTeams = _parent.allTeams;
+    //this.allTeams = _parent.allTeams;
   }
 
   ngOnInit() {}

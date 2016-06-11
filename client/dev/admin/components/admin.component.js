@@ -19,7 +19,7 @@ var AdminComponent = (function () {
         this._parent = _parent;
         this.ref = ref;
         this.leaderboardList = [];
-        this.allTeams = _parent.allTeams;
+        //this.allTeams = _parent.allTeams;
     }
     AdminComponent.prototype.ngOnInit = function () { };
     AdminComponent.prototype.ngOnDestroy = function () {
@@ -31,6 +31,10 @@ var AdminComponent = (function () {
     AdminComponent.prototype.getFirebase = function () {
         return this._parent.getFirebase();
     };
+    __decorate([
+        core_1.Input('all-teams'), 
+        __metadata('design:type', Array)
+    ], AdminComponent.prototype, "allTeams", void 0);
     AdminComponent = __decorate([
         core_1.Component({
             selector: 'admin-cmp',
