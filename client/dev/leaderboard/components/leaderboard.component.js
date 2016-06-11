@@ -23,7 +23,7 @@ var LeaderBoardComponent = (function () {
             console.log(snapshot.val());
             //this.leaderboard = snapshot.val().leaderboard;
             this.leaderboard = [];
-            this.populateLeaderboard(snapshot.val());
+            this.populateLeaderboard(snapshot.val().leaderboard);
         }.bind(this));
     };
     LeaderBoardComponent.prototype.populateLeaderboard = function (leaderboard) {
