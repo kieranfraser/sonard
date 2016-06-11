@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit, OnDestroy {
         console.log("Name of user id 5", response);
         this.allSongs = response.data;
         console.log("allsongs", this.allSongs);
-      });
+      }.bind(this));
 
   }
 

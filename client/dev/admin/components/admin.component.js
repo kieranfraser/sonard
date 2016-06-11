@@ -27,7 +27,7 @@ var AdminComponent = (function () {
             console.log("Name of user id 5", response);
             this.allSongs = response.data;
             console.log("allsongs", this.allSongs);
-        });
+        }.bind(this));
     };
     AdminComponent.prototype.ngOnDestroy = function () {
         this.ref.detach();
