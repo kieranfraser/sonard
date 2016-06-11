@@ -177,7 +177,7 @@ export class DashboardComponent implements OnInit {
         var teamObject = snapshot.val()[team];
 
         var memberList = snapshot.val()[team].members;
-        var members : String[] = [];
+        var members = [];
         for(var member in memberList){
           members.push(memberList[member].name);
         }
@@ -209,6 +209,7 @@ export class DashboardComponent implements OnInit {
       teamAssigned: team.id
     });
     localStorage.setItem('team', JSON.stringify(team));
+    console.log(localStorage.getItem('team'));
     this.teamAssigned = true;
 
     this.teamList = [];
