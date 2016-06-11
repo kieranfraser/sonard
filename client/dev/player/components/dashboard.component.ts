@@ -88,6 +88,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.admin = true;
     }
 
+    var userId = JSON.parse(localStorage.getItem('userD')).id;
+    this._parent.getFirebase().database().ref('results/'+userId).on('value', function(snapshot) {
+      console.log(snapshot.val());
+    });
+
   }
 
   getFirebase(){
@@ -168,6 +173,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
     this.teamList.push(JSON.parse(localStorage.getItem('userD')).name);
     this.teamAssigned = true;
+  }
+
+  result(){
+    var number = Math.floor(Math.random() * 6) + 1;
+    var userId = JSON.parse(localStorage.getItem('userD')).id;
+    this._parent.getFirebase().database().ref('results/'+userId).push({
+      result: number
+    });
+    console.log(number);
   }
 
 }

@@ -66,6 +66,10 @@ var DashboardComponent = (function () {
             console.log('entered admin mode');
             this.admin = true;
         }
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
+        this._parent.getFirebase().database().ref('results/' + userId).on('value', function (snapshot) {
+            console.log(snapshot.val());
+        });
     };
     DashboardComponent.prototype.getFirebase = function () {
         return this._parent.getFirebase();
@@ -133,6 +137,14 @@ var DashboardComponent = (function () {
         }
         this.teamList.push(JSON.parse(localStorage.getItem('userD')).name);
         this.teamAssigned = true;
+    };
+    DashboardComponent.prototype.result = function () {
+        var number = Math.floor(Math.random() * 6) + 1;
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
+        this._parent.getFirebase().database().ref('results/' + userId).push({
+            result: number
+        });
+        console.log(number);
     };
     DashboardComponent = __decorate([
         core_1.Component({
