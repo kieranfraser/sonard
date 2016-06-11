@@ -1,4 +1,4 @@
-import {Component, OnInit, forwardRef, Inject} from '@angular/core';
+import {Component, OnInit, forwardRef, Inject, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import {DashboardComponent} from "../../player/components/dashboard.component";
 
 @Component({
@@ -7,11 +7,12 @@ import {DashboardComponent} from "../../player/components/dashboard.component";
   styleUrls: ['leaderboard/styles/leaderboard.css']
 })
 
-export class LeaderBoardComponent implements OnInit {
+export class LeaderBoardComponent implements OnInit, OnDestroy {
 
   leaderboard = [];
 
-  constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent) {}
+  constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
+              private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
 
@@ -38,8 +39,13 @@ export class LeaderBoardComponent implements OnInit {
         this.leaderboard.sort(function(a,b){return b.member - a.member});
         console.log('leaderboard - sorted');
         console.log(this.leaderboard);
+        this.ref.detectChanges();
       }.bind(this, member, leaderboard));
     }
+  }
+
+  ngOnDestroy(){
+    this.ref.detach();
   }
 
 }

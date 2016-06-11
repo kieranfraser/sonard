@@ -14,8 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('@angular/core');
 var dashboard_component_1 = require("../../player/components/dashboard.component");
 var LeaderBoardComponent = (function () {
-    function LeaderBoardComponent(_parent) {
+    function LeaderBoardComponent(_parent, ref) {
         this._parent = _parent;
+        this.ref = ref;
         this.leaderboard = [];
     }
     LeaderBoardComponent.prototype.ngOnInit = function () {
@@ -40,8 +41,12 @@ var LeaderBoardComponent = (function () {
                 this.leaderboard.sort(function (a, b) { return b.member - a.member; });
                 console.log('leaderboard - sorted');
                 console.log(this.leaderboard);
+                this.ref.detectChanges();
             }.bind(this, member, leaderboard));
         }
+    };
+    LeaderBoardComponent.prototype.ngOnDestroy = function () {
+        this.ref.detach();
     };
     LeaderBoardComponent = __decorate([
         core_1.Component({
@@ -50,7 +55,7 @@ var LeaderBoardComponent = (function () {
             styleUrls: ['leaderboard/styles/leaderboard.css']
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return dashboard_component_1.DashboardComponent; }))), 
-        __metadata('design:paramtypes', [dashboard_component_1.DashboardComponent])
+        __metadata('design:paramtypes', [dashboard_component_1.DashboardComponent, core_1.ChangeDetectorRef])
     ], LeaderBoardComponent);
     return LeaderBoardComponent;
 }());
