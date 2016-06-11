@@ -3,6 +3,7 @@ import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
 import {Team} from "../models/Team";
 import {AdminCreateTeam} from "./adminCreateTeam.component";
+import {LeaderBoardComponent} from "../../leaderboard/components/leaderboard.component";
 
 declare var DZ: any;
 declare var firebase: any;
@@ -11,7 +12,7 @@ declare var firebase: any;
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
   styleUrls: ['player/styles/dashboard.css'],
-  directives: [CORE_DIRECTIVES, AdminCreateTeam]
+  directives: [CORE_DIRECTIVES, AdminCreateTeam, LeaderBoardComponent]
 })
 
 export class DashboardComponent implements OnInit, OnDestroy {
