@@ -54,7 +54,7 @@ var PlayerComponent = (function () {
                     localStorage.setItem('userF', JSON.stringify(snapshot.val()));
                     DZ.api('/user/me', function (user) {
                         localStorage.setItem('userD', JSON.stringify(user));
-                        this.router.navigate(['/dashboard']);
+                        //this.router.navigate(['/dashboard']);
                     }.bind(this));
                 }.bind(this));
             }

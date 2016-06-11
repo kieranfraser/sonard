@@ -73,7 +73,7 @@ export class PlayerComponent implements OnInit {
           DZ.api('/user/me', function(user) {
 
             localStorage.setItem('userD', JSON.stringify(user));
-            this.router.navigate(['/dashboard']);
+            //this.router.navigate(['/dashboard']);
 
           }.bind(this));
 
