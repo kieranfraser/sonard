@@ -86,7 +86,9 @@ var PlayerComponent = (function () {
         var userId = JSON.parse(localStorage.getItem('userD')).id;
         var teamId = JSON.parse(localStorage.getItem('team')).id;
         firebase.database().ref('teams/' + teamId + '/members/' + userId).remove();
+        firebase.database().ref('users/' + userId + '/teamAssigned').remove();
         localStorage.removeItem('userD');
+        localStorage.removeItem('userF');
         localStorage.removeItem('team');
         this.router.navigate(['/']);
     };

@@ -62,8 +62,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     console.log('actual init');
-    //this.initTeams();
+
     var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
+
     if(typeof teamId != "undefined" && teamId != null){
       this.teamAssigned = true;
       var teamMembers = [];
@@ -209,6 +210,7 @@ export class DashboardComponent implements OnInit {
         this.teamList.push(team.members[member].name);
       }
     }
+    console.log(this.teamList);
   }
 
 }
