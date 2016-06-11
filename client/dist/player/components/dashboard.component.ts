@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
         var assignedTeam = new Team(teamId, snapshot.val().name, snapshot.val().genres, this.teamList);
         localStorage.setItem('teamId', teamId);
-      });
+      }.bind(this));
     }
 
     this.getTeams();

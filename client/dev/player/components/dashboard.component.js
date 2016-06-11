@@ -59,7 +59,7 @@ var DashboardComponent = (function () {
                 }
                 var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, this.teamList);
                 localStorage.setItem('teamId', teamId);
-            });
+            }.bind(this));
         }
         this.getTeams();
         if (JSON.parse(localStorage.getItem('userD')).name === 'Kieran.Fraser') {
