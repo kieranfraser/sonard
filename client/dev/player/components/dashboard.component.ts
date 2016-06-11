@@ -59,12 +59,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }.bind(this), true);
 
     console.log('constructor dashboard');
-    //this.initTeams();
-    //this.ngOnInit();
   }
 
   ngOnInit() {
     console.log('actual init');
+
+    this.currentTrack();
+
     this.teamAssigned = false;
 
     var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
@@ -107,6 +108,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   playMusic(){
     DZ.player.playPlaylist(1483340617);
+  }
+
+  currentTrack(){
+    this._parent.getFirebase().database().ref('currentTrack').on('value', function(snapshot) {
+      DZ.player.addToQueue(snapshot.val().id);
+      localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
+      console.log('track added', snapshot.val().title);
+    });
   }
 
   geolocation(){

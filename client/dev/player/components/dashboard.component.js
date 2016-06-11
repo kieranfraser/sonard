@@ -43,11 +43,10 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
         console.log('constructor dashboard');
-        //this.initTeams();
-        //this.ngOnInit();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
+        this.currentTrack();
         this.teamAssigned = false;
         var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
         if (typeof teamId != "undefined" && teamId != null) {
@@ -81,6 +80,13 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.playMusic = function () {
         DZ.player.playPlaylist(1483340617);
+    };
+    DashboardComponent.prototype.currentTrack = function () {
+        this._parent.getFirebase().database().ref('currentTrack').on('value', function (snapshot) {
+            DZ.player.addToQueue(snapshot.val().id);
+            localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
+            console.log('track added', snapshot.val().title);
+        });
     };
     DashboardComponent.prototype.geolocation = function () {
         if (navigator.geolocation) {

@@ -39,6 +39,7 @@ var AdminComponent = (function () {
         return this._parent.getFirebase();
     };
     AdminComponent.prototype.setSong = function (track) {
+        this._parent.getFirebase().database().ref('currentTrack').set(track);
     };
     __decorate([
         core_1.Input(), 

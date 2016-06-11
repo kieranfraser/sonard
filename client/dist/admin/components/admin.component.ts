@@ -46,7 +46,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   setSong(track){
-
+    this._parent.getFirebase().database().ref('currentTrack').set(track);
   }
 
 }
