@@ -29,7 +29,7 @@ export class LeaderBoardComponent implements OnInit {
       console.log(member);
       console.log(leaderboard[member]);
       console.log(leaderboard[member].id);
-      this._parent.getFirebase().database().ref('users/'+leaderboard[member].id).once('value').then(function(snapshot) {
+      this._parent.getFirebase().database().ref('users/'+leaderboard[member].id).once('value').then(function(member, leaderboard, snapshot) {
         console.log(snapshot.val());
         var name = snapshot.val().username;
         this.leaderboard.push({name: name, result: leaderboard[member].result});
