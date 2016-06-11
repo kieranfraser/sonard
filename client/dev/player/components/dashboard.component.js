@@ -144,7 +144,7 @@ var DashboardComponent = (function () {
         for (var _i = 0, _a = team.members; _i < _a.length; _i++) {
             var member = _a[_i];
             console.log(member);
-            this.teamList.push(name);
+            this.teamList.push(member);
         }
         console.log(this.teamList);
         this.teamAssigned = true;

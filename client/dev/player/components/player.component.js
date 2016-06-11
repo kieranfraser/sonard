@@ -87,8 +87,6 @@ var PlayerComponent = (function () {
         DZ.logout();
         var userId = JSON.parse(localStorage.getItem('userD')).id;
         if (typeof localStorage.getItem('teamId') != "undefined" && localStorage.getItem('teamId') != null) {
-            console.log('saved team:');
-            console.log(localStorage.getItem('teamId'));
             var teamId = localStorage.getItem('teamId');
             firebase.database().ref('teams/' + teamId + '/members/' + userId).remove();
             localStorage.removeItem('teamId');
