@@ -42,7 +42,7 @@ var DashboardComponent = (function () {
         }.bind(this), true);
         console.log('constructor dashboard');
         //this.initTeams();
-        this.ngOnInit();
+        //this.ngOnInit();
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');

@@ -84,17 +84,19 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
         var userId = JSON.parse(localStorage.getItem('userD')).id;
-        console.log('saved team:');
-        console.log(localStorage.getItem('team'));
-        console.log(JSON.parse(localStorage.getItem('team')));
-        console.log(localStorage.getItem('team'));
-        console.log(JSON.parse(localStorage.getItem('team')));
-        var teamId = JSON.parse(localStorage.getItem('team')).id;
-        firebase.database().ref('teams/' + teamId + '/members/' + userId).remove();
+        if (typeof localStorage.getItem('team') != 'undefined') {
+            console.log('saved team:');
+            console.log(localStorage.getItem('team'));
+            console.log(JSON.parse(localStorage.getItem('team')));
+            console.log(localStorage.getItem('team'));
+            console.log(JSON.parse(localStorage.getItem('team')));
+            var teamId = JSON.parse(localStorage.getItem('team')).id;
+            firebase.database().ref('teams/' + teamId + '/members/' + userId).remove();
+            localStorage.removeItem('team');
+        }
         firebase.database().ref('users/' + userId + '/teamAssigned').remove();
         localStorage.removeItem('userD');
         localStorage.removeItem('userF');
-        localStorage.removeItem('team');
         this.router.navigate(['/']);
     };
     /**
