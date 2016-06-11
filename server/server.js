@@ -43,7 +43,7 @@ ref.on("value", function (snapshot) {
     allResults.sort(function (a, b) { return b.member - a.member; });
     db.ref('singleLeaderboard').set({
         track: 'randomSong',
-        date: new Date(),
+        date: new Date().getTime(),
         leaderboard: allResults
     });
 });

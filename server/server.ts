@@ -59,7 +59,7 @@ ref.on("value", function(snapshot) {
 
   db.ref('singleLeaderboard').set({
     track: 'randomSong',
-    date: new Date(),
+    date: new Date().getTime(),
     leaderboard: allResults
   });
 

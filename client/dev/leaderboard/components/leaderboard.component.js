@@ -16,11 +16,13 @@ var dashboard_component_1 = require("../../player/components/dashboard.component
 var LeaderBoardComponent = (function () {
     function LeaderBoardComponent(_parent) {
         this._parent = _parent;
+        this.leaderboard = [];
     }
     LeaderBoardComponent.prototype.ngOnInit = function () {
         this._parent.getFirebase().database().ref('singleLeaderboard').on('value', function (snapshot) {
             console.log(snapshot.val());
-        });
+            this.leaderboard = snapshot.val().leaderboard;
+        }.bind(this));
     };
     LeaderBoardComponent = __decorate([
         core_1.Component({

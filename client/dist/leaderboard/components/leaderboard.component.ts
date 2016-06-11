@@ -9,14 +9,16 @@ import {DashboardComponent} from "../../player/components/dashboard.component";
 
 export class LeaderBoardComponent implements OnInit {
 
+  leaderboard = [];
+
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent) {}
 
   ngOnInit() {
 
     this._parent.getFirebase().database().ref('singleLeaderboard').on('value', function (snapshot) {
       console.log(snapshot.val());
-      
-    });
+      this.leaderboard = snapshot.val().leaderboard;
+    }.bind(this));
   }
 
 }
