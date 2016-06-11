@@ -84,7 +84,7 @@ var PlayerComponent = (function () {
     PlayerComponent.prototype.logout = function () {
         DZ.logout();
         var userId = JSON.parse(localStorage.getItem('userD')).id;
-        if (typeof localStorage.getItem('team') != 'undefined') {
+        if (typeof localStorage.getItem('team') != "undefined" && localStorage.getItem('team') != null) {
             console.log('saved team:');
             console.log(localStorage.getItem('team'));
             console.log(JSON.parse(localStorage.getItem('team')));
