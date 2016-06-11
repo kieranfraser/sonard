@@ -26,6 +26,7 @@ var AdminComponent = (function () {
         DZ.api('/playlist/1483340617/tracks', function (response) {
             console.log("Name of user id 5", response);
             this.allSongs = response.data;
+            console.log("allsongs", this.allSongs);
         });
     };
     AdminComponent.prototype.ngOnDestroy = function () {
