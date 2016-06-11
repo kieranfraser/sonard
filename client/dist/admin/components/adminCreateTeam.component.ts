@@ -1,6 +1,6 @@
 import {Component, OnInit, forwardRef, Inject} from '@angular/core';
-import {Team} from "../models/Team";
-import {DashboardComponent} from "./dashboard.component";
+import {Team} from "../../common/models/Team";
+import {AdminComponent} from "./admin.component";
 
 @Component({
   selector: 'create-team',
@@ -16,7 +16,7 @@ export class AdminCreateTeam implements OnInit {
 
   submitted = false;
 
-  constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent) {
+  constructor(@Inject(forwardRef(() => AdminComponent)) private _parent:AdminComponent) {
     this.firebase = this._parent.getFirebase();
   }
 

@@ -12,8 +12,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 var core_1 = require('@angular/core');
-var Team_1 = require("../models/Team");
-var dashboard_component_1 = require("./dashboard.component");
+var Team_1 = require("../../common/models/Team");
+var admin_component_1 = require("./admin.component");
 var AdminCreateTeam = (function () {
     function AdminCreateTeam(_parent) {
         this._parent = _parent;
@@ -36,8 +36,8 @@ var AdminCreateTeam = (function () {
             templateUrl: 'player/templates/create-team.html',
             styleUrls: ['player/styles/todo.css']
         }),
-        __param(0, core_1.Inject(core_1.forwardRef(function () { return dashboard_component_1.DashboardComponent; }))), 
-        __metadata('design:paramtypes', [dashboard_component_1.DashboardComponent])
+        __param(0, core_1.Inject(core_1.forwardRef(function () { return admin_component_1.AdminComponent; }))), 
+        __metadata('design:paramtypes', [admin_component_1.AdminComponent])
     ], AdminCreateTeam);
     return AdminCreateTeam;
 }());
