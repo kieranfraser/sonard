@@ -38,7 +38,7 @@ export class LeaderBoardComponent implements OnInit {
         this.leaderboard.sort(function(a,b){return b.member - a.member});
         console.log('leaderboard - sorted');
         console.log(this.leaderboard);
-      }.bind(this));
+      }.bind(this, member, leaderboard));
     }
   }
 
