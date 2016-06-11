@@ -65,15 +65,18 @@ export class PlayerComponent implements OnInit {
 
     DZ.getLoginStatus(function(response) {
       if (response.authResponse) {
-        console.log('already logged in');
+
         firebase.database().ref('users/' + response.userID).once('value').then(function(snapshot) {
-          console.log('user:');
-          console.log(snapshot.val().teamAssigned);
+
           localStorage.setItem('userF', JSON.stringify(snapshot.val()));
+
           DZ.api('/user/me', function(user) {
+
             localStorage.setItem('userD', JSON.stringify(user));
             this.router.navigate(['/dashboard']);
+
           }.bind(this));
+
         }.bind(this));
 
       }
@@ -124,51 +127,8 @@ export class PlayerComponent implements OnInit {
       }
       else{
         localStorage.setItem('userF', JSON.stringify(snapshot.val()));
+        this.router.navigate(['/dashboard']);
       }
-    }.bind(this));
-  }
-
-  /**
-   * Allocate a user to a team (only on their initial login)
-   * @param id
-   * @returns {*}
-     */
-  checkTeams(user, returning){
-    console.log('check teams');
-    firebase.database().ref('teams').once('value').then(function(snapshot) {
-
-      if(typeof snapshot.val() === "undefined" || snapshot.val() === null){
-        console.log('if of checkTeams');
-        this._playerService.createNewTeamAndAddUser(user, returning);
-      }
-      else{
-        var teams = JSON.parse(JSON.stringify(snapshot.val()));
-        console.log(teams);
-        var numberTeams = Object.keys(teams).length;
-
-        for (var team in teams) {
-          if (teams.hasOwnProperty(team)) {
-            //console.log(JSON.parse(JSON.stringify(teams[team])));
-            //console.log((JSON.parse(JSON.stringify(teams[team])).members));
-            var members = (JSON.parse(JSON.stringify(teams[team])).members);
-            var numberMembers = Object.keys(members).length;
-
-            console.log(numberMembers);
-
-            if(numberMembers < this.numberUsersPerTeam){
-              console.log('less than 3');
-              this._playerService.addUserToExistingTeam(user, team, returning);
-              break;
-            }
-            else if(numberTeams === 1){
-              console.log('last team');
-              this._playerService.createNewTeamAndAddUser(user, returning);
-            }
-            numberTeams = numberTeams - 1;
-          }
-        }
-      }
-      this.router.navigate(['/dashboard']);
     }.bind(this));
   }
 

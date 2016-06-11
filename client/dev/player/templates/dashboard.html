@@ -25,18 +25,17 @@
 
 
 
-          <!--<div *ngFor="#member of teamList" >-->
+          <!--<div *ngFor="#member of teamList" *ngIf="teamAssigned === true" >
+            <div class="desc">
+              <div class="thumb">
+                &lt;!&ndash;<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">&ndash;&gt;
+              </div>
+              <div class="details">
+                <p><a>{{member}}</a><br/></p>
+              </div>
+            </div>
 
-            <!--<div class="desc">-->
-              <!--<div class="thumb">-->
-                <!--&lt;!&ndash;<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">&ndash;&gt;-->
-              <!--</div>-->
-              <!--<div class="details">-->
-                <!--<p><a>{{member}}</a><br/></p>-->
-              <!--</div>-->
-            <!--</div>-->
-
-          <!--</div>-->
+          </div>-->
       </div>
 
       <div *ngIf="admin === true" class="row-fluid">

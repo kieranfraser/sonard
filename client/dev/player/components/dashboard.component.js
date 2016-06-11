@@ -47,28 +47,21 @@ var DashboardComponent = (function () {
         console.log('actual init');
         //this.initTeams();
         var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
-        console.log(teamId);
         if (typeof teamId != "undefined" && teamId != null) {
             this.teamAssigned = true;
             var teamMembers = [];
             this._parent.getFirebase().database().ref('teams/' + teamId).on('value', function (snapshot) {
-                console.log('snapshot.val');
-                console.log(snapshot.val());
                 for (var member in snapshot.val().members) {
                     if (snapshot.val().members.hasOwnProperty(member)) {
                         teamMembers.push(member);
-                        console.log('member');
-                        console.log(member);
                     }
                 }
-                var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, []);
+                var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
                 localStorage.setItem('team', JSON.stringify(assignedTeam));
             });
         }
         this.getTeams();
-        console.log('user name');
-        console.log(JSON.parse(localStorage.getItem('userD')).name);
-        if (localStorage.getItem('userD').name === 'Kieran.Fraser') {
+        if (JSON.parse(localStorage.getItem('userD')).name === 'Kieran.Fraser') {
             console.log('entered admin mode');
             this.admin = true;
         }
@@ -119,7 +112,7 @@ var DashboardComponent = (function () {
         }.bind(this));
     };
     /**
-     * Populate the team list with usernames
+     * Populate the team list with user-names
      * @param userList
        */
     DashboardComponent.prototype.populateTeamList = function (userList) {
@@ -161,13 +154,20 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.selectedTeam = function (team) {
         var userId = JSON.parse(localStorage.getItem('userD')).id;
         this._parent.getFirebase().database().ref('teams/' + team.id + '/members/' + userId).set({
-            member: true
+            name: JSON.parse(localStorage.getItem('userD')).name
         });
         this._parent.getFirebase().database().ref('users/' + userId).update({
             teamAssigned: team.id
         });
         localStorage.setItem('team', team);
         this.teamAssigned = true;
+        this.teamList = [];
+        for (var member in team.members) {
+            if (team.members.hasOwnProperty(member)) {
+                console.log(team.members[member]);
+                this.teamList.push(team.members[member].name);
+            }
+        }
     };
     DashboardComponent = __decorate([
         core_1.Component({
