@@ -201,7 +201,7 @@ export class DashboardComponent implements OnInit {
     this._parent.getFirebase().database().ref('users/'+userId).update({
       teamAssigned: team.id
     });
-    localStorage.setItem('team', team);
+    localStorage.setItem('team', JSON.stringify(team));
     this.teamAssigned = true;
 
     this.teamList = [];
