@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, forwardRef, Inject} from '@angular/core';
+import {DashboardComponent} from "../../player/components/dashboard.component";
 
 @Component({
   selector: 'leaderboard-cmp',
@@ -8,8 +9,14 @@ import {Component, OnInit} from '@angular/core';
 
 export class LeaderBoardComponent implements OnInit {
 
-  constructor() {}
+  constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this._parent.getFirebase().database().ref('singleLeaderboard').on('value', function (snapshot) {
+      console.log(snapshot.val());
+      
+    });
+  }
 
 }

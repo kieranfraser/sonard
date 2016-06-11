@@ -8,18 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var core_1 = require('@angular/core');
+var dashboard_component_1 = require("../../player/components/dashboard.component");
 var LeaderBoardComponent = (function () {
-    function LeaderBoardComponent() {
+    function LeaderBoardComponent(_parent) {
+        this._parent = _parent;
     }
-    LeaderBoardComponent.prototype.ngOnInit = function () { };
+    LeaderBoardComponent.prototype.ngOnInit = function () {
+        this._parent.getFirebase().database().ref('singleLeaderboard').on('value', function (snapshot) {
+            console.log(snapshot.val());
+        });
+    };
     LeaderBoardComponent = __decorate([
         core_1.Component({
             selector: 'leaderboard-cmp',
             templateUrl: 'leaderboard/templates/leaderboard-component.html',
             styleUrls: ['leaderboard/styles/leaderboard.css']
-        }), 
-        __metadata('design:paramtypes', [])
+        }),
+        __param(0, core_1.Inject(core_1.forwardRef(function () { return dashboard_component_1.DashboardComponent; }))), 
+        __metadata('design:paramtypes', [dashboard_component_1.DashboardComponent])
     ], LeaderBoardComponent);
     return LeaderBoardComponent;
 }());
