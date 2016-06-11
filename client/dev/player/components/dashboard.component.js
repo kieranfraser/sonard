@@ -174,7 +174,9 @@ var DashboardComponent = (function () {
         console.log('saved team:');
         console.log(localStorage.getItem('teamId'));
         this.teamAssigned = true;
+        console.log(team);
         this.teamList = [];
+        console.log(team.members);
         for (var _i = 0, _a = team.members; _i < _a.length; _i++) {
             var member = _a[_i];
             console.log(member);

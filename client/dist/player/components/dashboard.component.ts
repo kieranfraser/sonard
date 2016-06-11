@@ -222,7 +222,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.teamAssigned = true;
 
+    console.log(team);
     this.teamList = [];
+    console.log(team.members);
     for (var member of team.members) {
         console.log(member);
         this.teamList.push(team.members[member].name);
