@@ -39,15 +39,13 @@
     </div>
 
     <div *ngIf="teamAssigned === true" class="row-fluid" *ngIf="teamAssigned === false">
-      <!-- USERS ONLINE SECTION -->
-      <h3>Team Members:</h3>
-
       <div class="row-fluid">
         <div class="col-xs-6 col-sm-4 col-md-3" >
           <div class="panel panel-default">
             <div class="panel-body bk-primary text-light">
               <div class="stat-panel text-center">
-                <div *ngFor="#member of teamList" class="stat-panel-number text-uppercase">{{member}}</div>
+                <div class="stat-panel-number h3">Team Members: </div>
+                <div *ngFor="#member of teamList" class="stat-panel-number">{{member}}</div>
               </div>
             </div>
           </div>
