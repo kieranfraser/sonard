@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
       DZ.api('/playlist/1483340617/tracks', function(response){
         console.log("Name of user id 5", response);
-        this.allSongs = response;
+        this.allSongs = response.data;
       });
   }
 
