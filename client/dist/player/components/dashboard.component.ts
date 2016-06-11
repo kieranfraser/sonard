@@ -213,7 +213,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this._parent.getFirebase().database().ref('users/'+userId).update({
       teamAssigned: team.id
     });
-    localStorage.setItem('team', JSON.stringify(team));
+
+    var assignedTeam = new Team(team.id, team.name, team.genres, team.members);
+    localStorage.setItem('team', JSON.stringify(assignedTeam));
     console.log('saved team:');
     console.log(localStorage.getItem('team'));
 
