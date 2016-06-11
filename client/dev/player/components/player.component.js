@@ -15,9 +15,10 @@ var about_component_1 = require("./about.component");
 var dashboard_component_1 = require("./dashboard.component");
 var router_1 = require("@angular/router");
 var PlayerComponent = (function () {
-    function PlayerComponent(_playerService, router) {
+    function PlayerComponent(_playerService, router, zone) {
         this._playerService = _playerService;
         this.router = router;
+        this.zone = zone;
         this.title = "Deezer Challenge";
         // This is the number of players allowed per team.
         this.numberUsersPerTeam = 3;
@@ -53,8 +54,9 @@ var PlayerComponent = (function () {
                 firebase.database().ref('users/' + response.userID).once('value').then(function (snapshot) {
                     localStorage.setItem('userF', JSON.stringify(snapshot.val()));
                     DZ.api('/user/me', function (user) {
+                        var _this = this;
                         localStorage.setItem('userD', JSON.stringify(user));
-                        //this.router.navigate(['/dashboard']);
+                        this.zone.run(function () { return _this.router.navigate(['/dashboard']); });
                     }.bind(this));
                 }.bind(this));
             }
@@ -102,13 +104,14 @@ var PlayerComponent = (function () {
        */
     PlayerComponent.prototype.initUser = function (user) {
         firebase.database().ref('users/' + user.id).once('value').then(function (snapshot) {
+            var _this = this;
             localStorage.setItem('userD', JSON.stringify(user));
             if (typeof snapshot.val() === "undefined" || snapshot.val() === null) {
                 this.addUser(user);
             }
             else {
                 localStorage.setItem('userF', JSON.stringify(snapshot.val()));
-                this.router.navigate(['/dashboard']);
+                this.zone.run(function () { return _this.router.navigate(['/dashboard']); });
             }
         }.bind(this));
     };
@@ -130,8 +133,9 @@ var PlayerComponent = (function () {
         }.bind(this));
     };
     PlayerComponent.prototype.addUser = function (user) {
+        var _this = this;
         localStorage.setItem('userF', JSON.stringify(this._playerService.addUser(user)));
-        this.router.navigate(['/dashboard']);
+        this.zone.run(function () { return _this.router.navigate(['/dashboard']); });
     };
     PlayerComponent = __decorate([
         core_1.Component({
@@ -146,7 +150,7 @@ var PlayerComponent = (function () {
             { path: '/about', component: about_component_1.AboutComponent },
             { path: '/dashboard', component: dashboard_component_1.DashboardComponent }
         ]), 
-        __metadata('design:paramtypes', [player_service_1.PlayerService, router_1.Router])
+        __metadata('design:paramtypes', [player_service_1.PlayerService, router_1.Router, core_1.NgZone])
     ], PlayerComponent);
     return PlayerComponent;
 }());

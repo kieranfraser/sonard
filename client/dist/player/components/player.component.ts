@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from '@angular/core';
 import {PlayerService} from "../services/player.service";
 import {LandingComponent} from "./landing.component";
 import {AboutComponent} from "./about.component";
@@ -29,7 +29,7 @@ export class PlayerComponent implements OnInit {
   // This is the number of players allowed per team.
   numberUsersPerTeam : number = 3;
 
-  constructor(private _playerService: PlayerService, private router: Router) {}
+  constructor(private _playerService: PlayerService, private router: Router, private zone:NgZone) {}
 
   /**
    * To begin, load the landing page
@@ -73,7 +73,7 @@ export class PlayerComponent implements OnInit {
           DZ.api('/user/me', function(user) {
 
             localStorage.setItem('userD', JSON.stringify(user));
-            //this.router.navigate(['/dashboard']);
+            this.zone.run(() => this.router.navigate(['/dashboard']));
 
           }.bind(this));
 
@@ -139,7 +139,7 @@ export class PlayerComponent implements OnInit {
       }
       else{
         localStorage.setItem('userF', JSON.stringify(snapshot.val()));
-        this.router.navigate(['/dashboard']);
+        this.zone.run(() => this.router.navigate(['/dashboard']));
       }
     }.bind(this));
   }
@@ -165,6 +165,6 @@ export class PlayerComponent implements OnInit {
 
   addUser(user){
     localStorage.setItem('userF', JSON.stringify(this._playerService.addUser(user)));
-    this.router.navigate(['/dashboard']);
+    this.zone.run(() => this.router.navigate(['/dashboard']));
   }
 }
