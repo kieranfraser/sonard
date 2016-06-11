@@ -36,7 +36,7 @@ var PlayerService = (function () {
      * @param user
        */
     PlayerService.prototype.addUser = function (user) {
-        firebase.database().ref('users/' + user.id).set({
+        return firebase.database().ref('users/' + user.id).set({
             username: user.name
         });
     };

@@ -130,7 +130,7 @@ var PlayerComponent = (function () {
         }.bind(this));
     };
     PlayerComponent.prototype.addUser = function (user) {
-        this._playerService.addUser(user);
+        localStorage.setItem('userF', JSON.stringify(this._playerService.addUser(user)));
         this.router.navigate(['/dashboard']);
     };
     PlayerComponent = __decorate([

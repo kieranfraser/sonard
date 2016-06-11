@@ -33,7 +33,7 @@ export class PlayerService {
    * @param user
      */
   public addUser(user){
-    firebase.database().ref('users/' + user.id).set({
+    return firebase.database().ref('users/' + user.id).set({
       username: user.name
     });
   }
