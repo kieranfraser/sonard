@@ -45,6 +45,7 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
+        this.teamAssigned = false;
         var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
         if (typeof teamId != "undefined" && teamId != null) {
             this.teamAssigned = true;
