@@ -96,41 +96,6 @@ var DashboardComponent = (function () {
             this.getTeamList();
         }.bind(this));
     };
-    DashboardComponent.prototype.getTeamList = function () {
-        console.log('get team list');
-        var userList = [];
-        this._parent.getFirebase().database().ref('teams/' + localStorage.getItem('team')).on('value', function (snapshot) {
-            var members = JSON.parse(JSON.stringify(snapshot.val().members));
-            var teamName = JSON.parse(JSON.stringify(snapshot.val().teamName));
-            console.log(teamName);
-            for (var member in members) {
-                if (members.hasOwnProperty(member)) {
-                    console.log(member);
-                    userList.push(member);
-                }
-            }
-            this.populateTeamList(userList);
-        }.bind(this));
-    };
-    /**
-     * Populate the team list with user-names
-     * @param userList
-       */
-    DashboardComponent.prototype.populateTeamList = function (userList) {
-        this.teamList = [];
-        var count = 1;
-        for (var _i = 0, userList_1 = userList; _i < userList_1.length; _i++) {
-            var user = userList_1[_i];
-            firebase.database().ref('users/' + user).on('value', function (snapshot) {
-                this.teamList.push(snapshot.val().username);
-                console.log(Object.keys(userList).length);
-                console.log(count);
-                if (count === Object.keys(userList).length) {
-                }
-                count++;
-            }.bind(this));
-        }
-    };
     DashboardComponent.prototype.getTeams = function () {
         this._parent.getFirebase().database().ref('teams').on('value', function (snapshot) {
             this.allTeams = [];
@@ -173,16 +138,16 @@ var DashboardComponent = (function () {
         localStorage.setItem('teamId', team.id);
         console.log('saved team:');
         console.log(localStorage.getItem('teamId'));
-        this.teamAssigned = true;
         console.log(team);
         this.teamList = [];
         console.log(team.members);
         for (var _i = 0, _a = team.members; _i < _a.length; _i++) {
             var member = _a[_i];
             console.log(member);
-            this.teamList.push(team.members[member].name);
+            this.teamList.push(name);
         }
         console.log(this.teamList);
+        this.teamAssigned = true;
     };
     DashboardComponent = __decorate([
         core_1.Component({
