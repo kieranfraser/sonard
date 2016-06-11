@@ -32,7 +32,7 @@ export class LeaderBoardComponent implements OnInit {
       this._parent.getFirebase().database().ref('users/'+leaderboard[member].id).once('value').then(function(snapshot) {
         console.log(snapshot.val());
         var name = snapshot.val().username;
-        this.leaderboard.push({name: name, result: leaderboard.result});
+        this.leaderboard.push({name: name, result: leaderboard[member].result});
         console.log('leaderboard - unsorted');
         console.log(this.leaderboard);
         this.leaderboard.sort(function(a,b){return b.member - a.member});
