@@ -50,8 +50,8 @@ var DashboardComponent = (function () {
         var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
         if (typeof teamId != "undefined" && teamId != null) {
             this.teamAssigned = true;
-            this.teamList = [];
             this._parent.getFirebase().database().ref('teams/' + teamId).on('value', function (snapshot) {
+                this.teamList = [];
                 for (var member in snapshot.val().members) {
                     if (snapshot.val().members.hasOwnProperty(member)) {
                         this.teamList.push(snapshot.val().members[member].name);
