@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   leaderboardList = [];
 
-  @Input('all-teams') allTeams: Team[];
+  @Input('allTeams') allTeams: Team[];
 
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
               private ref: ChangeDetectorRef) {

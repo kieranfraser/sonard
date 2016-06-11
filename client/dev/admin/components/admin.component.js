@@ -32,7 +32,7 @@ var AdminComponent = (function () {
         return this._parent.getFirebase();
     };
     __decorate([
-        core_1.Input('all-teams'), 
+        core_1.Input('allTeams'), 
         __metadata('design:type', Array)
     ], AdminComponent.prototype, "allTeams", void 0);
     AdminComponent = __decorate([
