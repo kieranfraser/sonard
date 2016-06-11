@@ -9,7 +9,7 @@ import {DashboardComponent} from "../../player/components/dashboard.component";
 
 export class LeaderBoardComponent implements OnInit, OnDestroy {
 
-  leaderboard = [];
+  leaderboardList = [];
 
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
               private ref: ChangeDetectorRef) {}
@@ -19,7 +19,7 @@ export class LeaderBoardComponent implements OnInit, OnDestroy {
     this._parent.getFirebase().database().ref('singleLeaderboard').on('value', function (snapshot) {
       console.log(snapshot.val());
       //this.leaderboard = snapshot.val().leaderboard;
-      this.leaderboard = [];
+      this.leaderboardList = [];
       this.populateLeaderboard(snapshot.val().leaderboard);
     }.bind(this));
   }
@@ -33,12 +33,12 @@ export class LeaderBoardComponent implements OnInit, OnDestroy {
       this._parent.getFirebase().database().ref('users/'+leaderboard[member].id).once('value').then(function(member, leaderboard, snapshot) {
         console.log(snapshot.val());
         var name = snapshot.val().username;
-        this.leaderboard.push({name: name, result: leaderboard[member].result});
+        this.leaderboardList.push({name: name, result: leaderboard[member].result});
         console.log('leaderboard - unsorted');
-        console.log(this.leaderboard);
-        this.leaderboard.sort(function(a,b){return b.member - a.member});
+        console.log(this.leaderboardList);
+        this.leaderboardList.sort(function(a,b){return b.result - a.result});
         console.log('leaderboard - sorted');
-        console.log(this.leaderboard);
+        console.log(this.leaderboardList);
         this.ref.detectChanges();
       }.bind(this, member, leaderboard));
     }
