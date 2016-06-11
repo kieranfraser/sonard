@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit {
       this._parent.getFirebase().database().ref('teams/'+teamId).on('value', function(snapshot) {
         for(var member in snapshot.val().members){
           if (snapshot.val().members.hasOwnProperty(member)) {
-            teamMembers.push(member);
+            teamMembers.push(snapshot.val().members[member].name);
           }
         }
         var assignedTeam = new Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
@@ -175,7 +175,14 @@ export class DashboardComponent implements OnInit {
       for (var team in snapshot.val()) {
         var id = team;
         var teamObject = snapshot.val()[team];
-        this.allTeams.push(new Team(team, teamObject.teamName, teamObject.genres, []));
+
+        var memberList = snapshot.val()[team].members;
+        var members : String[] = [];
+        for(var member in memberList){
+          members.push(memberList[member].name);
+        }
+
+        this.allTeams.push(new Team(team, teamObject.teamName, teamObject.genres, members));
       }
 
       this.ref.detectChanges();
@@ -205,11 +212,9 @@ export class DashboardComponent implements OnInit {
     this.teamAssigned = true;
 
     this.teamList = [];
-    for (var member in team.members) {
-      if (team.members.hasOwnProperty(member)) {
-        console.log(team.members[member]);
+    for (var member of team.members) {
+        console.log(member);
         this.teamList.push(team.members[member].name);
-      }
     }
     console.log(this.teamList);
   }

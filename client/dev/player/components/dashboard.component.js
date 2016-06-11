@@ -53,7 +53,7 @@ var DashboardComponent = (function () {
             this._parent.getFirebase().database().ref('teams/' + teamId).on('value', function (snapshot) {
                 for (var member in snapshot.val().members) {
                     if (snapshot.val().members.hasOwnProperty(member)) {
-                        teamMembers.push(member);
+                        teamMembers.push(snapshot.val().members[member].name);
                     }
                 }
                 var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, teamMembers);
@@ -136,7 +136,12 @@ var DashboardComponent = (function () {
             for (var team in snapshot.val()) {
                 var id = team;
                 var teamObject = snapshot.val()[team];
-                this.allTeams.push(new Team_1.Team(team, teamObject.teamName, teamObject.genres, []));
+                var memberList = snapshot.val()[team].members;
+                var members = [];
+                for (var member in memberList) {
+                    members.push(memberList[member].name);
+                }
+                this.allTeams.push(new Team_1.Team(team, teamObject.teamName, teamObject.genres, members));
             }
             this.ref.detectChanges();
         }.bind(this));
@@ -162,11 +167,10 @@ var DashboardComponent = (function () {
         localStorage.setItem('team', JSON.stringify(team));
         this.teamAssigned = true;
         this.teamList = [];
-        for (var member in team.members) {
-            if (team.members.hasOwnProperty(member)) {
-                console.log(team.members[member]);
-                this.teamList.push(team.members[member].name);
-            }
+        for (var _i = 0, _a = team.members; _i < _a.length; _i++) {
+            var member = _a[_i];
+            console.log(member);
+            this.teamList.push(team.members[member].name);
         }
         console.log(this.teamList);
     };
