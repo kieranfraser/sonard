@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject, forwardRef, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, Inject, forwardRef, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common'
 import {PlayerComponent} from "./player.component";
 import {Team} from "../models/Team";
@@ -14,7 +14,7 @@ declare var firebase: any;
   directives: [CORE_DIRECTIVES, AdminCreateTeam]
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   input:string = 'nothing';
   aresponse:string = 'nothing';
@@ -189,6 +189,11 @@ export class DashboardComponent implements OnInit {
     }.bind(this));
   }
 
+  ngOnDestroy(){
+    console.log('destroy');
+    this.ref.detach();
+  }
+
   removeTeam(team){
     this._parent.getFirebase().database().ref('teams/'+team.id).remove();
   }
@@ -213,7 +218,7 @@ export class DashboardComponent implements OnInit {
     console.log(localStorage.getItem('team'));
 
     console.log(JSON.parse(localStorage.getItem('team')));
-    
+
     this.teamAssigned = true;
 
     this.teamList = [];

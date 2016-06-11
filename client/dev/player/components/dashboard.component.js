@@ -146,6 +146,10 @@ var DashboardComponent = (function () {
             this.ref.detectChanges();
         }.bind(this));
     };
+    DashboardComponent.prototype.ngOnDestroy = function () {
+        console.log('destroy');
+        this.ref.detach();
+    };
     DashboardComponent.prototype.removeTeam = function (team) {
         this._parent.getFirebase().database().ref('teams/' + team.id).remove();
     };
