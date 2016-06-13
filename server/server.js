@@ -51,7 +51,7 @@ ref.on("value", function (snapshot) {
 });
 // ----------------------------- For python analysis --------------------------
 var _root = process.cwd();
-var jsonPath = path.join(__dirname, 'server', 'analysis', 'compute_input.py');
+var jsonPath = path.join(__dirname, 'analysis', 'compute_input.py');
 console.log('path', jsonPath);
 console.log('here');
 var spawn = require('child_process').spawn, py = spawn('python', [jsonPath]), data = [1, 2, 3, 4, 5, 6, 7, 8, 9], dataString = '';

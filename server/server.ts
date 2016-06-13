@@ -73,7 +73,7 @@ ref.on("value", function(snapshot) {
 
 let _root = process.cwd();
 
-var jsonPath = path.join(__dirname, 'server', 'analysis', 'compute_input.py');
+var jsonPath = path.join(__dirname, 'analysis', 'compute_input.py');
 console.log('path', jsonPath);
 
 console.log('here');
