@@ -117,8 +117,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       var position = snapshot.val().position;
 
       console.log('the position', position);
-      DZ.player.seek(position);
+
       DZ.player.play();
+      DZ.player.seek(position);
     }.bind(this));
   }
 
