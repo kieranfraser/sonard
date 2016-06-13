@@ -21,6 +21,8 @@ def main():
     #return the sum to the output stream
     print lines_sum
 
+    sys.stdout.flush()
+
 #start process
 if __name__ == '__main__':
     main()
