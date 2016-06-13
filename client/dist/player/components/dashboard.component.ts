@@ -67,6 +67,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log('actual init');
 
+    this._parent.getFirebase().database().ref('currentPosition').set({
+      position: 50
+    });
+
     this.currentTrack();
 
     this.teamAssigned = false;
