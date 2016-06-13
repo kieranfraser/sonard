@@ -48,10 +48,8 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         console.log('actual init');
-        this._parent.getFirebase().database().ref('currentPosition').set({
-            position: 50
-        });
         this.currentTrack();
+        this.subscribeToSeek();
         this.teamAssigned = false;
         var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
         if (typeof teamId != "undefined" && teamId != null) {
