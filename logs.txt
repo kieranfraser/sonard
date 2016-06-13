@@ -1,101 +1,101 @@
-2016-06-13T15:40:24.743932+00:00 heroku[web.1]: State changed from starting to up
-2016-06-13T15:40:24.403144+00:00 app[web.1]: Error: Not starting without license key!
-2016-06-13T15:40:24.403012+00:00 app[web.1]: New Relic for Node.js halted startup due to an error:
-2016-06-13T15:40:24.370829+00:00 app[web.1]: path /app/server/analysis/compute_input.py
-2016-06-13T15:40:24.371716+00:00 app[web.1]: here
-2016-06-13T15:40:24.403148+00:00 app[web.1]:     at cb_nextTick (/app/node_modules/newrelic/lib/agent.js:164:16)
-2016-06-13T15:40:24.404564+00:00 app[web.1]: up and running @: a8fd9b41-7925-46b1-a10c-48059154daa0 on port: 46469
-2016-06-13T15:40:24.404633+00:00 app[web.1]: enviroment: production
-2016-06-13T15:40:24.403149+00:00 app[web.1]:     at process._tickCallback (internal/process/next_tick.js:98:9)
-2016-06-13T15:40:24.403151+00:00 app[web.1]:     at startup (node.js:148:18)
-2016-06-13T15:40:24.403150+00:00 app[web.1]:     at Function.Module.runMain (module.js:449:11)
-2016-06-13T15:40:24.403152+00:00 app[web.1]:     at node.js:405:3
-2016-06-13T15:40:24.403149+00:00 app[web.1]:     at _combinedTickCallback (internal/process/next_tick.js:67:7)
-2016-06-13T15:40:24.704850+00:00 app[web.1]: Sum of numbers= 
-2016-06-13T15:40:26.288074+00:00 app[web.1]:      '-KK-DJQ52oiZua6wY37D': { result: 5 },
-2016-06-13T15:40:26.288071+00:00 app[web.1]:      '-KK-DILHUs6xnoErSZnR': { result: 1 },
-2016-06-13T15:40:26.288071+00:00 app[web.1]:      '-KK-DHwzyryedQWfEi6l': { result: 1 },
-2016-06-13T15:40:26.288074+00:00 app[web.1]:      '-KK-DJrO361OE7-fnuyu': { result: 4 },
-2016-06-13T15:40:26.288059+00:00 app[web.1]: { '936685971': 
-2016-06-13T15:40:26.288069+00:00 app[web.1]:      '-KJzo5YYgyzNASQ7yFtx': { result: 4 },
-2016-06-13T15:40:26.288078+00:00 app[web.1]:      '-KK-ASL_CjWKBI4zXciw': { result: 1 },
-2016-06-13T15:40:26.288070+00:00 app[web.1]:      '-KJzo6QRbZO9DzJYU_PT': { result: 4 },
-2016-06-13T15:40:26.288068+00:00 app[web.1]:    { '-KJzmuSkc5EVljlrKDwS': { result: 3 },
-2016-06-13T15:40:26.288072+00:00 app[web.1]:      '-KK-DIjERwcdetakiIpC': { result: 1 },
-2016-06-13T15:40:26.288079+00:00 app[web.1]:      '-KK-AiH5gsw1mcTbS0gW': { result: 6 },
-2016-06-13T15:40:26.288080+00:00 app[web.1]:      '-KK-BQuY6_GVC78YbLN9': { result: 2 },
-2016-06-13T15:40:26.288080+00:00 app[web.1]:      '-KK-BRdrsKPWf7HfvGT9': { result: 5 },
-2016-06-13T15:40:26.288073+00:00 app[web.1]:      '-KK-DJ2xk0EiyOXGNbT7': { result: 3 },
-2016-06-13T15:40:26.288081+00:00 app[web.1]:      '-KK-DKzHlD8PdGnIESp2': { result: 2 },
-2016-06-13T15:40:26.288081+00:00 app[web.1]:      '-KK-DLl9qoyxl_x10AyZ': { result: 6 } } }
-2016-06-13T15:40:26.288075+00:00 app[web.1]:      '-KK-FWHQbESyXqvkvdxf': { result: 3 },
-2016-06-13T15:40:26.288076+00:00 app[web.1]:      '-KK-FWxxQdzOKp4-3I0R': { result: 6 } },
-2016-06-13T15:40:26.288077+00:00 app[web.1]:   '1005940342': 
-2016-06-13T15:40:26.288077+00:00 app[web.1]:    { '-KJzYUkSbkNiAaWTape3': { result: 5 },
-2016-06-13T15:40:26.288078+00:00 app[web.1]:      '-KJzYj-7hU4hM1qeasS2': { result: 3 },
-2016-06-13T15:45:44.986511+00:00 heroku[slug-compiler]: Slug compilation started
-2016-06-13T15:45:44.986520+00:00 heroku[slug-compiler]: Slug compilation finished
-2016-06-13T15:45:45.389355+00:00 heroku[web.1]: Restarting
-2016-06-13T15:45:45.389976+00:00 heroku[web.1]: State changed from up to starting
-2016-06-13T15:45:49.642383+00:00 heroku[web.1]: Stopping all processes with SIGTERM
-2016-06-13T15:45:49.929328+00:00 heroku[web.1]: Starting process with command `npm start`
-2016-06-13T15:45:51.582766+00:00 heroku[web.1]: Process exited with status 143
-2016-06-13T15:45:44.785705+00:00 heroku[api]: Release v302 created by fraserkieran@hotmail.com
-2016-06-13T15:45:44.785604+00:00 heroku[api]: Deploy c8cad6c by fraserkieran@hotmail.com
-2016-06-13T15:45:53.627291+00:00 app[web.1]: 
-2016-06-13T15:45:53.627307+00:00 app[web.1]: 
-2016-06-13T15:45:53.627300+00:00 app[web.1]: > sonardeezer@0.0.1 start /app
-2016-06-13T15:45:53.627306+00:00 app[web.1]: > node index
-2016-06-13T15:45:55.131694+00:00 app[web.1]: path /app/server/analysis/compute_input.py
-2016-06-13T15:45:55.133333+00:00 app[web.1]: here
-2016-06-13T15:45:55.182200+00:00 app[web.1]:     at cb_nextTick (/app/node_modules/newrelic/lib/agent.js:164:16)
-2016-06-13T15:45:55.182201+00:00 app[web.1]:     at _combinedTickCallback (internal/process/next_tick.js:67:7)
-2016-06-13T15:45:55.181033+00:00 app[web.1]: New Relic for Node.js halted startup due to an error:
-2016-06-13T15:45:55.182193+00:00 app[web.1]: Error: Not starting without license key!
-2016-06-13T15:45:55.182204+00:00 app[web.1]:     at node.js:405:3
-2016-06-13T15:45:55.193457+00:00 app[web.1]: up and running @: 5ccd334b-4216-4dfd-8915-ed2f4905aaa4 on port: 31236
-2016-06-13T15:45:55.196587+00:00 app[web.1]: enviroment: production
-2016-06-13T15:45:55.182203+00:00 app[web.1]:     at Function.Module.runMain (module.js:449:11)
-2016-06-13T15:45:55.276945+00:00 app[web.1]: [ 'analysis',
-2016-06-13T15:45:55.182204+00:00 app[web.1]:     at startup (node.js:148:18)
-2016-06-13T15:45:55.182202+00:00 app[web.1]:     at process._tickCallback (internal/process/next_tick.js:98:9)
-2016-06-13T15:45:55.276952+00:00 app[web.1]:   'auth',
-2016-06-13T15:45:55.276953+00:00 app[web.1]:   'commons',
-2016-06-13T15:45:55.276953+00:00 app[web.1]:   'config',
-2016-06-13T15:45:55.276954+00:00 app[web.1]:   'constants',
-2016-06-13T15:45:55.276954+00:00 app[web.1]:   'routes',
-2016-06-13T15:45:55.276955+00:00 app[web.1]:   'server.js',
-2016-06-13T15:45:55.276956+00:00 app[web.1]:   'server.js.map',
-2016-06-13T15:45:55.277463+00:00 app[web.1]: file server.js.map
-2016-06-13T15:45:55.277424+00:00 app[web.1]: file server.js
-2016-06-13T15:45:55.277114+00:00 app[web.1]: file auth
-2016-06-13T15:45:55.277208+00:00 app[web.1]: file commons
-2016-06-13T15:45:55.277258+00:00 app[web.1]: file config
-2016-06-13T15:45:55.277297+00:00 app[web.1]: file constants
-2016-06-13T15:45:55.277376+00:00 app[web.1]: file routes
-2016-06-13T15:45:55.280286+00:00 app[web.1]: Sum of numbers= 
-2016-06-13T15:45:55.276957+00:00 app[web.1]:   'server.ts' ]
-2016-06-13T15:45:55.277061+00:00 app[web.1]: file analysis
-2016-06-13T15:45:55.277501+00:00 app[web.1]: file server.ts
-2016-06-13T15:45:55.612383+00:00 heroku[web.1]: State changed from starting to up
-2016-06-13T15:45:57.258505+00:00 app[web.1]: { '936685971': 
-2016-06-13T15:45:57.258539+00:00 app[web.1]:    { '-KJzmuSkc5EVljlrKDwS': { result: 3 },
-2016-06-13T15:45:57.258546+00:00 app[web.1]:      '-KK-DIjERwcdetakiIpC': { result: 1 },
-2016-06-13T15:45:57.258546+00:00 app[web.1]:      '-KK-DJ2xk0EiyOXGNbT7': { result: 3 },
-2016-06-13T15:45:57.258547+00:00 app[web.1]:      '-KK-DJQ52oiZua6wY37D': { result: 5 },
-2016-06-13T15:45:57.258548+00:00 app[web.1]:      '-KK-DJrO361OE7-fnuyu': { result: 4 },
-2016-06-13T15:45:57.258545+00:00 app[web.1]:      '-KK-DILHUs6xnoErSZnR': { result: 1 },
-2016-06-13T15:45:57.258543+00:00 app[web.1]:      '-KJzo5YYgyzNASQ7yFtx': { result: 4 },
-2016-06-13T15:45:57.258544+00:00 app[web.1]:      '-KK-DHwzyryedQWfEi6l': { result: 1 },
-2016-06-13T15:45:57.258550+00:00 app[web.1]:   '1005940342': 
-2016-06-13T15:45:57.258549+00:00 app[web.1]:      '-KK-FWxxQdzOKp4-3I0R': { result: 6 } },
-2016-06-13T15:45:57.258551+00:00 app[web.1]:      '-KJzYj-7hU4hM1qeasS2': { result: 3 },
-2016-06-13T15:45:57.258548+00:00 app[web.1]:      '-KK-FWHQbESyXqvkvdxf': { result: 3 },
-2016-06-13T15:45:57.258550+00:00 app[web.1]:    { '-KJzYUkSbkNiAaWTape3': { result: 5 },
-2016-06-13T15:45:57.258552+00:00 app[web.1]:      '-KK-ASL_CjWKBI4zXciw': { result: 1 },
-2016-06-13T15:45:57.258553+00:00 app[web.1]:      '-KK-BQuY6_GVC78YbLN9': { result: 2 },
-2016-06-13T15:45:57.258554+00:00 app[web.1]:      '-KK-BRdrsKPWf7HfvGT9': { result: 5 },
-2016-06-13T15:45:57.258544+00:00 app[web.1]:      '-KJzo6QRbZO9DzJYU_PT': { result: 4 },
-2016-06-13T15:45:57.258555+00:00 app[web.1]:      '-KK-DLl9qoyxl_x10AyZ': { result: 6 } } }
-2016-06-13T15:45:57.258552+00:00 app[web.1]:      '-KK-AiH5gsw1mcTbS0gW': { result: 6 },
-2016-06-13T15:45:57.258554+00:00 app[web.1]:      '-KK-DKzHlD8PdGnIESp2': { result: 2 },
+2016-06-13T16:50:30.521068+00:00 heroku[router]: at=info method=GET path="/@angular/platform-browser/src/browser/tools/common_tools.js" host=sonard.herokuapp.com request_id=aa122cd5-2200-46d1-8503-5440b5f10f79 fwd="134.226.214.251" dyno=web.1 connect=1ms service=83ms status=304 bytes=237
+2016-06-13T16:50:30.590746+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/style_compiler.js" host=sonard.herokuapp.com request_id=cf923cd2-6fd0-4037-a12b-3cf41f4635a1 fwd="134.226.214.251" dyno=web.1 connect=0ms service=33ms status=304 bytes=237
+2016-06-13T16:50:30.615468+00:00 heroku[router]: at=info method=GET path="/@angular/platform-browser/src/facade/base_wrapped_exception.js" host=sonard.herokuapp.com request_id=d682f52b-3c7b-4434-8079-52f9a15e188d fwd="134.226.214.251" dyno=web.1 connect=0ms service=17ms status=304 bytes=237
+2016-06-13T16:50:30.613026+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/directive_normalizer.js" host=sonard.herokuapp.com request_id=e72eccf9-771f-4ce2-baf7-946ac3be9fa5 fwd="134.226.214.251" dyno=web.1 connect=4ms service=36ms status=304 bytes=238
+2016-06-13T16:50:30.515597+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/template_parser.js" host=sonard.herokuapp.com request_id=354b3060-acef-401e-bf43-739e49ade0b7 fwd="134.226.214.251" dyno=web.1 connect=0ms service=69ms status=304 bytes=238
+2016-06-13T16:50:30.680012+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/template_preparser.js" host=sonard.herokuapp.com request_id=19515e43-0691-4c81-901b-f50a63f8f62e fwd="134.226.214.251" dyno=web.1 connect=0ms service=11ms status=304 bytes=237
+2016-06-13T16:50:30.504265+00:00 heroku[router]: at=info method=GET path="/@angular/platform-browser/src/dom/events/hammer_common.js" host=sonard.herokuapp.com request_id=4903be91-abd0-4cb2-a7e9-605dd9dad2fc fwd="134.226.214.251" dyno=web.1 connect=0ms service=82ms status=304 bytes=237
+2016-06-13T16:50:30.642305+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/expression_parser/ast.js" host=sonard.herokuapp.com request_id=0bfd0ecb-4e58-4544-85c8-0ce24aa90328 fwd="134.226.214.251" dyno=web.1 connect=0ms service=11ms status=304 bytes=238
+2016-06-13T16:50:30.526944+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/compile_metadata.js" host=sonard.herokuapp.com request_id=d84afe38-b0c8-4044-8b60-08b9f6fec9df fwd="134.226.214.251" dyno=web.1 connect=0ms service=17ms status=304 bytes=238
+2016-06-13T16:50:30.546100+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/facade/lang.js" host=sonard.herokuapp.com request_id=e264b17e-4e52-4028-96ba-35a53b260744 fwd="134.226.214.251" dyno=web.1 connect=1ms service=72ms status=304 bytes=238
+2016-06-13T16:50:30.550349+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_resolver.js" host=sonard.herokuapp.com request_id=429922a5-f7af-452a-bd3b-fa7283f00d38 fwd="134.226.214.251" dyno=web.1 connect=0ms service=25ms status=304 bytes=238
+2016-06-13T16:50:30.626816+00:00 heroku[router]: at=info method=GET path="/@angular/platform-browser/src/facade/exception_handler.js" host=sonard.herokuapp.com request_id=203d00d9-1da0-4d58-bb03-b89a9525da4a fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=238
+2016-06-13T16:50:30.595895+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/view_compiler.js" host=sonard.herokuapp.com request_id=51b69a50-bfa5-4e0a-a9a3-9272776ee22f fwd="134.226.214.251" dyno=web.1 connect=0ms service=33ms status=304 bytes=237
+2016-06-13T16:50:30.622476+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/path_util.js" host=sonard.herokuapp.com request_id=d7758b93-33cf-468f-a1fe-c0e1c9f45d6d fwd="134.226.214.251" dyno=web.1 connect=0ms service=20ms status=304 bytes=237
+2016-06-13T16:50:30.640391+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/expression_parser/parser.js" host=sonard.herokuapp.com request_id=15973247-a924-4b3a-b2fe-9937a1487fa5 fwd="134.226.214.251" dyno=web.1 connect=0ms service=19ms status=304 bytes=238
+2016-06-13T16:50:30.652620+00:00 heroku[router]: at=info method=GET path="/@angular/platform-browser/src/browser/generic_browser_adapter.js" host=sonard.herokuapp.com request_id=6001ea98-d995-4c57-b499-06ab851ba3aa fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=237
+2016-06-13T16:50:30.591662+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/schema/dom_element_schema_registry.js" host=sonard.herokuapp.com request_id=41192eea-2bc7-4ae7-8942-ce57254aa6ce fwd="134.226.214.251" dyno=web.1 connect=0ms service=32ms status=304 bytes=238
+2016-06-13T16:50:30.630283+00:00 heroku[router]: at=info method=GET path="/@angular/common/src/forms/directives/normalize_validator.js" host=sonard.herokuapp.com request_id=c94234db-66c3-49d5-8773-00a9008728a6 fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=237
+2016-06-13T16:50:30.662961+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/core_private.js" host=sonard.herokuapp.com request_id=aad2788f-86c7-411c-9d46-9504c7620e88 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=237
+2016-06-13T16:50:30.614517+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/selector.js" host=sonard.herokuapp.com request_id=478d2338-233b-40e5-bef6-b1fb315afa41 fwd="134.226.214.251" dyno=web.1 connect=0ms service=18ms status=304 bytes=238
+2016-06-13T16:50:30.557866+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/directive_resolver.js" host=sonard.herokuapp.com request_id=98256ce3-2ff9-4123-b81d-ac0d714d5f81 fwd="134.226.214.251" dyno=web.1 connect=0ms service=26ms status=304 bytes=238
+2016-06-13T16:50:30.649843+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/html_tags.js" host=sonard.herokuapp.com request_id=f164e341-a0e9-4d51-9d75-68d973f65d87 fwd="134.226.214.251" dyno=web.1 connect=0ms service=14ms status=304 bytes=238
+2016-06-13T16:50:30.624983+00:00 heroku[router]: at=info method=GET path="/@angular/common/src/facade/exception_handler.js" host=sonard.herokuapp.com request_id=3dfc3168-85d3-4ce6-b406-c2d49cf46ee4 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=238
+2016-06-13T16:50:30.586525+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/metadata_resolver.js" host=sonard.herokuapp.com request_id=c424f7e5-c97d-45ab-98c2-1b8ab4cbd103 fwd="134.226.214.251" dyno=web.1 connect=0ms service=30ms status=304 bytes=238
+2016-06-13T16:50:30.667370+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/output_interpreter.js" host=sonard.herokuapp.com request_id=81f323f4-3a76-43ce-8402-8029a95614b7 fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=238
+2016-06-13T16:50:30.625591+00:00 heroku[router]: at=info method=GET path="/@angular/platform-browser/src/facade/browser.js" host=sonard.herokuapp.com request_id=784c5057-15c0-4306-85e9-b393ad30a068 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=237
+2016-06-13T16:50:30.704981+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/directive_lifecycle_reflector.js" host=sonard.herokuapp.com request_id=c212ada2-937a-42f9-9142-bbff28d80ffa fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=237
+2016-06-13T16:50:30.549015+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/xhr.js" host=sonard.herokuapp.com request_id=05eb8718-4d2c-4f3e-8c33-ac6897f1893c fwd="134.226.214.251" dyno=web.1 connect=0ms service=27ms status=304 bytes=237
+2016-06-13T16:50:30.655897+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/provider_parser.js" host=sonard.herokuapp.com request_id=c65a0f71-1b42-4d46-ae4b-38567f319a65 fwd="134.226.214.251" dyno=web.1 connect=1ms service=6ms status=304 bytes=238
+2016-06-13T16:50:30.654771+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/util.js" host=sonard.herokuapp.com request_id=a5d44972-7e7b-441a-9618-910af4fe746c fwd="134.226.214.251" dyno=web.1 connect=0ms service=5ms status=304 bytes=237
+2016-06-13T16:50:30.682666+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/compile_view.js" host=sonard.herokuapp.com request_id=79c790d0-c9ad-46f3-88b8-1896ca5e190c fwd="134.226.214.251" dyno=web.1 connect=0ms service=5ms status=304 bytes=238
+2016-06-13T16:50:30.690594+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/facade/promise.js" host=sonard.herokuapp.com request_id=47c21604-d05f-4612-867c-3cbc110e709d fwd="134.226.214.251" dyno=web.1 connect=0ms service=2ms status=304 bytes=237
+2016-06-13T16:50:30.740291+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/compile_query.js" host=sonard.herokuapp.com request_id=6f4139fa-4ec8-4d8b-8523-ebae8b419662 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=238
+2016-06-13T16:50:30.761395+00:00 heroku[router]: at=info method=GET path="/common/models/Team.js" host=sonard.herokuapp.com request_id=946bde23-bbe1-4cd8-9dce-509e765524b8 fwd="134.226.214.251" dyno=web.1 connect=0ms service=10ms status=200 bytes=578
+2016-06-13T16:50:30.662787+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/identifiers.js" host=sonard.herokuapp.com request_id=22cd18ca-90ce-42f1-ad0d-b281564df2e5 fwd="134.226.214.251" dyno=web.1 connect=2ms service=5ms status=304 bytes=238
+2016-06-13T16:50:30.672457+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/interpretive_view.js" host=sonard.herokuapp.com request_id=ebf4cce4-c17d-409d-b0b8-cdcfacbcf6e8 fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=237
+2016-06-13T16:50:30.708152+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/constants.js" host=sonard.herokuapp.com request_id=e44d8ea3-d75b-4c04-929b-b7bb967f7bc1 fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=238
+2016-06-13T16:50:30.623491+00:00 heroku[router]: at=info method=GET path="/@angular/common/src/facade/base_wrapped_exception.js" host=sonard.herokuapp.com request_id=ab4da6f6-531c-4f23-84b8-86cf1153016e fwd="134.226.214.251" dyno=web.1 connect=0ms service=8ms status=304 bytes=237
+2016-06-13T16:50:30.653580+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/html_ast.js" host=sonard.herokuapp.com request_id=829af8e7-df03-4e45-9ad5-5d231e4e8a55 fwd="134.226.214.251" dyno=web.1 connect=0ms service=5ms status=304 bytes=237
+2016-06-13T16:50:30.677748+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/shadow_css.js" host=sonard.herokuapp.com request_id=50d8fa8e-37c5-4c5a-9d6e-c889add4a780 fwd="134.226.214.251" dyno=web.1 connect=0ms service=7ms status=304 bytes=238
+2016-06-13T16:50:30.703524+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/facade/exception_handler.js" host=sonard.herokuapp.com request_id=75ff0190-dac1-44e4-8bba-a1a58de497b9 fwd="134.226.214.251" dyno=web.1 connect=1ms service=10ms status=304 bytes=238
+2016-06-13T16:50:30.698156+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/abstract_emitter.js" host=sonard.herokuapp.com request_id=dfc32122-142b-4554-b509-4a0ffaaae48d fwd="134.226.214.251" dyno=web.1 connect=0ms service=5ms status=304 bytes=238
+2016-06-13T16:50:30.609310+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/expression_parser/lexer.js" host=sonard.herokuapp.com request_id=aeded7c8-8288-4ad4-9e85-d6db3825707b fwd="134.226.214.251" dyno=web.1 connect=0ms service=17ms status=304 bytes=238
+2016-06-13T16:50:30.695716+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/output_ast.js" host=sonard.herokuapp.com request_id=3ddacb6e-76dc-4dff-8f01-a637d498362b fwd="134.226.214.251" dyno=web.1 connect=0ms service=7ms status=304 bytes=238
+2016-06-13T16:50:30.646108+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/facade/collection.js" host=sonard.herokuapp.com request_id=f5b50007-c86a-4ce3-86e5-c9ad3f00b77f fwd="134.226.214.251" dyno=web.1 connect=0ms service=13ms status=304 bytes=238
+2016-06-13T16:50:30.678693+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/compile_element.js" host=sonard.herokuapp.com request_id=f9dec15a-44b8-4cba-9b7a-78b438f1cf7d fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=238
+2016-06-13T16:50:30.703478+00:00 heroku[router]: at=info method=GET path="/@angular/http/src/facade/exceptions.js" host=sonard.herokuapp.com request_id=1f3673ef-c946-4e77-9aa8-8609a2314527 fwd="134.226.214.251" dyno=web.1 connect=1ms service=5ms status=304 bytes=237
+2016-06-13T16:50:30.658462+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/style_url_resolver.js" host=sonard.herokuapp.com request_id=0c9e4475-1e9b-4ae0-afd0-9aebc1ea6f99 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=237
+2016-06-13T16:50:30.670272+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/facade/async.js" host=sonard.herokuapp.com request_id=51cfdff9-75ba-4891-b5b1-63e146c8c2b5 fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=238
+2016-06-13T16:50:30.716001+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/compile_pipe.js" host=sonard.herokuapp.com request_id=ecc02c3d-55c0-49e1-9927-06ec75ba7238 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=238
+2016-06-13T16:50:30.749171+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/compile_binding.js" host=sonard.herokuapp.com request_id=188bccd7-ee15-45cc-ae48-9b49e77a904e fwd="134.226.214.251" dyno=web.1 connect=0ms service=2ms status=304 bytes=237
+2016-06-13T16:50:30.690452+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/facade/base_wrapped_exception.js" host=sonard.herokuapp.com request_id=9f5d2151-3f43-489c-850f-4ec2c818a6a9 fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=237
+2016-06-13T16:50:30.679802+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/assertions.js" host=sonard.herokuapp.com request_id=828259b4-45e4-484c-9232-88459d50eff4 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=237
+2016-06-13T16:50:30.705609+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/dart_emitter.js" host=sonard.herokuapp.com request_id=9d14f4d1-3136-4708-a97d-802b70d9d106 fwd="134.226.214.251" dyno=web.1 connect=0ms service=8ms status=304 bytes=238
+2016-06-13T16:50:30.740635+00:00 heroku[router]: at=info method=GET path="/leaderboard/components/leaderboard.component.js" host=sonard.herokuapp.com request_id=055e3609-0a2d-4e66-82e9-caaa078dbe11 fwd="134.226.214.251" dyno=web.1 connect=0ms service=18ms status=200 bytes=3735
+2016-06-13T16:50:30.642899+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/parse_util.js" host=sonard.herokuapp.com request_id=c3ef9507-2371-4d0d-b86b-b5d051479ffc fwd="134.226.214.251" dyno=web.1 connect=0ms service=11ms status=304 bytes=237
+2016-06-13T16:50:30.714956+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/view_binder.js" host=sonard.herokuapp.com request_id=22714887-1cda-4069-9121-78e3d509a300 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=238
+2016-06-13T16:50:30.766144+00:00 heroku[router]: at=info method=GET path="/@angular/core/src/change_detection/differs/default_iterable_differ.js" host=sonard.herokuapp.com request_id=64debb04-8768-4c75-98c2-874b5856c027 fwd="134.226.214.251" dyno=web.1 connect=0ms service=12ms status=304 bytes=238
+2016-06-13T16:50:30.751064+00:00 heroku[router]: at=info method=GET path="/@angular/http/src/facade/base_wrapped_exception.js" host=sonard.herokuapp.com request_id=1906d114-a867-4171-bffc-d8c8f5394aeb fwd="134.226.214.251" dyno=web.1 connect=0ms service=17ms status=304 bytes=237
+2016-06-13T16:50:30.665688+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/html_lexer.js" host=sonard.herokuapp.com request_id=31d9009f-6cba-441c-a576-a82f2e06127b fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=238
+2016-06-13T16:50:30.640865+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/facade/exceptions.js" host=sonard.herokuapp.com request_id=62753050-f814-48b4-92cb-db75f83549b5 fwd="134.226.214.251" dyno=web.1 connect=0ms service=12ms status=304 bytes=237
+2016-06-13T16:50:30.716412+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/compile_method.js" host=sonard.herokuapp.com request_id=03131d31-3ccb-4dfe-8c03-ca51cb8a44da fwd="134.226.214.251" dyno=web.1 connect=1ms service=4ms status=304 bytes=237
+2016-06-13T16:50:30.730962+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/ts_emitter.js" host=sonard.herokuapp.com request_id=18d3b9ea-0583-4f74-8768-bcf4cf861af2 fwd="134.226.214.251" dyno=web.1 connect=0ms service=7ms status=304 bytes=238
+2016-06-13T16:50:30.774975+00:00 heroku[router]: at=info method=GET path="/@angular/core/src/change_detection/differs/iterable_differs.js" host=sonard.herokuapp.com request_id=1e1b0aee-bc2b-4748-88c6-8782c54ebb2d fwd="134.226.214.251" dyno=web.1 connect=1ms service=15ms status=304 bytes=237
+2016-06-13T16:50:30.677400+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/view_builder.js" host=sonard.herokuapp.com request_id=9d560538-861b-4ec1-9470-f581c4ce48f4 fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=238
+2016-06-13T16:50:30.727990+00:00 heroku[router]: at=info method=GET path="/@angular/http/src/http_utils.js" host=sonard.herokuapp.com request_id=ed228d9d-d317-414f-b2d0-057257444384 fwd="134.226.214.251" dyno=web.1 connect=0ms service=4ms status=304 bytes=237
+2016-06-13T16:50:30.691531+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/abstract_js_emitter.js" host=sonard.herokuapp.com request_id=e26ce719-ff8c-4b1a-b82e-edd78775b809 fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=238
+2016-06-13T16:50:30.713215+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/lifecycle_binder.js" host=sonard.herokuapp.com request_id=fcb93c1a-8f7f-46db-a493-0895afc6de1b fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=238
+2016-06-13T16:50:30.665236+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/output/output_jit.js" host=sonard.herokuapp.com request_id=f46fde73-772f-46e7-8201-2c2dd20fae95 fwd="134.226.214.251" dyno=web.1 connect=0ms service=5ms status=304 bytes=237
+2016-06-13T16:50:30.703117+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/util.js" host=sonard.herokuapp.com request_id=756425b6-bb99-4a32-a0c3-9544a4863202 fwd="134.226.214.251" dyno=web.1 connect=0ms service=5ms status=304 bytes=237
+2016-06-13T16:50:30.717262+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/event_binder.js" host=sonard.herokuapp.com request_id=527d4ad7-3b19-4ce6-a43a-5ca8b231e9be fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=238
+2016-06-13T16:50:30.778082+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/expression_converter.js" host=sonard.herokuapp.com request_id=f0ac9e44-91c3-473d-97ba-e281f0d18ca1 fwd="134.226.214.251" dyno=web.1 connect=0ms service=10ms status=304 bytes=238
+2016-06-13T16:50:30.739211+00:00 heroku[router]: at=info method=GET path="/admin/components/adminCreateTeam.component.js" host=sonard.herokuapp.com request_id=666d05e4-06d6-44cf-8dff-63aaea55b5a5 fwd="134.226.214.251" dyno=web.1 connect=0ms service=19ms status=200 bytes=2469
+2016-06-13T16:50:30.785466+00:00 heroku[router]: at=info method=GET path="/@angular/core/src/change_detection/differs/default_keyvalue_differ.js" host=sonard.herokuapp.com request_id=dc5afcfc-23a7-4f20-9d8a-6497c53b815d fwd="134.226.214.251" dyno=web.1 connect=0ms service=5ms status=304 bytes=238
+2016-06-13T16:50:30.796613+00:00 heroku[router]: at=info method=GET path="/@angular/http/src/facade/collection.js" host=sonard.herokuapp.com request_id=3de49ff1-0adb-4c83-a72d-b79a4d23ae83 fwd="134.226.214.251" dyno=web.1 connect=0ms service=11ms status=304 bytes=238
+2016-06-13T16:50:30.725741+00:00 heroku[router]: at=info method=GET path="/@angular/compiler/src/view_compiler/property_binder.js" host=sonard.herokuapp.com request_id=bf511bb0-3feb-4002-bbf5-7c752118feed fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=238
+2016-06-13T16:50:30.739647+00:00 heroku[router]: at=info method=GET path="/@angular/http/src/facade/exception_handler.js" host=sonard.herokuapp.com request_id=1d8978f1-0975-4cf3-b4b3-271dd445560c fwd="134.226.214.251" dyno=web.1 connect=0ms service=8ms status=304 bytes=238
+2016-06-13T16:50:30.811264+00:00 heroku[router]: at=info method=GET path="/@angular/core/src/change_detection/change_detector_ref.js" host=sonard.herokuapp.com request_id=cc2330c4-22e0-4fd1-9faa-05cc5eaaf799 fwd="134.226.214.251" dyno=web.1 connect=0ms service=2ms status=304 bytes=236
+2016-06-13T16:50:30.763124+00:00 heroku[router]: at=info method=GET path="/@angular/core/src/zone/ng_zone_impl.js" host=sonard.herokuapp.com request_id=9d002718-34c9-4251-81d1-a953aae24ae4 fwd="134.226.214.251" dyno=web.1 connect=1ms service=13ms status=304 bytes=237
+2016-06-13T16:50:30.770430+00:00 heroku[router]: at=info method=GET path="/@angular/core/src/change_detection/differs/keyvalue_differs.js" host=sonard.herokuapp.com request_id=ca71ed51-062e-45e7-b0e0-bc3b0b33b35c fwd="134.226.214.251" dyno=web.1 connect=0ms service=15ms status=304 bytes=237
+2016-06-13T16:50:30.745821+00:00 heroku[router]: at=info method=GET path="/admin/components/admin.component.js" host=sonard.herokuapp.com request_id=aeabd381-c107-4c84-b533-d123a64a6ebc fwd="134.226.214.251" dyno=web.1 connect=0ms service=20ms status=200 bytes=3199
+2016-06-13T16:50:30.764948+00:00 heroku[router]: at=info method=GET path="/visualizations/components/rotatingcube.component.js" host=sonard.herokuapp.com request_id=cb6326ef-6a6f-4570-9bd0-130376f46dc1 fwd="134.226.214.251" dyno=web.1 connect=0ms service=11ms status=200 bytes=2941
+2016-06-13T16:50:31.033747+00:00 heroku[router]: at=info method=GET path="/player/templates/todo.html" host=sonard.herokuapp.com request_id=f8bba135-d074-47bb-9949-7cc993bea5d6 fwd="134.226.214.251" dyno=web.1 connect=0ms service=18ms status=200 bytes=2430
+2016-06-13T16:50:31.249674+00:00 heroku[router]: at=info method=GET path="/player/templates/landing.html" host=sonard.herokuapp.com request_id=1286a974-b699-423e-8ecd-85060e93daca fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=200 bytes=307
+2016-06-13T16:50:31.109989+00:00 heroku[router]: at=info method=GET path="/player/styles/todo.css" host=sonard.herokuapp.com request_id=e63793e1-3478-4f99-9532-8b6dee67f202 fwd="134.226.214.251" dyno=web.1 connect=0ms service=7ms status=200 bytes=39508
+2016-06-13T16:50:31.392474+00:00 heroku[router]: at=info method=GET path="/config.js?rev=4b1a77da9c181854af20a4809dfae145" host=sonard.herokuapp.com request_id=49259744-8599-473f-be7a-17d6c0b45421 fwd="134.226.214.251" dyno=web.1 connect=1ms service=4ms status=304 bytes=237
+2016-06-13T16:50:31.362721+00:00 heroku[router]: at=info method=GET path="/systemjs/dist/system.js?rev=@@hash" host=sonard.herokuapp.com request_id=f176e15a-33a6-4ecd-af85-e4e28ad4dc0d fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=238
+2016-06-13T16:50:31.364429+00:00 heroku[router]: at=info method=GET path="/zone.js/dist/zone.js?rev=@@hash" host=sonard.herokuapp.com request_id=1b46f26a-bc70-4ea6-987e-1f59e66515cf fwd="134.226.214.251" dyno=web.1 connect=0ms service=7ms status=304 bytes=238
+2016-06-13T16:50:31.347894+00:00 heroku[router]: at=info method=GET path="/" host=sonard.herokuapp.com request_id=351a06eb-7997-483f-9230-1d270669b4e9 fwd="134.226.214.251" dyno=web.1 connect=0ms service=3ms status=304 bytes=237
+2016-06-13T16:50:31.395474+00:00 heroku[router]: at=info method=GET path="/reflect-metadata/Reflect.js?rev=@@hash" host=sonard.herokuapp.com request_id=b4790b6c-20d3-4e7d-bf72-52d630390b08 fwd="134.226.214.251" dyno=web.1 connect=0ms service=6ms status=304 bytes=238
+2016-06-13T16:50:31.579030+00:00 heroku[router]: at=info method=GET path="/index.js" host=sonard.herokuapp.com request_id=e9b442fe-16b4-43a1-a7e1-7a951d8f82fd fwd="134.226.214.251" dyno=web.1 connect=1ms service=6ms status=304 bytes=237
+2016-06-13T16:50:32.620823+00:00 heroku[router]: at=info method=GET path="/visualizations/templates/rotatingcube-component.html" host=sonard.herokuapp.com request_id=e040016f-5ed8-4d3b-9188-122cc62c6e74 fwd="134.226.214.251" dyno=web.1 connect=0ms service=20ms status=200 bytes=312
+2016-06-13T16:50:32.625492+00:00 heroku[router]: at=info method=GET path="/leaderboard/templates/leaderboard-component.html" host=sonard.herokuapp.com request_id=12aa344c-9307-4bf8-857c-b444e3a5f906 fwd="134.226.214.251" dyno=web.1 connect=0ms service=21ms status=200 bytes=565
+2016-06-13T16:50:32.584152+00:00 heroku[router]: at=info method=GET path="/player/templates/dashboard.html" host=sonard.herokuapp.com request_id=611d1f74-46e1-4a3a-817d-ef483abd5000 fwd="134.226.214.251" dyno=web.1 connect=0ms service=5ms status=200 bytes=2318
+2016-06-13T16:50:32.700874+00:00 heroku[router]: at=info method=GET path="/player/templates/create-team.html" host=sonard.herokuapp.com request_id=3b0cd235-b4da-46bb-9f25-23ac123abe93 fwd="134.226.214.251" dyno=web.1 connect=0ms service=19ms status=304 bytes=237
+2016-06-13T16:50:32.619246+00:00 heroku[router]: at=info method=GET path="/admin/templates/admin-component.html" host=sonard.herokuapp.com request_id=85e6a828-4902-4c44-9aa8-0ccf300eaa35 fwd="134.226.214.251" dyno=web.1 connect=0ms service=22ms status=200 bytes=1496
+2016-06-13T16:50:32.728542+00:00 heroku[router]: at=info method=GET path="/visualizations/styles/rotatingcube.css" host=sonard.herokuapp.com request_id=49204cd0-f9e1-48e7-bd8b-b7cd1b62ea9f fwd="134.226.214.251" dyno=web.1 connect=0ms service=23ms status=200 bytes=39508
+2016-06-13T16:50:32.700244+00:00 heroku[router]: at=info method=GET path="/admin/styles/admin.css" host=sonard.herokuapp.com request_id=c78e7c22-82f5-43a0-b627-e54be0ca5a75 fwd="134.226.214.251" dyno=web.1 connect=0ms service=31ms status=200 bytes=39508
+2016-06-13T16:50:32.636104+00:00 heroku[router]: at=info method=GET path="/player/styles/dashboard.css" host=sonard.herokuapp.com request_id=f56b7a67-ec27-47f2-b7bd-a26816c97405 fwd="134.226.214.251" dyno=web.1 connect=0ms service=29ms status=200 bytes=14154
+2016-06-13T16:50:32.666675+00:00 heroku[router]: at=info method=GET path="/player/templates/create-team.html" host=sonard.herokuapp.com request_id=83fa8898-5f3a-4ada-872b-8dec8b35b485 fwd="134.226.214.251" dyno=web.1 connect=0ms service=27ms status=200 bytes=778
+2016-06-13T16:50:32.698085+00:00 heroku[router]: at=info method=GET path="/leaderboard/styles/leaderboard.css" host=sonard.herokuapp.com request_id=110521ba-0286-4dce-bfeb-5d64b338327b fwd="134.226.214.251" dyno=web.1 connect=0ms service=26ms status=200 bytes=39508
