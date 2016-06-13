@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   play(){
-    this.getFirebase().database().ref('currentTrack').once('value').then(function(snapshot) {
+    this._parent.getFirebase().database().ref('currentTrack').once('value').then(function(snapshot) {
       console.log(snapshot);
       var position = snapshot.position;
 

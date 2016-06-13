@@ -83,7 +83,7 @@ var DashboardComponent = (function () {
         DZ.player.playPlaylist(1483340617);
     };
     DashboardComponent.prototype.play = function () {
-        this.getFirebase().database().ref('currentTrack').once('value').then(function (snapshot) {
+        this._parent.getFirebase().database().ref('currentTrack').once('value').then(function (snapshot) {
             console.log(snapshot);
             var position = snapshot.position;
             console.log('the position', position);
