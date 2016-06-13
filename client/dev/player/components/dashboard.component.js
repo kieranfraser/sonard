@@ -106,7 +106,7 @@ var DashboardComponent = (function () {
         DZ.Event.subscribe('player_position', function (arg) {
             console.log(arg);
             console.log(arg[0]);
-            var position = Math.round(((arg[0] / arg[1]) * 100) / 100) * 100;
+            var position = Math.round(((arg[0] / arg[1]) * 100) * 100) / 100;
             this._parent.getFirebase().database().ref('currentTrack').update({
                 position: position
             });
