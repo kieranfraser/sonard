@@ -1,90 +1,3 @@
-2016-06-13T14:32:56.629423+00:00 heroku[api]: Release v296 created by fraserkieran@hotmail.com
-2016-06-13T14:33:04.061219+00:00 app[web.1]: up and running @: 09cda05e-e787-4829-88f4-fdd10086ee48 on port: 38420
-2016-06-13T14:33:04.061286+00:00 app[web.1]: enviroment: production
-2016-06-13T14:33:04.060016+00:00 app[web.1]:     at startup (node.js:148:18)
-2016-06-13T14:33:04.060016+00:00 app[web.1]:     at node.js:405:3
-2016-06-13T14:33:04.296940+00:00 app[web.1]: Sum of numbers= 
-2016-06-13T14:33:05.687227+00:00 app[web.1]: { '936685971': 
-2016-06-13T14:33:05.687270+00:00 app[web.1]:      '-KJzo6QRbZO9DzJYU_PT': { result: 4 },
-2016-06-13T14:33:05.687267+00:00 app[web.1]:    { '-KJzmuSkc5EVljlrKDwS': { result: 3 },
-2016-06-13T14:33:05.687271+00:00 app[web.1]:      '-KK-DILHUs6xnoErSZnR': { result: 1 },
-2016-06-13T14:33:05.687270+00:00 app[web.1]:      '-KK-DHwzyryedQWfEi6l': { result: 1 },
-2016-06-13T14:33:05.687269+00:00 app[web.1]:      '-KJzo5YYgyzNASQ7yFtx': { result: 4 },
-2016-06-13T14:33:05.687272+00:00 app[web.1]:      '-KK-DIjERwcdetakiIpC': { result: 1 },
-2016-06-13T14:33:05.687273+00:00 app[web.1]:      '-KK-DJ2xk0EiyOXGNbT7': { result: 3 },
-2016-06-13T14:33:05.687273+00:00 app[web.1]:      '-KK-DJQ52oiZua6wY37D': { result: 5 },
-2016-06-13T14:33:05.687274+00:00 app[web.1]:      '-KK-DJrO361OE7-fnuyu': { result: 4 },
-2016-06-13T14:33:05.687275+00:00 app[web.1]:      '-KK-FWHQbESyXqvkvdxf': { result: 3 },
-2016-06-13T14:33:05.687275+00:00 app[web.1]:      '-KK-FWxxQdzOKp4-3I0R': { result: 6 } },
-2016-06-13T14:33:05.687276+00:00 app[web.1]:   '1005940342': 
-2016-06-13T14:33:05.687276+00:00 app[web.1]:    { '-KJzYUkSbkNiAaWTape3': { result: 5 },
-2016-06-13T14:33:05.687277+00:00 app[web.1]:      '-KJzYj-7hU4hM1qeasS2': { result: 3 },
-2016-06-13T14:33:05.687278+00:00 app[web.1]:      '-KK-AiH5gsw1mcTbS0gW': { result: 6 },
-2016-06-13T14:33:05.687279+00:00 app[web.1]:      '-KK-BQuY6_GVC78YbLN9': { result: 2 },
-2016-06-13T14:33:05.687283+00:00 app[web.1]:      '-KK-DLl9qoyxl_x10AyZ': { result: 6 } } }
-2016-06-13T14:33:05.687278+00:00 app[web.1]:      '-KK-ASL_CjWKBI4zXciw': { result: 1 },
-2016-06-13T14:33:05.687280+00:00 app[web.1]:      '-KK-DKzHlD8PdGnIESp2': { result: 2 },
-2016-06-13T14:33:05.687279+00:00 app[web.1]:      '-KK-BRdrsKPWf7HfvGT9': { result: 5 },
-2016-06-13T14:57:20.353485+00:00 heroku[router]: at=info method=GET path="/" host=sonard.herokuapp.com request_id=97108d2b-30dd-482f-9c6c-5805f7320111 fwd="134.226.214.251" dyno=web.1 connect=0ms service=23ms status=200 bytes=1577
-2016-06-13T14:57:20.423686+00:00 heroku[router]: at=info method=GET path="/reflect-metadata/Reflect.js?rev=@@hash" host=sonard.herokuapp.com request_id=15fe90e5-452e-46e1-ae88-c239ec5f3c0e fwd="134.226.214.251" dyno=web.1 connect=0ms service=11ms status=304 bytes=238
-2016-06-13T14:57:20.465953+00:00 heroku[router]: at=info method=GET path="/systemjs/dist/system.js?rev=@@hash" host=sonard.herokuapp.com request_id=a6cc914b-26c7-44df-aa81-81be3dde6f60 fwd="134.226.214.251" dyno=web.1 connect=0ms service=15ms status=304 bytes=238
-2016-06-13T14:57:20.433143+00:00 heroku[router]: at=info method=GET path="/config.js?rev=4b1a77da9c181854af20a4809dfae145" host=sonard.herokuapp.com request_id=5b207502-2092-47fe-b569-4dd535fb7bbe fwd="134.226.214.251" dyno=web.1 connect=0ms service=21ms status=200 bytes=786
-2016-06-13T14:57:20.430837+00:00 heroku[router]: at=info method=GET path="/zone.js/dist/zone.js?rev=@@hash" host=sonard.herokuapp.com request_id=81d2f2d1-6997-4463-9386-c481a129b870 fwd="134.226.214.251" dyno=web.1 connect=0ms service=14ms status=304 bytes=238
-2016-06-13T14:57:21.662197+00:00 heroku[router]: at=info method=GET path="/index.js" host=sonard.herokuapp.com request_id=4de33c65-fcb4-4a8f-a1b9-556c2d2065cc fwd="134.226.214.251" dyno=web.1 connect=39ms service=47ms status=200 bytes=706
-2016-06-13T15:00:07.142261+00:00 heroku[slug-compiler]: Slug compilation started
-2016-06-13T15:00:07.142265+00:00 heroku[slug-compiler]: Slug compilation finished
-2016-06-13T15:00:07.444156+00:00 heroku[web.1]: Restarting
-2016-06-13T15:00:07.444899+00:00 heroku[web.1]: State changed from up to starting
-2016-06-13T15:00:06.942444+00:00 heroku[api]: Deploy b0d881d by fraserkieran@hotmail.com
-2016-06-13T15:00:06.942532+00:00 heroku[api]: Release v297 created by fraserkieran@hotmail.com
-2016-06-13T15:00:10.476883+00:00 heroku[web.1]: Stopping all processes with SIGTERM
-2016-06-13T15:00:10.830315+00:00 heroku[web.1]: Starting process with command `npm start`
-2016-06-13T15:00:11.851088+00:00 heroku[web.1]: Process exited with status 143
-2016-06-13T15:00:12.796374+00:00 app[web.1]: > sonardeezer@0.0.1 start /app
-2016-06-13T15:00:12.796377+00:00 app[web.1]: > node index
-2016-06-13T15:00:12.796353+00:00 app[web.1]: 
-2016-06-13T15:00:12.796378+00:00 app[web.1]: 
-2016-06-13T15:00:13.721035+00:00 app[web.1]: path /app/server/server/analysis/compute_input.py
-2016-06-13T15:00:13.738783+00:00 app[web.1]: New Relic for Node.js halted startup due to an error:
-2016-06-13T15:00:13.738854+00:00 app[web.1]: Error: Not starting without license key!
-2016-06-13T15:00:13.738869+00:00 app[web.1]:     at _combinedTickCallback (internal/process/next_tick.js:67:7)
-2016-06-13T15:00:13.738867+00:00 app[web.1]:     at cb_nextTick (/app/node_modules/newrelic/lib/agent.js:164:16)
-2016-06-13T15:00:13.740286+00:00 app[web.1]: up and running @: 476d07fd-57dc-4067-ab7b-538fa7494183 on port: 39490
-2016-06-13T15:00:13.738870+00:00 app[web.1]:     at Function.Module.runMain (module.js:449:11)
-2016-06-13T15:00:13.738869+00:00 app[web.1]:     at process._tickCallback (internal/process/next_tick.js:98:9)
-2016-06-13T15:00:13.738871+00:00 app[web.1]:     at startup (node.js:148:18)
-2016-06-13T15:00:13.738872+00:00 app[web.1]:     at node.js:405:3
-2016-06-13T15:00:13.740356+00:00 app[web.1]: enviroment: production
-2016-06-13T15:00:13.772782+00:00 app[web.1]: Sum of numbers= 
-2016-06-13T15:00:13.721489+00:00 app[web.1]: here
-2016-06-13T15:00:14.236163+00:00 heroku[web.1]: State changed from starting to up
-2016-06-13T15:00:16.582970+00:00 app[web.1]:    { '-KJzmuSkc5EVljlrKDwS': { result: 3 },
-2016-06-13T15:00:16.582928+00:00 app[web.1]: { '936685971': 
-2016-06-13T15:00:16.582972+00:00 app[web.1]:      '-KJzo5YYgyzNASQ7yFtx': { result: 4 },
-2016-06-13T15:00:16.582973+00:00 app[web.1]:      '-KJzo6QRbZO9DzJYU_PT': { result: 4 },
-2016-06-13T15:00:16.582978+00:00 app[web.1]:      '-KK-FWHQbESyXqvkvdxf': { result: 3 },
-2016-06-13T15:00:16.582974+00:00 app[web.1]:      '-KK-DHwzyryedQWfEi6l': { result: 1 },
-2016-06-13T15:00:16.582976+00:00 app[web.1]:      '-KK-DJ2xk0EiyOXGNbT7': { result: 3 },
-2016-06-13T15:00:16.582975+00:00 app[web.1]:      '-KK-DILHUs6xnoErSZnR': { result: 1 },
-2016-06-13T15:00:16.582975+00:00 app[web.1]:      '-KK-DIjERwcdetakiIpC': { result: 1 },
-2016-06-13T15:00:16.582977+00:00 app[web.1]:      '-KK-DJQ52oiZua6wY37D': { result: 5 },
-2016-06-13T15:00:16.582982+00:00 app[web.1]:      '-KJzYj-7hU4hM1qeasS2': { result: 3 },
-2016-06-13T15:00:16.582981+00:00 app[web.1]:    { '-KJzYUkSbkNiAaWTape3': { result: 5 },
-2016-06-13T15:00:16.582980+00:00 app[web.1]:   '1005940342': 
-2016-06-13T15:00:16.582977+00:00 app[web.1]:      '-KK-DJrO361OE7-fnuyu': { result: 4 },
-2016-06-13T15:00:16.582979+00:00 app[web.1]:      '-KK-FWxxQdzOKp4-3I0R': { result: 6 } },
-2016-06-13T15:00:16.582982+00:00 app[web.1]:      '-KK-ASL_CjWKBI4zXciw': { result: 1 },
-2016-06-13T15:00:16.582985+00:00 app[web.1]:      '-KK-DKzHlD8PdGnIESp2': { result: 2 },
-2016-06-13T15:00:16.582983+00:00 app[web.1]:      '-KK-AiH5gsw1mcTbS0gW': { result: 6 },
-2016-06-13T15:00:16.582986+00:00 app[web.1]:      '-KK-DLl9qoyxl_x10AyZ': { result: 6 } } }
-2016-06-13T15:00:16.582984+00:00 app[web.1]:      '-KK-BQuY6_GVC78YbLN9': { result: 2 },
-2016-06-13T15:00:16.582984+00:00 app[web.1]:      '-KK-BRdrsKPWf7HfvGT9': { result: 5 },
-2016-06-13T15:00:26.208599+00:00 heroku[api]: Starting process with command `bash` by fraserkieran@hotmail.com
-2016-06-13T15:00:37.086168+00:00 heroku[run.8928]: Awaiting client
-2016-06-13T15:00:37.237459+00:00 heroku[run.8928]: State changed from starting to up
-2016-06-13T15:01:07.101667+00:00 heroku[run.8928]: Error R13 (Attach error) -> Failed to attach to process
-2016-06-13T15:01:07.862393+00:00 heroku[run.8928]: State changed from up to complete
-2016-06-13T15:01:07.832865+00:00 heroku[run.8928]: Process exited with status 128
 2016-06-13T15:05:08.019191+00:00 heroku[router]: at=info method=GET path="/" host=sonard.herokuapp.com request_id=d5ca7ec2-3d11-4a6a-bebe-c95e67af92fa fwd="134.226.214.251" dyno=web.1 connect=1ms service=24ms status=200 bytes=1577
 2016-06-13T15:05:08.449724+00:00 heroku[router]: at=info method=GET path="/zone.js/dist/zone.js?rev=@@hash" host=sonard.herokuapp.com request_id=8f0c206b-e1ee-478a-b298-4151a71fd660 fwd="134.226.214.251" dyno=web.1 connect=1ms service=16ms status=304 bytes=238
 2016-06-13T15:05:08.428955+00:00 heroku[router]: at=info method=GET path="/systemjs/dist/system.js?rev=@@hash" host=sonard.herokuapp.com request_id=23dc877d-effb-4084-9bcd-e8a97669fd47 fwd="134.226.214.251" dyno=web.1 connect=1ms service=8ms status=304 bytes=238
@@ -99,8 +12,91 @@
 2016-06-13T15:05:59.560267+00:00 heroku[web.1]: Stopping all processes with SIGTERM
 2016-06-13T15:06:00.662871+00:00 heroku[web.1]: Process exited with status 143
 2016-06-13T15:06:06.095334+00:00 heroku[web.1]: Starting process with command `npm start`
-2016-06-13T15:06:08.292017+00:00 app[web.1]: 
 2016-06-13T15:06:08.292048+00:00 app[web.1]: > sonardeezer@0.0.1 start /app
+2016-06-13T15:06:08.292017+00:00 app[web.1]: 
 2016-06-13T15:06:08.292110+00:00 app[web.1]: > node index
 2016-06-13T15:06:08.292112+00:00 app[web.1]: 
+2016-06-13T15:06:09.222855+00:00 app[web.1]: path /app/server/analysis/compute_input.py
+2016-06-13T15:06:09.238473+00:00 app[web.1]:     at process._tickCallback (internal/process/next_tick.js:98:9)
+2016-06-13T15:06:09.238472+00:00 app[web.1]:     at _combinedTickCallback (internal/process/next_tick.js:67:7)
+2016-06-13T15:06:09.238471+00:00 app[web.1]:     at cb_nextTick (/app/node_modules/newrelic/lib/agent.js:164:16)
+2016-06-13T15:06:09.238474+00:00 app[web.1]:     at startup (node.js:148:18)
+2016-06-13T15:06:09.223303+00:00 app[web.1]: here
+2016-06-13T15:06:09.238475+00:00 app[web.1]:     at node.js:405:3
+2016-06-13T15:06:09.239468+00:00 app[web.1]: up and running @: 5a9d0ef7-8b89-4c87-9aa8-0ab8bfb4c4f4 on port: 44518
+2016-06-13T15:06:09.239534+00:00 app[web.1]: enviroment: production
+2016-06-13T15:06:09.238437+00:00 app[web.1]: New Relic for Node.js halted startup due to an error:
+2016-06-13T15:06:09.238469+00:00 app[web.1]: Error: Not starting without license key!
+2016-06-13T15:06:09.238473+00:00 app[web.1]:     at Function.Module.runMain (module.js:449:11)
+2016-06-13T15:06:09.504200+00:00 app[web.1]: Sum of numbers= 
+2016-06-13T15:06:09.942866+00:00 heroku[web.1]: State changed from starting to up
+2016-06-13T15:06:10.923391+00:00 app[web.1]:    { '-KJzmuSkc5EVljlrKDwS': { result: 3 },
+2016-06-13T15:06:10.923378+00:00 app[web.1]: { '936685971': 
+2016-06-13T15:06:10.923421+00:00 app[web.1]:      '-KK-DILHUs6xnoErSZnR': { result: 1 },
+2016-06-13T15:06:10.923421+00:00 app[web.1]:      '-KK-DHwzyryedQWfEi6l': { result: 1 },
+2016-06-13T15:06:10.923392+00:00 app[web.1]:      '-KJzo5YYgyzNASQ7yFtx': { result: 4 },
+2016-06-13T15:06:10.923418+00:00 app[web.1]:      '-KJzo6QRbZO9DzJYU_PT': { result: 4 },
+2016-06-13T15:06:10.923424+00:00 app[web.1]:      '-KK-DJrO361OE7-fnuyu': { result: 4 },
+2016-06-13T15:06:10.923426+00:00 app[web.1]:   '1005940342': 
+2016-06-13T15:06:10.923425+00:00 app[web.1]:      '-KK-FWHQbESyXqvkvdxf': { result: 3 },
+2016-06-13T15:06:10.923427+00:00 app[web.1]:    { '-KJzYUkSbkNiAaWTape3': { result: 5 },
+2016-06-13T15:06:10.923426+00:00 app[web.1]:      '-KK-FWxxQdzOKp4-3I0R': { result: 6 } },
+2016-06-13T15:06:10.923429+00:00 app[web.1]:      '-KK-ASL_CjWKBI4zXciw': { result: 1 },
+2016-06-13T15:06:10.923423+00:00 app[web.1]:      '-KK-DJQ52oiZua6wY37D': { result: 5 },
+2016-06-13T15:06:10.923429+00:00 app[web.1]:      '-KK-AiH5gsw1mcTbS0gW': { result: 6 },
+2016-06-13T15:06:10.923431+00:00 app[web.1]:      '-KK-BRdrsKPWf7HfvGT9': { result: 5 },
+2016-06-13T15:06:10.923431+00:00 app[web.1]:      '-KK-DKzHlD8PdGnIESp2': { result: 2 },
+2016-06-13T15:06:10.923430+00:00 app[web.1]:      '-KK-BQuY6_GVC78YbLN9': { result: 2 },
+2016-06-13T15:06:10.923428+00:00 app[web.1]:      '-KJzYj-7hU4hM1qeasS2': { result: 3 },
+2016-06-13T15:06:10.923422+00:00 app[web.1]:      '-KK-DIjERwcdetakiIpC': { result: 1 },
+2016-06-13T15:06:10.923432+00:00 app[web.1]:      '-KK-DLl9qoyxl_x10AyZ': { result: 6 } } }
+2016-06-13T15:06:10.923423+00:00 app[web.1]:      '-KK-DJ2xk0EiyOXGNbT7': { result: 3 },
+2016-06-13T15:07:39.987066+00:00 heroku[slug-compiler]: Slug compilation started
+2016-06-13T15:07:39.987076+00:00 heroku[slug-compiler]: Slug compilation finished
+2016-06-13T15:07:40.352759+00:00 heroku[web.1]: State changed from up to starting
+2016-06-13T15:07:40.352189+00:00 heroku[web.1]: Restarting
+2016-06-13T15:07:43.548789+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2016-06-13T15:07:39.770956+00:00 heroku[api]: Release v299 created by fraserkieran@hotmail.com
+2016-06-13T15:07:44.007395+00:00 heroku[web.1]: Starting process with command `npm start`
+2016-06-13T15:07:39.770907+00:00 heroku[api]: Deploy 82421f0 by fraserkieran@hotmail.com
+2016-06-13T15:07:45.104869+00:00 heroku[web.1]: Process exited with status 143
+2016-06-13T15:07:45.971469+00:00 app[web.1]: 
+2016-06-13T15:07:45.971401+00:00 app[web.1]: 
+2016-06-13T15:07:45.971450+00:00 app[web.1]: > sonardeezer@0.0.1 start /app
+2016-06-13T15:07:45.971466+00:00 app[web.1]: > node index
+2016-06-13T15:07:46.844432+00:00 app[web.1]: path /app/server/analysis/compute_input.py
+2016-06-13T15:07:46.857162+00:00 app[web.1]: New Relic for Node.js halted startup due to an error:
+2016-06-13T15:07:46.857208+00:00 app[web.1]:     at cb_nextTick (/app/node_modules/newrelic/lib/agent.js:164:16)
+2016-06-13T15:07:46.857208+00:00 app[web.1]:     at _combinedTickCallback (internal/process/next_tick.js:67:7)
+2016-06-13T15:07:46.857209+00:00 app[web.1]:     at process._tickCallback (internal/process/next_tick.js:98:9)
+2016-06-13T15:07:46.857210+00:00 app[web.1]:     at Function.Module.runMain (module.js:449:11)
+2016-06-13T15:07:46.857211+00:00 app[web.1]:     at node.js:405:3
+2016-06-13T15:07:46.857206+00:00 app[web.1]: Error: Not starting without license key!
+2016-06-13T15:07:46.844845+00:00 app[web.1]: here
+2016-06-13T15:07:46.857210+00:00 app[web.1]:     at startup (node.js:148:18)
+2016-06-13T15:07:46.858182+00:00 app[web.1]: up and running @: 6eb48f3e-b791-4548-a7fe-55d143695e46 on port: 27915
+2016-06-13T15:07:46.858193+00:00 app[web.1]: enviroment: production
+2016-06-13T15:07:46.885067+00:00 app[web.1]: Sum of numbers= 
+2016-06-13T15:07:47.365590+00:00 heroku[web.1]: State changed from starting to up
+2016-06-13T15:07:48.298900+00:00 app[web.1]: { '936685971': 
+2016-06-13T15:07:48.298937+00:00 app[web.1]:    { '-KJzmuSkc5EVljlrKDwS': { result: 3 },
+2016-06-13T15:07:48.298942+00:00 app[web.1]:      '-KK-DILHUs6xnoErSZnR': { result: 1 },
+2016-06-13T15:07:48.298943+00:00 app[web.1]:      '-KK-DIjERwcdetakiIpC': { result: 1 },
+2016-06-13T15:07:48.298944+00:00 app[web.1]:      '-KK-DJ2xk0EiyOXGNbT7': { result: 3 },
+2016-06-13T15:07:48.298944+00:00 app[web.1]:      '-KK-DJQ52oiZua6wY37D': { result: 5 },
+2016-06-13T15:07:48.298945+00:00 app[web.1]:      '-KK-DJrO361OE7-fnuyu': { result: 4 },
+2016-06-13T15:07:48.298946+00:00 app[web.1]:      '-KK-FWHQbESyXqvkvdxf': { result: 3 },
+2016-06-13T15:07:48.298940+00:00 app[web.1]:      '-KJzo5YYgyzNASQ7yFtx': { result: 4 },
+2016-06-13T15:07:48.298941+00:00 app[web.1]:      '-KJzo6QRbZO9DzJYU_PT': { result: 4 },
+2016-06-13T15:07:48.298947+00:00 app[web.1]:      '-KK-FWxxQdzOKp4-3I0R': { result: 6 } },
+2016-06-13T15:07:48.298942+00:00 app[web.1]:      '-KK-DHwzyryedQWfEi6l': { result: 1 },
+2016-06-13T15:07:48.298947+00:00 app[web.1]:   '1005940342': 
+2016-06-13T15:07:48.298948+00:00 app[web.1]:    { '-KJzYUkSbkNiAaWTape3': { result: 5 },
+2016-06-13T15:07:48.298948+00:00 app[web.1]:      '-KJzYj-7hU4hM1qeasS2': { result: 3 },
+2016-06-13T15:07:48.298949+00:00 app[web.1]:      '-KK-ASL_CjWKBI4zXciw': { result: 1 },
+2016-06-13T15:07:48.298950+00:00 app[web.1]:      '-KK-AiH5gsw1mcTbS0gW': { result: 6 },
+2016-06-13T15:07:48.298951+00:00 app[web.1]:      '-KK-BRdrsKPWf7HfvGT9': { result: 5 },
+2016-06-13T15:07:48.298952+00:00 app[web.1]:      '-KK-DLl9qoyxl_x10AyZ': { result: 6 } } }
+2016-06-13T15:07:48.298950+00:00 app[web.1]:      '-KK-BQuY6_GVC78YbLN9': { result: 2 },
+2016-06-13T15:07:48.298951+00:00 app[web.1]:      '-KK-DKzHlD8PdGnIESp2': { result: 2 },
 Terminate batch job (Y/N)? 

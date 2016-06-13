@@ -1,1 +1,155 @@
-"use strict";var __decorate=this&&this.__decorate||function(e,t,o,r){var n,a=arguments.length,i=3>a?t:null===r?r=Object.getOwnPropertyDescriptor(t,o):r;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)i=Reflect.decorate(e,t,o,r);else for(var s=e.length-1;s>=0;s--)(n=e[s])&&(i=(3>a?n(i):a>3?n(t,o,i):n(t,o))||i);return a>3&&i&&Object.defineProperty(t,o,i),i},__metadata=this&&this.__metadata||function(e,t){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(e,t):void 0},core_1=require("@angular/core"),player_service_1=require("../services/player.service"),landing_component_1=require("./landing.component"),about_component_1=require("./about.component"),dashboard_component_1=require("./dashboard.component"),router_1=require("@angular/router"),PlayerComponent=function(){function e(e,t,o){this._playerService=e,this.router=t,this.zone=o,this.title="Deezer Challenge",this.numberUsersPerTeam=3}return e.prototype.ngOnInit=function(){firebase=this._playerService.getFirebaseDB(),this.router.navigate(["/"]),DZ.init({appId:"180442",channelUrl:"http://sonard.herokuapp.com/",player:{container:"player",width:300,height:60,onload:function(){}}}),DZ.Event.subscribe("current_track",function(e){console.log("current_track"),console.log(e),DZ.api("/track/"+e.track.id,function(e){console.log(e),console.log("BPM: "+e.bpm)})}),DZ.getLoginStatus(function(e){e.authResponse&&firebase.database().ref("users/"+e.userID).once("value").then(function(e){localStorage.setItem("userF",JSON.stringify(e.val())),DZ.api("/user/me",function(e){var t=this;localStorage.setItem("userD",JSON.stringify(e)),this.zone.run(function(){return t.router.navigate(["/dashboard"])})}.bind(this))}.bind(this))}.bind(this))},e.prototype.login=function(){DZ.login(function(e){"connected"==e.status?DZ.api("/user/me",function(e){this.initUser(e)}.bind(this)):console.log("User cancelled login or did not fully authorize.")}.bind(this),{perms:"basic_access,email, manage_library, manage_community, listening_history, offline_access"})},e.prototype.logout=function(){DZ.logout();var e=JSON.parse(localStorage.getItem("userD")).id;if("undefined"!=typeof localStorage.getItem("teamId")&&null!=localStorage.getItem("teamId")){var t=localStorage.getItem("teamId");firebase.database().ref("teams/"+t+"/members/"+e).remove(),localStorage.removeItem("teamId")}firebase.database().ref("users/"+e+"/teamAssigned").remove(),localStorage.removeItem("userD"),localStorage.removeItem("userF"),this.router.navigate(["/"])},e.prototype.initUser=function(e){firebase.database().ref("users/"+e.id).once("value").then(function(t){var o=this;localStorage.setItem("userD",JSON.stringify(e)),"undefined"==typeof t.val()||null===t.val()?this.addUser(e):(localStorage.setItem("userF",JSON.stringify(t.val())),this.zone.run(function(){return o.router.navigate(["/dashboard"])}))}.bind(this))},e.prototype.getFirebase=function(){return firebase},e.prototype.home=function(){DZ.getLoginStatus(function(e){e.authResponse?this.router.navigate(["/dashboard"]):this.router.navigate(["/"])}.bind(this))},e.prototype.addUser=function(e){var t=this;localStorage.setItem("userF",JSON.stringify(this._playerService.addUser(e))),this.zone.run(function(){return t.router.navigate(["/dashboard"])})},e=__decorate([core_1.Component({selector:"player-cmp",templateUrl:"player/templates/todo.html",styleUrls:["player/styles/todo.css"],providers:[player_service_1.PlayerService,dashboard_component_1.DashboardComponent],directives:[router_1.ROUTER_DIRECTIVES]}),router_1.Routes([{path:"/",component:landing_component_1.LandingComponent},{path:"/about",component:about_component_1.AboutComponent},{path:"/dashboard",component:dashboard_component_1.DashboardComponent}]),__metadata("design:paramtypes",[player_service_1.PlayerService,router_1.Router,core_1.NgZone])],e)}();exports.PlayerComponent=PlayerComponent;
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var player_service_1 = require("../services/player.service");
+var landing_component_1 = require("./landing.component");
+var about_component_1 = require("./about.component");
+var dashboard_component_1 = require("./dashboard.component");
+var router_1 = require("@angular/router");
+var PlayerComponent = (function () {
+    function PlayerComponent(_playerService, router, zone) {
+        this._playerService = _playerService;
+        this.router = router;
+        this.zone = zone;
+        this.title = "Deezer Challenge";
+        // This is the number of players allowed per team.
+        this.numberUsersPerTeam = 3;
+    }
+    /**
+     * To begin, load the landing page
+     * initialize the deezer api
+     * check if the user is already logged in with deezer
+     */
+    PlayerComponent.prototype.ngOnInit = function () {
+        firebase = this._playerService.getFirebaseDB();
+        this.router.navigate(['/']);
+        DZ.init({
+            appId: '180442',
+            channelUrl: 'http://sonard.herokuapp.com/',
+            player: {
+                container: 'player',
+                width: 300,
+                height: 60,
+                onload: function () { }
+            }
+        });
+        DZ.Event.subscribe('current_track', function (currentTrack) {
+            console.log("current_track");
+            console.log(currentTrack);
+            DZ.api('/track/' + currentTrack.track.id, function (detail) {
+                console.log(detail);
+                console.log("BPM: " + detail.bpm);
+            });
+        });
+        DZ.getLoginStatus(function (response) {
+            if (response.authResponse) {
+                firebase.database().ref('users/' + response.userID).once('value').then(function (snapshot) {
+                    localStorage.setItem('userF', JSON.stringify(snapshot.val()));
+                    DZ.api('/user/me', function (user) {
+                        var _this = this;
+                        localStorage.setItem('userD', JSON.stringify(user));
+                        this.zone.run(function () { return _this.router.navigate(['/dashboard']); });
+                    }.bind(this));
+                }.bind(this));
+            }
+        }.bind(this));
+    };
+    /**
+     * Login to the app
+     */
+    PlayerComponent.prototype.login = function () {
+        var loggedIn = false;
+        DZ.login(function (response) {
+            if (response.status == 'connected') {
+                DZ.api('/user/me', function (user) {
+                    this.initUser(user);
+                }.bind(this));
+            }
+            else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        }.bind(this), { perms: 'basic_access,email, manage_library, manage_community, listening_history, offline_access' });
+    };
+    /**
+     * Logout of the application
+     * clear local storage
+     * navigate back to the landing page
+     */
+    PlayerComponent.prototype.logout = function () {
+        DZ.logout();
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
+        if (typeof localStorage.getItem('teamId') != "undefined" && localStorage.getItem('teamId') != null) {
+            var teamId = localStorage.getItem('teamId');
+            firebase.database().ref('teams/' + teamId + '/members/' + userId).remove();
+            localStorage.removeItem('teamId');
+        }
+        firebase.database().ref('users/' + userId + '/teamAssigned').remove();
+        localStorage.removeItem('userD');
+        localStorage.removeItem('userF');
+        this.router.navigate(['/']);
+    };
+    /**
+     * Initialize the user within the app (whether returning or new user).
+     * @param user
+       */
+    PlayerComponent.prototype.initUser = function (user) {
+        firebase.database().ref('users/' + user.id).once('value').then(function (snapshot) {
+            var _this = this;
+            localStorage.setItem('userD', JSON.stringify(user));
+            if (typeof snapshot.val() === "undefined" || snapshot.val() === null) {
+                this.addUser(user);
+            }
+            else {
+                localStorage.setItem('userF', JSON.stringify(snapshot.val()));
+                this.zone.run(function () { return _this.router.navigate(['/dashboard']); });
+            }
+        }.bind(this));
+    };
+    /**
+     * Return the firebase instance
+     * @returns {any}
+       */
+    PlayerComponent.prototype.getFirebase = function () {
+        return firebase;
+    };
+    PlayerComponent.prototype.home = function () {
+        DZ.getLoginStatus(function (response) {
+            if (response.authResponse) {
+                this.router.navigate(['/dashboard']);
+            }
+            else {
+                this.router.navigate(['/']);
+            }
+        }.bind(this));
+    };
+    PlayerComponent.prototype.addUser = function (user) {
+        var _this = this;
+        localStorage.setItem('userF', JSON.stringify(this._playerService.addUser(user)));
+        this.zone.run(function () { return _this.router.navigate(['/dashboard']); });
+    };
+    PlayerComponent = __decorate([
+        core_1.Component({
+            selector: 'player-cmp',
+            templateUrl: 'player/templates/todo.html',
+            styleUrls: ['player/styles/todo.css'],
+            providers: [player_service_1.PlayerService, dashboard_component_1.DashboardComponent],
+            directives: [router_1.ROUTER_DIRECTIVES]
+        }),
+        router_1.Routes([
+            { path: '/', component: landing_component_1.LandingComponent },
+            { path: '/about', component: about_component_1.AboutComponent },
+            { path: '/dashboard', component: dashboard_component_1.DashboardComponent }
+        ]), 
+        __metadata('design:paramtypes', [player_service_1.PlayerService, router_1.Router, core_1.NgZone])
+    ], PlayerComponent);
+    return PlayerComponent;
+}());
+exports.PlayerComponent = PlayerComponent;

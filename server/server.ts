@@ -77,7 +77,7 @@ var jsonPath = path.join(__dirname, 'analysis', 'compute_input.py');
 console.log('path', jsonPath);
 
 console.log('here');
-var spawn = require('child_process').spawn, py = spawn('python', [jsonPath]),
+var spawn = require('child_process').spawn, py = spawn('python', ['compute_input.py']),
   data = [1,2,3,4,5,6,7,8,9], dataString = '';
 
 py.stdout.on('data', function(data){
