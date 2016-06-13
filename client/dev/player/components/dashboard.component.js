@@ -83,7 +83,13 @@ var DashboardComponent = (function () {
         DZ.player.playPlaylist(1483340617);
     };
     DashboardComponent.prototype.play = function () {
-        DZ.player.play();
+        this.getFirebase().database().ref('currentTrack').once('value').then(function (snapshot) {
+            console.log(snapshot);
+            console.log(position);
+            var position = snapshot.position;
+            DZ.player.seek(position);
+            DZ.player.play();
+        });
     };
     DashboardComponent.prototype.currentTrack = function () {
         this._parent.getFirebase().database().ref('currentTrack').on('value', function (snapshot) {
@@ -95,6 +101,11 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.subscribeTrackPosition = function () {
         DZ.Event.subscribe('player_position', function (arg) {
             console.log(arg);
+            console.log(arg[0]);
+            var position = ((arg[0] / arg[1]) * 100);
+            this._parent.getFirebase().database().ref('currentTrack').update({
+                position: position
+            });
         });
     };
     DashboardComponent.prototype.geolocation = function () {

@@ -112,7 +112,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   play(){
-    DZ.player.play();
+    this.getFirebase().database().ref('currentTrack').once('value').then(function(snapshot) {
+      console.log(snapshot);
+      console.log(position);
+      var position = snapshot.position;
+      DZ.player.seek(position);
+      DZ.player.play();
+    });
   }
 
   currentTrack(){
@@ -126,6 +132,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   subscribeTrackPosition(){
     DZ.Event.subscribe('player_position', function(arg){
       console.log(arg);
+      console.log(arg[0]);
+      var position = ((arg[0]/arg[1]) * 100);
+      this._parent.getFirebase().database().ref('currentTrack').update({
+        position: position
+      });
     });
   }
 
