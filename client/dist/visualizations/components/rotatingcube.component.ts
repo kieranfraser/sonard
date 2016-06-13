@@ -45,7 +45,7 @@ export class RotatingCubeComponent implements OnInit{
 
   animate() {
 
-    requestAnimationFrame( this.animate );
+    requestAnimationFrame( this.animate.bind(this) );
 
     this.mesh.rotation.x += 0.01;
     this.mesh.rotation.y += 0.02;

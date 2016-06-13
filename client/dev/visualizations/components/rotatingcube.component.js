@@ -29,7 +29,7 @@ var RotatingCubeComponent = (function () {
         document.body.appendChild(this.renderer.domElement);
     };
     RotatingCubeComponent.prototype.animate = function () {
-        requestAnimationFrame(this.animate);
+        requestAnimationFrame(this.animate.bind(this));
         this.mesh.rotation.x += 0.01;
         this.mesh.rotation.y += 0.02;
         this.renderer.render(this.scene, this.camera);
