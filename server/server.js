@@ -9,6 +9,8 @@ var http = require('http');
 var routes_conf_1 = require('./config/routes.conf');
 var db_conf_1 = require('./config/db.conf');
 var index_1 = require('./routes/index');
+var fs = require('fs');
+var path = require('path');
 var app = express();
 routes_conf_1.RoutesConfig.init(app);
 db_conf_1.DBConfig.init();
@@ -49,8 +51,10 @@ ref.on("value", function (snapshot) {
 });
 // ----------------------------- For python analysis --------------------------
 var _root = process.cwd();
+var jsonPath = path.join(__dirname, 'server', 'analysis', 'compute_input.py');
+console.log('path', jsonPath);
 console.log('here');
-var spawn = require('child_process').spawn, py = spawn('python', [_root + '/server/analysis/compute_input.py']), data = [1, 2, 3, 4, 5, 6, 7, 8, 9], dataString = '';
+var spawn = require('child_process').spawn, py = spawn('python', [jsonPath]), data = [1, 2, 3, 4, 5, 6, 7, 8, 9], dataString = '';
 py.stdout.on('data', function (data) {
     console.log('inside stdout', data);
     dataString += data.toString();

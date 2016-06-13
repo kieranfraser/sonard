@@ -1,1 +1,26 @@
-"use strict";var __decorate=this&&this.__decorate||function(e,t,n,o){var r,a=arguments.length,c=3>a?t:null===o?o=Object.getOwnPropertyDescriptor(t,n):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)c=Reflect.decorate(e,t,n,o);else for(var l=e.length-1;l>=0;l--)(r=e[l])&&(c=(3>a?r(c):a>3?r(t,n,c):r(t,n))||c);return a>3&&c&&Object.defineProperty(t,n,c),c},__metadata=this&&this.__metadata||function(e,t){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(e,t):void 0},core_1=require("@angular/core"),LandingComponent=function(){function e(){}return e.prototype.ngOnInit=function(){},e=__decorate([core_1.Component({selector:"player-cmp",templateUrl:"player/templates/landing.html",styleUrls:["player/styles/todo.css"]}),__metadata("design:paramtypes",[])],e)}();exports.LandingComponent=LandingComponent;
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var LandingComponent = (function () {
+    function LandingComponent() {
+    }
+    LandingComponent.prototype.ngOnInit = function () { };
+    LandingComponent = __decorate([
+        core_1.Component({
+            selector: 'player-cmp',
+            templateUrl: 'player/templates/landing.html',
+            styleUrls: ['player/styles/todo.css']
+        }), 
+        __metadata('design:paramtypes', [])
+    ], LandingComponent);
+    return LandingComponent;
+}());
+exports.LandingComponent = LandingComponent;

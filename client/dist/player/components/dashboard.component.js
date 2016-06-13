@@ -1,1 +1,200 @@
-"use strict";var __decorate=this&&this.__decorate||function(e,t,a,o){var n,r=arguments.length,s=3>r?t:null===o?o=Object.getOwnPropertyDescriptor(t,a):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(e,t,a,o);else for(var i=e.length-1;i>=0;i--)(n=e[i])&&(s=(3>r?n(s):r>3?n(t,a,s):n(t,a))||s);return r>3&&s&&Object.defineProperty(t,a,s),s},__metadata=this&&this.__metadata||function(e,t){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(e,t):void 0},__param=this&&this.__param||function(e,t){return function(a,o){t(a,o,e)}},core_1=require("@angular/core"),common_1=require("@angular/common"),player_component_1=require("./player.component"),Team_1=require("../../common/models/Team"),leaderboard_component_1=require("../../leaderboard/components/leaderboard.component"),admin_component_1=require("../../admin/components/admin.component"),adminCreateTeam_component_1=require("../../admin/components/adminCreateTeam.component"),rotatingcube_component_1=require("../../visualizations/components/rotatingcube.component"),DashboardComponent=function(){function e(e,t){this._parent=e,this.ref=t,this.input="nothing",this.aresponse="nothing",this.changedTrack=!1,this.teamAssigned=!1,this.admin=!1,this.seek=!1,this.trackPosition=0,window.addEventListener("deviceorientation",function(e){console.log(e.alpha),console.log(e.beta),console.log(e.gamma),this.alpha=e.alpha,this.beta=e.beta,this.gamma=e.gamma,e.beta<-20&&0==this.changedTrack&&(this.nextTrack(),this.changedTrack=!0),e.beta>30&&(this.changedTrack=!1)}.bind(this),!0),console.log("constructor dashboard")}return e.prototype.ngOnInit=function(){console.log("actual init"),this.currentTrack(),this.subscribeToSeek(),this.teamAssigned=!1;var e=JSON.parse(localStorage.getItem("userF")).teamAssigned;"undefined"!=typeof e&&null!=e&&(this.teamAssigned=!0,this._parent.getFirebase().database().ref("teams/"+e).on("value",function(t){this.teamList=[];for(var a in t.val().members)t.val().members.hasOwnProperty(a)&&this.teamList.push(t.val().members[a].name);new Team_1.Team(e,t.val().name,t.val().genres,this.teamList);localStorage.setItem("teamId",e)}.bind(this))),this.getTeams(),"Kieran.Fraser"===JSON.parse(localStorage.getItem("userD")).name&&(console.log("entered admin mode"),this.admin=!0,this.subscribeTrackPosition());var t=JSON.parse(localStorage.getItem("userD")).id;this._parent.getFirebase().database().ref("results/"+t).on("value",function(e){console.log(e.val())})},e.prototype.getFirebase=function(){return this._parent.getFirebase()},e.prototype.nextTrack=function(){DZ.player.next()},e.prototype.playMusic=function(){DZ.player.playPlaylist(1483340617)},e.prototype.play=function(){this._parent.getFirebase().database().ref("currentPosition").once("value").then(function(e){console.log(e.val());var t=e.val().position;console.log("the position",t),DZ.player.play(),this.trackPosition=t,this.seek=!0}.bind(this))},e.prototype.subscribeToSeek=function(){DZ.Event.subscribe("player_play",function(e){this.seek===!0&&(console.log("seek the player"),DZ.player.seek(this.trackPosition),this.seek=!1)}.bind(this))},e.prototype.currentTrack=function(){this._parent.getFirebase().database().ref("currentTrack").on("value",function(e){DZ.player.addToQueue([e.val().id]),localStorage.setItem("currentTrack",JSON.stringify(e.val())),console.log("track added",e.val().title)}.bind(this))},e.prototype.subscribeTrackPosition=function(){DZ.Event.subscribe("player_position",function(e){console.log(e),console.log(e[0]);var t=Math.round(e[0]/e[1]*100*100)/100;this._parent.getFirebase().database().ref("currentPosition").set({position:t})}.bind(this))},e.prototype.geolocation=function(){function e(e){console.log("Latitude: "+e.coords.latitude),console.log("Longitude: "+e.coords.longitude)}navigator.geolocation&&navigator.geolocation.getCurrentPosition(e)},e.prototype.getTeams=function(){this._parent.getFirebase().database().ref("teams").on("value",function(e){this.allTeams=[];for(var t in e.val()){var a=e.val()[t],o=e.val()[t].members,n=[];for(var r in o)n.push(o[r].name);this.allTeams.push(new Team_1.Team(t,a.teamName,a.genres,n))}this.ref.detectChanges()}.bind(this))},e.prototype.ngOnDestroy=function(){console.log("destroy"),this.ref.detach()},e.prototype.selectedTeam=function(e){var t=JSON.parse(localStorage.getItem("userD")).id;this._parent.getFirebase().database().ref("teams/"+e.id+"/members/"+t).set({name:JSON.parse(localStorage.getItem("userD")).name}),this._parent.getFirebase().database().ref("users/"+t).update({teamAssigned:e.id});new Team_1.Team(e.id,e.name,e.genres,e.members);localStorage.setItem("teamId",e.id),this.teamList=[];for(var a=0,o=e.members;a<o.length;a++){var n=o[a];console.log(n),this.teamList.push(n)}this.teamList.push(JSON.parse(localStorage.getItem("userD")).name),this.teamAssigned=!0},e.prototype.result=function(){var e=Math.floor(6*Math.random())+1,t=JSON.parse(localStorage.getItem("userD")).id;this._parent.getFirebase().database().ref("results/"+t).push({result:e}),console.log(e)},e=__decorate([core_1.Component({selector:"player-cmp",templateUrl:"player/templates/dashboard.html",styleUrls:["player/styles/dashboard.css"],directives:[common_1.CORE_DIRECTIVES,adminCreateTeam_component_1.AdminCreateTeam,leaderboard_component_1.LeaderBoardComponent,admin_component_1.AdminComponent,rotatingcube_component_1.RotatingCubeComponent]}),__param(0,core_1.Inject(core_1.forwardRef(function(){return player_component_1.PlayerComponent}))),__metadata("design:paramtypes",[player_component_1.PlayerComponent,core_1.ChangeDetectorRef])],e)}();exports.DashboardComponent=DashboardComponent;
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var player_component_1 = require("./player.component");
+var Team_1 = require("../../common/models/Team");
+var leaderboard_component_1 = require("../../leaderboard/components/leaderboard.component");
+var admin_component_1 = require("../../admin/components/admin.component");
+var adminCreateTeam_component_1 = require("../../admin/components/adminCreateTeam.component");
+var rotatingcube_component_1 = require("../../visualizations/components/rotatingcube.component");
+var DashboardComponent = (function () {
+    function DashboardComponent(_parent, ref) {
+        this._parent = _parent;
+        this.ref = ref;
+        this.input = 'nothing';
+        this.aresponse = 'nothing';
+        this.changedTrack = false;
+        this.teamAssigned = false;
+        this.admin = false;
+        this.seek = false;
+        this.trackPosition = 0;
+        window.addEventListener("deviceorientation", function (event) {
+            console.log(event.alpha);
+            console.log(event.beta);
+            console.log(event.gamma);
+            this.alpha = event.alpha;
+            this.beta = event.beta;
+            this.gamma = event.gamma;
+            if (event.beta < -20 && this.changedTrack == false) {
+                this.nextTrack();
+                this.changedTrack = true;
+            }
+            if (event.beta > 30) {
+                this.changedTrack = false;
+            }
+        }.bind(this), true);
+        console.log('constructor dashboard');
+    }
+    DashboardComponent.prototype.ngOnInit = function () {
+        console.log('actual init');
+        this.currentTrack();
+        this.subscribeToSeek();
+        this.teamAssigned = false;
+        var teamId = JSON.parse(localStorage.getItem('userF')).teamAssigned;
+        if (typeof teamId != "undefined" && teamId != null) {
+            this.teamAssigned = true;
+            this._parent.getFirebase().database().ref('teams/' + teamId).on('value', function (snapshot) {
+                this.teamList = [];
+                for (var member in snapshot.val().members) {
+                    if (snapshot.val().members.hasOwnProperty(member)) {
+                        this.teamList.push(snapshot.val().members[member].name);
+                    }
+                }
+                var assignedTeam = new Team_1.Team(teamId, snapshot.val().name, snapshot.val().genres, this.teamList);
+                localStorage.setItem('teamId', teamId);
+            }.bind(this));
+        }
+        this.getTeams();
+        if (JSON.parse(localStorage.getItem('userD')).name === 'Kieran.Fraser') {
+            console.log('entered admin mode');
+            this.admin = true;
+            this.subscribeTrackPosition();
+        }
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
+        this._parent.getFirebase().database().ref('results/' + userId).on('value', function (snapshot) {
+            console.log(snapshot.val());
+        });
+    };
+    DashboardComponent.prototype.getFirebase = function () {
+        return this._parent.getFirebase();
+    };
+    DashboardComponent.prototype.nextTrack = function () {
+        DZ.player.next();
+    };
+    DashboardComponent.prototype.playMusic = function () {
+        DZ.player.playPlaylist(1483340617);
+    };
+    DashboardComponent.prototype.play = function () {
+        this._parent.getFirebase().database().ref('currentPosition').once('value').then(function (snapshot) {
+            console.log(snapshot.val());
+            var position = snapshot.val().position;
+            console.log('the position', position);
+            DZ.player.play();
+            this.trackPosition = position;
+            this.seek = true;
+        }.bind(this));
+    };
+    DashboardComponent.prototype.subscribeToSeek = function () {
+        DZ.Event.subscribe('player_play', function (arg) {
+            if (this.seek === true) {
+                console.log('seek the player');
+                DZ.player.seek(this.trackPosition);
+                this.seek = false;
+            }
+        }.bind(this));
+    };
+    DashboardComponent.prototype.currentTrack = function () {
+        this._parent.getFirebase().database().ref('currentTrack').on('value', function (snapshot) {
+            DZ.player.addToQueue([snapshot.val().id]);
+            localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
+            console.log('track added', snapshot.val().title);
+        }.bind(this));
+    };
+    DashboardComponent.prototype.subscribeTrackPosition = function () {
+        DZ.Event.subscribe('player_position', function (arg) {
+            console.log(arg);
+            console.log(arg[0]);
+            var position = Math.round(((arg[0] / arg[1]) * 100) * 100) / 100;
+            this._parent.getFirebase().database().ref('currentPosition').set({
+                position: position
+            });
+        }.bind(this));
+    };
+    DashboardComponent.prototype.geolocation = function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success);
+        }
+        function success(position) {
+            console.log('Latitude: ' + position.coords.latitude);
+            console.log('Longitude: ' + position.coords.longitude);
+        }
+    };
+    DashboardComponent.prototype.getTeams = function () {
+        this._parent.getFirebase().database().ref('teams').on('value', function (snapshot) {
+            this.allTeams = [];
+            for (var team in snapshot.val()) {
+                var id = team;
+                var teamObject = snapshot.val()[team];
+                var memberList = snapshot.val()[team].members;
+                var members = [];
+                for (var member in memberList) {
+                    members.push(memberList[member].name);
+                }
+                this.allTeams.push(new Team_1.Team(team, teamObject.teamName, teamObject.genres, members));
+            }
+            this.ref.detectChanges();
+        }.bind(this));
+    };
+    DashboardComponent.prototype.ngOnDestroy = function () {
+        console.log('destroy');
+        this.ref.detach();
+    };
+    /**
+     * When a user selects a team:
+     *  save the user as a member of the active team list
+     *  update the user in our db as having a team assigned
+     *
+     * @param team
+       */
+    DashboardComponent.prototype.selectedTeam = function (team) {
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
+        this._parent.getFirebase().database().ref('teams/' + team.id + '/members/' + userId).set({
+            name: JSON.parse(localStorage.getItem('userD')).name
+        });
+        this._parent.getFirebase().database().ref('users/' + userId).update({
+            teamAssigned: team.id
+        });
+        var assignedTeam = new Team_1.Team(team.id, team.name, team.genres, team.members);
+        localStorage.setItem('teamId', team.id);
+        this.teamList = [];
+        for (var _i = 0, _a = team.members; _i < _a.length; _i++) {
+            var member = _a[_i];
+            console.log(member);
+            this.teamList.push(member);
+        }
+        this.teamList.push(JSON.parse(localStorage.getItem('userD')).name);
+        this.teamAssigned = true;
+    };
+    DashboardComponent.prototype.result = function () {
+        var number = Math.floor(Math.random() * 6) + 1;
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
+        this._parent.getFirebase().database().ref('results/' + userId).push({
+            result: number
+        });
+        console.log(number);
+    };
+    DashboardComponent = __decorate([
+        core_1.Component({
+            selector: 'player-cmp',
+            templateUrl: 'player/templates/dashboard.html',
+            styleUrls: ['player/styles/dashboard.css'],
+            directives: [common_1.CORE_DIRECTIVES, adminCreateTeam_component_1.AdminCreateTeam, leaderboard_component_1.LeaderBoardComponent, admin_component_1.AdminComponent, rotatingcube_component_1.RotatingCubeComponent]
+        }),
+        __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
+        __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ChangeDetectorRef])
+    ], DashboardComponent);
+    return DashboardComponent;
+}());
+exports.DashboardComponent = DashboardComponent;

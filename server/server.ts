@@ -15,6 +15,9 @@ import {DBConfig} from './config/db.conf';
 import {Routes} from './routes/index';
 import {StaticDispatcher} from './commons/static/index';
 
+var fs = require('fs');
+var path = require('path');
+
 const app = express();
 
 RoutesConfig.init(app);
@@ -70,8 +73,11 @@ ref.on("value", function(snapshot) {
 
 let _root = process.cwd();
 
+var jsonPath = path.join(__dirname, 'server', 'analysis', 'compute_input.py');
+console.log('path', jsonPath);
+
 console.log('here');
-var spawn = require('child_process').spawn, py = spawn('python', [_root + '/server/analysis/compute_input.py']),
+var spawn = require('child_process').spawn, py = spawn('python', [jsonPath]),
   data = [1,2,3,4,5,6,7,8,9], dataString = '';
 
 py.stdout.on('data', function(data){
@@ -82,7 +88,7 @@ py.stdout.on('end', function(){
   console.log('Sum of numbers=',dataString);
   db.ref('python').set({
     result: dataString
-  });  
+  });
 });
 py.stdin.write(JSON.stringify(data));
 py.stdin.end();
