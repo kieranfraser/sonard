@@ -66,6 +66,29 @@ ref.on("value", function(snapshot) {
 
 });
 
+// ----------------------------- For python analysis --------------------------
+
+let _root = process.cwd();
+
+console.log('here');
+var spawn = require('child_process').spawn, py = spawn('python', [_root + '/server/analysis/compute_input.py']),
+  data = [1,2,3,4,5,6,7,8,9], dataString = '';
+
+py.stdout.on('data', function(data){
+  console.log('inside stdout', data);
+  dataString += data.toString();
+});
+py.stdout.on('end', function(){
+  console.log('Sum of numbers=',dataString);
+  db.ref('python').set({
+    result: dataString
+  });  
+});
+py.stdin.write(JSON.stringify(data));
+py.stdin.end();
+
+// ----------------------------- End python analysis --------------------------
+
 http.createServer(app)
     .listen(PORT, () => {
       console.log(`up and running @: ${os.hostname()} on port: ${PORT}`);
