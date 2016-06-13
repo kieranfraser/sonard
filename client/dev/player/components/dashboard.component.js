@@ -88,9 +88,7 @@ var DashboardComponent = (function () {
             var position = snapshot.val().position;
             console.log('the position', position);
             DZ.player.play();
-            DZ.Event.subscribe('player_play', function (position, arg) {
-                DZ.player.seek(position);
-            }.bind(position));
+            DZ.player.seek(position);
         }.bind(this));
     };
     DashboardComponent.prototype.seek = function () {
@@ -108,7 +106,7 @@ var DashboardComponent = (function () {
         DZ.Event.subscribe('player_position', function (arg) {
             console.log(arg);
             console.log(arg[0]);
-            var position = ((arg[0] / arg[1]) * 100);
+            var position = Math.round(((arg[0] / arg[1]) * 100) / 100) * 100;
             this._parent.getFirebase().database().ref('currentTrack').update({
                 position: position
             });
