@@ -35,6 +35,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   admin: boolean = false;
 
+  seek: boolean = false;
+  trackPosition = 0;
+
   constructor(@Inject(forwardRef(() => PlayerComponent)) private _parent:PlayerComponent,
               private ref: ChangeDetectorRef) {
     window.addEventListener("deviceorientation", function(event) {
@@ -119,13 +122,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log('the position', position);
 
       DZ.player.play();
-      DZ.player.seek(position);
+
+      this.trackPosition = position;
+      this.seek = true;
+
     }.bind(this));
   }
 
-  seek(){
-    console.log('seek');
-    DZ.player.seek(50.5);
+  subscribeToSeek(){
+    DZ.Event.subscribe('player_play', function(arg){
+      if(this.seek === true){
+
+        DZ.player.seek(this.trackPosition);
+        this.seek = false;
+      }
+    }.bind(this));
   }
 
   currentTrack(){

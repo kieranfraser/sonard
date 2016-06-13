@@ -27,6 +27,8 @@ var DashboardComponent = (function () {
         this.changedTrack = false;
         this.teamAssigned = false;
         this.admin = false;
+        this.seek = false;
+        this.trackPosition = 0;
         window.addEventListener("deviceorientation", function (event) {
             console.log(event.alpha);
             console.log(event.beta);
@@ -88,12 +90,17 @@ var DashboardComponent = (function () {
             var position = snapshot.val().position;
             console.log('the position', position);
             DZ.player.play();
-            DZ.player.seek(position);
+            this.trackPosition = position;
+            this.seek = true;
         }.bind(this));
     };
-    DashboardComponent.prototype.seek = function () {
-        console.log('seek');
-        DZ.player.seek(50.5);
+    DashboardComponent.prototype.subscribeToSeek = function () {
+        DZ.Event.subscribe('player_play', function (arg) {
+            if (this.seek === true) {
+                DZ.player.seek(this.trackPosition);
+                this.seek = false;
+            }
+        }.bind(this));
     };
     DashboardComponent.prototype.currentTrack = function () {
         this._parent.getFirebase().database().ref('currentTrack').on('value', function (snapshot) {
