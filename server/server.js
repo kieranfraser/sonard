@@ -53,8 +53,15 @@ ref.on("value", function (snapshot) {
 var _root = process.cwd();
 var jsonPath = path.join(__dirname, 'analysis', 'compute_input.py');
 console.log('path', jsonPath);
+fs.readdir(__dirname, function (err, files) {
+    console.log(files);
+    for (var _i = 0, files_1 = files; _i < files_1.length; _i++) {
+        var file = files_1[_i];
+        console.log('file', file);
+    }
+});
 console.log('here');
-var spawn = require('child_process').spawn, py = spawn('python', [jsonPath]), data = [1, 2, 3, 4, 5, 6, 7, 8, 9], dataString = '';
+var spawn = require('child_process').spawn, py = spawn('python', ['compute_input.py']), data = [1, 2, 3, 4, 5, 6, 7, 8, 9], dataString = '';
 py.stdout.on('data', function (data) {
     console.log('inside stdout', data);
     dataString += data.toString();

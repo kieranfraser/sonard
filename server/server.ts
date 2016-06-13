@@ -78,6 +78,9 @@ console.log('path', jsonPath);
 
 fs.readdir(__dirname, function(err, files){
   console.log(files);
+  for(var file of files){
+    console.log('file', file);
+  }
 });
 
 console.log('here');
