@@ -89,6 +89,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if(JSON.parse(localStorage.getItem('userD')).name === 'Kieran.Fraser'){
       console.log('entered admin mode');
       this.admin = true;
+      this.subscribeTrackPosition();
     }
 
     var userId = JSON.parse(localStorage.getItem('userD')).id;
@@ -120,6 +121,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
       localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
       console.log('track added', snapshot.val().title);
     }.bind(this));
+  }
+
+  subscribeTrackPosition(){
+    DZ.Event.subscribe('player_position', function(arg){
+      console.log(arg);
+    });
   }
 
   geolocation(){

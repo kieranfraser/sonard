@@ -66,6 +66,7 @@ var DashboardComponent = (function () {
         if (JSON.parse(localStorage.getItem('userD')).name === 'Kieran.Fraser') {
             console.log('entered admin mode');
             this.admin = true;
+            this.subscribeTrackPosition();
         }
         var userId = JSON.parse(localStorage.getItem('userD')).id;
         this._parent.getFirebase().database().ref('results/' + userId).on('value', function (snapshot) {
@@ -90,6 +91,11 @@ var DashboardComponent = (function () {
             localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
             console.log('track added', snapshot.val().title);
         }.bind(this));
+    };
+    DashboardComponent.prototype.subscribeTrackPosition = function () {
+        DZ.Event.subscribe('player_position', function (arg) {
+            console.log(arg);
+        });
     };
     DashboardComponent.prototype.geolocation = function () {
         if (navigator.geolocation) {
