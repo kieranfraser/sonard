@@ -89,7 +89,7 @@ var DashboardComponent = (function () {
             var position = snapshot.position;
             DZ.player.seek(position);
             DZ.player.play();
-        });
+        }.bind(this));
     };
     DashboardComponent.prototype.currentTrack = function () {
         this._parent.getFirebase().database().ref('currentTrack').on('value', function (snapshot) {
@@ -106,7 +106,7 @@ var DashboardComponent = (function () {
             this._parent.getFirebase().database().ref('currentTrack').update({
                 position: position
             });
-        });
+        }.bind(this));
     };
     DashboardComponent.prototype.geolocation = function () {
         if (navigator.geolocation) {

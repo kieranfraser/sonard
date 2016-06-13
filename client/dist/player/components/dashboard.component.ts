@@ -118,7 +118,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       var position = snapshot.position;
       DZ.player.seek(position);
       DZ.player.play();
-    });
+    }.bind(this));
   }
 
   currentTrack(){
@@ -137,7 +137,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this._parent.getFirebase().database().ref('currentTrack').update({
         position: position
       });
-    });
+    }.bind(this));
   }
 
   geolocation(){
