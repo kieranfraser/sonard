@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
 
 declare var THREE: any;
 
@@ -8,7 +8,7 @@ declare var THREE: any;
   styleUrls: ['visualizations/styles/rotatingcube.css']
 })
 
-export class RotatingCubeComponent implements OnInit{
+export class RotatingCubeComponent implements OnInit, AfterViewInit{
 
   @ViewChild('container') container: HTMLElement;
 
@@ -21,7 +21,9 @@ export class RotatingCubeComponent implements OnInit{
 
   constructor(private elRef:ElementRef){}
 
-  ngOnInit(){
+  ngOnInit(){}
+
+  ngAfterViewInit(){
     this.init();
     this.animate();
   }

@@ -13,7 +13,8 @@ var RotatingCubeComponent = (function () {
     function RotatingCubeComponent(elRef) {
         this.elRef = elRef;
     }
-    RotatingCubeComponent.prototype.ngOnInit = function () {
+    RotatingCubeComponent.prototype.ngOnInit = function () { };
+    RotatingCubeComponent.prototype.ngAfterViewInit = function () {
         this.init();
         this.animate();
     };
