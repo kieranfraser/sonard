@@ -132,7 +132,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   subscribeToSeek(){
     DZ.Event.subscribe('player_play', function(arg){
       if(this.seek === true){
-
+        console.log('seek the player');
         DZ.player.seek(this.trackPosition);
         this.seek = false;
       }
@@ -140,7 +140,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   currentTrack(){
-    this._parent.getFirebase().database().ref('currentTrack').on('value', function(snapshot) {
+    this._parent.getFirebase().database().ref('currentTrack/title').on('value', function(snapshot) {
       DZ.player.addToQueue([snapshot.val().id]);
       localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
       console.log('track added', snapshot.val().title);

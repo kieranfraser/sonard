@@ -97,13 +97,14 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.subscribeToSeek = function () {
         DZ.Event.subscribe('player_play', function (arg) {
             if (this.seek === true) {
+                console.log('seek the player');
                 DZ.player.seek(this.trackPosition);
                 this.seek = false;
             }
         }.bind(this));
     };
     DashboardComponent.prototype.currentTrack = function () {
-        this._parent.getFirebase().database().ref('currentTrack').on('value', function (snapshot) {
+        this._parent.getFirebase().database().ref('currentTrack/title').on('value', function (snapshot) {
             DZ.player.addToQueue([snapshot.val().id]);
             localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
             console.log('track added', snapshot.val().title);
