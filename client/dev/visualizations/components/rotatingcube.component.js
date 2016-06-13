@@ -10,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var RotatingCubeComponent = (function () {
-    function RotatingCubeComponent() {
+    function RotatingCubeComponent(elRef) {
+        this.elRef = elRef;
     }
     RotatingCubeComponent.prototype.ngOnInit = function () {
         this.init();
@@ -26,6 +27,7 @@ var RotatingCubeComponent = (function () {
         this.scene.add(this.mesh);
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.container.appendChild(this.renderer.domElement);
         document.body.appendChild(this.renderer.domElement);
     };
     RotatingCubeComponent.prototype.animate = function () {
@@ -34,13 +36,17 @@ var RotatingCubeComponent = (function () {
         this.mesh.rotation.y += 0.02;
         this.renderer.render(this.scene, this.camera);
     };
+    __decorate([
+        core_1.ViewChild('container'), 
+        __metadata('design:type', HTMLElement)
+    ], RotatingCubeComponent.prototype, "container", void 0);
     RotatingCubeComponent = __decorate([
         core_1.Component({
             selector: 'rotatingcube-cmp',
             templateUrl: 'visualizations/templates/rotatingcube-component.html',
             styleUrls: ['visualizations/styles/rotatingcube.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [core_1.ElementRef])
     ], RotatingCubeComponent);
     return RotatingCubeComponent;
 }());
