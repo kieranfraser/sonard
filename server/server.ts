@@ -76,7 +76,7 @@ let _root = process.cwd();
 var jsonPath = path.join(__dirname, 'analysis', 'compute_input.py');
 console.log('path', jsonPath);
 
-fs.readdir(__dirname, function(err, files){
+fs.readdir(path.join(__dirname, 'analysis'), function(err, files){
   console.log(files);
   for(var file of files){
     console.log('file', file);
