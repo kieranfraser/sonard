@@ -115,7 +115,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   play(){
-    this._parent.getFirebase().database().ref('currentTrack').once('value').then(function(snapshot) {
+    this._parent.getFirebase().database().ref('currentPosition').once('value').then(function(snapshot) {
       console.log(snapshot.val());
       var position = snapshot.val().position;
 
@@ -140,7 +140,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   currentTrack(){
-    this._parent.getFirebase().database().ref('currentTrack/title').on('value', function(snapshot) {
+    this._parent.getFirebase().database().ref('currentTrack').on('value', function(snapshot) {
       DZ.player.addToQueue([snapshot.val().id]);
       localStorage.setItem('currentTrack', JSON.stringify(snapshot.val()));
       console.log('track added', snapshot.val().title);
@@ -152,7 +152,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log(arg);
       console.log(arg[0]);
       var position = Math.round( ((arg[0]/arg[1]) * 100) * 100 ) / 100;
-      this._parent.getFirebase().database().ref('currentTrack').update({
+      this._parent.getFirebase().database().ref('currentPosition').set({
         position: position
       });
     }.bind(this));
