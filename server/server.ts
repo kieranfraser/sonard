@@ -76,6 +76,10 @@ let _root = process.cwd();
 var jsonPath = path.join(__dirname, 'analysis', 'compute_input.py');
 console.log('path', jsonPath);
 
+fs.readdir(__dirname, function(err, files){
+  console.log(files);
+});
+
 console.log('here');
 var spawn = require('child_process').spawn, py = spawn('python', ['compute_input.py']),
   data = [1,2,3,4,5,6,7,8,9], dataString = '';
