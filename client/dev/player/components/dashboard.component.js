@@ -91,6 +91,10 @@ var DashboardComponent = (function () {
             DZ.player.seek(position);
         }.bind(this));
     };
+    DashboardComponent.prototype.seek = function () {
+        console.log('seek');
+        DZ.player.seek(50.5);
+    };
     DashboardComponent.prototype.currentTrack = function () {
         this._parent.getFirebase().database().ref('currentTrack').on('value', function (snapshot) {
             DZ.player.addToQueue([snapshot.val().id]);

@@ -123,6 +123,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }.bind(this));
   }
 
+  seek(){
+    console.log('seek');
+    DZ.player.seek(50.5);
+  }
+
   currentTrack(){
     this._parent.getFirebase().database().ref('currentTrack').on('value', function(snapshot) {
       DZ.player.addToQueue([snapshot.val().id]);
