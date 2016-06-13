@@ -88,7 +88,9 @@ var DashboardComponent = (function () {
             var position = snapshot.val().position;
             console.log('the position', position);
             DZ.player.play();
-            DZ.player.seek(position);
+            DZ.Event.subscribe('player_play', function (position, arg) {
+                DZ.player.seek(position);
+            }.bind(position));
         }.bind(this));
     };
     DashboardComponent.prototype.seek = function () {
