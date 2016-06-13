@@ -10,7 +10,6 @@ declare var THREE: any;
 
 export class RotatingCubeComponent implements OnInit, AfterViewInit{
 
-  @ViewChild('container') container: HTMLElement;
 
   private scene;
   private camera;
@@ -43,9 +42,9 @@ export class RotatingCubeComponent implements OnInit, AfterViewInit{
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize( window.innerWidth, window.innerHeight );
-    this.container.appendChild( this.renderer.domElement );
-
-    document.body.appendChild( this.renderer.domElement );
+    //this.container.appendChild(this.renderer.domElement);
+    document.getElementById('container').appendChild(this.renderer.domElement);
+    //document.body.appendChild( this.renderer.domElement );
 
   }
 

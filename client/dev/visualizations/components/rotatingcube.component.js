@@ -28,8 +28,9 @@ var RotatingCubeComponent = (function () {
         this.scene.add(this.mesh);
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.container.appendChild(this.renderer.domElement);
-        document.body.appendChild(this.renderer.domElement);
+        //this.container.appendChild(this.renderer.domElement);
+        document.getElementById('container').appendChild(this.renderer.domElement);
+        //document.body.appendChild( this.renderer.domElement );
     };
     RotatingCubeComponent.prototype.animate = function () {
         requestAnimationFrame(this.animate.bind(this));
@@ -37,10 +38,6 @@ var RotatingCubeComponent = (function () {
         this.mesh.rotation.y += 0.02;
         this.renderer.render(this.scene, this.camera);
     };
-    __decorate([
-        core_1.ViewChild('container'), 
-        __metadata('design:type', HTMLElement)
-    ], RotatingCubeComponent.prototype, "container", void 0);
     RotatingCubeComponent = __decorate([
         core_1.Component({
             selector: 'rotatingcube-cmp',
