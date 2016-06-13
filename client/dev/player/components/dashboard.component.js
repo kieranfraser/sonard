@@ -18,6 +18,7 @@ var Team_1 = require("../../common/models/Team");
 var leaderboard_component_1 = require("../../leaderboard/components/leaderboard.component");
 var admin_component_1 = require("../../admin/components/admin.component");
 var adminCreateTeam_component_1 = require("../../admin/components/adminCreateTeam.component");
+var rotatingcube_component_1 = require("../../visualizations/components/rotatingcube.component");
 var DashboardComponent = (function () {
     function DashboardComponent(_parent, ref) {
         this._parent = _parent;
@@ -189,7 +190,7 @@ var DashboardComponent = (function () {
             selector: 'player-cmp',
             templateUrl: 'player/templates/dashboard.html',
             styleUrls: ['player/styles/dashboard.css'],
-            directives: [common_1.CORE_DIRECTIVES, adminCreateTeam_component_1.AdminCreateTeam, leaderboard_component_1.LeaderBoardComponent, admin_component_1.AdminComponent]
+            directives: [common_1.CORE_DIRECTIVES, adminCreateTeam_component_1.AdminCreateTeam, leaderboard_component_1.LeaderBoardComponent, admin_component_1.AdminComponent, rotatingcube_component_1.RotatingCubeComponent]
         }),
         __param(0, core_1.Inject(core_1.forwardRef(function () { return player_component_1.PlayerComponent; }))), 
         __metadata('design:paramtypes', [player_component_1.PlayerComponent, core_1.ChangeDetectorRef])

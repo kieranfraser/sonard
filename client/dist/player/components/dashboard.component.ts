@@ -5,6 +5,7 @@ import {Team} from "../../common/models/Team";
 import {LeaderBoardComponent} from "../../leaderboard/components/leaderboard.component";
 import {AdminComponent} from "../../admin/components/admin.component";
 import {AdminCreateTeam} from "../../admin/components/adminCreateTeam.component";
+import {RotatingCubeComponent} from "../../visualizations/components/rotatingcube.component";
 
 declare var DZ: any;
 declare var firebase: any;
@@ -13,7 +14,7 @@ declare var firebase: any;
   selector: 'player-cmp',
   templateUrl: 'player/templates/dashboard.html',
   styleUrls: ['player/styles/dashboard.css'],
-  directives: [CORE_DIRECTIVES, AdminCreateTeam, LeaderBoardComponent, AdminComponent]
+  directives: [CORE_DIRECTIVES, AdminCreateTeam, LeaderBoardComponent, AdminComponent, RotatingCubeComponent]
 })
 
 export class DashboardComponent implements OnInit, OnDestroy {
