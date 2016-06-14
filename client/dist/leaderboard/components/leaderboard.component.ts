@@ -13,12 +13,10 @@ export class LeaderBoardComponent implements OnInit, OnDestroy {
 
   leaderboardList = [];
 
-  coverImage_medium;
+  coverImage_medium = "https://upload.wikimedia.org/wikipedia/commons/8/87/Smiley_Face.JPG";
 
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
               private ref: ChangeDetectorRef) {
-
-
     this.getFlow();
   }
 

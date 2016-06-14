@@ -18,6 +18,7 @@ var LeaderBoardComponent = (function () {
         this._parent = _parent;
         this.ref = ref;
         this.leaderboardList = [];
+        this.coverImage_medium = "https://upload.wikimedia.org/wikipedia/commons/8/87/Smiley_Face.JPG";
         this.getFlow();
     }
     LeaderBoardComponent.prototype.ngOnInit = function () {
