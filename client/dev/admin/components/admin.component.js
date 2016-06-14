@@ -40,6 +40,7 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.setSong = function (track) {
         this._parent.getFirebase().database().ref('currentTrack').set(track);
+        DZ.player.addToQueue(track.id);
     };
     __decorate([
         core_1.Input(), 
