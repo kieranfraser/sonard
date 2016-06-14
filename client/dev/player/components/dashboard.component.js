@@ -185,12 +185,6 @@ var DashboardComponent = (function () {
         });
         console.log(number);
     };
-    DashboardComponent.prototype.getFlow = function () {
-        var userId = JSON.parse(localStorage.getItem('userD')).id;
-        DZ.api('/user/' + userId + '/flow', function (response) {
-            console.log("the flow", response);
-        });
-    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',

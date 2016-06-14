@@ -1,6 +1,8 @@
 import {Component, OnInit, forwardRef, Inject, ChangeDetectorRef, OnDestroy} from '@angular/core';
 import {DashboardComponent} from "../../player/components/dashboard.component";
 
+declare var DZ: any;
+
 @Component({
   selector: 'leaderboard-cmp',
   templateUrl: 'leaderboard/templates/leaderboard-component.html',
@@ -10,6 +12,8 @@ import {DashboardComponent} from "../../player/components/dashboard.component";
 export class LeaderBoardComponent implements OnInit, OnDestroy {
 
   leaderboardList = [];
+
+  coverImage_medium;
 
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
               private ref: ChangeDetectorRef) {}
@@ -47,6 +51,23 @@ export class LeaderBoardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.ref.detach();
+  }
+
+
+  getFlow(){
+    var userId = JSON.parse(localStorage.getItem('userD')).id;
+    DZ.api('/user/'+userId+'/flow', function(response){
+      console.log("the flow", response);
+
+      var arrayOfTracks; Array = response.data;
+      var randomIndex = Math.round(Math.random()*arrayOfTracks.length) + 1;
+      var track = arrayOfTracks[randomIndex];
+      var album = track.album;
+      console.log(album);
+
+      this.coverImage_medium = album.cover_medium;
+
+    });
   }
 
 }

@@ -233,10 +233,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
     console.log(number);
   }
 
-  getFlow(){
-    var userId = JSON.parse(localStorage.getItem('userD')).id;
-      DZ.api('/user/'+userId+'/flow', function(response){
-        console.log("the flow", response);
-      });
-  }
 }

@@ -49,6 +49,19 @@ var LeaderBoardComponent = (function () {
     LeaderBoardComponent.prototype.ngOnDestroy = function () {
         this.ref.detach();
     };
+    LeaderBoardComponent.prototype.getFlow = function () {
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
+        DZ.api('/user/' + userId + '/flow', function (response) {
+            console.log("the flow", response);
+            var arrayOfTracks;
+            Array = response.data;
+            var randomIndex = Math.round(Math.random() * arrayOfTracks.length) + 1;
+            var track = arrayOfTracks[randomIndex];
+            var album = track.album;
+            console.log(album);
+            this.coverImage_medium = album.cover_medium;
+        });
+    };
     LeaderBoardComponent = __decorate([
         core_1.Component({
             selector: 'leaderboard-cmp',
