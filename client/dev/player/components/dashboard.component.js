@@ -186,7 +186,8 @@ var DashboardComponent = (function () {
         console.log(number);
     };
     DashboardComponent.prototype.getFlow = function () {
-        DZ.api('/user/936685971/flow', function (response) {
+        var userId = JSON.parse(localStorage.getItem('userD')).id;
+        DZ.api('/user/' + userId + '/flow', function (response) {
             console.log("the flow", response);
         });
     };
