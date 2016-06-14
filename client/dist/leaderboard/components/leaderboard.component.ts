@@ -20,6 +20,8 @@ export class LeaderBoardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.getFlow();
+
     this._parent.getFirebase().database().ref('singleLeaderboard').on('value', function (snapshot) {
       console.log(snapshot.val());
       //this.leaderboard = snapshot.val().leaderboard;
