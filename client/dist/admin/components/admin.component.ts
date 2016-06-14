@@ -46,8 +46,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   setSong(track){
+    this._parent.getFirebase().database().ref('currentPosition').set({
+      position: 0
+    });
     this._parent.getFirebase().database().ref('currentTrack').set(track);
-    DZ.player.addToQueue(track.id);
+    DZ.player.playTracks(track.id);
   }
 
 }

@@ -39,8 +39,11 @@ var AdminComponent = (function () {
         return this._parent.getFirebase();
     };
     AdminComponent.prototype.setSong = function (track) {
+        this._parent.getFirebase().database().ref('currentPosition').set({
+            position: 0
+        });
         this._parent.getFirebase().database().ref('currentTrack').set(track);
-        DZ.player.addToQueue(track.id);
+        DZ.player.playTracks(track.id);
     };
     __decorate([
         core_1.Input(), 
