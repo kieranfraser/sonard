@@ -66,6 +66,8 @@ export class LeaderBoardComponent implements OnInit, OnDestroy {
       var track = arrayOfTracks[randomIndex];
       var album = track.album;
       console.log(album);
+      console.log(album.cover_medium);
+      document.getElementById('fightForTrack').setAttribute('src', album.cover_medium);
 
       this.coverImage_medium = album.cover_medium;
 
