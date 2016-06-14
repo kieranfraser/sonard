@@ -54,8 +54,7 @@ var LeaderBoardComponent = (function () {
         var userId = JSON.parse(localStorage.getItem('userD')).id;
         DZ.api('/user/' + userId + '/flow', function (response) {
             console.log("the flow", response);
-            var arrayOfTracks;
-            Array = response.data;
+            var arrayOfTracks = response.data;
             var randomIndex = Math.round(Math.random() * arrayOfTracks.length) + 1;
             var track = arrayOfTracks[randomIndex];
             var album = track.album;
