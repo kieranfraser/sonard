@@ -1,17 +1,22 @@
 <div class="container">
-  <h2>Individual Leaderboard</h2>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>User-name</th>
-      <th>Current Score</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="#member of leaderboardList">
-      <td>{{member.name}}</td>
-      <td>{{member.result}}</td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="col-xs-6">
+    <h2>Individual Leaderboard</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>User-name</th>
+        <th>Current Score</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="#member of leaderboardList">
+        <td>{{member.name}}</td>
+        <td>{{member.result}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-xs-6">
+    <div>this is a picture</div>
+  </div>
 </div>
