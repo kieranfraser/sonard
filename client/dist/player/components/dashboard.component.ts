@@ -232,4 +232,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
     console.log(number);
   }
+
+  getFlow(){
+      DZ.api('/user/936685971/flow', function(response){
+        console.log("the flow", response);
+      });
+  }
 }

@@ -185,6 +185,11 @@ var DashboardComponent = (function () {
         });
         console.log(number);
     };
+    DashboardComponent.prototype.getFlow = function () {
+        DZ.api('/user/936685971/flow', function (response) {
+            console.log("the flow", response);
+        });
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'player-cmp',
