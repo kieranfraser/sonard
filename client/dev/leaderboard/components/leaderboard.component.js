@@ -18,9 +18,9 @@ var LeaderBoardComponent = (function () {
         this._parent = _parent;
         this.ref = ref;
         this.leaderboardList = [];
+        this.getFlow();
     }
     LeaderBoardComponent.prototype.ngOnInit = function () {
-        this.getFlow();
         this._parent.getFirebase().database().ref('singleLeaderboard').on('value', function (snapshot) {
             console.log(snapshot.val());
             //this.leaderboard = snapshot.val().leaderboard;

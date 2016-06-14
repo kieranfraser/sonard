@@ -16,11 +16,13 @@ export class LeaderBoardComponent implements OnInit, OnDestroy {
   coverImage_medium;
 
   constructor(@Inject(forwardRef(() => DashboardComponent)) private _parent:DashboardComponent,
-              private ref: ChangeDetectorRef) {}
+              private ref: ChangeDetectorRef) {
 
-  ngOnInit() {
 
     this.getFlow();
+  }
+
+  ngOnInit() {
 
     this._parent.getFirebase().database().ref('singleLeaderboard').on('value', function (snapshot) {
       console.log(snapshot.val());
