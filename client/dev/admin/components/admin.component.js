@@ -39,11 +39,11 @@ var AdminComponent = (function () {
         return this._parent.getFirebase();
     };
     AdminComponent.prototype.setSong = function (track) {
+        DZ.player.playTracks([]);
         this._parent.getFirebase().database().ref('currentPosition').set({
             position: 0
         });
         this._parent.getFirebase().database().ref('currentTrack').set(track);
-        DZ.player.next();
     };
     __decorate([
         core_1.Input(), 
