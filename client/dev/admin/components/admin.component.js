@@ -43,7 +43,7 @@ var AdminComponent = (function () {
             position: 0
         });
         this._parent.getFirebase().database().ref('currentTrack').set(track);
-        DZ.player.playTracks(track.id);
+        DZ.player.next();
     };
     __decorate([
         core_1.Input(), 
