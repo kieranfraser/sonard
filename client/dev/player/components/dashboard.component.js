@@ -31,9 +31,9 @@ var DashboardComponent = (function () {
         this.seek = false;
         this.trackPosition = 0;
         window.addEventListener("deviceorientation", function (event) {
-            console.log(event.alpha);
-            console.log(event.beta);
-            console.log(event.gamma);
+            //console.log(event.alpha);
+            //console.log(event.beta);
+            //console.log(event.gamma);
             this.alpha = event.alpha;
             this.beta = event.beta;
             this.gamma = event.gamma;
@@ -46,15 +46,17 @@ var DashboardComponent = (function () {
             }
         }.bind(this), true);
         window.addEventListener("devicemotion", function (event) {
-            console.log(event.acceleration.x);
+            /*console.log(event.acceleration.x);
             console.log(event.acceleration.y);
             console.log(event.acceleration.z);
+      
             console.log(event.accelerationIncludingGravity.x);
             console.log(event.accelerationIncludingGravity.y);
             console.log(event.accelerationIncludingGravity.z);
+      
             console.log(event.rotationRate.alpha);
             console.log(event.rotationRate.beta);
-            console.log(event.rotationRate.gamma);
+            console.log(event.rotationRate.gamma);*/
             this.alpha = event.alpha;
             this.beta = event.beta;
             this.gamma = event.gamma;
