@@ -43,9 +43,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
               private ref: ChangeDetectorRef) {
     window.addEventListener("deviceorientation", function(event) {
 
-      //console.log(event.alpha);
-      //console.log(event.beta);
-      //console.log(event.gamma);
+      console.log(event.alpha);
+      console.log(event.beta);
+      console.log(event.gamma);
 
       this.alpha = event.alpha;
       this.beta = event.beta;
