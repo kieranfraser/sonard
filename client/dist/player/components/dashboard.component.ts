@@ -76,14 +76,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log(event.rotationRate.beta);
       console.log(event.rotationRate.gamma);
 
-      var vibrate = navigator.vibrate;
-
-      // vibrate for 1 second
-      vibrate(1000);
-
-      // vibrate for 1 second, then pause for half, then vibrate for another 1 second
-      vibrate([1000, 500, 2000]);
-
       this.alpha = event.alpha;
       this.beta = event.beta;
       this.gamma = event.gamma;
@@ -268,6 +260,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
       result: number
     });
     console.log(number);
+  }
+
+  vibrate(){
+    var vibrate = navigator.vibrate;
+
+    // vibrate for 1 second
+    vibrate(1000);
+
+    // vibrate for 1 second, then pause for half, then vibrate for another 1 second
+    vibrate([1000, 500, 2000]);
   }
 
 }
